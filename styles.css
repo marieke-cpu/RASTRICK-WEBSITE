@@ -2199,7 +2199,7 @@ body.ty-body { cursor: none; }
 }
 
 /* =======================================================
-   MOBILE HERO — layout + touch interaction
+   MOBILE HERO — layout + touch interaction + text fixes
    ======================================================= */
 @media (max-width: 720px) {
   .hero .frame {
@@ -2220,10 +2220,38 @@ body.ty-body { cursor: none; }
   .hero canvas {
     touch-action: pan-y;
   }
+
+  /* Bigger, bolder hero headline on mobile */
+  .hero h1 {
+    font-size: clamp(68px, 16.5vw, 280px);
+    line-height: 0.88;
+  }
+
+  /* More vertical room so bordered kinetic wrap isn't clipped */
+  .hero h1 .line {
+    padding-bottom: 0.08em;
+  }
+
+  /* Remove desktop skew — causes misalignment on mobile */
+  .hero h1 .kinetic-word-wrap {
+    transform: none;
+    border-width: 3px;
+    margin: 0 0.02em;
+    padding: 0 0.08em;
+  }
+  .hero h1 .kinetic-word-wrap .kinetic-word {
+    transform: none;
+  }
+
+  /* Reduce ghost offset so it doesn't clip below the line boundary */
+  .hero h1 .kinetic-word-wrap .kinetic-word .ghost {
+    transform: translate(3px, 2px);
+    -webkit-text-stroke-width: 1.5px;
+  }
 }
 
 /* =======================================================
-   MOBILE MARQUEE — pause stars to reduce GPU load
+   MOBILE MARQUEE — pause stars to reduce GPU load, bigger name ticker
    ======================================================= */
 @media (max-width: 720px) {
   .ticker .star,
@@ -2235,5 +2263,17 @@ body.ty-body { cursor: none; }
   }
   .name-ticker .track {
     animation-duration: 22s;
+  }
+
+  /* Bigger name ticker on mobile so it fills the space before the footer */
+  .name-ticker span {
+    font-size: clamp(80px, 22vw, 160px);
+    gap: 40px;
+  }
+  .name-ticker .track {
+    gap: 40px;
+  }
+  .name-ticker {
+    padding: 18px 0 0;
   }
 }
