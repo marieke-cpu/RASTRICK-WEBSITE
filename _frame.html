@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>RASTRICK · PNG Frame</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bungee&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #000; font-family: 'Space Grotesk', sans-serif; overflow: hidden; }
+  #root { width: 100vw; height: 100vh; }
+  .scaler { width: 100vw; height: 100vh; overflow: hidden; position: relative; }
+  .stage { width: 1600px; height: 900px; position: absolute; top: 0; left: 0; transform-origin: top left; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel">
+const BLACK = '#000000';
+const PAPER = '#F2F0EA';
+const MAGENTA = '#FF1A8C';
+const LIME = '#C6FF3D';
+const DISPLAY = 'Anton, sans-serif';
+const MONO = '"JetBrains Mono", monospace';
+
+function Scanlines() {
+  return <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(198,255,61,0.04) 2px, rgba(198,255,61,0.04) 3px)', pointerEvents: 'none' }} />;
+}
+
+function BootScreen() {
+  return (
+    <div style={{ width: '100%', height: '100%', background: BLACK, position: 'relative', overflow: 'hidden', fontFamily: MONO, color: LIME }}>
+      <Scanlines />
+      <div style={{ position: 'absolute', top: -160, right: -160, width: 640, height: 640, background: `radial-gradient(circle, ${MAGENTA}33, transparent 60%)` }} />
+      <div style={{ position: 'absolute', bottom: -160, left: -160, width: 640, height: 640, background: `radial-gradient(circle, ${LIME}22, transparent 60%)` }} />
+      <div style={{ position: 'absolute', inset: 64, border: `2px solid ${LIME}66`, padding: 44, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 18, letterSpacing: '0.18em', color: LIME + 'cc' }}>
+          <span>RASTRICK_OS v.2026 // DIGITAL.AGENCY</span>
+          <span>● REC</span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 28 }}>
+          <div style={{ fontSize: 22, color: LIME, letterSpacing: '0.2em' }}>&gt; INITIALIZING_BRAND.exe</div>
+          <div style={{ fontFamily: DISPLAY, fontSize: 248, lineHeight: 0.85, letterSpacing: '-0.03em', color: PAPER, textTransform: 'uppercase' }}>
+            RASTRICK<span style={{ display: 'inline-block', width: 38, height: 208, background: MAGENTA, marginLeft: 16, verticalAlign: 'top' }} />
+          </div>
+          <div style={{ width: '100%', marginTop: 12 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 17, letterSpacing: '0.2em', color: LIME, marginBottom: 10 }}>
+              <span>LOADING: IMPOSSIBLE_TO_IGNORE</span>
+              <span>[ 100% ]</span>
+            </div>
+            <div style={{ width: '100%', height: 34, border: `2px solid ${LIME}`, padding: 3, display: 'flex', gap: 3 }}>
+              {Array.from({ length: 32 }).map((_, i) => (
+                <div key={i} style={{ flex: 1, background: i < 28 ? LIME : (i < 30 ? MAGENTA : 'transparent') }} />
+              ))}
+            </div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 17, letterSpacing: '0.18em', color: LIME + 'aa' }}>
+          <span>WEB · BRANDS · MARKETING</span>
+          <span style={{ color: MAGENTA }}>PRESS ANY KEY ▮</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DiagonalConsole() {
+  return (
+    <div style={{ width: '100%', height: '100%', background: BLACK, position: 'relative', overflow: 'hidden', fontFamily: MONO, color: LIME }}>
+      <Scanlines />
+      <div style={{ position: 'absolute', top: '-20%', left: '-10%', width: '140%', height: '60%',
+        background: `linear-gradient(110deg, transparent 30%, ${MAGENTA}22 45%, ${MAGENTA}66 50%, ${MAGENTA}22 55%, transparent 70%)`,
+        transform: 'rotate(-8deg)', mixBlendMode: 'screen' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 46, background: LIME, display: 'flex', alignItems: 'center', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+        <div style={{ fontFamily: MONO, fontSize: 18, fontWeight: 700, color: BLACK, letterSpacing: '0.2em', display: 'flex', gap: 38, paddingLeft: 38 }}>
+          <span>▸ RASTRICK_OS</span><span>▸ WEB.BUILD</span><span>▸ BRAND.DEV</span><span>▸ DIGITAL.MKT</span><span>▸ IMPOSSIBLE_TO_IGNORE</span><span>▸ RASTRICK_OS</span>
+        </div>
+      </div>
+      <div style={{ position: 'absolute', top: 100, left: 100, right: 100, bottom: 140, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <div style={{ fontFamily: MONO, fontSize: 17, color: LIME, letterSpacing: '0.3em', marginBottom: 18 }}>[ 01.RUN ] &gt; SYSTEM ACTIVE</div>
+        <div style={{ fontFamily: DISPLAY, fontSize: 296, lineHeight: 0.78, letterSpacing: '-0.04em', color: PAPER, textTransform: 'uppercase', position: 'relative' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 22 }}>
+            <span>RAS</span>
+            <span style={{ fontFamily: MONO, fontSize: 22, fontWeight: 700, color: LIME, letterSpacing: '0.15em', alignSelf: 'flex-start', paddingTop: 36 }}>◢ EST.<br />2026</span>
+          </div>
+          <div style={{ marginLeft: 96, color: LIME, position: 'relative' }}>
+            TRICK<span style={{ display: 'inline-block', width: 28, height: 174, background: MAGENTA, marginLeft: 12, verticalAlign: 'middle' }} />
+          </div>
+        </div>
+        <div style={{ fontFamily: MONO, fontSize: 20, color: PAPER, letterSpacing: '0.25em', marginTop: 26, display: 'flex', alignItems: 'center', gap: 18 }}>
+          <span style={{ background: MAGENTA, color: BLACK, padding: '5px 12px', fontWeight: 700 }}>•LIVE</span>
+          <span>IMPOSSIBLE_TO_IGNORE</span>
+          <span style={{ flex: 1, height: 1, background: LIME + '55' }} />
+          <span style={{ color: LIME }}>~/RASTRICK</span>
+        </div>
+      </div>
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 56, background: BLACK, borderTop: `1px solid ${LIME}66`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 38px', fontFamily: MONO, fontSize: 17, letterSpacing: '0.18em' }}>
+        <span style={{ color: LIME }}>▰▰▰▰▰▰▰▰▰▰ 100%</span>
+        <span style={{ color: PAPER }}>WEB · BRANDS · DIGITAL</span>
+        <span style={{ color: MAGENTA }}>● ONLINE</span>
+      </div>
+    </div>
+  );
+}
+
+function CenteredWindow() {
+  return (
+    <div style={{ width: '100%', height: '100%', background: BLACK, position: 'relative', overflow: 'hidden', fontFamily: MONO, color: PAPER }}>
+      <Scanlines />
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(${LIME}11 1px, transparent 1px), linear-gradient(90deg, ${LIME}11 1px, transparent 1px)`, backgroundSize: '60px 60px' }} />
+      <div style={{ position: 'absolute', top: '50%', left: '50%', width: 900, height: 900, transform: 'translate(-50%, -50%)', background: `radial-gradient(circle, ${MAGENTA}22, transparent 60%)` }} />
+      <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ width: '78%', background: BLACK, border: `3px solid ${PAPER}`, boxShadow: `12px 12px 0 ${MAGENTA}, 24px 24px 0 ${LIME}` }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: `3px solid ${PAPER}`, padding: '12px 18px', background: PAPER, color: BLACK }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontFamily: MONO, fontSize: 16, fontWeight: 700, letterSpacing: '0.15em' }}>
+              <div style={{ display: 'flex', gap: 6 }}>
+                <div style={{ width: 14, height: 14, borderRadius: '50%', background: MAGENTA, border: `1.5px solid ${BLACK}` }} />
+                <div style={{ width: 14, height: 14, borderRadius: '50%', background: LIME, border: `1.5px solid ${BLACK}` }} />
+                <div style={{ width: 14, height: 14, borderRadius: '50%', background: PAPER, border: `1.5px solid ${BLACK}` }} />
+              </div>
+              <span>RASTRICK.EXE — //digital_agency</span>
+            </div>
+            <div style={{ fontFamily: MONO, fontSize: 16, fontWeight: 700, letterSpacing: '0.2em', display: 'flex', gap: 12 }}>
+              <span style={{ border: `1.5px solid ${BLACK}`, padding: '0 9px' }}>_</span>
+              <span style={{ border: `1.5px solid ${BLACK}`, padding: '0 9px' }}>□</span>
+              <span style={{ border: `1.5px solid ${BLACK}`, background: MAGENTA, color: PAPER, padding: '0 9px' }}>×</span>
+            </div>
+          </div>
+          <div style={{ padding: '64px 76px 52px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
+            <div style={{ fontFamily: MONO, fontSize: 18, color: LIME, letterSpacing: '0.3em' }}>━━━ NOW LOADING ━━━</div>
+            <div style={{ fontFamily: DISPLAY, fontSize: 208, lineHeight: 0.85, letterSpacing: '-0.03em', color: PAPER, textTransform: 'uppercase', textAlign: 'center', position: 'relative' }}>
+              <span style={{ position: 'absolute', left: -5, top: 0, color: MAGENTA, mixBlendMode: 'screen', opacity: 0.85 }}>RASTRICK</span>
+              <span style={{ position: 'absolute', left: 5, top: 0, color: LIME, mixBlendMode: 'screen', opacity: 0.85 }}>RASTRICK</span>
+              <span style={{ position: 'relative' }}>RASTRICK</span>
+            </div>
+            <div style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 16, marginTop: 6 }}>
+              <span style={{ fontFamily: MONO, fontSize: 17, color: LIME, letterSpacing: '0.18em' }}>STATUS</span>
+              <div style={{ flex: 1, height: 12, background: BLACK, border: `1.5px solid ${LIME}`, position: 'relative' }}>
+                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '92%', background: LIME }} />
+              </div>
+              <span style={{ fontFamily: MONO, fontSize: 17, color: PAPER, letterSpacing: '0.18em' }}>92%</span>
+            </div>
+            <div style={{ fontFamily: MONO, fontSize: 20, color: PAPER, letterSpacing: '0.3em', marginTop: 10, textAlign: 'center' }}>
+              <span style={{ color: MAGENTA }}>&gt;</span> IMPOSSIBLE_TO_IGNORE <span style={{ color: MAGENTA }}>&lt;</span>
+            </div>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: `3px solid ${PAPER}`, padding: '10px 18px', fontFamily: MONO, fontSize: 15, color: PAPER, letterSpacing: '0.2em' }}>
+            <span>WEB · BRANDS · DIGITAL</span>
+            <span style={{ color: LIME }}>● READY</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function StackedAscii() {
+  const letters = ['R', 'A', 'S', 'T', 'R', 'I', 'C', 'K'];
+  return (
+    <div style={{ width: '100%', height: '100%', background: BLACK, position: 'relative', overflow: 'hidden', fontFamily: MONO, color: LIME }}>
+      <Scanlines />
+      {['tl', 'tr', 'bl', 'br'].map(c => (
+        <div key={c} style={{
+          position: 'absolute',
+          top: c[0] === 't' ? 38 : 'auto',
+          bottom: c[0] === 'b' ? 38 : 'auto',
+          left: c[1] === 'l' ? 38 : 'auto',
+          right: c[1] === 'r' ? 38 : 'auto',
+          width: 36, height: 36,
+          borderTop: c[0] === 't' ? `2px solid ${LIME}` : 'none',
+          borderBottom: c[0] === 'b' ? `2px solid ${LIME}` : 'none',
+          borderLeft: c[1] === 'l' ? `2px solid ${LIME}` : 'none',
+          borderRight: c[1] === 'r' ? `2px solid ${LIME}` : 'none',
+        }} />
+      ))}
+      <div style={{ position: 'absolute', inset: 100, display: 'flex' }}>
+        <div style={{ width: 160, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', fontFamily: MONO, fontSize: 16, color: LIME + 'aa', letterSpacing: '0.15em' }}>
+          <div>
+            <div>X.000</div>
+            <div>Y.000</div>
+            <div style={{ marginTop: 14, color: MAGENTA }}>◆ NORTH</div>
+          </div>
+          <div>
+            <div style={{ color: PAPER, fontSize: 17 }}>RASTRICK</div>
+            <div>v.2026.04</div>
+            <div style={{ marginTop: 10 }}>━━━━━━━━</div>
+            <div>LAT 51.5°</div>
+            <div>LNG -0.1°</div>
+          </div>
+        </div>
+        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0, position: 'relative' }}>
+            <div style={{ position: 'absolute', left: -42, top: 0, bottom: 0, width: 9, background: MAGENTA }} />
+            {letters.map((L, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 22 }}>
+                <div style={{ fontFamily: DISPLAY, fontSize: 116, lineHeight: 0.92, letterSpacing: '-0.03em', color: i === 4 ? LIME : PAPER, textTransform: 'uppercase' }}>{L}</div>
+                <div style={{ fontFamily: MONO, fontSize: 15, color: LIME + '99', letterSpacing: '0.2em' }}>{String(i).padStart(2, '0')}.{((i+1)*137 % 999).toString().padStart(3, '0')}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div style={{ width: 320, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', fontFamily: MONO, fontSize: 17, letterSpacing: '0.16em', color: PAPER, textAlign: 'right' }}>
+          <div>
+            <div style={{ color: LIME, marginBottom: 8 }}>// MANIFEST</div>
+            <div>BUILD WEB.</div>
+            <div>BUILD BRAND.</div>
+            <div>BUILD NOISE.</div>
+          </div>
+          <div>
+            <div style={{ height: 1, background: LIME + '55', marginBottom: 12 }} />
+            <div style={{ fontSize: 22, color: LIME, fontWeight: 700, letterSpacing: '0.2em' }}>IMPOSSIBLE</div>
+            <div style={{ fontSize: 22, color: MAGENTA, fontWeight: 700, letterSpacing: '0.2em' }}>TO IGNORE.</div>
+            <div style={{ height: 1, background: LIME + '55', marginTop: 12, marginBottom: 12 }} />
+            <div style={{ fontSize: 13 }}>━━ ENDOFFILE ━━</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const COMPS = { boot: BootScreen, diag: DiagonalConsole, win: CenteredWindow, stack: StackedAscii };
+const params = new URLSearchParams(location.search);
+const which = params.get('f') || 'boot';
+const Comp = COMPS[which] || BootScreen;
+
+function Fit() {
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    const fit = () => {
+      const s = Math.min(window.innerWidth / 1600, window.innerHeight / 900);
+      if (ref.current) ref.current.style.transform = `scale(${s})`;
+    };
+    fit();
+    window.addEventListener('resize', fit);
+    return () => window.removeEventListener('resize', fit);
+  }, []);
+  return <div className="scaler"><div className="stage" ref={ref}><Comp /></div></div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Fit />);
+</script>
+</body>
+</html>
