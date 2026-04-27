@@ -451,10 +451,12 @@
       </div>
     </div>
 
-    <form class="book" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you">
-      <input type="hidden" name="form-name" value="contact">
-      <input type="hidden" name="subject" value="New inquiry from rastrick.com.au">
-      <p class="hp" hidden aria-hidden="true"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+    <form class="book" name="contact" method="POST" action="https://api.web3forms.com/submit">
+    <input type="hidden" name="access_key" value="40be2bc5-2582-4b59-a7c5-01ba11d51fb9">
+<input type="hidden" name="subject" value="New inquiry from rastrick.com.au">
+<input type="hidden" name="from_name" value="RASTRICK Website">
+<input type="hidden" name="redirect" value="https://rastrick.com.au/thank-you.html">
+<input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
       <div class="row">
         <label>Name<input name="name" type="text" required autocomplete="name"></label>
         <label>Email<input name="email" type="email" required autocomplete="email"></label>
