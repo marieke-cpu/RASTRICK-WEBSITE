@@ -8,6 +8,9 @@
   const gl = canvas.getContext('webgl', { antialias: false, premultipliedAlpha: false });
   if (!gl) return;
 
+  const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const MARCH_STEPS = isTouchDevice ? '32' : '64';
+
   const vert = `
     attribute vec2 p;
     void main(){ gl_Position = vec4(p, 0.0, 1.0); }
@@ -108,7 +111,7 @@
 
       float tHit = 0.0;
       float hit = 0.0;
-      for (int i=0; i<64; i++){
+      for (int i=0; i<${MARCH_STEPS}; i++){
         vec3 pos = ro + rd*tHit;
         float d = map(pos, mp).x - pulse*0.25;
         if (d < 0.001) { hit = 1.0; break; }
@@ -197,8 +200,26 @@
     state.clickS = 1;
   });
 
+  // Touch fallback so the orb follows finger on mobile
+  canvas.addEventListener('touchmove', e => {
+    if (e.touches.length > 0) {
+      const r = canvas.getBoundingClientRect();
+      state.mx = (e.touches[0].clientX - r.left) / r.width;
+      state.my = 1 - (e.touches[0].clientY - r.top) / r.height;
+    }
+  }, { passive: true });
+  canvas.addEventListener('touchstart', e => {
+    state.clickT = 0;
+    state.clickS = 1;
+    if (e.touches.length > 0) {
+      const r = canvas.getBoundingClientRect();
+      state.mx = (e.touches[0].clientX - r.left) / r.width;
+      state.my = 1 - (e.touches[0].clientY - r.top) / r.height;
+    }
+  }, { passive: true });
+
   function resize(){
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, isTouchDevice ? 1 : 2);
     const w = canvas.clientWidth, h = canvas.clientHeight;
     canvas.width = Math.floor(w*dpr);
     canvas.height = Math.floor(h*dpr);
