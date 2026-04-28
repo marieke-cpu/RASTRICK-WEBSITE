@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>About — RASTRICK</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The story behind RASTRICK — an independent website design and development studio built on custom code, personal craft, and a name that belongs to its founder.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* =============================================
+   ABOUT PAGE — page-specific styles
+   All base tokens and typography from styles.css
+   ============================================= */
+
+/* ---- about hero ---- */
+.ab-hero {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(120px, 18vw, 200px) var(--pad) clamp(80px, 10vw, 140px);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--line);
+}
+.ab-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(900px 600px at 80% -10%, rgba(198,255,58,0.07), transparent 60%),
+    radial-gradient(700px 400px at -5% 80%, rgba(255,61,240,0.06), transparent 60%),
+    var(--bg);
+}
+.ab-hero .grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.ab-hero .checker { position: absolute; left: 0; right: 0; height: 14px; z-index: 4; opacity: 0.9; }
+.ab-hero .checker.top { top: 0; background-image: repeating-linear-gradient(90deg, var(--accent) 0 14px, #000 14px 28px); }
+.ab-hero .checker.bottom { bottom: 0; background-image: repeating-linear-gradient(90deg, var(--accent-2) 0 14px, #000 14px 28px); }
+.ab-hero .bracket { position: absolute; width: 42px; height: 42px; border: 2px solid var(--accent); pointer-events: none; z-index: 2; }
+.ab-hero .bracket.tl { top: 28px; left: 28px; border-right: 0; border-bottom: 0; }
+.ab-hero .bracket.tr { top: 28px; right: 28px; border-left: 0; border-bottom: 0; border-color: var(--accent-2); }
+.ab-hero .bracket.bl { bottom: 28px; left: 28px; border-right: 0; border-top: 0; border-color: var(--accent-2); }
+.ab-hero .bracket.br { bottom: 28px; right: 28px; border-left: 0; border-top: 0; }
+
+.ab-hero-frame {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+.ab-hero-top {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 20px; flex-wrap: wrap;
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+.ab-hero-top .tag {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim);
+  display: flex; align-items: center; gap: 10px;
+}
+.ab-hero-top .tag .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 10px var(--accent);
+  animation: blink 1.8s ease-in-out infinite;
+}
+
+.ab-hero h1 {
+  font-family: var(--f-display);
+  font-size: clamp(56px, 12vw, 200px);
+  font-weight: 400; line-height: 0.9;
+  letter-spacing: -0.01em; text-transform: uppercase;
+  color: var(--ink); margin: 0;
+}
+.ab-hero h1 em {
+  font-style: italic; font-weight: 300;
+  color: var(--accent); font-family: var(--f-sans);
+  text-transform: lowercase; letter-spacing: -0.02em;
+}
+.ab-hero-lead {
+  font-family: var(--f-sans);
+  font-size: clamp(18px, 2.2vw, 26px);
+  line-height: 1.45; color: var(--ink-dim);
+  max-width: 52ch; margin-top: clamp(28px, 4vw, 48px);
+  font-weight: 300; letter-spacing: -0.01em;
+}
+.ab-hero-lead em { font-style: normal; color: var(--ink); }
+.ab-idx {
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim); position: relative;
+  padding-left: 40px; margin-bottom: 24px;
+}
+.ab-idx::before {
+  content: ''; position: absolute; left: 0; top: 50%;
+  width: 30px; height: 1px; background: var(--accent);
+}
+
+/* ---- name section ---- */
+.ab-name {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+}
+.ab-name-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 100px); align-items: start;
+}
+.ab-pull {
+  font-family: var(--f-display);
+  font-size: clamp(40px, 6vw, 96px);
+  font-weight: 400; line-height: 0.9;
+  letter-spacing: -0.01em; text-transform: uppercase;
+  color: var(--ink);
+}
+.ab-pull em { font-style: normal; color: var(--accent); font-family: var(--f-sans); font-weight: 300; text-transform: lowercase; }
+.ab-body {
+  display: flex; flex-direction: column; gap: 20px;
+}
+.ab-body p {
+  font-family: var(--f-sans); font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.65; color: var(--ink-dim); font-weight: 300;
+}
+.ab-body p em { font-style: normal; color: var(--ink); }
+.ab-body p strong { color: var(--accent); font-weight: 500; }
+
+/* ---- story section ---- */
+.ab-story {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.ab-story-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 100px); align-items: start;
+}
+.ab-story-left { position: sticky; top: 120px; }
+.ab-chapter {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-faint); margin-bottom: 16px;
+}
+.ab-story-left h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(36px, 4.5vw, 72px);
+  line-height: 0.9; letter-spacing: -0.01em;
+  text-transform: uppercase; color: var(--ink);
+}
+.ab-story-left h2 em {
+  font-style: normal; color: var(--accent-2);
+  font-family: var(--f-sans); font-weight: 300;
+  text-transform: lowercase; letter-spacing: -0.02em;
+}
+.ab-story-right { display: flex; flex-direction: column; gap: 32px; }
+.ab-story-right p {
+  font-family: var(--f-sans); font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
+}
+.ab-story-right p em { font-style: normal; color: var(--ink); font-weight: 400; }
+.ab-story-right p strong { color: var(--accent); font-weight: 500; }
+
+.ab-quote {
+  border-left: 3px solid var(--accent);
+  padding: 20px 28px;
+  background: rgba(198,255,58,0.04);
+  margin: 8px 0;
+}
+.ab-quote p {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(24px, 2.8vw, 40px);
+  line-height: 1; letter-spacing: 0;
+  text-transform: uppercase; color: var(--ink);
+  font-style: normal;
+}
+.ab-quote p em {
+  font-style: italic; color: var(--accent); font-family: var(--f-sans);
+  font-weight: 300; text-transform: lowercase;
+}
+
+/* ---- philosophy section ---- */
+.ab-philosophy {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+.ab-philosophy-inner {
+  max-width: 900px;
+}
+.ab-philosophy h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(48px, 8vw, 130px);
+  line-height: 0.88; letter-spacing: -0.01em;
+  text-transform: uppercase; color: var(--ink);
+  margin-top: 20px; margin-bottom: 40px;
+}
+.ab-philosophy h2 em {
+  font-style: normal; color: var(--accent); font-family: var(--f-sans);
+  font-weight: 300; text-transform: lowercase; letter-spacing: -0.02em;
+}
+.ab-philosophy-cols {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px; margin-top: 20px;
+}
+.ab-philosophy-cols p {
+  font-family: var(--f-sans); font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
+}
+.ab-philosophy-cols p em { font-style: normal; color: var(--ink); }
+
+/* ---- studio stats ---- */
+.ab-studio {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+}
+.ab-studio-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px); align-items: start;
+  margin-top: 48px;
+}
+.ab-studio-copy p {
+  font-family: var(--f-sans); font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.5; color: var(--ink-dim); font-weight: 300;
+  max-width: 36ch;
+}
+.ab-studio-copy p em { font-style: normal; color: var(--ink); font-weight: 400; }
+.ab-stats {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--line); border: 1px solid var(--line);
+}
+.ab-stat {
+  background: var(--bg);
+  padding: 32px 28px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  min-height: 160px;
+  transition: background .3s;
+}
+.ab-stat:hover { background: var(--bg-2); }
+.ab-stat .num {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(44px, 5.5vw, 80px);
+  line-height: 1; text-transform: uppercase; color: var(--ink);
+}
+.ab-stat .num em { font-style: normal; color: var(--accent); }
+.ab-stat .lbl {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim); max-width: 18ch;
+}
+
+/* ---- CTA ---- */
+.ab-cta {
+  padding: clamp(100px, 14vw, 200px) var(--pad);
+  position: relative; overflow: hidden;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line);
+}
+.ab-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(800px 500px at 60% 50%, rgba(198,255,58,0.06), transparent 60%),
+    radial-gradient(600px 400px at 20% 80%, rgba(255,61,240,0.05), transparent 60%);
+  pointer-events: none;
+}
+.ab-cta-inner { position: relative; z-index: 2; }
+.ab-cta h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(52px, 10vw, 160px);
+  line-height: 0.9; letter-spacing: -0.01em;
+  text-transform: uppercase; color: var(--ink);
+  max-width: 16ch;
+}
+.ab-cta h2 em {
+  font-style: normal; color: var(--accent); font-family: var(--f-sans);
+  font-weight: 300; text-transform: lowercase; letter-spacing: -0.02em;
+}
+.ab-cta p {
+  font-family: var(--f-sans); font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.55; color: var(--ink-dim); font-weight: 300;
+  max-width: 44ch; margin: clamp(24px, 3vw, 36px) 0 clamp(36px, 5vw, 56px);
+}
+.ab-cta-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.ab-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 28px;
+  font-family: var(--f-mono); font-size: 12px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  border-radius: 100px; border: 1px solid var(--line-2);
+  color: var(--ink);
+  transition: transform .25s cubic-bezier(.2,.8,.2,1), background .2s, color .2s, border-color .2s;
+}
+.ab-btn:hover { transform: translate(-2px, -2px); }
+.ab-btn .arr { transition: transform .3s; }
+.ab-btn:hover .arr { transform: rotate(-45deg); }
+.ab-btn.primary {
+  background: var(--accent); color: #000; border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(198,255,58,0.18), 0 20px 40px rgba(0,0,0,0.35);
+}
+.ab-btn.primary:hover { background: var(--accent-2); color: #fff; border-color: var(--accent-2); }
+.ab-btn.ghost:hover { background: rgba(255,255,255,0.04); border-color: var(--ink-dim); }
+
+/* ---- responsive breakpoints ---- */
+@media (max-width: 900px) {
+  .ab-name-grid,
+  .ab-story-grid,
+  .ab-studio-grid { grid-template-columns: 1fr; }
+  .ab-story-left { position: static; }
+  .ab-philosophy-cols { grid-template-columns: 1fr; }
+  .ab-hero .bracket { width: 28px; height: 28px; }
+  .ab-hero .bracket.tl, .ab-hero .bracket.tr { top: 20px; }
+  .ab-hero .bracket.bl, .ab-hero .bracket.br { bottom: 20px; }
+}
+@media (max-width: 600px) {
+  .ab-stats { grid-template-columns: 1fr; }
+  .ab-hero-top .tag:last-child { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- custom cursor -->
+<div class="cursor"></div>
+<div class="cursor ring cursor-ring"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="logo"><span class="pulse"></span>RASTRICK<em class="dot-em">.</em><sup style="font-size:9px;opacity:.5;margin-left:6px;font-family:var(--f-mono);font-weight:400">©'26</sup></a>
+  <ul>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="about.html" style="color:var(--ink)">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#packages">Packages</a></li>
+    <li><a href="/#faq">FAQ</a></li>
+  </ul>
+  <a class="cta" href="/#contact">Book a call <span class="arr">→</span></a>
+</nav>
+
+<!-- ABOUT HERO -->
+<section class="ab-hero">
+  <div class="grain"></div>
+  <div class="checker top"></div>
+  <div class="checker bottom"></div>
+  <div class="bracket tl"></div>
+  <div class="bracket tr"></div>
+  <div class="bracket bl"></div>
+  <div class="bracket br"></div>
+
+  <div class="ab-hero-frame">
+    <div class="ab-hero-top">
+      <div class="tag"><span class="dot"></span>Independent Studio · Canberra · AU</div>
+      <div class="tag">One designer. One builder. All custom.</div>
+    </div>
+
+    <div class="ab-idx">§ 00 / About</div>
+
+    <h1>
+      Behind the brand,<br>
+      <em>there's a person.</em>
+    </h1>
+
+    <p class="ab-hero-lead">
+      RASTRICK is a one-person studio. No account managers, no outsourced builds, no team you'll never meet.
+      <em>Every brief, every design decision, every line of code — that's me.</em>
+    </p>
+  </div>
+</section>
+
+<!-- THE NAME -->
+<section class="ab-name">
+  <div class="section-head">
+    <div class="idx">§ 01 / The Name</div>
+    <h2>Where it <em>comes from.</em></h2>
+  </div>
+
+  <div class="ab-name-grid">
+    <div class="ab-pull">
+      RASTRICK<br>is my<br><em>maiden</em><br>last name.
+    </div>
+
+    <div class="ab-body">
+      <p>
+        I kept it. Not just for sentiment — though that's part of it —
+        but because a name that makes people pause, even briefly, tends to be remembered.
+        <em>It's sharp. A little unexpected. Impossible to forget.</em>
+        Everything a business name should be.
+      </p>
+      <p>
+        There's something intentional about building a studio under a name that's genuinely yours.
+        Not a made-up word, not a studio name chosen from a list — my actual name, the one I was
+        given and chose to carry forward. Every project carries it.
+        Every site that launches into the world carries it.
+        <em>That's not a small thing to me.</em>
+      </p>
+      <p>
+        It also set the tone for everything else. If the brand is going to be authentic,
+        it starts at the name. If the work is going to feel personal,
+        so does the studio. <strong>RASTRICK.</strong> — the full stop is intentional.
+        It's a statement, not an afterthought.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- THE STORY -->
+<section class="ab-story">
+  <div class="section-head">
+    <div class="idx">§ 02 / The Story</div>
+    <h2>How I got <em>here.</em></h2>
+  </div>
+
+  <div class="ab-story-grid">
+    <div class="ab-story-left">
+      <div class="ab-chapter">Origin story</div>
+      <h2>Design<br>found me<br><em>first.</em></h2>
+    </div>
+
+    <div class="ab-story-right">
+      <p>
+        It started long before websites. It started with noticing things —
+        the way a logo communicates something before you've consciously read it.
+        The way a font carries weight, personality, mood. The gap between something
+        that <em>looks like it belongs</em> and something that doesn't, and why that gap
+        matters more than most people realise.
+      </p>
+
+      <div class="ab-quote">
+        <p>"I wanted to design things that didn't just look good — they had to <em>work.</em>"</p>
+      </div>
+
+      <p>
+        Code came when I realised that designing something and handing it over meant
+        losing the details that mattered. The micro-interaction that made something feel right.
+        The spacing that was 2px off. The animation timing that changed the whole mood of a page.
+        <em>I needed to build what I designed.</em>
+      </p>
+      <p>
+        So I learned. HTML first — the skeleton of everything. CSS to make it breathe.
+        JavaScript to make it move and respond. Not from a course that handed me a framework
+        and told me I was a developer — from actually building things, breaking them,
+        understanding what was happening at the code level, and building them better.
+      </p>
+      <p>
+        <em>There's no shortcut to understanding how the web actually works.</em>
+        Page builders abstract it away. Templates hide it. Writing code from scratch forces you
+        to know it — and knowing it means you can do things that builders simply can't.
+        Custom interactions. Pixel-precise layouts. Performance that actually loads fast because
+        there's nothing there that doesn't need to be.
+      </p>
+      <p>
+        That's the studio now. <strong>Design that's built to work the way it was designed.</strong>
+        No handoff gap. No details lost in translation.
+        The person who drew the layout is the same person writing the code.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="ab-philosophy">
+  <div class="ab-philosophy-inner">
+    <div class="ab-idx">§ 03 / Philosophy</div>
+    <h2>No templates.<br><em>ever.</em></h2>
+
+    <div class="ab-philosophy-cols">
+      <p>
+        Most websites look like most other websites. Not because the businesses are the same —
+        they're not — but because the tools used to build them are. The same twelve layouts.
+        The same drag-and-drop structure. The same bloated code underneath. Swap out a logo,
+        change a colour, call it a "custom site." <em>It isn't.</em>
+      </p>
+      <p>
+        Every RASTRICK website is written from a blank file. HTML, CSS, and JavaScript —
+        no page builders, no WordPress, no shortcuts. Code I write, I control.
+        Details I design, I build. <em>What you get isn't a template with your name on it.
+        It's a website built specifically for your business, your goals, and your audience.</em>
+      </p>
+      <p>
+        Small businesses deserve websites that work as hard as they do.
+        Not an off-the-shelf solution that was designed to fit everyone and fits no one particularly well.
+        Something sharp, fast, and built to last — <em>and built to be unmistakably yours.</em>
+      </p>
+      <p>
+        That means the conversations matter too. No account managers sitting between us.
+        You speak directly to the person making decisions about your site.
+        Every call, every brief, every revision — that's me, and it stays that way
+        for the life of the project.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- THE STUDIO TODAY -->
+<section class="ab-studio">
+  <div class="section-head">
+    <div class="idx">§ 04 / The Studio</div>
+    <h2>RASTRICK today. <em>Where things stand.</em></h2>
+  </div>
+
+  <div class="ab-studio-grid">
+    <div class="ab-studio-copy">
+      <p>
+        One studio. One designer. Based in Canberra, building for businesses
+        across Australia and internationally.
+        <em>Taking on a limited number of projects each quarter</em> — deliberately.
+        Not to be precious about it, but because the work is better when it gets proper attention.
+      </p>
+      <p style="margin-top:20px;">
+        If you've made it this far, you probably already understand what you'd be getting.
+        A website that isn't generic. A process that isn't opaque.
+        A person who gives a damn about the details. <em>Let's talk.</em>
+      </p>
+    </div>
+
+    <div class="ab-stats">
+      <div class="ab-stat">
+        <div class="num"><em>01</em></div>
+        <div class="lbl">Studio. Small on purpose — you speak to the builder.</div>
+      </div>
+      <div class="ab-stat">
+        <div class="num">100%</div>
+        <div class="lbl">Custom-coded. HTML, CSS &amp; JS. Always.</div>
+      </div>
+      <div class="ab-stat">
+        <div class="num"><em>2–4</em></div>
+        <div class="lbl">Weeks from kickoff to launch, depending on scope.</div>
+      </div>
+      <div class="ab-stat">
+        <div class="num">AU</div>
+        <div class="lbl">Canberra based. Working worldwide.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ab-cta">
+  <div class="ab-cta-inner">
+    <div class="ab-idx">§ 05 / Work Together</div>
+    <h2>Let's build something they can't <em>ignore.</em></h2>
+    <p>
+      Tell me about the business, what you want the site to do, and where you're at right now.
+      I'll come back with a scope, a timeline, and — if we're a fit — a link to lock in a call.
+      No hard sell. Just a real conversation.
+    </p>
+    <div class="ab-cta-actions">
+      <a href="/#contact" class="ab-btn primary">Start a project <span class="arr">↗</span></a>
+      <a href="/#work" class="ab-btn ghost">See the work <span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- RASTRICK. RUNNING NAME TICKER -->
+<div class="name-ticker" aria-hidden="true">
+  <div class="track">
+    <span>RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i></span>
+    <span aria-hidden="true">RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i></span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="meta">
+    <div>
+      <b>Studio</b>
+      <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>
+      <a>Canberra · ACT · AU 2602</a>
+      <a>Mon–Fri 9am to 5pm · AEST</a>
+    </div>
+    <div>
+      <b>Navigate</b>
+      <a href="/#work">Work</a>
+      <a href="about.html">About</a>
+      <a href="/#services">Services</a>
+      <a href="/#packages">Packages</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+    <div>
+      <b>© 2026 RASTRICK</b>
+      <a>Independent Website Design &amp; Development Studio</a>
+      <a>Websites impossible to ignore</a>
+      <a href="/#top">↑ Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js?v=4"></script>
+
+</body>
+</html>

@@ -53,8 +53,8 @@
       setTimeout(() => {
         intro.classList.add('done');
         document.body.classList.remove('intro-open');
-      }, 950);
-      setTimeout(() => { intro.remove(); }, 1600);
+      }, 1200);
+      setTimeout(() => { intro.remove(); }, 2000);
     };
     enterBtn.addEventListener('click', (e) => { e.stopPropagation(); open(); });
     // also allow clicking the boot screen itself to enter
