@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Services &amp; Packages — RASTRICK</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Custom website design and development by RASTRICK — hand-coded HTML, CSS and JavaScript. Four packages from a single page to a complete digital build. Exclusive Kickstart offer for small and startup businesses.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* =============================================
+   SERVICES PAGE — page-specific styles
+   ============================================= */
+
+/* ---- hero ---- */
+.sv-hero {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(120px, 18vw, 200px) var(--pad) clamp(80px, 10vw, 140px);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--line);
+}
+.sv-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(900px 600px at 85% -10%, rgba(198,255,58,0.08), transparent 60%),
+    radial-gradient(700px 400px at -5% 90%, rgba(255,61,240,0.06), transparent 60%),
+    var(--bg);
+}
+.sv-hero .grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.sv-hero .checker { position: absolute; left: 0; right: 0; height: 14px; z-index: 4; opacity: 0.9; }
+.sv-hero .checker.top { top: 0; background-image: repeating-linear-gradient(90deg, var(--accent) 0 14px, #000 14px 28px); }
+.sv-hero .checker.bottom { bottom: 0; background-image: repeating-linear-gradient(90deg, var(--accent-2) 0 14px, #000 14px 28px); }
+.sv-hero .bracket { position: absolute; width: 42px; height: 42px; border: 2px solid var(--accent); pointer-events: none; z-index: 2; }
+.sv-hero .bracket.tl { top: 28px; left: 28px; border-right: 0; border-bottom: 0; }
+.sv-hero .bracket.tr { top: 28px; right: 28px; border-left: 0; border-bottom: 0; border-color: var(--accent-2); }
+.sv-hero .bracket.bl { bottom: 28px; left: 28px; border-right: 0; border-top: 0; border-color: var(--accent-2); }
+.sv-hero .bracket.br { bottom: 28px; right: 28px; border-left: 0; border-top: 0; }
+
+.sv-hero-frame {
+  position: relative; z-index: 3; width: 100%;
+}
+.sv-hero-top {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 20px; flex-wrap: wrap;
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+.sv-hero-top .tag {
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim);
+  display: flex; align-items: center; gap: 10px;
+}
+.sv-hero-top .tag .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 10px var(--accent);
+  animation: blink 1.8s ease-in-out infinite;
+}
+.sv-idx {
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim); position: relative;
+  padding-left: 40px; margin-bottom: 24px;
+}
+.sv-idx::before {
+  content: ''; position: absolute; left: 0; top: 50%;
+  width: 30px; height: 1px; background: var(--accent);
+}
+.sv-hero h1 {
+  font-family: var(--f-display);
+  font-size: clamp(56px, 12vw, 200px);
+  font-weight: 400; line-height: 0.9;
+  letter-spacing: -0.01em; text-transform: uppercase;
+  color: var(--ink); margin: 0;
+}
+.sv-hero h1 em {
+  font-style: italic; font-weight: 300;
+  color: var(--accent); font-family: var(--f-sans);
+  text-transform: lowercase; letter-spacing: -0.02em;
+}
+.sv-hero-lead {
+  font-family: var(--f-sans);
+  font-size: clamp(18px, 2.2vw, 26px);
+  line-height: 1.45; color: var(--ink-dim);
+  max-width: 56ch; margin-top: clamp(28px, 4vw, 48px);
+  font-weight: 300; letter-spacing: -0.01em;
+}
+.sv-hero-lead em { font-style: normal; color: var(--ink); }
+
+/* ---- services in depth ---- */
+.sv-services {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+}
+.sv-svc-list { margin-top: 60px; }
+.sv-svc {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr 60px;
+  gap: 40px;
+  padding: 52px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+  transition: background .3s;
+}
+.sv-svc:last-child { border-bottom: 1px solid var(--line); }
+.sv-svc:hover { background: rgba(255,255,255,0.015); margin: 0 calc(-1 * var(--pad)); padding-left: var(--pad); padding-right: var(--pad); }
+.sv-svc .num {
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-faint); padding-top: 6px;
+}
+.sv-svc .ttl {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(36px, 4.5vw, 72px);
+  line-height: 0.92; letter-spacing: 0;
+  text-transform: uppercase; color: var(--ink);
+}
+.sv-svc .ttl em { font-style: normal; color: var(--accent); font-family: var(--f-sans); font-weight: 300; text-transform: lowercase; letter-spacing: -0.02em; }
+.sv-svc-right { display: flex; flex-direction: column; gap: 28px; }
+.sv-svc-right p {
+  font-family: var(--f-sans); font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
+}
+.sv-svc-right p em { font-style: normal; color: var(--ink); }
+.sv-svc-right ul {
+  list-style: none; display: flex; flex-direction: column; gap: 0;
+}
+.sv-svc-right ul li {
+  display: flex; align-items: baseline; gap: 14px;
+  font-family: var(--f-sans); font-size: 14px;
+  color: var(--ink-dim);
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+}
+.sv-svc-right ul li:first-child { border-top: 1px solid var(--line); }
+.sv-svc-right ul li::before {
+  content: '+'; color: var(--accent-2);
+  font-family: var(--f-mono); font-size: 12px;
+  flex-shrink: 0;
+}
+.sv-svc .arr {
+  font-family: var(--f-mono); font-size: 22px;
+  color: var(--ink-faint); padding-top: 6px;
+  transition: transform .3s, color .3s;
+}
+.sv-svc:hover .arr { transform: translate(6px, -6px); color: var(--accent); }
+
+/* ---- packages ---- */
+.sv-packages {
+  padding: clamp(80px, 12vw, 180px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+}
+.sv-pkg-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 60px;
+}
+.sv-pkg {
+  background: var(--bg-2);
+  padding: 40px 36px 36px;
+  display: flex; flex-direction: column; gap: 24px;
+  position: relative; min-height: 620px;
+  transition: background .3s;
+}
+.sv-pkg:hover { background: #0f1216; }
+.sv-pkg.feat { background: var(--panel); }
+.sv-pkg.feat:hover { background: #191c22; }
+.sv-pkg .flag {
+  position: absolute; top: 24px; right: 24px;
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent);
+  padding: 4px 10px; border-radius: 100px;
+}
+.sv-pkg .head {
+  display: flex; flex-direction: column; gap: 4px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.sv-pkg .head .kind {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.sv-pkg .head .name {
+  font-family: var(--f-display); font-size: 44px;
+  font-weight: 400; letter-spacing: 0;
+  color: var(--ink); margin-top: 8px;
+  text-transform: uppercase;
+}
+.sv-pkg .head .name em { font-style: normal; color: var(--accent); }
+.sv-pkg .head .sub {
+  font-size: 14px; color: var(--ink-dim);
+  line-height: 1.5; margin-top: 8px; max-width: 28ch;
+}
+.sv-pkg ul {
+  list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1;
+}
+.sv-pkg ul li {
+  display: flex; gap: 12px; align-items: baseline;
+  font-size: 14px; color: var(--ink);
+}
+.sv-pkg ul li::before {
+  content: ''; width: 4px; height: 4px; border-radius: 50%;
+  background: var(--accent-2); flex-shrink: 0;
+  transform: translateY(-3px);
+}
+.sv-pkg ul li.faint { color: var(--ink-faint); text-decoration: line-through; }
+.sv-pkg ul li.faint::before { background: var(--ink-faint); }
+.sv-pkg .cta {
+  display: inline-flex; justify-content: space-between; align-items: center;
+  padding: 16px 20px;
+  border: 1px solid var(--line-2);
+  border-radius: 100px;
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.sv-pkg .cta:hover { background: var(--ink); color: #000; border-color: var(--ink); }
+.sv-pkg.feat .cta { background: var(--accent); color: #000; border-color: var(--accent); }
+.sv-pkg.feat .cta:hover { background: var(--ink); border-color: var(--ink); }
+
+/* ---- kickstart offer ---- */
+.sv-kickstart {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+.sv-kickstart::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(800px 500px at 50% 0%, rgba(255,61,240,0.06), transparent 60%),
+    radial-gradient(600px 400px at 80% 100%, rgba(198,255,58,0.04), transparent 60%);
+  pointer-events: none;
+}
+.sv-kickstart-inner { position: relative; z-index: 2; }
+.sv-kickstart-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--accent-2);
+  border: 1px solid var(--accent-2);
+  border-radius: 100px;
+  padding: 7px 16px;
+  margin-bottom: 40px;
+}
+.sv-kickstart-badge .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-2); box-shadow: 0 0 10px var(--accent-2);
+  animation: blink 1.8s ease-in-out infinite;
+}
+.sv-kickstart-grid {
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: clamp(40px, 7vw, 120px); align-items: start;
+}
+.sv-kickstart-left h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(48px, 8vw, 130px);
+  line-height: 0.88; letter-spacing: -0.01em;
+  text-transform: uppercase; color: var(--ink);
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+.sv-kickstart-left h2 em {
+  font-style: normal; color: var(--accent-2);
+  font-family: var(--f-sans); font-weight: 300;
+  text-transform: lowercase; letter-spacing: -0.02em;
+}
+.sv-kickstart-left p {
+  font-family: var(--f-sans); font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.65; color: var(--ink-dim); font-weight: 300;
+  max-width: 42ch;
+}
+.sv-kickstart-left p em { font-style: normal; color: var(--ink); }
+.sv-kickstart-left p strong { color: var(--accent-2); font-weight: 500; }
+
+.sv-kickstart-card {
+  background: var(--panel);
+  border: 1px solid rgba(255,61,240,0.25);
+  border-radius: 8px;
+  padding: clamp(32px, 4vw, 52px);
+  display: flex; flex-direction: column; gap: 28px;
+  position: relative;
+  box-shadow: 0 0 60px rgba(255,61,240,0.06);
+}
+.sv-kickstart-card::before {
+  content: 'EXCLUSIVE';
+  position: absolute; top: -12px; left: 28px;
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  background: var(--accent-2); color: #fff;
+  padding: 4px 12px; border-radius: 100px;
+}
+.sv-kickstart-card .kk-head {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+.sv-kickstart-card .kk-name {
+  font-family: var(--f-display); font-size: 52px;
+  font-weight: 400; text-transform: uppercase;
+  color: var(--ink); line-height: 0.95;
+}
+.sv-kickstart-card .kk-name em { font-style: normal; color: var(--accent-2); }
+.sv-kickstart-card .kk-sub {
+  font-family: var(--f-sans); font-size: 15px;
+  line-height: 1.5; color: var(--ink-dim);
+  font-weight: 300; margin-top: 12px; max-width: 34ch;
+}
+.sv-kickstart-card .kk-includes {
+  display: flex; flex-direction: column; gap: 0;
+}
+.sv-kickstart-card .kk-includes li {
+  display: flex; align-items: baseline; gap: 14px;
+  font-family: var(--f-sans); font-size: 14px;
+  color: var(--ink-dim);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  list-style: none;
+}
+.sv-kickstart-card .kk-includes li:first-child { border-top: 1px solid var(--line); }
+.sv-kickstart-card .kk-includes li::before {
+  content: '✓'; color: var(--accent-2);
+  font-family: var(--f-mono); font-size: 12px; flex-shrink: 0;
+}
+.sv-kickstart-card .kk-note {
+  background: rgba(255,61,240,0.06);
+  border: 1px solid rgba(255,61,240,0.18);
+  border-radius: 4px;
+  padding: 16px 20px;
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-dim); line-height: 1.6;
+}
+.sv-kickstart-card .kk-note strong { color: var(--accent-2); }
+.sv-kickstart-card .kk-cta {
+  display: inline-flex; justify-content: space-between; align-items: center;
+  padding: 18px 24px;
+  background: var(--accent-2); color: #fff;
+  border: 1px solid var(--accent-2);
+  border-radius: 100px;
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  transition: background .2s, color .2s, border-color .2s, transform .2s;
+  box-shadow: 0 0 0 3px rgba(255,61,240,0.15), 0 20px 40px rgba(0,0,0,0.3);
+}
+.sv-kickstart-card .kk-cta:hover {
+  background: var(--ink); color: #000;
+  border-color: var(--ink); transform: translateY(-2px);
+}
+
+/* ---- process ---- */
+.sv-process {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+.sv-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 60px;
+}
+.sv-step {
+  background: var(--panel);
+  padding: 40px 32px;
+  display: flex; flex-direction: column; gap: 16px;
+  transition: background .3s;
+}
+.sv-step:hover { background: #1a1e26; }
+.sv-step .step-num {
+  font-family: var(--f-display); font-size: 80px;
+  font-weight: 400; line-height: 1;
+  color: rgba(255,255,255,0.06); text-transform: uppercase;
+}
+.sv-step h3 {
+  font-family: var(--f-display); font-size: 28px;
+  font-weight: 400; text-transform: uppercase;
+  color: var(--ink); line-height: 1;
+}
+.sv-step p {
+  font-family: var(--f-sans); font-size: 14px;
+  line-height: 1.65; color: var(--ink-dim); font-weight: 300;
+}
+
+/* ---- CTA strip ---- */
+.sv-cta {
+  padding: clamp(100px, 14vw, 200px) var(--pad);
+  position: relative; overflow: hidden;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line);
+}
+.sv-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(800px 500px at 60% 50%, rgba(198,255,58,0.06), transparent 60%),
+    radial-gradient(600px 400px at 20% 80%, rgba(255,61,240,0.05), transparent 60%);
+  pointer-events: none;
+}
+.sv-cta-inner { position: relative; z-index: 2; }
+.sv-cta h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(52px, 10vw, 160px);
+  line-height: 0.9; letter-spacing: -0.01em;
+  text-transform: uppercase; color: var(--ink); max-width: 18ch;
+}
+.sv-cta h2 em {
+  font-style: normal; color: var(--accent); font-family: var(--f-sans);
+  font-weight: 300; text-transform: lowercase; letter-spacing: -0.02em;
+}
+.sv-cta p {
+  font-family: var(--f-sans); font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.55; color: var(--ink-dim); font-weight: 300;
+  max-width: 44ch; margin: clamp(24px, 3vw, 36px) 0 clamp(36px, 5vw, 56px);
+}
+.sv-cta-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.sv-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 28px;
+  font-family: var(--f-mono); font-size: 12px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  border-radius: 100px; border: 1px solid var(--line-2);
+  color: var(--ink);
+  transition: transform .25s cubic-bezier(.2,.8,.2,1), background .2s, color .2s, border-color .2s;
+}
+.sv-btn:hover { transform: translate(-2px, -2px); }
+.sv-btn .arr { transition: transform .3s; }
+.sv-btn:hover .arr { transform: rotate(-45deg); }
+.sv-btn.primary {
+  background: var(--accent); color: #000; border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(198,255,58,0.18), 0 20px 40px rgba(0,0,0,0.35);
+}
+.sv-btn.primary:hover { background: var(--accent-2); color: #fff; border-color: var(--accent-2); }
+.sv-btn.ghost:hover { background: rgba(255,255,255,0.04); border-color: var(--ink-dim); }
+
+/* ---- responsive ---- */
+@media (max-width: 1100px) {
+  .sv-svc { grid-template-columns: 60px 1fr; }
+  .sv-svc-right { grid-column: 1 / -1; }
+  .sv-svc .arr { display: none; }
+  .sv-pkg-grid { grid-template-columns: repeat(2, 1fr); }
+  .sv-pkg .head .name { font-size: 36px; }
+  .sv-steps { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .sv-kickstart-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .sv-pkg-grid { grid-template-columns: 1fr; }
+  .sv-steps { grid-template-columns: 1fr 1fr; }
+  .sv-hero .bracket { width: 28px; height: 28px; }
+  .sv-hero .bracket.tl, .sv-hero .bracket.tr { top: 20px; }
+  .sv-hero .bracket.bl, .sv-hero .bracket.br { bottom: 20px; }
+  .sv-hero-top .tag:last-child { display: none; }
+  .sv-svc { grid-template-columns: 1fr; gap: 16px; }
+  .sv-svc .num { display: none; }
+}
+@media (max-width: 480px) {
+  .sv-steps { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- custom cursor -->
+<div class="cursor"></div>
+<div class="cursor ring cursor-ring"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="logo"><span class="pulse"></span>RASTRICK<em class="dot-em">.</em><sup style="font-size:9px;opacity:.5;margin-left:6px;font-family:var(--f-mono);font-weight:400">©'26</sup></a>
+  <ul>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html" style="color:var(--ink)">Services</a></li>
+    <li><a href="/#packages">Packages</a></li>
+    <li><a href="/#faq">FAQ</a></li>
+  </ul>
+  <a class="cta" href="contact.html">Book a call <span class="arr">→</span></a>
+</nav>
+
+<!-- HERO -->
+<section class="sv-hero">
+  <div class="grain"></div>
+  <div class="checker top"></div>
+  <div class="checker bottom"></div>
+  <div class="bracket tl"></div>
+  <div class="bracket tr"></div>
+  <div class="bracket bl"></div>
+  <div class="bracket br"></div>
+
+  <div class="sv-hero-frame">
+    <div class="sv-hero-top">
+      <div class="tag"><span class="dot"></span>Web Design &amp; Development · Canberra · AU</div>
+      <div class="tag">Hand-coded · No templates · Never</div>
+    </div>
+
+    <div class="sv-idx">§ 00 / Services</div>
+
+    <h1>
+      What I<br>
+      <em>actually</em> do.
+    </h1>
+
+    <p class="sv-hero-lead">
+      One studio. One service: building websites that are impossible to ignore.
+      <em>Custom HTML, CSS and JavaScript — written from a blank file, every time.</em>
+      No page builders. No WordPress. No templates dressed up as custom.
+    </p>
+  </div>
+</section>
+
+<!-- SERVICES IN DEPTH -->
+<section class="sv-services">
+  <div class="section-head">
+    <div class="idx">§ 01 / What's included</div>
+    <h2>Three disciplines. <em>One build.</em></h2>
+  </div>
+
+  <div class="sv-svc-list">
+
+    <div class="sv-svc">
+      <div class="num">/ 01</div>
+      <div class="ttl">Web <em>design</em></div>
+      <div class="sv-svc-right">
+        <p>
+          Design isn't decoration — it's strategy made visible. Every layout, every typographic decision,
+          every colour choice is working toward a single outcome: <em>a website your audience feels before
+          they read it.</em> The design phase is where the personality of your business gets translated
+          into something someone else can see and feel. Nothing ships to code until it's right.
+        </p>
+        <ul>
+          <li>Visual concept &amp; layout architecture</li>
+          <li>Typography system &amp; colour palette</li>
+          <li>Mobile-first responsive design</li>
+          <li>UI design &amp; component layout</li>
+          <li>Brand-aligned aesthetics</li>
+          <li>Interaction &amp; motion design</li>
+          <li>Asset sourcing &amp; image curation</li>
+          <li>Consistent across all devices &amp; screen sizes</li>
+        </ul>
+      </div>
+      <div class="arr">↗</div>
+    </div>
+
+    <div class="sv-svc">
+      <div class="num">/ 02</div>
+      <div class="ttl">Custom <em>development</em></div>
+      <div class="sv-svc-right">
+        <p>
+          The design gets built exactly as designed — not approximated. Every site is hand-coded
+          in HTML, CSS and JavaScript. No frameworks adding weight, no builders abstracting away
+          control, no templates underneath. <em>Clean, fast, lightweight code that loads quickly
+          and does exactly what it was built to do.</em> And because I wrote it, I can change
+          anything without untangling someone else's system.
+        </p>
+        <ul>
+          <li>Hand-coded HTML, CSS &amp; vanilla JavaScript</li>
+          <li>Zero page builders, zero templates, zero WordPress</li>
+          <li>Custom animations &amp; scroll interactions</li>
+          <li>Contact forms &amp; lead-capture funnels</li>
+          <li>Google Analytics &amp; conversion tracking</li>
+          <li>SEO foundations: semantic HTML, meta tags, speed</li>
+          <li>Cross-browser tested (Chrome, Safari, Firefox, Edge)</li>
+          <li>Clean, documented, maintainable code handover</li>
+        </ul>
+      </div>
+      <div class="arr">↗</div>
+    </div>
+
+    <div class="sv-svc">
+      <div class="num">/ 03</div>
+      <div class="ttl">Launch <em>&amp; support</em></div>
+      <div class="sv-svc-right">
+        <p>
+          The site doesn't disappear into a ZIP file and that's the end of it. Launch is handled —
+          domain setup, hosting configuration, performance checks, final browser testing.
+          After that, every package includes a post-launch support window for fixes and fine-tuning.
+          <em>Nothing gets abandoned once it's live.</em> Ongoing care plans are available
+          if you need continued updates, new pages, or someone to call when something breaks.
+        </p>
+        <ul>
+          <li>Domain &amp; hosting setup and configuration</li>
+          <li>Pre-launch performance &amp; speed optimisation</li>
+          <li>Load speed audit &amp; image optimisation</li>
+          <li>Final cross-device testing before go-live</li>
+          <li>Post-launch revision window (package dependent)</li>
+          <li>Ongoing care plans for updates &amp; new pages</li>
+          <li>Technical support &amp; bug fixes</li>
+          <li>Site health monitoring &amp; uptime</li>
+        </ul>
+      </div>
+      <div class="arr">↗</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="sv-packages">
+  <div class="section-head">
+    <div class="idx">§ 02 / Packages</div>
+    <h2>Pick your <em>package.</em></h2>
+  </div>
+
+  <div class="sv-pkg-grid">
+
+    <article class="sv-pkg">
+      <div class="head">
+        <div class="kind">Package / 01</div>
+        <div class="name">Launch<em>pad</em></div>
+        <div class="sub">The single-page essential. Clean, fast and focused — a sharp first impression that gets you online properly.</div>
+      </div>
+      <ul>
+        <li>1-page custom website</li>
+        <li>Hand-coded HTML, CSS &amp; JS</li>
+        <li>Mobile responsive</li>
+        <li>Contact form + analytics</li>
+        <li>SEO foundations</li>
+        <li>1 round of revisions</li>
+        <li>14-day post-launch support</li>
+        <li class="faint">Multi-page navigation</li>
+        <li class="faint">Custom animations</li>
+        <li class="faint">Landing pages</li>
+      </ul>
+      <a class="cta" href="contact.html">Start this package <span>→</span></a>
+    </article>
+
+    <article class="sv-pkg">
+      <div class="head">
+        <div class="kind">Package / 02</div>
+        <div class="name">The <em>Build</em></div>
+        <div class="sub">The multi-page business website. For businesses ready to have a proper presence — more than a landing page, less than an overbuilt system.</div>
+      </div>
+      <ul>
+        <li>Up to 5 custom pages</li>
+        <li>Hand-coded HTML, CSS &amp; JS</li>
+        <li>Mobile responsive</li>
+        <li>Contact form + analytics</li>
+        <li>SEO foundations</li>
+        <li>2 rounds of revisions</li>
+        <li>21-day post-launch support</li>
+        <li class="faint">Custom animations</li>
+        <li class="faint">Landing pages</li>
+      </ul>
+      <a class="cta" href="contact.html">Start this package <span>→</span></a>
+    </article>
+
+    <article class="sv-pkg feat">
+      <div class="flag">Most popular</div>
+      <div class="head">
+        <div class="kind">Package / 03</div>
+        <div class="name">Signal<em>fire</em></div>
+        <div class="sub">The full marketing website. Designed to be found, built to convert, impossible to ignore. This is the one that makes people stop scrolling.</div>
+      </div>
+      <ul>
+        <li>Up to 8 custom pages</li>
+        <li>Hand-coded HTML, CSS &amp; JS</li>
+        <li>Custom animations &amp; interactions</li>
+        <li>Landing page included</li>
+        <li>SEO foundations + on-page optimisation</li>
+        <li>Analytics + conversion tracking</li>
+        <li>3 rounds of revisions</li>
+        <li>30-day post-launch support</li>
+      </ul>
+      <a class="cta" href="contact.html">Start this package <span>→</span></a>
+    </article>
+
+    <article class="sv-pkg">
+      <div class="head">
+        <div class="kind">Package / 04</div>
+        <div class="name">The <em>Studio</em></div>
+        <div class="sub">The complete digital build. Concept to launch with everything covered — every page, every interaction, end to end.</div>
+      </div>
+      <ul>
+        <li>Everything in Signalfire</li>
+        <li>Unlimited pages (agreed scope)</li>
+        <li>Advanced custom JS features</li>
+        <li>Multiple landing pages</li>
+        <li>Performance optimisation</li>
+        <li>Priority turnaround</li>
+        <li>60-day post-launch support</li>
+        <li>Ongoing care plan included (3 months)</li>
+      </ul>
+      <a class="cta" href="contact.html">Start this package <span>→</span></a>
+    </article>
+
+  </div>
+</section>
+
+<!-- KICKSTART — small/startup offer -->
+<section class="sv-kickstart">
+  <div class="sv-kickstart-inner">
+    <div class="sv-kickstart-badge">
+      <span class="dot"></span>
+      Exclusive · Small &amp; Startup Businesses Only
+    </div>
+
+    <div class="sv-kickstart-grid">
+      <div class="sv-kickstart-left">
+        <div class="sv-idx">§ 03 / Kickstart</div>
+        <h2>Starting out<br>shouldn't mean<br><em>going without.</em></h2>
+        <p>
+          Not every business launching is launching with a big budget. I know that.
+          I started from nothing too, and the businesses I believe in most are the ones
+          being built right now — from kitchen tables, from garages, from a dream and
+          a lot of hard work.
+        </p>
+        <p style="margin-top:20px;">
+          <em>RASTRICK exists to help businesses build something that works.</em>
+          That means I keep a limited number of spots each quarter specifically for
+          small businesses and startups who need a proper website but aren't there
+          yet on budget. <strong>No compromises on quality. Just a price that's actually accessible.</strong>
+        </p>
+        <p style="margin-top:20px;">
+          This isn't a cut-down version of the work. It's the same hand-coded,
+          no-template, custom-built site — tailored to where your business is right now,
+          with room to grow into.
+        </p>
+      </div>
+
+      <div class="sv-kickstart-card">
+        <div class="kk-head">
+          <div class="kk-name">Kick<em>start</em></div>
+          <div class="kk-sub">For small businesses and startups launching or growing on a tight budget. Same quality. Built to fit where you are right now.</div>
+        </div>
+        <ul class="kk-includes">
+          <li>1–2 page custom website (HTML, CSS &amp; JS)</li>
+          <li>Mobile responsive — tested on all devices</li>
+          <li>Contact form so people can reach you</li>
+          <li>SEO foundations built in from day one</li>
+          <li>Google Analytics connected</li>
+          <li>Domain &amp; hosting setup guidance</li>
+          <li>1 round of revisions included</li>
+          <li>14-day post-launch support window</li>
+          <li>Upgrade path to any full package later</li>
+        </ul>
+        <div class="kk-note">
+          <strong>Who this is for:</strong> Sole traders, new small businesses, startups, community organisations and anyone building something real from the ground up who just needs a proper online presence without the premium price tag. <br><br>
+          Spots are limited each quarter. Get in touch and tell me about the business — I'll let you know if Kickstart is the right fit.
+        </div>
+        <a href="contact.html?pkg=kickstart" class="kk-cta">Apply for Kickstart <span>↗</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROCESS -->
+<section class="sv-process">
+  <div class="section-head">
+    <div class="idx">§ 04 / How it works</div>
+    <h2>The process, <em>start to finish.</em></h2>
+  </div>
+
+  <div class="sv-steps">
+    <div class="sv-step">
+      <div class="step-num">01</div>
+      <h3>Discovery</h3>
+      <p>A 30-minute call to unpack the business, the goal, and what the site needs to do. No pitch deck — just a real conversation. I listen more than I talk.</p>
+    </div>
+    <div class="sv-step">
+      <div class="step-num">02</div>
+      <h3>Scope &amp; proposal</h3>
+      <p>A written proposal within 48 hours — pages, features, package, timeline and fixed price. No vague line items. No hidden extras. No surprises.</p>
+    </div>
+    <div class="sv-step">
+      <div class="step-num">03</div>
+      <h3>Design &amp; build</h3>
+      <p>Deposit locks the slot. Design directions land in your inbox first. Once approved, the build begins — hand-coded HTML, CSS and JavaScript from a blank file.</p>
+    </div>
+    <div class="sv-step">
+      <div class="step-num">04</div>
+      <h3>Launch &amp; beyond</h3>
+      <p>Final testing, performance check, domain and hosting setup. You get the keys — with full documentation and a support window so nothing is left hanging.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sv-cta">
+  <div class="sv-cta-inner">
+    <div class="sv-idx">§ 05 / Start</div>
+    <h2>Ready to build something <em>unforgettable?</em></h2>
+    <p>
+      Tell me about the business — what it does, what you need the site to achieve, and where you're at.
+      I'll come back with a scope, a timeline, and the right package for where you are.
+      No hard sell. Just a real conversation.
+    </p>
+    <div class="sv-cta-actions">
+      <a href="contact.html" class="sv-btn primary">Start a project <span class="arr">↗</span></a>
+      <a href="about.html" class="sv-btn ghost">Learn about RASTRICK <span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- RASTRICK. RUNNING NAME TICKER -->
+<div class="name-ticker" aria-hidden="true">
+  <div class="track">
+    <span>RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i></span>
+    <span aria-hidden="true">RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i></span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="meta">
+    <div>
+      <b>Studio</b>
+      <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>
+      <a>Canberra · ACT · AU 2602</a>
+      <a>Mon–Fri 9am to 5pm · AEST</a>
+    </div>
+    <div>
+      <b>Navigate</b>
+      <a href="/#work">Work</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services &amp; Packages</a>
+      <a href="contact.html">Contact</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+    <div>
+      <b>© 2026 RASTRICK</b>
+      <a>Independent Website Design &amp; Development Studio</a>
+      <a>Websites impossible to ignore</a>
+      <a href="/">↑ Back to home</a>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js?v=4"></script>
+
+</body>
+</html>

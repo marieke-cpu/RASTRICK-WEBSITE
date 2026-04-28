@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Contact — RASTRICK</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Get in touch with RASTRICK — independent website design and development studio. Start a project, ask a question, or apply for the Kickstart offer for small businesses.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<style>
+/* =============================================
+   CONTACT PAGE — page-specific styles
+   ============================================= */
+
+/* ---- hero ---- */
+.ct-hero {
+  position: relative;
+  min-height: 70vh;
+  padding: clamp(140px, 20vw, 220px) var(--pad) clamp(60px, 8vw, 100px);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--line);
+}
+.ct-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(900px 600px at 80% -10%, rgba(198,255,58,0.07), transparent 60%),
+    radial-gradient(700px 400px at -5% 80%, rgba(255,61,240,0.06), transparent 60%),
+    var(--bg);
+}
+.ct-hero .grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.ct-hero .checker { position: absolute; left: 0; right: 0; height: 14px; z-index: 4; opacity: 0.9; }
+.ct-hero .checker.top { top: 0; background-image: repeating-linear-gradient(90deg, var(--accent) 0 14px, #000 14px 28px); }
+.ct-hero .checker.bottom { bottom: 0; background-image: repeating-linear-gradient(90deg, var(--accent-2) 0 14px, #000 14px 28px); }
+.ct-hero .bracket { position: absolute; width: 42px; height: 42px; border: 2px solid var(--accent); pointer-events: none; z-index: 2; }
+.ct-hero .bracket.tl { top: 28px; left: 28px; border-right: 0; border-bottom: 0; }
+.ct-hero .bracket.tr { top: 28px; right: 28px; border-left: 0; border-bottom: 0; border-color: var(--accent-2); }
+.ct-hero .bracket.bl { bottom: 28px; left: 28px; border-right: 0; border-top: 0; border-color: var(--accent-2); }
+.ct-hero .bracket.br { bottom: 28px; right: 28px; border-left: 0; border-top: 0; }
+
+.ct-hero-frame { position: relative; z-index: 3; width: 100%; }
+.ct-hero-top {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 20px; flex-wrap: wrap;
+  margin-bottom: clamp(32px, 5vw, 60px);
+}
+.ct-hero-top .tag {
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim);
+  display: flex; align-items: center; gap: 10px;
+}
+.ct-hero-top .tag .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 10px var(--accent);
+  animation: blink 1.8s ease-in-out infinite;
+}
+.ct-idx {
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim); position: relative;
+  padding-left: 40px; margin-bottom: 24px;
+}
+.ct-idx::before {
+  content: ''; position: absolute; left: 0; top: 50%;
+  width: 30px; height: 1px; background: var(--accent);
+}
+.ct-hero h1 {
+  font-family: var(--f-display);
+  font-size: clamp(56px, 12vw, 200px);
+  font-weight: 400; line-height: 0.9;
+  letter-spacing: -0.01em; text-transform: uppercase;
+  color: var(--ink); margin: 0;
+}
+.ct-hero h1 em {
+  font-style: italic; font-weight: 300;
+  color: var(--accent); font-family: var(--f-sans);
+  text-transform: lowercase; letter-spacing: -0.02em;
+}
+.ct-hero-lead {
+  font-family: var(--f-sans);
+  font-size: clamp(16px, 1.8vw, 22px);
+  line-height: 1.5; color: var(--ink-dim);
+  max-width: 50ch; margin-top: clamp(24px, 3.5vw, 40px);
+  font-weight: 300;
+}
+.ct-hero-lead em { font-style: normal; color: var(--ink); }
+
+/* ---- main contact grid ---- */
+.ct-main {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+}
+.ct-main-grid {
+  display: grid; grid-template-columns: 1fr 1.15fr;
+  gap: clamp(60px, 8vw, 120px);
+  align-items: start;
+}
+
+/* left column */
+.ct-left { display: flex; flex-direction: column; gap: 52px; }
+.ct-block-head {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-faint); margin-bottom: 16px;
+}
+.ct-details { display: flex; flex-direction: column; gap: 0; }
+.ct-detail {
+  display: flex; align-items: baseline; gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.ct-detail:first-child { border-top: 1px solid var(--line); }
+.ct-detail .lbl {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-faint); min-width: 80px; flex-shrink: 0;
+}
+.ct-detail .val {
+  font-family: var(--f-sans); font-size: 15px;
+  color: var(--ink-dim); line-height: 1.4;
+}
+.ct-detail .val a {
+  color: var(--ink);
+  transition: color .2s;
+}
+.ct-detail .val a:hover { color: var(--accent); }
+
+/* socials block */
+.ct-socials-grid { display: flex; flex-direction: column; gap: 0; }
+.ct-social {
+  display: flex; align-items: center; gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  transition: background .2s;
+  text-decoration: none;
+}
+.ct-social:first-child { border-top: 1px solid var(--line); }
+.ct-social:hover .ct-social-name { color: var(--accent); }
+.ct-social:hover .ct-social-arr { transform: translate(4px, -4px); color: var(--accent); }
+.ct-social-icon {
+  width: 44px; height: 44px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: border-color .2s, background .2s;
+}
+.ct-social:hover .ct-social-icon { border-color: var(--accent); background: rgba(198,255,58,0.06); }
+.ct-social-icon svg { width: 20px; height: 20px; fill: var(--ink-dim); }
+.ct-social:hover .ct-social-icon svg { fill: var(--accent); }
+.ct-social-info { flex: 1; }
+.ct-social-platform {
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-faint); margin-bottom: 3px;
+}
+.ct-social-name {
+  font-family: var(--f-sans); font-size: 16px;
+  color: var(--ink); font-weight: 400;
+  transition: color .2s;
+}
+.ct-social-arr {
+  font-family: var(--f-mono); font-size: 18px;
+  color: var(--ink-faint); transition: transform .3s, color .3s;
+}
+
+/* availability block */
+.ct-avail {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.ct-avail-row {
+  display: flex; align-items: center; gap: 14px;
+}
+.ct-avail-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 12px var(--accent);
+  animation: pulse 2.4s ease-in-out infinite; flex-shrink: 0;
+}
+.ct-avail-text {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-dim); line-height: 1.5;
+}
+.ct-avail-text strong { color: var(--ink); }
+.ct-avail-divider { height: 1px; background: var(--line); }
+.ct-avail-note {
+  font-family: var(--f-sans); font-size: 13px;
+  color: var(--ink-faint); line-height: 1.5;
+}
+
+/* right column — form */
+.ct-form-wrap {
+  position: sticky; top: 100px;
+}
+.ct-form-head {
+  margin-bottom: 32px;
+}
+.ct-form-head h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 0.92; letter-spacing: -0.01em;
+  text-transform: uppercase; color: var(--ink);
+}
+.ct-form-head h2 em {
+  font-style: normal; color: var(--accent); font-family: var(--f-sans);
+  font-weight: 300; text-transform: lowercase; letter-spacing: -0.02em;
+}
+.ct-form-head p {
+  font-family: var(--f-sans); font-size: 16px;
+  line-height: 1.55; color: var(--ink-dim); font-weight: 300;
+  max-width: 44ch; margin-top: 14px;
+}
+
+/* kickstart flag in form */
+.ct-kickstart-flag {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,61,240,0.06);
+  border: 1px solid rgba(255,61,240,0.22);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+}
+.ct-kickstart-flag .flag-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-2); box-shadow: 0 0 8px var(--accent-2);
+  animation: blink 1.8s ease-in-out infinite; flex-shrink: 0;
+}
+.ct-kickstart-flag .flag-text {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent-2); line-height: 1.5;
+}
+
+/* ---- FAQ quick ---- */
+.ct-faq {
+  padding: clamp(80px, 12vw, 140px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+}
+.ct-faq-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 52px;
+}
+.ct-faq-item {
+  background: var(--bg-2);
+  padding: 36px 32px;
+}
+.ct-faq-item .q {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 12px;
+}
+.ct-faq-item h3 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(18px, 2vw, 26px);
+  text-transform: uppercase; color: var(--ink);
+  line-height: 1; margin-bottom: 14px;
+}
+.ct-faq-item p {
+  font-family: var(--f-sans); font-size: 14px;
+  line-height: 1.65; color: var(--ink-dim); font-weight: 300;
+}
+.ct-faq-item p em { font-style: normal; color: var(--ink); }
+
+/* ---- calendly strip ---- */
+.ct-book {
+  padding: clamp(80px, 12vw, 140px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+.ct-book-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px); align-items: center;
+}
+.ct-book-left h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(40px, 6vw, 90px);
+  line-height: 0.9; text-transform: uppercase;
+  color: var(--ink); letter-spacing: -0.01em;
+}
+.ct-book-left h2 em {
+  font-style: normal; color: var(--accent-2);
+  font-family: var(--f-sans); font-weight: 300;
+  text-transform: lowercase; letter-spacing: -0.02em;
+}
+.ct-book-left p {
+  font-family: var(--f-sans); font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.65; color: var(--ink-dim); font-weight: 300;
+  max-width: 38ch; margin-top: 20px;
+}
+.ct-book-right { display: flex; flex-direction: column; gap: 14px; }
+.ct-book-btn {
+  display: inline-flex; align-items: center; justify-content: space-between;
+  gap: 14px; padding: 20px 28px;
+  font-family: var(--f-mono); font-size: 12px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  border-radius: 100px; border: 1px solid var(--line-2);
+  color: var(--ink);
+  transition: transform .25s cubic-bezier(.2,.8,.2,1), background .2s, color .2s, border-color .2s;
+}
+.ct-book-btn:hover { transform: translate(-2px, -2px); }
+.ct-book-btn .arr { transition: transform .3s; }
+.ct-book-btn:hover .arr { transform: rotate(-45deg); }
+.ct-book-btn.primary {
+  background: var(--accent); color: #000; border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(198,255,58,0.18), 0 20px 40px rgba(0,0,0,0.35);
+}
+.ct-book-btn.primary:hover { background: var(--accent-2); color: #fff; border-color: var(--accent-2); }
+.ct-book-btn.ghost:hover { background: rgba(255,255,255,0.04); border-color: var(--ink-dim); }
+.ct-book-note {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.16em; color: var(--ink-faint);
+  text-transform: uppercase; padding: 0 4px;
+}
+
+/* ---- responsive ---- */
+@media (max-width: 900px) {
+  .ct-main-grid { grid-template-columns: 1fr; gap: 60px; }
+  .ct-form-wrap { position: static; }
+  .ct-faq-grid { grid-template-columns: 1fr; }
+  .ct-book-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .ct-hero .bracket { width: 28px; height: 28px; }
+  .ct-hero .bracket.tl, .ct-hero .bracket.tr { top: 20px; }
+  .ct-hero .bracket.bl, .ct-hero .bracket.br { bottom: 20px; }
+  .ct-hero-top .tag:last-child { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- custom cursor -->
+<div class="cursor"></div>
+<div class="cursor ring cursor-ring"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="logo"><span class="pulse"></span>RASTRICK<em class="dot-em">.</em><sup style="font-size:9px;opacity:.5;margin-left:6px;font-family:var(--f-mono);font-weight:400">©'26</sup></a>
+  <ul>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="/#packages">Packages</a></li>
+    <li><a href="/#faq">FAQ</a></li>
+  </ul>
+  <a class="cta" href="contact.html" style="color:#000">Get in touch <span class="arr">→</span></a>
+</nav>
+
+<!-- HERO -->
+<section class="ct-hero">
+  <div class="grain"></div>
+  <div class="checker top"></div>
+  <div class="checker bottom"></div>
+  <div class="bracket tl"></div>
+  <div class="bracket tr"></div>
+  <div class="bracket bl"></div>
+  <div class="bracket br"></div>
+
+  <div class="ct-hero-frame">
+    <div class="ct-hero-top">
+      <div class="tag"><span class="dot"></span>Open for new projects · Q3 2026</div>
+      <div class="tag">Reply within 1 business day</div>
+    </div>
+
+    <div class="ct-idx">§ 00 / Contact</div>
+
+    <h1>
+      Let's talk<br>
+      about your <em>site.</em>
+    </h1>
+
+    <p class="ct-hero-lead">
+      Tell me about the business, what you need the site to do, and where you're at.
+      <em>No forms that disappear into a void</em> — I read every message and reply personally.
+    </p>
+  </div>
+</section>
+
+<!-- MAIN: CONTACT DETAILS + FORM -->
+<section class="ct-main">
+  <div class="ct-main-grid">
+
+    <!-- LEFT: details, socials, availability -->
+    <div class="ct-left">
+
+      <div>
+        <div class="ct-block-head">§ 01 / Direct contact</div>
+        <div class="ct-details">
+          <div class="ct-detail">
+            <div class="lbl">Email</div>
+            <div class="val"><a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a></div>
+          </div>
+          <div class="ct-detail">
+            <div class="lbl">Studio</div>
+            <div class="val">Canberra · ACT · Australia 2602</div>
+          </div>
+          <div class="ct-detail">
+            <div class="lbl">Hours</div>
+            <div class="val">Mon–Fri · 9am to 5pm AEST</div>
+          </div>
+          <div class="ct-detail">
+            <div class="lbl">Reply</div>
+            <div class="val">Within 1 business day (usually faster)</div>
+          </div>
+          <div class="ct-detail">
+            <div class="lbl">Scope</div>
+            <div class="val">Australia-based · Working worldwide</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="ct-block-head">§ 02 / Socials &amp; Follow</div>
+        <div class="ct-socials-grid">
+
+          <a class="ct-social" href="https://www.instagram.com/ras.trick" target="_blank" rel="noopener">
+            <div class="ct-social-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </div>
+            <div class="ct-social-info">
+              <div class="ct-social-platform">Instagram</div>
+              <div class="ct-social-name">@ras.trick</div>
+            </div>
+            <div class="ct-social-arr">↗</div>
+          </a>
+
+          <a class="ct-social" href="mailto:hello@rastrick.com.au">
+            <div class="ct-social-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+            </div>
+            <div class="ct-social-info">
+              <div class="ct-social-platform">Email</div>
+              <div class="ct-social-name">hello@rastrick.com.au</div>
+            </div>
+            <div class="ct-social-arr">↗</div>
+          </a>
+
+        </div>
+        <p style="margin-top:16px;font-family:var(--f-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);">More platforms coming soon.</p>
+      </div>
+
+      <div class="ct-avail">
+        <div class="ct-avail-row">
+          <div class="ct-avail-dot"></div>
+          <div class="ct-avail-text"><strong>Currently accepting projects</strong></div>
+        </div>
+        <div class="ct-avail-divider"></div>
+        <div class="ct-avail-text">
+          Taking on <strong>new builds for Q3 2026</strong>. Limited spots available per quarter — projects are booked on a first-in basis after discovery.
+        </div>
+        <div class="ct-avail-note">Kickstart spots for small &amp; startup businesses are available separately — mention it in your message.</div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: form -->
+    <div class="ct-form-wrap">
+      <div class="ct-form-head">
+        <div class="ct-idx">§ 03 / Start a project</div>
+        <h2>Tell me what<br>you <em>need.</em></h2>
+        <p>Fill in as much or as little as you know right now. No brief is too rough — we'll work through the details together.</p>
+      </div>
+
+      <div class="ct-kickstart-flag" id="kickstart-flag" style="display:none;">
+        <div class="flag-dot"></div>
+        <div class="flag-text">Kickstart application — small &amp; startup businesses</div>
+      </div>
+
+      <form class="book" name="contact" method="POST" action="https://api.web3forms.com/submit">
+        <input type="hidden" name="access_key" value="40be2bc5-2582-4b59-a7c5-01ba11d51fb9">
+        <input type="hidden" name="subject" value="New inquiry from rastrick.com.au">
+        <input type="hidden" name="from_name" value="RASTRICK Website">
+        <input type="hidden" name="redirect" value="https://rastrick.com.au/thank-you.html">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="hidden" id="kickstart-val" name="kickstart" value="No">
+
+        <div class="row">
+          <label>Name<input name="name" type="text" required autocomplete="name" placeholder="Your name"></label>
+          <label>Email<input name="email" type="email" required autocomplete="email" placeholder="hello@yourbusiness.com"></label>
+        </div>
+        <div class="row">
+          <label>Business / Company (optional)<input name="company" type="text" placeholder="Your business name"></label>
+          <label>Budget
+            <select name="budget">
+              <option value="">Select a range</option>
+              <option>Under AUD 2,500 (Kickstart)</option>
+              <option>AUD 2,500 – 5,000</option>
+              <option>AUD 5,000 – 10,000</option>
+              <option>AUD 10,000 – 20,000</option>
+              <option>AUD 20,000+</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+        </div>
+        <label>Which package interests you?
+          <div class="chips">
+            <span class="chip">Launchpad</span>
+            <span class="chip">The Build</span>
+            <span class="chip">Signalfire</span>
+            <span class="chip">The Studio</span>
+            <span class="chip" id="chip-kickstart">Kickstart (startup)</span>
+            <span class="chip">Not sure yet</span>
+          </div>
+          <input type="hidden" id="services-val" name="services" value="">
+        </label>
+        <label>Tell me about the project<textarea name="project" required placeholder="A few sentences about the business, what you want the site to achieve, and your rough timeline. If you're applying for Kickstart, tell me a bit about where the business is right now."></textarea></label>
+        <button type="submit"><span>Send inquiry</span><span>↗</span></button>
+        <div class="note">or email hello@rastrick.com.au directly — same inbox, same reply time.</div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- QUICK FAQ -->
+<section class="ct-faq">
+  <div class="section-head">
+    <div class="idx">§ 04 / Before you ask</div>
+    <h2>Common <em>questions.</em></h2>
+  </div>
+
+  <div class="ct-faq-grid">
+    <div class="ct-faq-item">
+      <div class="q">Q / 01</div>
+      <h3>How quickly will you reply?</h3>
+      <p>Within one business day, always — usually faster. Every message goes directly to me. <em>No support tickets. No bots. No waiting on hold.</em></p>
+    </div>
+    <div class="ct-faq-item">
+      <div class="q">Q / 02</div>
+      <h3>Do I need a full brief ready?</h3>
+      <p>No. Even a rough idea is enough to start. The discovery call is where we figure out the details together. <em>Just tell me what the business does and what you want the site to achieve.</em></p>
+    </div>
+    <div class="ct-faq-item">
+      <div class="q">Q / 03</div>
+      <h3>What's the Kickstart offer?</h3>
+      <p>Kickstart is a reduced-rate package exclusively for small businesses and startups who need a proper website but aren't at full package budget yet. <em>Same quality. Built to fit where you are right now.</em> Mention it in your message.</p>
+    </div>
+    <div class="ct-faq-item">
+      <div class="q">Q / 04</div>
+      <h3>How long does a project take?</h3>
+      <p>A single-page site typically ships in 1–2 weeks. Multi-page builds take 3–4 weeks. Timelines start from when content is supplied and deposit is received. <em>Every project gets a clear timeline upfront.</em></p>
+    </div>
+    <div class="ct-faq-item">
+      <div class="q">Q / 05</div>
+      <h3>Do you work remotely?</h3>
+      <p>Yes — entirely. Based in Canberra, working with businesses across Australia and internationally. <em>Everything happens online: calls, feedback, file delivery and handover.</em></p>
+    </div>
+    <div class="ct-faq-item">
+      <div class="q">Q / 06</div>
+      <h3>What if I'm not ready yet?</h3>
+      <p>Still get in touch. I'll point you toward the right package and we can work out a realistic timeline. <em>There's no pressure — the right project starts when the time is actually right for you.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK A CALL STRIP -->
+<section class="ct-book">
+  <div class="ct-book-grid">
+    <div class="ct-book-left">
+      <div class="ct-idx">§ 05 / Call</div>
+      <h2>Prefer to<br>talk <em>first?</em></h2>
+      <p>
+        If you'd rather have a conversation before filling out a form, book a 30-minute discovery call.
+        No pitch. No pressure. Just a real conversation about what you're building and whether I'm the right person to build it.
+      </p>
+    </div>
+    <div class="ct-book-right">
+      <a href="#" class="ct-book-btn primary" data-calendly="true">
+        Book a 30-min call <span class="arr">↗</span>
+      </a>
+      <a href="mailto:hello@rastrick.com.au" class="ct-book-btn ghost">
+        Email me directly <span class="arr">↗</span>
+      </a>
+      <div class="ct-book-note">Free · No obligation · Canberra time (AEST)</div>
+    </div>
+  </div>
+</section>
+
+<!-- RASTRICK. RUNNING NAME TICKER -->
+<div class="name-ticker" aria-hidden="true">
+  <div class="track">
+    <span>RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i></span>
+    <span aria-hidden="true">RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i></span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="meta">
+    <div>
+      <b>Studio</b>
+      <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>
+      <a>Canberra · ACT · AU 2602</a>
+      <a>Mon–Fri 9am to 5pm · AEST</a>
+    </div>
+    <div>
+      <b>Navigate</b>
+      <a href="/#work">Work</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services &amp; Packages</a>
+      <a href="contact.html">Contact</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+    <div>
+      <b>© 2026 RASTRICK</b>
+      <a>Independent Website Design &amp; Development Studio</a>
+      <a>Websites impossible to ignore</a>
+      <a href="/">↑ Back to home</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script src="site.js?v=4"></script>
+<script>
+(function(){
+  /* Pre-select Kickstart chip if URL contains ?pkg=kickstart */
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('pkg') === 'kickstart') {
+    const chip = document.getElementById('chip-kickstart');
+    const flag = document.getElementById('kickstart-flag');
+    const kv   = document.getElementById('kickstart-val');
+    if (chip) { chip.classList.add('on'); }
+    if (flag) { flag.style.display = 'flex'; }
+    if (kv)   { kv.value = 'Yes — Kickstart application'; }
+    /* sync the services hidden field */
+    const hid = document.getElementById('services-val');
+    if (hid) hid.value = 'Kickstart (startup)';
+  }
+
+  /* Show Kickstart flag banner when Kickstart chip toggled */
+  const kickChip = document.getElementById('chip-kickstart');
+  const flag     = document.getElementById('kickstart-flag');
+  const kv       = document.getElementById('kickstart-val');
+  if (kickChip && flag) {
+    kickChip.addEventListener('click', () => {
+      const isOn = kickChip.classList.contains('on');
+      flag.style.display = isOn ? 'flex' : 'none';
+      if (kv) kv.value = isOn ? 'Yes — Kickstart application' : 'No';
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
