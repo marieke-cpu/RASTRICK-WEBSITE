@@ -171,6 +171,26 @@
     });
   });
 
+  // ==================== mobile nav toggle ====================
+  const navToggle = document.getElementById('nav-toggle');
+  const navEl = document.querySelector('.nav');
+  if (navToggle && navEl) {
+    navToggle.addEventListener('click', () => {
+      const open = navEl.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    navEl.querySelectorAll('ul a').forEach(a => {
+      a.addEventListener('click', () => {
+        navEl.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Open menu');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
   // ==================== scroll reveal ====================
   const io = new IntersectionObserver((entries) => {
     entries.forEach(en => {
