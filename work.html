@@ -1,0 +1,1181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Work — RASTRICK</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="RASTRICK work — Poly Concreting case study. A complete website rebuild and four high-converting ad landing pages for a family-owned concreting business that grew into a $1M+ operation.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* =============================================
+   WORK PAGE — page-specific styles
+   ============================================= */
+
+/* ---- hero ---- */
+.wk-hero {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(120px, 18vw, 200px) var(--pad) clamp(80px, 10vw, 140px);
+  overflow: hidden; display: flex; align-items: flex-end;
+  border-bottom: 1px solid var(--line);
+}
+.wk-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(900px 600px at 80% -10%, rgba(198,255,58,0.08), transparent 60%),
+    radial-gradient(700px 400px at -5% 80%, rgba(255,61,240,0.06), transparent 60%),
+    var(--bg);
+}
+.wk-hero .grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  opacity: 0.4; mix-blend-mode: overlay; pointer-events: none;
+}
+.wk-hero .checker { position: absolute; left: 0; right: 0; height: 14px; z-index: 4; opacity: 0.9; }
+.wk-hero .checker.top { top: 0; background-image: repeating-linear-gradient(90deg, var(--accent) 0 14px, #000 14px 28px); }
+.wk-hero .checker.bottom { bottom: 0; background-image: repeating-linear-gradient(90deg, var(--accent-2) 0 14px, #000 14px 28px); }
+.wk-hero .bracket { position: absolute; width: 42px; height: 42px; border: 2px solid var(--accent); pointer-events: none; z-index: 2; }
+.wk-hero .bracket.tl { top: 28px; left: 28px; border-right: 0; border-bottom: 0; }
+.wk-hero .bracket.tr { top: 28px; right: 28px; border-left: 0; border-bottom: 0; border-color: var(--accent-2); }
+.wk-hero .bracket.bl { bottom: 28px; left: 28px; border-right: 0; border-top: 0; border-color: var(--accent-2); }
+.wk-hero .bracket.br { bottom: 28px; right: 28px; border-left: 0; border-top: 0; }
+.wk-hero-frame { position: relative; z-index: 3; width: 100%; }
+.wk-hero-top {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 20px; flex-wrap: wrap;
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+.wk-hero-top .tag {
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim); display: flex; align-items: center; gap: 10px;
+}
+.wk-hero-top .tag .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 10px var(--accent);
+  animation: blink 1.8s ease-in-out infinite;
+}
+.wk-idx {
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim); position: relative;
+  padding-left: 40px; margin-bottom: 24px;
+}
+.wk-idx::before { content: ''; position: absolute; left: 0; top: 50%; width: 30px; height: 1px; background: var(--accent); }
+.wk-hero h1 {
+  font-family: var(--f-display);
+  font-size: clamp(56px, 12vw, 200px);
+  font-weight: 400; line-height: 0.9;
+  letter-spacing: -0.01em; text-transform: uppercase; color: var(--ink); margin: 0;
+}
+.wk-hero h1 em {
+  font-style: italic; font-weight: 300; color: var(--accent);
+  font-family: var(--f-sans); text-transform: lowercase; letter-spacing: -0.02em;
+}
+.wk-hero-lead {
+  font-family: var(--f-sans); font-size: clamp(18px, 2.2vw, 26px);
+  line-height: 1.45; color: var(--ink-dim);
+  max-width: 56ch; margin-top: clamp(28px, 4vw, 48px);
+  font-weight: 300; letter-spacing: -0.01em;
+}
+.wk-hero-lead em { font-style: normal; color: var(--ink); }
+
+/* ---- case study list (index for multiple projects) ---- */
+.wk-index {
+  padding: clamp(60px, 8vw, 100px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+}
+.wk-index-grid {
+  display: flex; flex-direction: column; gap: 0;
+  margin-top: 52px;
+}
+.wk-project-row {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 32px; align-items: center;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  text-decoration: none;
+  transition: background .2s;
+}
+.wk-project-row:last-child { border-bottom: 1px solid var(--line); }
+.wk-project-row:hover { background: rgba(255,255,255,0.02); margin: 0 calc(-1 * var(--pad)); padding-left: var(--pad); padding-right: var(--pad); }
+.wk-project-row:hover .wk-pr-arr { transform: translate(6px, -6px); color: var(--accent); }
+.wk-pr-num {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.wk-pr-info { display: flex; flex-direction: column; gap: 4px; }
+.wk-pr-client {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.wk-pr-name {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(24px, 3vw, 44px);
+  text-transform: uppercase; color: var(--ink); line-height: 1;
+}
+.wk-pr-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+.wk-pr-tag {
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-dim); border: 1px solid var(--line-2);
+  border-radius: 100px; padding: 4px 10px;
+}
+.wk-pr-arr {
+  font-family: var(--f-mono); font-size: 22px;
+  color: var(--ink-faint); transition: transform .3s, color .3s;
+}
+
+/* ---- case study hero/intro ---- */
+.wk-cs-intro {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  position: relative; overflow: hidden;
+}
+.wk-cs-intro::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(1000px 500px at 70% 50%, rgba(198,255,58,0.05), transparent 60%);
+  pointer-events: none;
+}
+.wk-cs-intro-inner { position: relative; z-index: 2; }
+.wk-cs-kicker {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid rgba(198,255,58,0.3);
+  border-radius: 100px; padding: 7px 16px; margin-bottom: 40px;
+}
+.wk-cs-kicker .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 10px var(--accent);
+  animation: blink 1.8s ease-in-out infinite;
+}
+.wk-cs-title-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 100px); align-items: start;
+  margin-bottom: clamp(60px, 8vw, 100px);
+}
+.wk-cs-title h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(56px, 10vw, 160px);
+  line-height: 0.88; text-transform: uppercase; color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.wk-cs-title h2 em {
+  font-style: normal; color: var(--accent);
+  font-family: var(--f-sans); font-weight: 300;
+  text-transform: lowercase; letter-spacing: -0.02em;
+}
+.wk-cs-meta { padding-top: 8px; display: flex; flex-direction: column; gap: 0; }
+.wk-cs-meta-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line);
+}
+.wk-cs-meta-row:first-child { border-top: 1px solid var(--line); }
+.wk-cs-meta-row .ml {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint);
+}
+.wk-cs-meta-row .mv {
+  font-family: var(--f-sans); font-size: 14px;
+  color: var(--ink); text-align: right;
+}
+.wk-cs-meta-row .mv a { color: var(--accent); transition: opacity .2s; }
+.wk-cs-meta-row .mv a:hover { opacity: 0.7; }
+
+/* ---- stats bar ---- */
+.wk-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+}
+.wk-stat {
+  background: var(--bg-2); padding: 32px 28px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  min-height: 140px; transition: background .3s;
+}
+.wk-stat:hover { background: var(--panel); }
+.wk-stat .num {
+  font-family: var(--f-display); font-size: clamp(40px, 5vw, 72px);
+  font-weight: 400; line-height: 1; color: var(--ink);
+}
+.wk-stat .num em { font-style: normal; color: var(--accent); }
+.wk-stat .lbl {
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim); max-width: 18ch;
+}
+
+/* ---- story section ---- */
+.wk-story {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+}
+.wk-story-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 7vw, 120px); align-items: start;
+}
+.wk-story-left { position: sticky; top: 120px; }
+.wk-story-left h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(36px, 4.5vw, 72px);
+  line-height: 0.9; text-transform: uppercase; color: var(--ink);
+}
+.wk-story-left h2 em {
+  font-style: normal; color: var(--accent-2);
+  font-family: var(--f-sans); font-weight: 300;
+  text-transform: lowercase; letter-spacing: -0.02em;
+}
+.wk-story-right { display: flex; flex-direction: column; gap: 28px; }
+.wk-story-right p {
+  font-family: var(--f-sans); font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
+}
+.wk-story-right p em { font-style: normal; color: var(--ink); }
+.wk-story-right p strong { color: var(--accent); font-weight: 500; }
+.wk-pull {
+  border-left: 3px solid var(--accent);
+  padding: 20px 28px; background: rgba(198,255,58,0.04);
+}
+.wk-pull p {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(22px, 2.5vw, 36px);
+  text-transform: uppercase; color: var(--ink); line-height: 1.1;
+  font-style: normal;
+}
+.wk-pull p em { font-style: italic; color: var(--accent); font-family: var(--f-sans); font-weight: 300; text-transform: lowercase; }
+
+/* ---- challenge/solution ---- */
+.wk-challenge {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+.wk-challenge-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 60px;
+}
+.wk-challenge-col { background: var(--panel); padding: clamp(36px, 5vw, 60px); }
+.wk-challenge-col .col-label {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-faint); margin-bottom: 20px;
+}
+.wk-challenge-col h3 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(32px, 4vw, 56px);
+  text-transform: uppercase; color: var(--ink); line-height: 0.92;
+  margin-bottom: 28px;
+}
+.wk-challenge-col h3 em {
+  font-style: normal; color: var(--accent-2);
+  font-family: var(--f-sans); font-weight: 300;
+  text-transform: lowercase; letter-spacing: -0.02em;
+}
+.wk-challenge-col p {
+  font-family: var(--f-sans); font-size: 16px;
+  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
+  margin-bottom: 16px;
+}
+.wk-challenge-col p em { font-style: normal; color: var(--ink); }
+.wk-challenge-col ul { list-style: none; display: flex; flex-direction: column; gap: 0; margin-top: 24px; }
+.wk-challenge-col ul li {
+  display: flex; align-items: baseline; gap: 14px;
+  font-family: var(--f-sans); font-size: 14px;
+  color: var(--ink-dim); padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.wk-challenge-col ul li:first-child { border-top: 1px solid var(--line); }
+.wk-challenge-col ul li::before {
+  content: '+'; color: var(--accent-2);
+  font-family: var(--f-mono); font-size: 11px; flex-shrink: 0;
+}
+
+/* ---- deliverables ---- */
+.wk-deliverables {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+.wk-del-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 60px;
+}
+.wk-del-item {
+  background: var(--bg); padding: 40px 32px;
+  display: flex; flex-direction: column; gap: 20px;
+  transition: background .3s; position: relative;
+}
+.wk-del-item:hover { background: var(--bg-2); }
+.wk-del-item.highlight { background: var(--panel); }
+.wk-del-item.highlight:hover { background: #191c22; }
+.wk-del-flag {
+  position: absolute; top: 20px; right: 20px;
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 100px;
+}
+.wk-del-flag.live { color: var(--accent); border: 1px solid var(--accent); }
+.wk-del-flag.lander { color: var(--accent-2); border: 1px solid var(--accent-2); }
+.wk-del-flag.wip { color: var(--ink-faint); border: 1px solid var(--line-2); }
+.wk-del-num {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint);
+}
+.wk-del-name {
+  font-family: var(--f-display); font-size: clamp(24px, 2.5vw, 38px);
+  font-weight: 400; text-transform: uppercase;
+  color: var(--ink); line-height: 1;
+}
+.wk-del-name em { font-style: normal; color: var(--accent); }
+.wk-del-desc {
+  font-family: var(--f-sans); font-size: 14px;
+  line-height: 1.65; color: var(--ink-dim); font-weight: 300; flex: 1;
+}
+.wk-del-desc em { font-style: normal; color: var(--ink); }
+.wk-del-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.wk-del-tag {
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-faint); border: 1px solid var(--line);
+  border-radius: 100px; padding: 3px 10px;
+}
+.wk-del-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); transition: opacity .2s;
+}
+.wk-del-link:hover { opacity: 0.7; }
+
+/* ---- landers deep dive ---- */
+.wk-landers {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+}
+.wk-lander-list { display: flex; flex-direction: column; gap: 0; margin-top: 60px; }
+.wk-lander {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+  margin-bottom: 1px;
+}
+.wk-lander-left { background: var(--bg-2); padding: clamp(36px, 5vw, 60px); }
+.wk-lander-right { background: var(--panel); padding: clamp(36px, 5vw, 60px); display: flex; flex-direction: column; gap: 20px; }
+.wk-lander-num {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-faint); margin-bottom: 16px;
+}
+.wk-lander-left h3 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(28px, 3.5vw, 52px);
+  text-transform: uppercase; color: var(--ink); line-height: 0.92;
+  margin-bottom: 20px;
+}
+.wk-lander-left h3 em {
+  font-style: normal; color: var(--accent);
+  font-family: var(--f-sans); font-weight: 300;
+  text-transform: lowercase; letter-spacing: -0.02em;
+}
+.wk-lander-left p {
+  font-family: var(--f-sans); font-size: 15px;
+  line-height: 1.7; color: var(--ink-dim); font-weight: 300; margin-bottom: 16px;
+}
+.wk-lander-left p em { font-style: normal; color: var(--ink); }
+.wk-lander-right h4 {
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-faint); margin-bottom: 4px;
+}
+.wk-lander-right ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.wk-lander-right ul li {
+  display: flex; align-items: baseline; gap: 12px;
+  font-family: var(--f-sans); font-size: 14px;
+  color: var(--ink-dim); padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+}
+.wk-lander-right ul li:first-child { border-top: 1px solid var(--line); }
+.wk-lander-right ul li::before {
+  content: '✓'; color: var(--accent);
+  font-family: var(--f-mono); font-size: 10px; flex-shrink: 0;
+}
+.wk-lander-visit {
+  display: inline-flex; align-items: center; justify-content: space-between;
+  gap: 14px; padding: 16px 22px; margin-top: 8px;
+  border: 1px solid var(--accent); border-radius: 100px;
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); transition: background .2s, color .2s;
+}
+.wk-lander-visit:hover { background: var(--accent); color: #000; }
+
+/* ---- impact ---- */
+.wk-impact {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  position: relative; overflow: hidden;
+}
+.wk-impact::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(900px 500px at 50% 0%, rgba(198,255,58,0.06), transparent 60%),
+    radial-gradient(700px 400px at 80% 100%, rgba(255,61,240,0.04), transparent 60%);
+  pointer-events: none;
+}
+.wk-impact-inner { position: relative; z-index: 2; }
+.wk-impact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 7vw, 100px); align-items: start;
+  margin-top: 60px;
+}
+.wk-impact-left h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(40px, 6vw, 90px);
+  line-height: 0.88; text-transform: uppercase; color: var(--ink);
+}
+.wk-impact-left h2 em {
+  font-style: normal; color: var(--accent);
+  font-family: var(--f-sans); font-weight: 300;
+  text-transform: lowercase; letter-spacing: -0.02em;
+}
+.wk-impact-left p {
+  font-family: var(--f-sans); font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
+  max-width: 40ch; margin-top: 24px;
+}
+.wk-impact-left p em { font-style: normal; color: var(--ink); }
+.wk-impact-right {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--line); border: 1px solid var(--line);
+}
+.wk-impact-stat {
+  background: var(--bg-2); padding: 32px 28px;
+  display: flex; flex-direction: column; gap: 12px;
+  min-height: 160px; justify-content: space-between;
+  transition: background .3s;
+}
+.wk-impact-stat:hover { background: var(--panel); }
+.wk-impact-stat .num {
+  font-family: var(--f-display); font-size: clamp(36px, 4.5vw, 64px);
+  font-weight: 400; line-height: 1; color: var(--ink);
+}
+.wk-impact-stat .num em { font-style: normal; color: var(--accent); }
+.wk-impact-stat .lbl {
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim); max-width: 20ch; line-height: 1.5;
+}
+
+/* ---- client credit ---- */
+.wk-credit {
+  padding: clamp(80px, 12vw, 140px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+.wk-credit-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px); align-items: center;
+}
+.wk-credit-left h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 0.9; text-transform: uppercase; color: var(--ink);
+}
+.wk-credit-left h2 em {
+  font-style: normal; color: var(--accent-2);
+  font-family: var(--f-sans); font-weight: 300;
+  text-transform: lowercase; letter-spacing: -0.02em;
+}
+.wk-credit-left p {
+  font-family: var(--f-sans); font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
+  max-width: 44ch; margin-top: 20px;
+}
+.wk-credit-left p em { font-style: normal; color: var(--ink); }
+.wk-credit-right { display: flex; flex-direction: column; gap: 0; }
+.wk-credit-row {
+  display: flex; align-items: baseline; gap: 20px;
+  padding: 16px 0; border-bottom: 1px solid var(--line);
+}
+.wk-credit-row:first-child { border-top: 1px solid var(--line); }
+.wk-credit-row .cl {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-faint); min-width: 90px; flex-shrink: 0;
+}
+.wk-credit-row .cv {
+  font-family: var(--f-sans); font-size: 15px; color: var(--ink-dim);
+}
+.wk-credit-row .cv a { color: var(--accent); transition: opacity .2s; }
+.wk-credit-row .cv a:hover { opacity: 0.7; }
+
+/* ---- CTA ---- */
+.wk-cta {
+  padding: clamp(100px, 14vw, 200px) var(--pad);
+  position: relative; overflow: hidden;
+  background: var(--bg-2); border-bottom: 1px solid var(--line);
+}
+.wk-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(800px 500px at 60% 50%, rgba(198,255,58,0.06), transparent 60%),
+    radial-gradient(600px 400px at 20% 80%, rgba(255,61,240,0.05), transparent 60%);
+  pointer-events: none;
+}
+.wk-cta-inner { position: relative; z-index: 2; }
+.wk-cta h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(48px, 9vw, 140px);
+  line-height: 0.9; text-transform: uppercase; color: var(--ink); max-width: 20ch;
+}
+.wk-cta h2 em {
+  font-style: normal; color: var(--accent); font-family: var(--f-sans);
+  font-weight: 300; text-transform: lowercase; letter-spacing: -0.02em;
+}
+.wk-cta p {
+  font-family: var(--f-sans); font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.55; color: var(--ink-dim); font-weight: 300;
+  max-width: 44ch; margin: clamp(24px, 3vw, 36px) 0 clamp(36px, 5vw, 56px);
+}
+.wk-cta-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.wk-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 28px; font-family: var(--f-mono); font-size: 12px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  border-radius: 100px; border: 1px solid var(--line-2); color: var(--ink);
+  transition: transform .25s cubic-bezier(.2,.8,.2,1), background .2s, color .2s, border-color .2s;
+}
+.wk-btn:hover { transform: translate(-2px, -2px); }
+.wk-btn .arr { transition: transform .3s; }
+.wk-btn:hover .arr { transform: rotate(-45deg); }
+.wk-btn.primary { background: var(--accent); color: #000; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(198,255,58,0.18), 0 20px 40px rgba(0,0,0,0.35); }
+.wk-btn.primary:hover { background: var(--accent-2); color: #fff; border-color: var(--accent-2); }
+.wk-btn.ghost:hover { background: rgba(255,255,255,0.04); border-color: var(--ink-dim); }
+
+/* ---- responsive ---- */
+@media (max-width: 1000px) {
+  .wk-cs-title-grid { grid-template-columns: 1fr; }
+  .wk-story-grid { grid-template-columns: 1fr; }
+  .wk-story-left { position: static; }
+  .wk-challenge-grid { grid-template-columns: 1fr; }
+  .wk-impact-grid { grid-template-columns: 1fr; }
+  .wk-credit-grid { grid-template-columns: 1fr; }
+  .wk-lander { grid-template-columns: 1fr; }
+  .wk-del-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .wk-stats { grid-template-columns: repeat(2, 1fr); }
+  .wk-del-grid { grid-template-columns: 1fr; }
+  .wk-impact-right { grid-template-columns: 1fr; }
+  .wk-project-row { grid-template-columns: 1fr auto; }
+  .wk-pr-num { display: none; }
+  .wk-hero .bracket { width: 28px; height: 28px; }
+  .wk-hero .bracket.tl, .wk-hero .bracket.tr { top: 20px; }
+  .wk-hero .bracket.bl, .wk-hero .bracket.br { bottom: 20px; }
+  .wk-hero-top .tag:last-child { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- custom cursor -->
+<div class="cursor"></div>
+<div class="cursor ring cursor-ring"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="logo"><span class="pulse"></span>RASTRICK<em class="dot-em">.</em><sup style="font-size:9px;opacity:.5;margin-left:6px;font-family:var(--f-mono);font-weight:400">©'26</sup></a>
+  <ul>
+    <li><a href="work.html" style="color:var(--ink)">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="faqs.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="wk-hero">
+  <div class="grain"></div>
+  <div class="checker top"></div>
+  <div class="checker bottom"></div>
+  <div class="bracket tl"></div>
+  <div class="bracket tr"></div>
+  <div class="bracket bl"></div>
+  <div class="bracket br"></div>
+
+  <div class="wk-hero-frame">
+    <div class="wk-hero-top">
+      <div class="tag"><span class="dot"></span>Live builds · Custom code · Real results</div>
+      <div class="tag">No templates. Not once.</div>
+    </div>
+
+    <div class="wk-idx">§ 00 / Work</div>
+
+    <h1>
+      The <em>builds.</em>
+    </h1>
+
+    <p class="wk-hero-lead">
+      Every project on this page is live, hand-coded and built from a blank file.
+      <em>Real businesses. Real results. No templates anywhere underneath.</em>
+    </p>
+  </div>
+</section>
+
+<!-- PROJECT INDEX -->
+<section class="wk-index">
+  <div class="section-head">
+    <div class="idx">§ 01 / All projects</div>
+    <h2>Everything <em>built.</em></h2>
+  </div>
+
+  <div class="wk-index-grid">
+
+    <a class="wk-project-row" href="#poly">
+      <div class="wk-pr-num">/ 01</div>
+      <div class="wk-pr-info">
+        <div class="wk-pr-client">Poly Concreting · Morayfield QLD</div>
+        <div class="wk-pr-name">Complete site + 4 ad landers</div>
+        <div class="wk-pr-tags">
+          <span class="wk-pr-tag">Web design</span>
+          <span class="wk-pr-tag">Development</span>
+          <span class="wk-pr-tag">Landing pages</span>
+          <span class="wk-pr-tag">CRO</span>
+          <span class="wk-pr-tag">SEO</span>
+          <span class="wk-pr-tag">WIX rebuild</span>
+        </div>
+      </div>
+      <div class="wk-pr-arr">↗</div>
+    </a>
+
+    <a class="wk-project-row" href="contact.html" style="opacity:0.5">
+      <div class="wk-pr-num">/ 02</div>
+      <div class="wk-pr-info">
+        <div class="wk-pr-client">In production · NDA</div>
+        <div class="wk-pr-name">Brand + site refresh</div>
+        <div class="wk-pr-tags">
+          <span class="wk-pr-tag">In progress</span>
+          <span class="wk-pr-tag">Brand</span>
+          <span class="wk-pr-tag">Trades</span>
+        </div>
+      </div>
+      <div class="wk-pr-arr">—</div>
+    </a>
+
+    <a class="wk-project-row" href="contact.html">
+      <div class="wk-pr-num">/ 03</div>
+      <div class="wk-pr-info">
+        <div class="wk-pr-client">Next slot · Q3 2026</div>
+        <div class="wk-pr-name">Your project here</div>
+        <div class="wk-pr-tags">
+          <span class="wk-pr-tag">Available</span>
+          <span class="wk-pr-tag">2 slots open</span>
+        </div>
+      </div>
+      <div class="wk-pr-arr">↗</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ==========================================
+     CASE STUDY: POLY CONCRETING
+     ========================================== -->
+
+<div id="poly">
+
+  <!-- CASE STUDY INTRO -->
+  <section class="wk-cs-intro">
+    <div class="wk-cs-intro-inner">
+
+      <div class="wk-cs-kicker">
+        <span class="dot"></span>
+        Case study · 01 / Poly Concreting
+      </div>
+
+      <div class="wk-cs-title-grid">
+        <div class="wk-cs-title">
+          <div class="wk-idx">§ 02 / Client</div>
+          <h2>Poly<br><em>Concreting.</em></h2>
+        </div>
+        <div class="wk-cs-meta">
+          <div class="wk-cs-meta-row">
+            <div class="ml">Client</div>
+            <div class="mv">Poly Concreting</div>
+          </div>
+          <div class="wk-cs-meta-row">
+            <div class="ml">Founders</div>
+            <div class="mv">Angelo &amp; Sharimay</div>
+          </div>
+          <div class="wk-cs-meta-row">
+            <div class="ml">Location</div>
+            <div class="mv">Morayfield · QLD · Australia</div>
+          </div>
+          <div class="wk-cs-meta-row">
+            <div class="ml">Industry</div>
+            <div class="mv">Concreting &amp; Construction</div>
+          </div>
+          <div class="wk-cs-meta-row">
+            <div class="ml">Scope</div>
+            <div class="mv">6-page website + 4 ad landers</div>
+          </div>
+          <div class="wk-cs-meta-row">
+            <div class="ml">Ads</div>
+            <div class="mv">Google Ads + Microsoft Ads</div>
+          </div>
+          <div class="wk-cs-meta-row">
+            <div class="ml">Live site</div>
+            <div class="mv"><a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener">polyconcreting.com.au ↗</a></div>
+          </div>
+          <div class="wk-cs-meta-row">
+            <div class="ml">Status</div>
+            <div class="mv" style="color:var(--accent)">Live · Running</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wk-stats">
+        <div class="wk-stat">
+          <div class="num"><em>$1M+</em></div>
+          <div class="lbl">Revenue milestone reached after full digital build</div>
+        </div>
+        <div class="wk-stat">
+          <div class="num">6</div>
+          <div class="lbl">Custom pages — designed and hand-coded from scratch</div>
+        </div>
+        <div class="wk-stat">
+          <div class="num"><em>4</em></div>
+          <div class="lbl">High-converting ad landing pages for Google &amp; Microsoft</div>
+        </div>
+        <div class="wk-stat">
+          <div class="num">0</div>
+          <div class="lbl">Templates used. Every line of code written from scratch.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- THE STORY -->
+  <section class="wk-story">
+    <div class="section-head">
+      <div class="idx">§ 03 / Background</div>
+      <h2>Where it <em>started.</em></h2>
+    </div>
+
+    <div class="wk-story-grid">
+      <div class="wk-story-left">
+        <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;">The origin</div>
+        <h2>A family<br>business with<br>big <em>ambitions.</em></h2>
+      </div>
+
+      <div class="wk-story-right">
+        <p>
+          Angelo and Sharimay started Poly Concreting the way most trades businesses do —
+          hard work, word of mouth, a van and a lot of early mornings. A family-owned concreting
+          company based in Morayfield, Queensland, servicing South-East Queensland with everything
+          from residential driveways to large-scale commercial pours.
+        </p>
+        <p>
+          The business was growing. The website wasn't keeping up.
+          They were on WIX — the platform many small businesses default to because it's accessible
+          and cheap to get started. But WIX was holding them back. <em>Slow load times. Generic layouts
+          that looked like every other concreting company in Queensland. No real ability to run
+          serious paid-ad campaigns with dedicated landing pages.</em>
+        </p>
+        <div class="wk-pull">
+          <p>"They gave me the opportunity to rebuild their whole website — and I wasn't going to waste it."</p>
+        </div>
+        <p>
+          Angelo and Sharimay came to RASTRICK ready to take the business seriously online.
+          They were already running Google and Microsoft Ads but sending traffic to a site that
+          wasn't built to convert. The brief was clear: <em>rebuild everything properly, build landers
+          that turn ad clicks into quote requests, and make the site look like the business they
+          were becoming — not the one they started as.</em>
+        </p>
+        <p>
+          What followed was a complete rebuild. Six custom pages. Four high-converting landing pages.
+          A site built to perform on paid search from day one.
+          <strong>Poly Concreting has since broken the $1 million revenue mark.</strong>
+          Not because of the website alone — because the founders are exceptional operators.
+          But the website stopped being a liability and started being an asset.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGE & SOLUTION -->
+  <section class="wk-challenge">
+    <div class="section-head">
+      <div class="idx">§ 04 / Problem &amp; approach</div>
+      <h2>The challenge. <em>The fix.</em></h2>
+    </div>
+
+    <div class="wk-challenge-grid">
+      <div class="wk-challenge-col">
+        <div class="col-label">The problem</div>
+        <h3>What WIX <em>couldn't do.</em></h3>
+        <p>WIX had gotten Poly Concreting online. But it was generating slow, bloated pages that couldn't convert ad traffic, couldn't rank competitively on local SEO, and looked identical to thousands of other tradesman websites built on the same platform.</p>
+        <p>Sending paid ad traffic to a WIX site is like filling a leaky bucket. You're paying for clicks but losing them at the landing page because the page isn't built to do one thing well. <em>Generalist pages don't convert. They just exist.</em></p>
+        <ul>
+          <li>Slow page load on mobile — the majority of their traffic</li>
+          <li>No dedicated landing pages — ad traffic going to a generic home page</li>
+          <li>No location-specific pages for regional SEO</li>
+          <li>Template-driven design identical to competitor sites</li>
+          <li>No trust-building architecture — no social proof, no urgency, no clear CTA flow</li>
+          <li>Code bloat from WIX's builder generating hundreds of unused elements</li>
+        </ul>
+      </div>
+      <div class="wk-challenge-col">
+        <div class="col-label">The approach</div>
+        <h3>Built to <em>convert.</em></h3>
+        <p>The rebuild started from a blank file. Not a WIX export, not a theme — nothing. Every page was designed for a specific purpose and built to do exactly that one thing well.</p>
+        <p>The main site needed to establish trust quickly and funnel visitors toward a quote request. The landing pages needed to do one thing only: convert a qualified ad click into a lead. <em>No navigation to distract, no unrelated content, no reason to leave without filling in the form.</em></p>
+        <ul>
+          <li>Hand-coded HTML, CSS &amp; JS — no builder overhead</li>
+          <li>Mobile-first build — designed for phones before desktop</li>
+          <li>4 dedicated landing pages built specifically for paid campaigns</li>
+          <li>Strong trust signals: reviews, credentials, project photos, local area focus</li>
+          <li>Clear conversion architecture on every page — one goal, one CTA</li>
+          <li>Regional targeting built into landing page copy and structure for local SEO</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DELIVERABLES -->
+  <section class="wk-deliverables">
+    <div class="section-head">
+      <div class="idx">§ 05 / What was built</div>
+      <h2>Six pages. <em>Four landers.</em></h2>
+    </div>
+
+    <div class="wk-del-grid">
+
+      <div class="wk-del-item highlight">
+        <div class="wk-del-flag live">Live</div>
+        <div class="wk-del-num">/ 01 — Main site</div>
+        <div class="wk-del-name">Home</div>
+        <div class="wk-del-desc">The brand entry point. Hero section establishing credibility fast — services overview, social proof strip, project gallery and a clear path to a quote. <em>Designed to answer the visitor's first question: can I trust these people with my job?</em></div>
+        <div class="wk-del-tags"><span class="wk-del-tag">Brand</span><span class="wk-del-tag">CRO</span><span class="wk-del-tag">SEO</span></div>
+        <a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
+      </div>
+
+      <div class="wk-del-item">
+        <div class="wk-del-flag live">Live</div>
+        <div class="wk-del-num">/ 02 — Main site</div>
+        <div class="wk-del-name">Services</div>
+        <div class="wk-del-desc">Comprehensive breakdown of everything Poly Concreting offers — residential driveways, exposed aggregate, commercial slabs, shed bases, pathways and more. Each service paired with trust signals and a quote CTA.</div>
+        <div class="wk-del-tags"><span class="wk-del-tag">Services</span><span class="wk-del-tag">SEO</span></div>
+        <a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
+      </div>
+
+      <div class="wk-del-item">
+        <div class="wk-del-flag live">Live</div>
+        <div class="wk-del-num">/ 03 — Main site</div>
+        <div class="wk-del-name">About</div>
+        <div class="wk-del-desc">Angelo and Sharimay's story — a family business built from the ground up. Human, credible, personal. <em>People hire people they trust, and trades businesses live or die on personality as much as skill.</em></div>
+        <div class="wk-del-tags"><span class="wk-del-tag">Brand story</span><span class="wk-del-tag">Trust</span></div>
+        <a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
+      </div>
+
+      <div class="wk-del-item">
+        <div class="wk-del-flag live">Live</div>
+        <div class="wk-del-num">/ 04 — Main site</div>
+        <div class="wk-del-name">Gallery</div>
+        <div class="wk-del-desc">Project showcase — completed jobs across residential and commercial. Designed to show range and quality fast. Optimised images, clean grid layout, filterable by job type.</div>
+        <div class="wk-del-tags"><span class="wk-del-tag">Portfolio</span><span class="wk-del-tag">Social proof</span></div>
+        <a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
+      </div>
+
+      <div class="wk-del-item">
+        <div class="wk-del-flag live">Live</div>
+        <div class="wk-del-num">/ 05 — Main site</div>
+        <div class="wk-del-name">Areas we service</div>
+        <div class="wk-del-desc">Location-specific content targeting South-East Queensland suburbs and regions. <em>Critical for local SEO</em> — getting the site in front of people searching for concreters in their specific area, not just "concreters near me."</div>
+        <div class="wk-del-tags"><span class="wk-del-tag">Local SEO</span><span class="wk-del-tag">Regional</span></div>
+        <a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
+      </div>
+
+      <div class="wk-del-item">
+        <div class="wk-del-flag live">Live</div>
+        <div class="wk-del-num">/ 06 — Main site</div>
+        <div class="wk-del-name">Contact &amp; Quote</div>
+        <div class="wk-del-desc">The conversion endpoint for all organic traffic. Quote request form — name, suburb, job type, preferred timeline. Designed to reduce friction and qualify leads simultaneously. Routed directly to Angelo and Sharimay.</div>
+        <div class="wk-del-tags"><span class="wk-del-tag">Lead capture</span><span class="wk-del-tag">CRO</span></div>
+        <a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LANDING PAGES DEEP DIVE -->
+  <section class="wk-landers">
+    <div class="section-head">
+      <div class="idx">§ 06 / Ad landing pages</div>
+      <h2>Built to <em>convert clicks.</em></h2>
+    </div>
+
+    <div class="wk-lander-list">
+
+      <div class="wk-lander">
+        <div class="wk-lander-left">
+          <div class="wk-lander-num">Landing page / 01 · Google Ads</div>
+          <h3>Commercial <em>Concreting</em></h3>
+          <p>
+            Purpose-built for Poly Concreting's commercial Google Ads campaign. Every element on this page has one job: turn a click from a commercial building or construction manager into a qualified lead. No main site navigation. No distractions. <em>Just a compelling argument for why Poly Concreting is the right choice for commercial jobs in South-East Queensland.</em>
+          </p>
+          <p>
+            The page targets commercial concreting keywords — slab work, warehouse floors, car parks, commercial driveways. Built with a strong hero, credibility stack, project examples from commercial jobs, and a prominent quote request form that stays visible as you scroll.
+          </p>
+          <a href="https://www.polyconcreting.com.au/commercial-concreting" target="_blank" rel="noopener" class="wk-lander-visit">Visit this lander ↗</a>
+        </div>
+        <div class="wk-lander-right">
+          <div>
+            <h4>Conversion architecture</h4>
+            <ul>
+              <li>No main nav — traffic stays on the page</li>
+              <li>Hero with clear commercial-focused headline</li>
+              <li>Services specific to commercial jobs</li>
+              <li>Project gallery filtered to commercial work</li>
+              <li>Google Reviews integration — trust from real customers</li>
+              <li>Sticky quote CTA visible throughout scroll</li>
+              <li>Click-to-call button prominent on mobile</li>
+              <li>Fast load — no WIX overhead on paid traffic</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Targeting</h4>
+            <ul>
+              <li>Google Ads — commercial concreting keywords</li>
+              <li>South-East Queensland targeting</li>
+              <li>High-intent search terms: "commercial concreter QLD", "concrete slab contractor Brisbane"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="wk-lander">
+        <div class="wk-lander-left">
+          <div class="wk-lander-num">Landing page / 02 · Microsoft Ads</div>
+          <h3>Moreton Bay <em>Services</em></h3>
+          <p>
+            Regional lander built specifically for Microsoft (Bing) Ads targeting the Moreton Bay region — Morayfield, Caboolture, Narangba, Burpengary, North Lakes and surrounds. <em>Hyper-local trust signals matter here</em> — the page makes it clear that Poly Concreting are locals who know the area and have done jobs right in the visitor's suburb.
+          </p>
+          <p>
+            Microsoft Ads captures a different audience to Google — often older demographics, homeowners, established businesses. The page tone and layout were tuned for that. Straightforward, reassuring, and focused on the quote request form as the single conversion goal.
+          </p>
+          <a href="https://www.polyconcreting.com.au/concrete-services-moretonbay" target="_blank" rel="noopener" class="wk-lander-visit">Visit this lander ↗</a>
+        </div>
+        <div class="wk-lander-right">
+          <div>
+            <h4>Conversion architecture</h4>
+            <ul>
+              <li>No main nav — traffic stays on the page</li>
+              <li>Regional headline: "Concreting across Moreton Bay"</li>
+              <li>Suburb list — visible local area coverage</li>
+              <li>Residential focus: driveways, paths, shed slabs</li>
+              <li>Before/after project photos from local jobs</li>
+              <li>Google Reviews — social proof from nearby customers</li>
+              <li>Quote form above the fold on mobile</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Targeting</h4>
+            <ul>
+              <li>Microsoft Ads — Moreton Bay residential search terms</li>
+              <li>Suburb-level geo-targeting</li>
+              <li>High-intent terms: "concreters Morayfield", "driveway concreting Caboolture"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="wk-lander" style="opacity:0.5">
+        <div class="wk-lander-left">
+          <div class="wk-lander-num">Landing pages / 03 &amp; 04</div>
+          <h3>Additional <em>campaigns.</em></h3>
+          <p>Two further landing pages built for additional Google Ads campaigns — targeting additional service types and geographic areas. Details under NDA pending client approval to publish.</p>
+        </div>
+        <div class="wk-lander-right">
+          <div>
+            <h4>Status</h4>
+            <ul>
+              <li>Live and running</li>
+              <li>Full case study details pending client sign-off</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="wk-impact">
+    <div class="wk-impact-inner">
+      <div class="section-head">
+        <div class="idx">§ 07 / Outcome</div>
+        <h2>What <em>happened next.</em></h2>
+      </div>
+
+      <div class="wk-impact-grid">
+        <div class="wk-impact-left">
+          <h2>From family<br>business to <em>$1M+.</em></h2>
+          <p>
+            Angelo and Sharimay Poly Concreting was already a well-run operation before the rebuild.
+            Good tradespeople with a growing reputation. But the website wasn't reflecting that —
+            and it wasn't helping the paid campaigns convert.
+          </p>
+          <p>
+            The rebuild changed the digital side of the business. <em>Faster pages. Dedicated landing pages built for one purpose. A main site that actually looked like the level they were operating at.</em> The paid ads now had destinations built to convert, not generic pages built to exist.
+          </p>
+          <p>
+            Poly Concreting has since crossed the <strong>$1 million revenue milestone</strong>.
+            Angelo and Sharimay are still the same hard-working people they were when we started —
+            the website just stopped holding the business back and started pushing it forward.
+          </p>
+        </div>
+        <div class="wk-impact-right">
+          <div class="wk-impact-stat">
+            <div class="num"><em>$1M+</em></div>
+            <div class="lbl">Revenue milestone — a family business built into a major operation</div>
+          </div>
+          <div class="wk-impact-stat">
+            <div class="num">6</div>
+            <div class="lbl">Pages — hand-coded, mobile-first, built to last</div>
+          </div>
+          <div class="wk-impact-stat">
+            <div class="num"><em>4</em></div>
+            <div class="lbl">Dedicated landing pages for Google &amp; Microsoft Ads campaigns</div>
+          </div>
+          <div class="wk-impact-stat">
+            <div class="num">2</div>
+            <div class="lbl">Ad platforms running — Google Ads and Microsoft Ads simultaneously</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT CREDIT -->
+  <section class="wk-credit">
+    <div class="wk-credit-grid">
+      <div class="wk-credit-left">
+        <div class="wk-idx">§ 08 / Credit</div>
+        <h2>Angelo <em>&amp; Sharimay.</em></h2>
+        <p>
+          This project exists because Angelo and Sharimay took the chance. They were running a small family business and decided to invest properly in their digital presence — to do it right, not just to do it cheaply.
+          <em>That trust is not something I take lightly.</em>
+          Poly Concreting gave RASTRICK its first major full-scope project and I built it to last.
+        </p>
+      </div>
+      <div class="wk-credit-right">
+        <div class="wk-credit-row">
+          <div class="cl">Founders</div>
+          <div class="cv">Angelo &amp; Sharimay</div>
+        </div>
+        <div class="wk-credit-row">
+          <div class="cl">Business</div>
+          <div class="cv">Poly Concreting</div>
+        </div>
+        <div class="wk-credit-row">
+          <div class="cl">Based</div>
+          <div class="cv">Morayfield · QLD · Australia</div>
+        </div>
+        <div class="wk-credit-row">
+          <div class="cl">Services</div>
+          <div class="cv">Residential &amp; Commercial Concreting · SEQ</div>
+        </div>
+        <div class="wk-credit-row">
+          <div class="cl">Main site</div>
+          <div class="cv"><a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener">polyconcreting.com.au ↗</a></div>
+        </div>
+        <div class="wk-credit-row">
+          <div class="cl">Lander 01</div>
+          <div class="cv"><a href="https://www.polyconcreting.com.au/commercial-concreting" target="_blank" rel="noopener">Commercial Concreting ↗</a></div>
+        </div>
+        <div class="wk-credit-row">
+          <div class="cl">Lander 02</div>
+          <div class="cv"><a href="https://www.polyconcreting.com.au/concrete-services-moretonbay" target="_blank" rel="noopener">Moreton Bay Services ↗</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<!-- end #poly -->
+
+<!-- CTA -->
+<section class="wk-cta">
+  <div class="wk-cta-inner">
+    <div class="wk-idx">§ 09 / Your turn</div>
+    <h2>Want results like <em>this?</em></h2>
+    <p>
+      Every project here started with a single conversation. Tell me about the business, what the site needs to do, and where you're at right now. I'll come back with a scope and a straight answer on whether I'm the right fit.
+    </p>
+    <div class="wk-cta-actions">
+      <a href="contact.html" class="wk-btn primary">Start a project <span class="arr">↗</span></a>
+      <a href="packages.html" class="wk-btn ghost">See packages <span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- RASTRICK. RUNNING NAME TICKER -->
+<div class="name-ticker" aria-hidden="true">
+  <div class="track">
+    <span>RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i></span>
+    <span aria-hidden="true">RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i></span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="meta">
+    <div>
+      <b>Studio</b>
+      <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>
+      <a>Canberra · ACT · AU 2602</a>
+      <a>Mon–Fri 9am to 5pm · AEST</a>
+    </div>
+    <div>
+      <b>Navigate</b>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="packages.html">Packages</a>
+      <a href="faqs.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <b>© 2026 RASTRICK</b>
+      <a>Independent Website Design &amp; Development Studio</a>
+      <a>Websites impossible to ignore</a>
+      <a href="/">↑ Back to home</a>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js?v=4"></script>
+
+</body>
+</html>
