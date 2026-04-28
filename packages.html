@@ -1,0 +1,1001 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Packages — RASTRICK</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="RASTRICK website packages — Launchpad, The Build, Signalfire, The Studio, and the exclusive Kickstart offer for small and startup businesses. Hand-coded. No templates.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* =============================================
+   PACKAGES PAGE — page-specific styles
+   ============================================= */
+
+/* ---- hero ---- */
+.pk-hero {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(120px, 18vw, 200px) var(--pad) clamp(80px, 10vw, 140px);
+  overflow: hidden;
+  display: flex; align-items: flex-end;
+  border-bottom: 1px solid var(--line);
+}
+.pk-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(900px 600px at 85% -10%, rgba(198,255,58,0.08), transparent 60%),
+    radial-gradient(700px 400px at -5% 90%, rgba(255,61,240,0.06), transparent 60%),
+    var(--bg);
+}
+.pk-hero .grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  opacity: 0.4; mix-blend-mode: overlay; pointer-events: none;
+}
+.pk-hero .checker { position: absolute; left: 0; right: 0; height: 14px; z-index: 4; opacity: 0.9; }
+.pk-hero .checker.top { top: 0; background-image: repeating-linear-gradient(90deg, var(--accent) 0 14px, #000 14px 28px); }
+.pk-hero .checker.bottom { bottom: 0; background-image: repeating-linear-gradient(90deg, var(--accent-2) 0 14px, #000 14px 28px); }
+.pk-hero .bracket { position: absolute; width: 42px; height: 42px; border: 2px solid var(--accent); pointer-events: none; z-index: 2; }
+.pk-hero .bracket.tl { top: 28px; left: 28px; border-right: 0; border-bottom: 0; }
+.pk-hero .bracket.tr { top: 28px; right: 28px; border-left: 0; border-bottom: 0; border-color: var(--accent-2); }
+.pk-hero .bracket.bl { bottom: 28px; left: 28px; border-right: 0; border-top: 0; border-color: var(--accent-2); }
+.pk-hero .bracket.br { bottom: 28px; right: 28px; border-left: 0; border-top: 0; }
+.pk-hero-frame { position: relative; z-index: 3; width: 100%; }
+.pk-hero-top {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 20px; flex-wrap: wrap;
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+.pk-hero-top .tag {
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim); display: flex; align-items: center; gap: 10px;
+}
+.pk-hero-top .tag .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 10px var(--accent);
+  animation: blink 1.8s ease-in-out infinite;
+}
+.pk-idx {
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim); position: relative;
+  padding-left: 40px; margin-bottom: 24px;
+}
+.pk-idx::before {
+  content: ''; position: absolute; left: 0; top: 50%;
+  width: 30px; height: 1px; background: var(--accent);
+}
+.pk-hero h1 {
+  font-family: var(--f-display);
+  font-size: clamp(56px, 12vw, 200px);
+  font-weight: 400; line-height: 0.9;
+  letter-spacing: -0.01em; text-transform: uppercase; color: var(--ink); margin: 0;
+}
+.pk-hero h1 em {
+  font-style: italic; font-weight: 300; color: var(--accent);
+  font-family: var(--f-sans); text-transform: lowercase; letter-spacing: -0.02em;
+}
+.pk-hero-lead {
+  font-family: var(--f-sans); font-size: clamp(18px, 2.2vw, 26px);
+  line-height: 1.45; color: var(--ink-dim);
+  max-width: 56ch; margin-top: clamp(28px, 4vw, 48px);
+  font-weight: 300; letter-spacing: -0.01em;
+}
+.pk-hero-lead em { font-style: normal; color: var(--ink); }
+
+/* ---- package cards ---- */
+.pk-cards {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+}
+.pk-cards-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 60px;
+}
+.pk-card {
+  background: var(--bg);
+  padding: 52px 44px 44px;
+  display: flex; flex-direction: column; gap: 0;
+  position: relative;
+  transition: background .3s;
+}
+.pk-card:hover { background: var(--bg-2); }
+.pk-card.feat { background: var(--panel); }
+.pk-card.feat:hover { background: #191c22; }
+.pk-card .flag {
+  position: absolute; top: 28px; right: 28px;
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent);
+  padding: 4px 10px; border-radius: 100px;
+}
+.pk-card-num {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-faint); margin-bottom: 12px;
+}
+.pk-card-name {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(44px, 5vw, 72px);
+  text-transform: uppercase; color: var(--ink); line-height: 0.9;
+  margin-bottom: 16px;
+}
+.pk-card-name em { font-style: normal; color: var(--accent); }
+.pk-card.feat .pk-card-name em { color: var(--accent); }
+.pk-card-tagline {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(18px, 2vw, 26px);
+  text-transform: uppercase; color: var(--ink-dim);
+  line-height: 1; margin-bottom: 24px;
+  letter-spacing: 0;
+}
+.pk-card-divider { height: 1px; background: var(--line); margin: 0 0 28px; }
+.pk-card-sub {
+  font-family: var(--f-sans); font-size: 16px;
+  line-height: 1.6; color: var(--ink-dim); font-weight: 300;
+  max-width: 40ch; margin-bottom: 36px;
+}
+.pk-card-sub em { font-style: normal; color: var(--ink); }
+.pk-card-section-label {
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--ink-faint); margin-bottom: 12px; margin-top: 28px;
+}
+.pk-card-section-label:first-of-type { margin-top: 0; }
+.pk-card-list {
+  list-style: none; display: flex; flex-direction: column; gap: 0; margin-bottom: 8px;
+}
+.pk-card-list li {
+  display: flex; align-items: baseline; gap: 14px;
+  font-family: var(--f-sans); font-size: 14px;
+  color: var(--ink); padding: 9px 0;
+  border-bottom: 1px solid var(--line); line-height: 1.4;
+}
+.pk-card-list li:first-child { border-top: 1px solid var(--line); }
+.pk-card-list li::before {
+  content: ''; width: 4px; height: 4px; border-radius: 50%;
+  background: var(--accent-2); flex-shrink: 0; transform: translateY(-2px);
+}
+.pk-card-list li.faint { color: var(--ink-faint); text-decoration: line-through; }
+.pk-card-list li.faint::before { background: var(--ink-faint); }
+.pk-card-cta {
+  display: inline-flex; justify-content: space-between; align-items: center;
+  padding: 18px 24px; margin-top: 36px;
+  border: 1px solid var(--line-2); border-radius: 100px;
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.pk-card-cta:hover { background: var(--ink); color: #000; border-color: var(--ink); }
+.pk-card.feat .pk-card-cta { background: var(--accent); color: #000; border-color: var(--accent); }
+.pk-card.feat .pk-card-cta:hover { background: var(--ink); border-color: var(--ink); }
+
+/* ---- comparison table ---- */
+.pk-compare {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+  overflow-x: auto;
+}
+.pk-table-wrap { min-width: 700px; margin-top: 60px; }
+.pk-table {
+  width: 100%; border-collapse: collapse;
+}
+.pk-table thead th {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-dim); padding: 16px 20px;
+  border-bottom: 2px solid var(--line-2);
+  text-align: left;
+}
+.pk-table thead th.feat-col { color: var(--accent); border-bottom-color: var(--accent); }
+.pk-table thead th:first-child { color: var(--ink-faint); }
+.pk-table tbody tr { border-bottom: 1px solid var(--line); transition: background .2s; }
+.pk-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+.pk-table tbody tr.group-head td {
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-faint); padding: 20px 20px 8px;
+  border-bottom: none; background: transparent;
+}
+.pk-table tbody td {
+  padding: 14px 20px;
+  font-family: var(--f-sans); font-size: 14px;
+  color: var(--ink-dim); vertical-align: middle;
+}
+.pk-table tbody td:first-child { color: var(--ink); font-weight: 400; }
+.pk-table tbody td.feat-col { background: rgba(198,255,58,0.03); }
+.pk-table .check { color: var(--accent-2); font-size: 16px; }
+.pk-table .cross { color: var(--ink-faint); }
+.pk-table .val { color: var(--ink); font-weight: 400; }
+
+/* ---- kickstart ---- */
+.pk-kickstart {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  position: relative; overflow: hidden;
+}
+.pk-kickstart::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(1000px 600px at 50% 0%, rgba(255,61,240,0.06), transparent 60%),
+    radial-gradient(600px 400px at 80% 100%, rgba(198,255,58,0.03), transparent 60%);
+  pointer-events: none;
+}
+.pk-kickstart-inner { position: relative; z-index: 2; }
+.pk-kickstart-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--accent-2); border: 1px solid var(--accent-2);
+  border-radius: 100px; padding: 7px 16px; margin-bottom: 40px;
+}
+.pk-kickstart-badge .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-2); box-shadow: 0 0 10px var(--accent-2);
+  animation: blink 1.8s ease-in-out infinite;
+}
+.pk-kickstart-intro {
+  max-width: 68ch; margin-bottom: 60px;
+}
+.pk-kickstart-intro h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(48px, 8vw, 120px);
+  line-height: 0.88; letter-spacing: -0.01em;
+  text-transform: uppercase; color: var(--ink);
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+.pk-kickstart-intro h2 em {
+  font-style: normal; color: var(--accent-2);
+  font-family: var(--f-sans); font-weight: 300;
+  text-transform: lowercase; letter-spacing: -0.02em;
+}
+.pk-kickstart-intro p {
+  font-family: var(--f-sans); font-size: clamp(16px, 1.7vw, 20px);
+  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
+  max-width: 62ch;
+}
+.pk-kickstart-intro p em { font-style: normal; color: var(--ink); }
+.pk-kickstart-intro p strong { color: var(--accent-2); font-weight: 500; }
+.pk-kickstart-intro p + p { margin-top: 18px; }
+
+.pk-kickstart-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: rgba(255,61,240,0.18);
+  border: 1px solid rgba(255,61,240,0.18);
+  border-radius: 8px; overflow: hidden;
+}
+.pk-kk-left {
+  background: var(--panel);
+  padding: clamp(36px, 5vw, 60px);
+}
+.pk-kk-left .kk-name {
+  font-family: var(--f-display); font-size: 64px;
+  font-weight: 400; text-transform: uppercase;
+  color: var(--ink); line-height: 0.9; margin-bottom: 20px;
+}
+.pk-kk-left .kk-name em { font-style: normal; color: var(--accent-2); }
+.pk-kk-left .kk-tagline {
+  font-family: var(--f-display); font-size: 22px;
+  text-transform: uppercase; color: var(--ink-dim);
+  margin-bottom: 28px; line-height: 1;
+}
+.pk-kk-left .kk-divider { height: 1px; background: rgba(255,61,240,0.2); margin-bottom: 28px; }
+.pk-kk-left .kk-desc {
+  font-family: var(--f-sans); font-size: 15px;
+  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
+  margin-bottom: 28px;
+}
+.pk-kk-left .kk-desc em { font-style: normal; color: var(--ink); }
+.pk-kk-left .kk-note {
+  background: rgba(255,61,240,0.06);
+  border-left: 3px solid var(--accent-2);
+  padding: 16px 20px;
+  font-family: var(--f-sans); font-size: 14px;
+  line-height: 1.6; color: var(--ink-dim);
+  margin-bottom: 36px;
+}
+.pk-kk-left .kk-note strong { color: var(--accent-2); }
+.pk-kk-left .kk-cta {
+  display: inline-flex; align-items: center; justify-content: space-between;
+  gap: 14px; padding: 18px 28px; width: 100%;
+  background: var(--accent-2); color: #fff;
+  border: 1px solid var(--accent-2); border-radius: 100px;
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  transition: background .2s, color .2s, border-color .2s, transform .2s;
+  box-shadow: 0 0 0 3px rgba(255,61,240,0.15), 0 20px 40px rgba(0,0,0,0.3);
+}
+.pk-kk-left .kk-cta:hover { background: var(--ink); color: #000; border-color: var(--ink); transform: translateY(-2px); }
+
+.pk-kk-right {
+  background: rgba(255,61,240,0.03);
+  padding: clamp(36px, 5vw, 60px);
+  display: flex; flex-direction: column; gap: 36px;
+}
+.pk-kk-right .kk-section-label {
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(255,61,240,0.6); margin-bottom: 12px;
+}
+.pk-kk-right .kk-list {
+  list-style: none; display: flex; flex-direction: column; gap: 0;
+}
+.pk-kk-right .kk-list li {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-family: var(--f-sans); font-size: 14px;
+  color: var(--ink-dim); padding: 11px 0;
+  border-bottom: 1px solid var(--line); line-height: 1.5;
+}
+.pk-kk-right .kk-list li:first-child { border-top: 1px solid var(--line); }
+.pk-kk-right .kk-list li::before {
+  content: '✓'; color: var(--accent-2);
+  font-family: var(--f-mono); font-size: 11px;
+  flex-shrink: 0; margin-top: 1px;
+}
+.pk-kk-right .kk-eligibility {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px; padding: 24px;
+}
+.pk-kk-right .kk-eligibility .el-head {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent-2); margin-bottom: 14px;
+}
+.pk-kk-right .kk-eligibility p {
+  font-family: var(--f-sans); font-size: 14px;
+  line-height: 1.65; color: var(--ink-dim); font-weight: 300;
+}
+.pk-kk-right .kk-eligibility p em { font-style: normal; color: var(--ink); }
+
+/* ---- what you get ---- */
+.pk-whyyou {
+  padding: clamp(80px, 12vw, 160px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+.pk-why-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 60px;
+}
+.pk-why-item {
+  background: var(--panel); padding: 40px 32px;
+  display: flex; flex-direction: column; gap: 16px;
+  transition: background .3s;
+}
+.pk-why-item:hover { background: #1a1e26; }
+.pk-why-item .wi-num {
+  font-family: var(--f-display); font-size: 64px;
+  font-weight: 400; color: rgba(255,255,255,0.05);
+  line-height: 1; text-transform: uppercase;
+}
+.pk-why-item h3 {
+  font-family: var(--f-display); font-size: 26px;
+  font-weight: 400; text-transform: uppercase;
+  color: var(--ink); line-height: 1;
+}
+.pk-why-item p {
+  font-family: var(--f-sans); font-size: 14px;
+  line-height: 1.65; color: var(--ink-dim); font-weight: 300;
+}
+.pk-why-item p em { font-style: normal; color: var(--ink); }
+
+/* ---- CTA ---- */
+.pk-cta {
+  padding: clamp(100px, 14vw, 200px) var(--pad);
+  position: relative; overflow: hidden;
+  background: var(--bg-2); border-bottom: 1px solid var(--line);
+}
+.pk-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(800px 500px at 60% 50%, rgba(198,255,58,0.06), transparent 60%),
+    radial-gradient(600px 400px at 20% 80%, rgba(255,61,240,0.05), transparent 60%);
+  pointer-events: none;
+}
+.pk-cta-inner { position: relative; z-index: 2; }
+.pk-cta h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(52px, 10vw, 160px);
+  line-height: 0.9; letter-spacing: -0.01em;
+  text-transform: uppercase; color: var(--ink); max-width: 18ch;
+}
+.pk-cta h2 em {
+  font-style: normal; color: var(--accent); font-family: var(--f-sans);
+  font-weight: 300; text-transform: lowercase; letter-spacing: -0.02em;
+}
+.pk-cta p {
+  font-family: var(--f-sans); font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.55; color: var(--ink-dim); font-weight: 300;
+  max-width: 44ch; margin: clamp(24px, 3vw, 36px) 0 clamp(36px, 5vw, 56px);
+}
+.pk-cta-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.pk-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 28px;
+  font-family: var(--f-mono); font-size: 12px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  border-radius: 100px; border: 1px solid var(--line-2); color: var(--ink);
+  transition: transform .25s cubic-bezier(.2,.8,.2,1), background .2s, color .2s, border-color .2s;
+}
+.pk-btn:hover { transform: translate(-2px, -2px); }
+.pk-btn .arr { transition: transform .3s; }
+.pk-btn:hover .arr { transform: rotate(-45deg); }
+.pk-btn.primary { background: var(--accent); color: #000; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(198,255,58,0.18), 0 20px 40px rgba(0,0,0,0.35); }
+.pk-btn.primary:hover { background: var(--accent-2); color: #fff; border-color: var(--accent-2); }
+.pk-btn.ghost:hover { background: rgba(255,255,255,0.04); border-color: var(--ink-dim); }
+
+/* ---- responsive ---- */
+@media (max-width: 1000px) {
+  .pk-cards-grid { grid-template-columns: 1fr; }
+  .pk-kickstart-grid { grid-template-columns: 1fr; }
+  .pk-why-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .pk-hero .bracket { width: 28px; height: 28px; }
+  .pk-hero .bracket.tl, .pk-hero .bracket.tr { top: 20px; }
+  .pk-hero .bracket.bl, .pk-hero .bracket.br { bottom: 20px; }
+  .pk-hero-top .tag:last-child { display: none; }
+  .pk-why-grid { grid-template-columns: 1fr; }
+  .pk-card { padding: 36px 24px 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- custom cursor -->
+<div class="cursor"></div>
+<div class="cursor ring cursor-ring"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="logo"><span class="pulse"></span>RASTRICK<em class="dot-em">.</em><sup style="font-size:9px;opacity:.5;margin-left:6px;font-family:var(--f-mono);font-weight:400">©'26</sup></a>
+  <ul>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="packages.html" style="color:var(--ink)">Packages</a></li>
+    <li><a href="faqs.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="pk-hero">
+  <div class="grain"></div>
+  <div class="checker top"></div>
+  <div class="checker bottom"></div>
+  <div class="bracket tl"></div>
+  <div class="bracket tr"></div>
+  <div class="bracket bl"></div>
+  <div class="bracket br"></div>
+
+  <div class="pk-hero-frame">
+    <div class="pk-hero-top">
+      <div class="tag"><span class="dot"></span>4 packages + Kickstart · No templates · Always custom</div>
+      <div class="tag">Fixed price · No hidden extras</div>
+    </div>
+
+    <div class="pk-idx">§ 00 / Packages</div>
+
+    <h1>
+      Find your<br>
+      <em>package.</em>
+    </h1>
+
+    <p class="pk-hero-lead">
+      Four packages from a sharp single-page site to a complete digital build.
+      Plus a dedicated offer for <em>small businesses and startups</em> who need a proper website without the premium price tag.
+      Every package. Hand-coded. No templates.
+    </p>
+  </div>
+</section>
+
+<!-- PACKAGE CARDS -->
+<section class="pk-cards">
+  <div class="section-head">
+    <div class="idx">§ 01 / The packages</div>
+    <h2>Four ways to <em>get online properly.</em></h2>
+  </div>
+
+  <div class="pk-cards-grid">
+
+    <!-- LAUNCHPAD -->
+    <article class="pk-card">
+      <div class="pk-card-num">Package / 01</div>
+      <div class="pk-card-name">Launch<em>pad</em></div>
+      <div class="pk-card-tagline">The single-page essential.</div>
+      <div class="pk-card-divider"></div>
+      <div class="pk-card-sub">
+        The fastest way to get a proper, hand-coded website live. A single focused page — built clean, built fast,
+        built to make a sharp first impression. Perfect for <em>sole traders, freelancers, new businesses</em> and anyone
+        who needs a professional online presence without the full multi-page build.
+        No bloat. No filler. Just the page your business needs right now.
+      </div>
+
+      <div class="pk-card-section-label">What's included</div>
+      <ul class="pk-card-list">
+        <li>1-page fully custom website — designed and built from scratch</li>
+        <li>Hand-coded HTML, CSS &amp; JavaScript (zero page builders)</li>
+        <li>Mobile responsive — tested on phones, tablets, desktops</li>
+        <li>Contact form so visitors can reach you directly</li>
+        <li>Google Analytics connected from day one</li>
+        <li>SEO foundations: semantic HTML, meta tags, page title</li>
+        <li>Domain &amp; hosting setup guidance</li>
+        <li>1 round of revisions included</li>
+        <li>14-day post-launch support window</li>
+        <li>Clean code handover — it's yours, fully</li>
+        <li class="faint">Multi-page navigation</li>
+        <li class="faint">Custom JavaScript animations</li>
+        <li class="faint">Landing pages</li>
+      </ul>
+
+      <div class="pk-card-section-label">Best for</div>
+      <ul class="pk-card-list">
+        <li>Sole traders &amp; freelancers launching online</li>
+        <li>New businesses needing a quick, credible presence</li>
+        <li>Businesses testing a concept before a full build</li>
+        <li>Anyone upgrading from a free website builder</li>
+      </ul>
+
+      <a class="pk-card-cta" href="contact.html">Start Launchpad <span>→</span></a>
+    </article>
+
+    <!-- THE BUILD -->
+    <article class="pk-card">
+      <div class="pk-card-num">Package / 02</div>
+      <div class="pk-card-name">The <em>Build</em></div>
+      <div class="pk-card-tagline">The multi-page business website.</div>
+      <div class="pk-card-divider"></div>
+      <div class="pk-card-sub">
+        For businesses that have outgrown a landing page and need a proper website with real structure.
+        Up to five custom pages — <em>home, about, services, contact and more</em> — all hand-coded,
+        all designed consistently and all built to work together. This is the foundation a growing
+        business builds everything else on top of.
+      </div>
+
+      <div class="pk-card-section-label">What's included</div>
+      <ul class="pk-card-list">
+        <li>Up to 5 fully custom pages — designed and built from scratch</li>
+        <li>Hand-coded HTML, CSS &amp; JavaScript (zero page builders)</li>
+        <li>Mobile responsive — tested across all devices</li>
+        <li>Contact form + lead capture</li>
+        <li>Google Analytics + basic conversion tracking</li>
+        <li>SEO foundations on every page</li>
+        <li>Domain &amp; hosting setup guidance</li>
+        <li>2 rounds of revisions included</li>
+        <li>21-day post-launch support window</li>
+        <li>Full code handover with documentation</li>
+        <li class="faint">Custom JavaScript animations</li>
+        <li class="faint">Landing pages</li>
+      </ul>
+
+      <div class="pk-card-section-label">Best for</div>
+      <ul class="pk-card-list">
+        <li>Established small businesses needing a full site</li>
+        <li>Businesses ready to replace a template or builder site</li>
+        <li>Service businesses that need to explain what they do</li>
+        <li>Trades, studios, agencies &amp; local businesses</li>
+      </ul>
+
+      <a class="pk-card-cta" href="contact.html">Start The Build <span>→</span></a>
+    </article>
+
+    <!-- SIGNALFIRE -->
+    <article class="pk-card feat">
+      <div class="flag">Most popular</div>
+      <div class="pk-card-num">Package / 03</div>
+      <div class="pk-card-name">Signal<em>fire</em></div>
+      <div class="pk-card-tagline">The full marketing website.</div>
+      <div class="pk-card-divider"></div>
+      <div class="pk-card-sub">
+        The one that stops people mid-scroll. Up to eight pages, custom animations, a dedicated landing page —
+        built not just to look good but to <em>perform</em>. Optimised for search, built for conversion,
+        designed to be impossible to ignore. This is the package for businesses that want their website
+        to work as hard as they do.
+      </div>
+
+      <div class="pk-card-section-label">What's included</div>
+      <ul class="pk-card-list">
+        <li>Up to 8 fully custom pages</li>
+        <li>Hand-coded HTML, CSS &amp; JavaScript</li>
+        <li>Custom animations &amp; scroll interactions</li>
+        <li>Dedicated landing page (ad-ready)</li>
+        <li>Mobile responsive — pixel-perfect on every device</li>
+        <li>Contact form + multi-step lead capture</li>
+        <li>Google Analytics + conversion tracking + event tracking</li>
+        <li>SEO foundations + on-page optimisation for each page</li>
+        <li>Performance audit &amp; image optimisation before launch</li>
+        <li>3 rounds of revisions included</li>
+        <li>30-day post-launch support window</li>
+        <li>Full code handover with documentation</li>
+      </ul>
+
+      <div class="pk-card-section-label">Best for</div>
+      <ul class="pk-card-list">
+        <li>Businesses ready to make a serious mark online</li>
+        <li>Brands launching a new product, service or campaign</li>
+        <li>Companies running paid ads that need high-converting landers</li>
+        <li>Any business that knows their website should be doing more</li>
+      </ul>
+
+      <a class="pk-card-cta" href="contact.html">Start Signalfire <span>→</span></a>
+    </article>
+
+    <!-- THE STUDIO -->
+    <article class="pk-card">
+      <div class="pk-card-num">Package / 04</div>
+      <div class="pk-card-name">The <em>Studio</em></div>
+      <div class="pk-card-tagline">The complete digital build.</div>
+      <div class="pk-card-divider"></div>
+      <div class="pk-card-sub">
+        The full end-to-end engagement. Concept to launch — every page, every interaction,
+        every detail. Unlimited pages within agreed scope, advanced JavaScript features,
+        multiple landing pages, priority turnaround and an extended support window.
+        <em>For businesses that want the best version of their website</em> and aren't willing to compromise on it.
+      </div>
+
+      <div class="pk-card-section-label">What's included</div>
+      <ul class="pk-card-list">
+        <li>Everything in Signalfire — all 8 pages, all features</li>
+        <li>Unlimited pages (within agreed project scope)</li>
+        <li>Advanced custom JavaScript features</li>
+        <li>Multiple ad landing pages</li>
+        <li>Micro-interactions &amp; advanced motion design</li>
+        <li>Full performance optimisation suite</li>
+        <li>Comprehensive SEO implementation</li>
+        <li>Priority turnaround — your project at the front of the queue</li>
+        <li>60-day post-launch support window</li>
+        <li>3 months ongoing care plan included</li>
+        <li>Full code handover + full documentation package</li>
+      </ul>
+
+      <div class="pk-card-section-label">Best for</div>
+      <ul class="pk-card-list">
+        <li>Premium brands that need a complete digital presence</li>
+        <li>Businesses launching with multiple products or services</li>
+        <li>Companies that want one studio to own the whole build</li>
+        <li>Any project where quality is non-negotiable</li>
+      </ul>
+
+      <a class="pk-card-cta" href="contact.html">Start The Studio <span>→</span></a>
+    </article>
+
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="pk-compare">
+  <div class="section-head">
+    <div class="idx">§ 02 / Compare</div>
+    <h2>Side by <em>side.</em></h2>
+  </div>
+
+  <div class="pk-table-wrap">
+    <table class="pk-table">
+      <thead>
+        <tr>
+          <th style="width:28%">Feature</th>
+          <th>Launchpad</th>
+          <th>The Build</th>
+          <th class="feat-col">Signalfire</th>
+          <th>The Studio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group-head"><td colspan="5">Pages &amp; Scope</td></tr>
+        <tr>
+          <td>Pages included</td>
+          <td class="val">1</td>
+          <td class="val">Up to 5</td>
+          <td class="val feat-col">Up to 8</td>
+          <td class="val">Unlimited*</td>
+        </tr>
+        <tr>
+          <td>Landing page</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td class="feat-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span> Multiple</td>
+        </tr>
+        <tr class="group-head"><td colspan="5">Design &amp; Development</td></tr>
+        <tr>
+          <td>Hand-coded HTML, CSS &amp; JS</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="feat-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Mobile responsive</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="feat-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Custom animations</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td class="feat-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span> Advanced</td>
+        </tr>
+        <tr>
+          <td>Micro-interactions</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td class="feat-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr class="group-head"><td colspan="5">Forms &amp; Tracking</td></tr>
+        <tr>
+          <td>Contact form</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="feat-col"><span class="check">✓</span> Multi-step</td>
+          <td><span class="check">✓</span> Advanced</td>
+        </tr>
+        <tr>
+          <td>Google Analytics</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="feat-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Conversion tracking</td>
+          <td><span class="cross">—</span></td>
+          <td>Basic</td>
+          <td class="feat-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span> Full</td>
+        </tr>
+        <tr class="group-head"><td colspan="5">SEO &amp; Performance</td></tr>
+        <tr>
+          <td>SEO foundations</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="feat-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>On-page SEO optimisation</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td class="feat-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span> Comprehensive</td>
+        </tr>
+        <tr>
+          <td>Performance optimisation</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td class="feat-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span> Full suite</td>
+        </tr>
+        <tr class="group-head"><td colspan="5">Revisions &amp; Support</td></tr>
+        <tr>
+          <td>Revision rounds</td>
+          <td class="val">1 round</td>
+          <td class="val">2 rounds</td>
+          <td class="val feat-col">3 rounds</td>
+          <td class="val">3 rounds</td>
+        </tr>
+        <tr>
+          <td>Post-launch support</td>
+          <td class="val">14 days</td>
+          <td class="val">21 days</td>
+          <td class="val feat-col">30 days</td>
+          <td class="val">60 days</td>
+        </tr>
+        <tr>
+          <td>Ongoing care plan</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td class="feat-col"><span class="cross">—</span></td>
+          <td><span class="check">✓</span> 3 months</td>
+        </tr>
+        <tr>
+          <td>Priority turnaround</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td class="feat-col"><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:16px;font-family:var(--f-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);">* Unlimited pages within agreed project scope — defined in the written proposal.</p>
+  </div>
+</section>
+
+<!-- KICKSTART -->
+<section class="pk-kickstart">
+  <div class="pk-kickstart-inner">
+
+    <div class="pk-kickstart-badge">
+      <span class="dot"></span>
+      Exclusive · Small &amp; Startup Businesses Only
+    </div>
+
+    <div class="pk-kickstart-intro">
+      <div class="pk-idx">§ 03 / Kickstart</div>
+      <h2>Built for<br>businesses just<br><em>starting out.</em></h2>
+      <p>
+        Not every business launches with a big budget. I know that — and I think it's genuinely unfair
+        that the businesses who need a website the most are often the ones who can afford it the least.
+        A proper website at the start isn't a luxury. It's the difference between looking credible and not.
+      </p>
+      <p>
+        <em>So I keep a limited number of spots each quarter specifically for small businesses and startups</em>
+        who are building something real and just need a proper online presence to match it.
+        The Kickstart package gives you a fully custom, hand-coded website at a price that actually fits
+        where your business is <strong>right now</strong> — not where we hope it'll be in two years.
+      </p>
+      <p>
+        This is not a cut-down template dressed up as custom work.
+        <em>It is the same quality, the same process, the same hand-coded build</em> — tailored to a
+        smaller scope so it fits a tighter budget. And it comes with an upgrade path,
+        so when the business grows, the website can grow with it.
+      </p>
+    </div>
+
+    <div class="pk-kickstart-grid">
+      <div class="pk-kk-left">
+        <div class="kk-name">Kick<em>start</em></div>
+        <div class="kk-tagline">For small &amp; startup businesses.</div>
+        <div class="kk-divider"></div>
+        <div class="kk-desc">
+          A custom 1–2 page website — designed and hand-coded specifically for your business —
+          at an accessible price point. <em>The same process, the same code quality, the same care.</em>
+          Just scoped to fit where you are right now, with room to grow into.
+        </div>
+        <div class="kk-note">
+          <strong>Limited spots per quarter.</strong> Kickstart is reserved for businesses that genuinely need it — sole traders, new small businesses, startups, community organisations, and anyone building from the ground up.
+          Get in touch and tell me about the business — I'll let you know if Kickstart is the right fit.
+        </div>
+        <a href="contact.html?pkg=kickstart" class="kk-cta">Apply for Kickstart <span>↗</span></a>
+      </div>
+
+      <div class="pk-kk-right">
+        <div>
+          <div class="kk-section-label">What's included</div>
+          <ul class="kk-list">
+            <li>1–2 page custom website — designed and built from scratch</li>
+            <li>Hand-coded HTML, CSS &amp; JavaScript — no builders, no templates</li>
+            <li>Mobile responsive — tested on all devices</li>
+            <li>Contact form so visitors can reach you directly</li>
+            <li>SEO foundations built in from day one</li>
+            <li>Google Analytics connected</li>
+            <li>Domain &amp; hosting setup guidance</li>
+            <li>1 round of revisions included</li>
+            <li>14-day post-launch support window</li>
+            <li>Upgrade path to any full package — your build isn't wasted</li>
+          </ul>
+        </div>
+
+        <div class="kk-eligibility">
+          <div class="el-head">Who is this for?</div>
+          <p>
+            Kickstart is <em>exclusively for small businesses and startups</em> who are launching or in early stages
+            and need a proper website but aren't yet at full package budget. This includes:
+            sole traders, freelancers, new small businesses, startups, community organisations,
+            side projects turning into real businesses, and anyone building something meaningful from nothing.
+          </p>
+          <p style="margin-top:12px;">
+            If you're an established business looking for a discount — Kickstart isn't for you, and that's okay.
+            <em>The other four packages are built for where you are.</em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY RASTRICK -->
+<section class="pk-whyyou">
+  <div class="section-head">
+    <div class="idx">§ 04 / Why this matters</div>
+    <h2>What makes every package <em>different.</em></h2>
+  </div>
+
+  <div class="pk-why-grid">
+    <div class="pk-why-item">
+      <div class="wi-num">01</div>
+      <h3>Written from scratch</h3>
+      <p>Every site starts from a blank file. No templates underneath, no page builder generating the HTML, no inherited bloat from a theme someone else designed. <em>Every line of code is written for your site specifically.</em></p>
+    </div>
+    <div class="pk-why-item">
+      <div class="wi-num">02</div>
+      <h3>Fixed price</h3>
+      <p>The price in your proposal is the price you pay. No hourly creep, no scope additions that weren't discussed, no invoices that surprise you. <em>You know exactly what you're getting before a deposit lands.</em></p>
+    </div>
+    <div class="pk-why-item">
+      <div class="wi-num">03</div>
+      <h3>One person, start to finish</h3>
+      <p>The person who takes your brief is the same person who designs the site, writes the code and hands it over. <em>No account managers. No handoff between a "designer" and a "developer."</em> No lost detail in translation.</p>
+    </div>
+    <div class="pk-why-item">
+      <div class="wi-num">04</div>
+      <h3>You own the code</h3>
+      <p>When the project is done, the code is yours. Fully. No platform lock-in, no monthly fees to keep the site running, no proprietary system that holds your site hostage. <em>It's a file on a server. You own it.</em></p>
+    </div>
+    <div class="pk-why-item">
+      <div class="wi-num">05</div>
+      <h3>Mobile-first always</h3>
+      <p>Every package is built mobile-first. Not as an afterthought, not as a responsive breakpoint tacked on. <em>Most of your visitors are on a phone.</em> The site is built for them first, then scaled up to desktop.</p>
+    </div>
+    <div class="pk-why-item">
+      <div class="wi-num">06</div>
+      <h3>Fast by default</h3>
+      <p>Hand-coded sites are fast because there's nothing there that doesn't need to be. No 400KB plugin bundles, no 80 HTTP requests to load a navbar. <em>Clean code loads fast. Fast sites rank better. Better rankings mean more visitors.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="pk-cta">
+  <div class="pk-cta-inner">
+    <div class="pk-idx">§ 05 / Let's go</div>
+    <h2>Not sure which package? <em>Ask.</em></h2>
+    <p>
+      Tell me about the business and what the site needs to do. I'll point you to the right package
+      — or if you're a startup or small business on a tight budget, ask about Kickstart.
+      No obligation. Just a straight answer.
+    </p>
+    <div class="pk-cta-actions">
+      <a href="contact.html" class="pk-btn primary">Start the conversation <span class="arr">↗</span></a>
+      <a href="contact.html?pkg=kickstart" class="pk-btn ghost">Apply for Kickstart <span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- RASTRICK. RUNNING NAME TICKER -->
+<div class="name-ticker" aria-hidden="true">
+  <div class="track">
+    <span>RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i></span>
+    <span aria-hidden="true">RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i> RASTRICK<em>.</em> <i class="star"></i></span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="meta">
+    <div>
+      <b>Studio</b>
+      <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>
+      <a>Canberra · ACT · AU 2602</a>
+      <a>Mon–Fri 9am to 5pm · AEST</a>
+    </div>
+    <div>
+      <b>Navigate</b>
+      <a href="/#work">Work</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="packages.html">Packages</a>
+      <a href="faqs.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <b>© 2026 RASTRICK</b>
+      <a>Independent Website Design &amp; Development Studio</a>
+      <a>Websites impossible to ignore</a>
+      <a href="/">↑ Back to home</a>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js?v=4"></script>
+
+</body>
+</html>
