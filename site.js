@@ -211,12 +211,14 @@
 
   // ==================== local time for Canberra ====================
   const clock = document.getElementById('clock');
-  if (clock){
+  const clock2 = document.getElementById('clock-2');
+  if (clock || clock2){
     const tick = () => {
       const d = new Date();
       const opts = { timeZone: 'Australia/Sydney', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
       const t = new Intl.DateTimeFormat('en-GB', opts).format(d);
-      clock.textContent = t + ' AEST';
+      if (clock)  clock.textContent  = t + ' AEST';
+      if (clock2) clock2.textContent = t + ' AEST';
     };
     tick();
     setInterval(tick, 1000);

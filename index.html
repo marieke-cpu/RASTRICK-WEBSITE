@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>if(sessionStorage.getItem('rastrick_entered')){document.documentElement.classList.add('skip-intro');}</script>
 <title>RASTRICK — Websites impossible to ignore</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="RASTRICK — independent studio designing bold, cinematic websites that are impossible to ignore. Based in Canberra, working worldwide.">
@@ -85,6 +86,7 @@
 
 <!-- HERO -->
 <header class="hero" id="top">
+  <canvas id="hero-gl"></canvas>
   <div class="grain"></div>
 
   <div class="checker top"></div>
@@ -116,7 +118,7 @@
 
   <div class="frame">
     <div class="top">
-      <div class="tag"><span class="dot"></span>Independent Studio · <span id="clock">—</span></div>
+      <div class="tag hero-clock-top"><span class="dot"></span>Independent Studio · <span id="clock">—</span></div>
       <div class="tag">Canberra · ACT · AU</div>
     </div>
 
@@ -130,9 +132,10 @@
 
     <div class="bot">
       <div class="meta">
-        <div><b>Studio</b>Canberra · AU</div>
-        <div><b>Services</b>Design + Dev</div>
+        <div class="meta-studio"><b>Studio</b>Canberra · AU</div>
+        <div class="meta-services"><b>Services</b>Design + Dev</div>
         <div><b>Craft</b>Hand-coded · No Builders</div>
+        <div class="tag meta-combined"><span class="dot"></span>Independent Studio · <span id="clock-2">—</span> · Canberra ACT AU</div>
       </div>
       <div class="scroll">Scroll <span class="line-v"></span></div>
     </div>

@@ -1427,6 +1427,16 @@ body.intro-open .name-ticker {
   visibility: hidden;
 }
 
+/* ── return-visit: skip-intro class added by inline head script ── */
+html.skip-intro #intro { display: none !important; }
+html.skip-intro body.intro-open { overflow: visible; }
+html.skip-intro body.intro-open .nav,
+html.skip-intro body.intro-open .hero,
+html.skip-intro body.intro-open section,
+html.skip-intro body.intro-open footer,
+html.skip-intro body.intro-open .ticker,
+html.skip-intro body.intro-open .name-ticker { visibility: visible; }
+
 /* =======================================================
    Y2K / STREET-URBAN HERO ENHANCEMENTS
    ======================================================= */
@@ -1581,18 +1591,29 @@ body.intro-open .name-ticker {
 /* reduce hero canvas brightness a bit so overlays pop */
 .hero canvas { opacity: 0.85; }
 
+/* combined meta tag — desktop hidden, mobile visible */
+.meta-combined { display: none; }
+
 @media (max-width: 720px) {
   .hero .sticker { display: none; }
   .hero .burst { display: none; }
   .hero .rail { display: none; }
   .hero .mini-marquee { display: none; }
+  /* hide canvas on mobile — shaders are desktop only */
+  .hero canvas { display: none; }
   /* push frame below the fixed nav pill */
   .hero .frame { top: 90px; right: var(--pad); bottom: var(--pad); left: var(--pad); }
   /* keep top tags in a single column so they don't crowd */
   .hero .top { flex-direction: column; align-items: flex-start; gap: 5px; }
-  /* bottom meta: tighten gap, hide third item, drop scroll arrow */
+  /* hide the top "Independent Studio · [clock]" tag — moved to bottom combined */
+  .hero-clock-top { display: none; }
+  /* bottom meta: tighten gap, drop scroll arrow, hide studio/services */
   .hero .bot .meta { gap: 14px; font-size: 10px; letter-spacing: 0.12em; }
   .hero .bot .meta div:nth-child(3) { display: none; }
+  .meta-studio { display: none; }
+  .meta-services { display: none; }
+  /* show the combined pink-dot meta tag */
+  .meta-combined { display: flex; align-items: center; gap: 0; }
   .hero .scroll { display: none; }
   .hero .bot { gap: 0; }
 }

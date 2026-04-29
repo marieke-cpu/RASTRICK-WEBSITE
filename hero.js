@@ -1,257 +1,360 @@
-/* RASTRICK — hero shader + cursor-following 3D orb composite
-   Uses WebGL 1. Renders a dark cinematic background with raymarched
-   torus/orb that follows the cursor, volumetric fog, and subtle nebula.
+/* RASTRICK — 5 interactive shader wallpapers
+   Uniforms: T (time), R (resolution), M (mouse 0-1), CP (click pos), CK (click strength 0-1)
+   Click canvas → cycle shaders. Arrow keys ← → also cycle.
+   Shader preference persists in localStorage.
 */
-(function(){
+(function () {
+  'use strict';
+
   const canvas = document.getElementById('hero-gl');
   if (!canvas) return;
-  const gl = canvas.getContext('webgl', { antialias: false, premultipliedAlpha: false });
+
+  const gl = canvas.getContext('webgl', { antialias: false, alpha: false });
   if (!gl) return;
 
-  const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-  const MARCH_STEPS = isTouchDevice ? '32' : '64';
+  // ─── Vertex shader (shared) ────────────────────────────────────────
+  const VERT = `attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
 
-  const vert = `
-    attribute vec2 p;
-    void main(){ gl_Position = vec4(p, 0.0, 1.0); }
-  `;
+  // ─── 5 Fragment shaders ────────────────────────────────────────────
+  const SHADERS = [
 
-  const frag = `
-    precision highp float;
-    uniform vec2  uRes;
-    uniform float uTime;
-    uniform vec2  uMouse;       // 0..1, y flipped
-    uniform vec2  uMouseSmooth;
-    uniform float uScroll;      // 0..1 parallax
-    uniform float uClickT;      // seconds since last click
-    uniform float uClickS;      // strength
-
-    // noise
-    float hash21(vec2 p){ p=fract(p*vec2(123.34,456.21)); p+=dot(p,p+45.32); return fract(p.x*p.y); }
-    float noise(vec2 p){
-      vec2 i=floor(p), f=fract(p); vec2 u=f*f*(3.0-2.0*f);
-      return mix(mix(hash21(i),hash21(i+vec2(1,0)),u.x),
-                 mix(hash21(i+vec2(0,1)),hash21(i+vec2(1,1)),u.x),u.y);
-    }
-    float fbm(vec2 p){ float v=0.0,a=0.5; for(int i=0;i<5;i++){v+=a*noise(p);p*=2.03;a*=0.5;} return v; }
-
-    // sdf scene: one big orb + small orbiter
-    float sdSphere(vec3 p, float r){ return length(p)-r; }
-    float smin(float a, float b, float k){
-      float h = clamp(0.5 + 0.5*(b-a)/k, 0.0, 1.0);
-      return mix(b, a, h) - k*h*(1.0-h);
-    }
-
-    vec2 map(vec3 p, vec3 mp){
-      // main orb follows cursor
-      float d1 = sdSphere(p - mp, 0.55);
-      // orbiter
-      float t = uTime*0.8;
-      vec3 op = mp + vec3(cos(t)*0.9, sin(t*0.7)*0.4, sin(t)*0.9);
-      float d2 = sdSphere(p - op, 0.18);
-      // blob them
-      float d = smin(d1, d2, 0.45);
-      return vec2(d, 0.0);
-    }
-
-    vec3 calcNormal(vec3 p, vec3 mp){
-      vec2 e = vec2(0.001, 0.0);
-      float d = map(p, mp).x;
-      return normalize(vec3(
-        map(p+e.xyy, mp).x - d,
-        map(p+e.yxy, mp).x - d,
-        map(p+e.yyx, mp).x - d
-      ));
-    }
-
+    // ── 0: GRID RUNNER ────────────────────────────────────────────────
+    // Retro perspective grid. Mouse shifts vanishing point.
+    // Click = bright burst + grid ripple.
+    [`precision mediump float;
+    uniform float T;uniform vec2 R,M,CP;uniform float CK;
     void main(){
-      vec2 uv = (gl_FragCoord.xy - 0.5*uRes)/uRes.y;
-      vec2 m = uMouseSmooth - 0.5;
+      vec2 uv=gl_FragCoord.xy/R;
+      float ar=R.x/R.y;
+      vec2 p=(uv*2.-1.)*vec2(ar,1.);
+      vec2 mp=(M*2.-1.)*vec2(ar,1.);
+      vec3 lime=vec3(.776,1.,.227),mag=vec3(1.,.239,.941),bg=vec3(.031,.035,.043);
+      float horizon=mp.y*.35;
+      float yd=p.y-horizon;
+      float d=abs(yd)+.015;
+      float z=1./d;
+      float gx=(p.x-mp.x*.5)*z*.38;
+      float gz=sign(yd)*z+T*2.8;
+      vec2 g=fract(vec2(gx,gz))-.5;
+      float line=1.-smoothstep(0.,.055,min(abs(g.x),abs(g.y)));
+      float fog=exp(-d*.9);
+      float hue=sin(gx*.4+T*.18)*.5+.5;
+      vec3 lc=mix(lime,mag,hue);
+      vec3 col=mix(bg,lc,line*fog);
+      float hg=exp(-yd*yd*18.)*.55;
+      col+=mix(mag*.85,lime*.55,.45)*hg;
+      // scanlines
+      col*=.96+.04*sin(gl_FragCoord.y*2.);
+      // click burst
+      vec2 cp=(CP*2.-1.)*vec2(ar,1.);
+      col+=lime*CK*.9*exp(-length(p-cp)*3.);
+      col+=mag*CK*.4*exp(-length(p-cp)*1.5);
+      float vig=1.-dot(uv-.5,uv-.5)*1.6;
+      col*=max(0.,vig);
+      gl_FragColor=vec4(clamp(col,0.,1.),1.);
+    }`, 'Grid Runner'],
 
-      // ========== background: volumetric nebula ==========
-      float t = uTime*0.04;
-      vec2 w = uv*1.4 + vec2(t, -t*0.6);
-      // mouse deflection
-      vec2 d0 = uv - m*1.1;
-      float r0 = length(d0)+0.001;
-      w += normalize(d0) * exp(-r0*2.0) * 0.2;
+    // ── 1: PLASMA STORM ───────────────────────────────────────────────
+    // Swirling sine plasma. Mouse creates a vortex that pulls the plasma.
+    // Click = cyan burst.
+    [`precision mediump float;
+    uniform float T;uniform vec2 R,M,CP;uniform float CK;
+    void main(){
+      vec2 uv=gl_FragCoord.xy/R;
+      float ar=R.x/R.y;
+      vec2 p=(uv*2.-1.)*vec2(ar,1.);
+      vec2 mp=(M*2.-1.)*vec2(ar,1.);
+      vec2 d=p-mp;float r=length(d)+.01;
+      float ang=atan(d.y,d.x)+T*.45/r;
+      vec2 sp=mp+vec2(cos(ang),sin(ang))*r;
+      float v =sin(sp.x*2.8+T)+sin(sp.y*2.3-T*.85);
+      v+=sin(length(sp)*4.2-T*1.9)*.55;
+      v+=cos(sp.x*5.+sp.y*3.2+T*1.15)*.35;
+      vec3 lime=vec3(.776,1.,.227),mag=vec3(1.,.239,.941),cyan=vec3(.48,.99,1.);
+      vec3 bg=vec3(.018,.02,.028);
+      float h1=sin(v*1.9)*.5+.5;
+      float h2=cos(v*2.8+T*.18)*.5+.5;
+      vec3 col=mix(bg,mix(mix(mag,lime,h1),cyan,h2*.38),.82);
+      col*=.78+.44*abs(sin(v*3.14));
+      vec2 cp=(CP*2.-1.)*vec2(ar,1.);
+      col+=cyan*CK*.75*exp(-length(p-cp)*4.);
+      col+=lime*CK*.3*exp(-length(p-cp)*1.8);
+      float vig=1.-dot(uv-.5,uv-.5)*1.9;
+      col*=max(0.,vig);
+      gl_FragColor=vec4(clamp(col,0.,1.),1.);
+    }`, 'Plasma Storm'],
 
-      float n1 = fbm(w*1.2);
-      float n2 = fbm(w*2.4 + n1);
-      float n3 = fbm(w*5.0 + n2*1.5);
+    // ── 2: DIGITAL RAIN ───────────────────────────────────────────────
+    // Vertical rain columns. Mouse X = global speed. Mouse Y = magenta scanline.
+    // Click = shockwave that scatters the rain.
+    [`precision mediump float;
+    uniform float T;uniform vec2 R,M,CP;uniform float CK;
+    float hf(float n){return fract(sin(n)*43758.545);}
+    void main(){
+      vec2 uv=gl_FragCoord.xy/R;
+      float ar=R.x/R.y;
+      float cols=80.;
+      float col=floor(uv.x*cols);
+      float ch=hf(col);
+      float speed=.32+M.x*1.5+ch*.75;
+      // head position: sy=0 top, sy=1 bottom
+      float sy=1.-uv.y;
+      float headSY=fract(T*speed*ch*1.4+ch*97.3);
+      float above=mod(headSY-sy+1.,1.);
+      float trlen=.1+ch*.12;
+      float b=above<trlen?exp(-above/.022):0.;
+      float xf=fract(uv.x*cols);
+      b*=step(.17,1.-abs(xf-.5)*2.4);
+      // scanline at mouse Y
+      float scan=exp(-abs(uv.y-M.y)*38.)*.75;
+      vec3 lime=vec3(.776,1.,.227),mag=vec3(1.,.239,.941),cyan=vec3(.48,.99,1.);
+      float trailFrac=clamp(above/max(trlen,.001),0.,1.);
+      vec3 c=mix(lime,cyan,trailFrac)*b+mag*scan;
+      // click shockwave
+      vec2 pp=(uv-.5)*2.;pp.x*=ar;
+      vec2 cp=(CP-.5)*2.;cp.x*=ar;
+      float shock=sin(length(pp-cp)*11.-T*16.)*exp(-length(pp-cp)*1.8)*CK;
+      c+=lime*max(0.,shock)*.55;
+      c=mix(vec3(.031,.035,.043),c,min(1.,b*3.+scan+max(0.,shock)*.25));
+      float vig=1.-dot(uv-.5,uv-.5)*2.;
+      c*=max(0.,vig);
+      gl_FragColor=vec4(clamp(c,0.,1.),1.);
+    }`, 'Digital Rain'],
 
-      vec3 bg = vec3(0.015, 0.018, 0.025);
-      vec3 lime   = vec3(0.78, 1.0, 0.23);
-      vec3 magenta = vec3(1.0, 0.24, 0.94);
-      vec3 neb = mix(bg, lime*0.28, smoothstep(0.45, 0.85, n2) * 0.6);
-      neb = mix(neb, magenta*0.22, smoothstep(0.65, 1.0, n3) * 0.55);
-
-      // vignette
-      float vig = 1.0 - smoothstep(0.4, 1.4, length(uv));
-      neb *= 0.3 + 0.9*vig;
-
-      // stars
-      vec2 sp = gl_FragCoord.xy;
-      float star = step(0.9985, hash21(floor(sp)));
-      neb += star*vec3(0.9,0.95,1.0)*0.8;
-
-      vec3 col = neb;
-
-      // ========== raymarch orb ==========
-      vec3 ro = vec3(0.0, 0.0, 2.4);
-      vec3 rd = normalize(vec3(uv, -1.4));
-      // mouse position in world
-      vec3 mp = vec3(m*2.2, 0.0);
-      mp += vec3(0.0, 0.0, 0.3*sin(uTime*0.6));
-
-      // click pulse expands orb briefly
-      float ct = uClickT;
-      float pulse = 0.0;
-      if (ct > 0.0 && ct < 1.2) pulse = exp(-ct*3.0)*uClickS;
-
-      float tHit = 0.0;
-      float hit = 0.0;
-      for (int i=0; i<${MARCH_STEPS}; i++){
-        vec3 pos = ro + rd*tHit;
-        float d = map(pos, mp).x - pulse*0.25;
-        if (d < 0.001) { hit = 1.0; break; }
-        if (tHit > 6.0) break;
-        tHit += d*0.9;
+    // ── 3: VOID CELLS ─────────────────────────────────────────────────
+    // Animated Voronoi. Mouse repels cells. Click = ripple wave.
+    [`precision mediump float;
+    uniform float T;uniform vec2 R,M,CP;uniform float CK;
+    vec2 hv2(vec2 p){return fract(sin(vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))))*43758.545);}
+    void main(){
+      vec2 uv=gl_FragCoord.xy/R;
+      float ar=R.x/R.y;
+      vec2 p=(uv*2.-1.)*vec2(ar,1.);
+      vec2 mp=(M*2.-1.)*vec2(ar,1.);
+      vec2 diff=p-mp;float md=length(diff)+.001;
+      p+=normalize(diff)*.28/(md+.42);
+      vec2 sc=p*3.6+T*.22;
+      vec2 id=floor(sc),fr=fract(sc);
+      float mn=9.;vec2 mg=vec2(0.);
+      for(int j=-1;j<=1;j++)for(int i=-1;i<=1;i++){
+        vec2 nb=vec2(float(i),float(j));
+        vec2 rv=hv2(id+nb);
+        vec2 o=.5+.45*sin(T*.65+6.28*rv);
+        float dist=length(nb+o-fr);
+        if(dist<mn){mn=dist;mg=nb;}
       }
+      float edge=1.-smoothstep(0.,.09,mn);
+      float glow=smoothstep(.28,.46,mn)*(1.-smoothstep(.46,.72,mn));
+      vec2 cp=(CP-.5)*2.;cp.x*=ar;
+      float rip=sin(length(p-cp)*8.5-T*11.)*exp(-length(p-cp)*1.4)*CK;
+      float bright=edge+max(0.,rip)*.45+glow*.18;
+      vec2 ch=hv2(id+mg);
+      vec3 lime=vec3(.776,1.,.227),mag=vec3(1.,.239,.941),cyan=vec3(.48,.99,1.);
+      vec3 cc=ch.x<.33?lime:ch.x<.66?mag:cyan;
+      vec3 col=mix(vec3(.031,.035,.043),cc,bright);
+      float vig=1.-dot(uv-.5,uv-.5)*1.55;
+      col*=max(0.,vig);
+      gl_FragColor=vec4(clamp(col,0.,1.),1.);
+    }`, 'Void Cells'],
 
-      if (hit > 0.5){
-        vec3 pos = ro + rd*tHit;
-        vec3 nrm = calcNormal(pos, mp);
-        vec3 ldir = normalize(vec3(0.4, 0.6, 0.8));
-        float diff = max(0.0, dot(nrm, ldir));
-        float fres = pow(1.0 - max(0.0, dot(nrm, -rd)), 3.0);
-
-        // iridescent tint driven by normal (lime/magenta)
-        vec3 ca = vec3(0.78, 1.0, 0.23);   // lime
-        vec3 cb = vec3(1.0, 0.24, 0.94);   // magenta
-        vec3 cc2 = mix(ca, cb, 0.5 + 0.5*nrm.y);
-        vec3 orb = cc2 * (0.15 + diff*0.7);
-        orb += fres * mix(cb, ca, 0.5)*1.2;
-
-        // inner glow
-        orb += vec3(0.78, 1.0, 0.23) * pulse * 1.2;
-
-        col = mix(col, orb, 0.95);
-      }
-
-      // outer halo around orb even when missed
-      vec2 orbScreen = mp.xy / 2.4;
-      float rh = length(uv - orbScreen);
-      float halo = exp(-rh*rh*7.0)*0.4;
-      col += halo*mix(vec3(0.78, 1.0, 0.23), vec3(1.0, 0.24, 0.94), 0.5 + 0.5*sin(uTime*0.5));
-
-      // scanlines / grade
-      col *= 0.96 + 0.04*sin(gl_FragCoord.y*1.5);
-      col = pow(col, vec3(0.95));
-
-      gl_FragColor = vec4(col, 1.0);
+    // ── 4: NEBULA DRIFT ───────────────────────────────────────────────
+    // FBM noise nebula. Mouse drags the field. Stars. Click = lime burst.
+    [`precision mediump float;
+    uniform float T;uniform vec2 R,M,CP;uniform float CK;
+    float hn(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.545);}
+    float nx(vec2 p){
+      vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+      return mix(mix(hn(i),hn(i+vec2(1,0)),f.x),mix(hn(i+vec2(0,1)),hn(i+vec2(1,1)),f.x),f.y);
     }
-  `;
+    float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*nx(p);p=p*2.1+vec2(3.7,1.9);a*=.5;}return v;}
+    void main(){
+      vec2 uv=gl_FragCoord.xy/R;
+      float ar=R.x/R.y;
+      vec2 p=(uv*2.-1.)*vec2(ar,1.);
+      vec2 mp=(M*2.-1.)*vec2(ar,1.);
+      vec2 dp=p-mp*.38;
+      float f1=fbm(dp*1.15+vec2(T*.09,-T*.06));
+      float f2=fbm(dp*2.1+vec2(f1)+vec2(-T*.07,T*.1));
+      float neb=fbm(dp*1.55+f2*.65+T*.05);
+      vec3 mag=vec3(1.,.239,.941),lime=vec3(.776,1.,.227),cyan=vec3(.3,.7,1.);
+      vec3 bg=vec3(.012,.015,.022);
+      vec3 col=mix(bg,mag*.72,smoothstep(.28,.62,neb));
+      col=mix(col,lime*.78,smoothstep(.54,.84,neb));
+      col=mix(col,cyan*.9,smoothstep(.76,.94,neb));
+      // stars
+      float star=step(.9986,hn(floor(gl_FragCoord.xy)));
+      col+=star*vec3(.88,.94,1.)*.65;
+      // click burst
+      vec2 cp=(CP-.5)*2.;cp.x*=ar;
+      col+=lime*CK*.85*exp(-length(p-cp)*4.2);
+      col+=mag*CK*.45*exp(-length(p-cp)*2.);
+      float vig=1.-length(uv-.5)*1.22;
+      col*=max(0.,vig);
+      gl_FragColor=vec4(clamp(col,0.,1.),1.);
+    }`, 'Nebula Drift'],
 
-  function compile(type, src){
+  ];
+
+  // ─── GL helpers ─────────────────────────────────────────────────────
+  function compile(type, src) {
     const s = gl.createShader(type);
-    gl.shaderSource(s, src); gl.compileShader(s);
-    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)){
-      console.error(gl.getShaderInfoLog(s)); return null;
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+      console.warn('[hero.js shader]', gl.getShaderInfoLog(s));
+      return null;
     }
     return s;
   }
-  const vs = compile(gl.VERTEX_SHADER, vert);
-  const fs = compile(gl.FRAGMENT_SHADER, frag);
-  const prog = gl.createProgram();
-  gl.attachShader(prog, vs); gl.attachShader(prog, fs);
-  gl.linkProgram(prog);
-  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)){
-    console.error(gl.getProgramInfoLog(prog)); return;
-  }
 
+  const vs = compile(gl.VERTEX_SHADER, VERT);
+
+  const programs = SHADERS.map(([frag], idx) => {
+    const fs = compile(gl.FRAGMENT_SHADER, frag);
+    if (!vs || !fs) return null;
+    const prog = gl.createProgram();
+    gl.attachShader(prog, vs);
+    gl.attachShader(prog, fs);
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+      console.warn('[hero.js link]', idx, gl.getProgramInfoLog(prog));
+      return null;
+    }
+    return {
+      prog,
+      loc: {
+        p:  gl.getAttribLocation(prog,  'p'),
+        T:  gl.getUniformLocation(prog, 'T'),
+        R:  gl.getUniformLocation(prog, 'R'),
+        M:  gl.getUniformLocation(prog, 'M'),
+        CP: gl.getUniformLocation(prog, 'CP'),
+        CK: gl.getUniformLocation(prog, 'CK'),
+      },
+    };
+  });
+
+  // Fullscreen quad
   const buf = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]), gl.STATIC_DRAW);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
 
-  const loc = {
-    p:     gl.getAttribLocation(prog, 'p'),
-    res:   gl.getUniformLocation(prog, 'uRes'),
-    time:  gl.getUniformLocation(prog, 'uTime'),
-    m:     gl.getUniformLocation(prog, 'uMouse'),
-    ms:    gl.getUniformLocation(prog, 'uMouseSmooth'),
-    sc:    gl.getUniformLocation(prog, 'uScroll'),
-    ct:    gl.getUniformLocation(prog, 'uClickT'),
-    cs:    gl.getUniformLocation(prog, 'uClickS'),
-  };
+  // ─── State ──────────────────────────────────────────────────────────
+  let mx = 0.5, my = 0.5, smx = 0.5, smy = 0.5;
+  let clickT = 0, cx = 0.5, cy = 0.5;
+  let shader = Math.min(+(localStorage.getItem('rastrick_shader') || 0), SHADERS.length - 1);
 
-  const state = {
-    mx: 0.5, my: 0.5, smx: 0.5, smy: 0.5,
-    clickT: 10, clickS: 0,
-  };
-
-  window.addEventListener('pointermove', e => {
-    const r = canvas.getBoundingClientRect();
-    state.mx = (e.clientX - r.left) / r.width;
-    state.my = 1 - (e.clientY - r.top) / r.height;
-  });
-  canvas.addEventListener('pointerdown', e => {
-    state.clickT = 0;
-    state.clickS = 1;
-  });
-
-  // Touch fallback so the orb follows finger on mobile
-  canvas.addEventListener('touchmove', e => {
-    if (e.touches.length > 0) {
-      const r = canvas.getBoundingClientRect();
-      state.mx = (e.touches[0].clientX - r.left) / r.width;
-      state.my = 1 - (e.touches[0].clientY - r.top) / r.height;
-    }
-  }, { passive: true });
-  canvas.addEventListener('touchstart', e => {
-    state.clickT = 0;
-    state.clickS = 1;
-    if (e.touches.length > 0) {
-      const r = canvas.getBoundingClientRect();
-      state.mx = (e.touches[0].clientX - r.left) / r.width;
-      state.my = 1 - (e.touches[0].clientY - r.top) / r.height;
-    }
-  }, { passive: true });
-
-  function resize(){
-    const dpr = Math.min(window.devicePixelRatio || 1, isTouchDevice ? 1 : 2);
-    const w = canvas.clientWidth, h = canvas.clientHeight;
-    canvas.width = Math.floor(w*dpr);
-    canvas.height = Math.floor(h*dpr);
+  // ─── Resize ─────────────────────────────────────────────────────────
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width  = Math.floor(canvas.clientWidth  * dpr);
+    canvas.height = Math.floor(canvas.clientHeight * dpr);
     gl.viewport(0, 0, canvas.width, canvas.height);
   }
-  window.addEventListener('resize', resize);
   resize();
+  new ResizeObserver(resize).observe(canvas);
 
+  // ─── Input ──────────────────────────────────────────────────────────
+  window.addEventListener('pointermove', e => {
+    const r = canvas.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) return;
+    mx = (e.clientX - r.left) / r.width;
+    my = 1 - (e.clientY - r.top) / r.height;
+  });
+
+  canvas.addEventListener('pointerdown', e => {
+    const r = canvas.getBoundingClientRect();
+    cx = (e.clientX - r.left) / r.width;
+    cy = 1 - (e.clientY - r.top) / r.height;
+    clickT = 1.0;
+    // cycle shader on canvas click (dots use separate listener that stops propagation)
+    shader = (shader + 1) % SHADERS.length;
+    localStorage.setItem('rastrick_shader', shader);
+    updateUI();
+  });
+
+  window.addEventListener('keydown', e => {
+    if (document.activeElement && document.activeElement !== document.body) return;
+    if (e.key === 'ArrowRight') { shader = (shader + 1) % SHADERS.length; localStorage.setItem('rastrick_shader', shader); updateUI(); }
+    if (e.key === 'ArrowLeft')  { shader = (shader - 1 + SHADERS.length) % SHADERS.length; localStorage.setItem('rastrick_shader', shader); updateUI(); }
+  });
+
+  // ─── Shader selector UI dots ────────────────────────────────────────
+  const ui = document.createElement('div');
+  ui.setAttribute('aria-hidden', 'true');
+  Object.assign(ui.style, {
+    position: 'absolute',
+    bottom: 'clamp(28px,4vh,52px)',
+    right: 'clamp(20px,4vw,56px)',
+    display: 'flex',
+    gap: '10px',
+    zIndex: '4',
+    alignItems: 'center',
+  });
+
+  const dots = SHADERS.map(([, name], i) => {
+    const btn = document.createElement('button');
+    btn.title = name;
+    Object.assign(btn.style, {
+      width: '7px', height: '7px', borderRadius: '50%',
+      border: '1px solid rgba(255,255,255,.22)',
+      background: 'transparent', padding: '0',
+      cursor: 'pointer', flexShrink: '0',
+      transition: 'all .22s',
+    });
+    btn.addEventListener('pointerdown', e => {
+      e.stopPropagation();
+      shader = i;
+      clickT = 0.8;
+      localStorage.setItem('rastrick_shader', shader);
+      updateUI();
+    });
+    ui.appendChild(btn);
+    return btn;
+  });
+  canvas.parentElement.appendChild(ui);
+
+  function updateUI() {
+    dots.forEach((d, i) => {
+      const on = i === shader;
+      d.style.background   = on ? '#c6ff3a' : 'transparent';
+      d.style.borderColor  = on ? '#c6ff3a' : 'rgba(255,255,255,.22)';
+      d.style.transform    = on ? 'scale(1.7)' : 'scale(1)';
+      d.style.boxShadow    = on ? '0 0 6px #c6ff3a' : 'none';
+    });
+  }
+  updateUI();
+
+  // ─── Render loop ────────────────────────────────────────────────────
   const t0 = performance.now();
   let last = t0;
-  function frame(now){
-    const dt = Math.min(0.05, (now - last)/1000);
+
+  function frame(now) {
+    const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
 
-    state.smx += (state.mx - state.smx)*0.08;
-    state.smy += (state.my - state.smy)*0.08;
-    state.clickT += dt;
+    smx += (mx - smx) * 0.055;
+    smy += (my - smy) * 0.055;
+    clickT = Math.max(0, clickT - dt * 1.1);
 
+    const entry = programs[shader];
+    if (!entry) { requestAnimationFrame(frame); return; }
+
+    const { prog, loc } = entry;
     gl.useProgram(prog);
     gl.bindBuffer(gl.ARRAY_BUFFER, buf);
     gl.enableVertexAttribArray(loc.p);
     gl.vertexAttribPointer(loc.p, 2, gl.FLOAT, false, 0, 0);
-    gl.uniform2f(loc.res, canvas.width, canvas.height);
-    gl.uniform1f(loc.time, (now - t0)/1000);
-    gl.uniform2f(loc.m, state.mx, state.my);
-    gl.uniform2f(loc.ms, state.smx, state.smy);
-    gl.uniform1f(loc.sc, window.scrollY / Math.max(1, window.innerHeight));
-    gl.uniform1f(loc.ct, state.clickT);
-    gl.uniform1f(loc.cs, state.clickS);
-    gl.drawArrays(gl.TRIANGLES, 0, 6);
 
+    gl.uniform1f(loc.T,  (now - t0) / 1000);
+    gl.uniform2f(loc.R,  canvas.width, canvas.height);
+    gl.uniform2f(loc.M,  smx, smy);
+    gl.uniform2f(loc.CP, cx, cy);
+    gl.uniform1f(loc.CK, clickT);
+
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     requestAnimationFrame(frame);
   }
+
   requestAnimationFrame(frame);
+
 })();
