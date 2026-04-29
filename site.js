@@ -79,7 +79,7 @@
   // ==================== kinetic hero word swap ====================
   const kinetic = document.getElementById('kinetic-word');
   if (kinetic){
-    const words = ['ignore', 'match', 'forget', 'replicate'];
+    const words = ['scale', 'convert', 'sell', 'grow'];
     let i = 0;
     const swap = () => {
       i = (i+1) % words.length;
@@ -97,6 +97,8 @@
   // ==================== draggable work cards ====================
   const stage = document.querySelector('.work-stage');
   if (stage){
+    // Desktop now uses a CSS hover stack interaction instead of drag.
+    if (window.matchMedia('(min-width: 721px)').matches) return;
     const ringEl = document.querySelector('.cursor-ring');
     const cards = stage.querySelectorAll('.card');
     cards.forEach(c => {

@@ -462,7 +462,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .work-stage {
   position: relative;
-  height: 620px;
+  height: 860px;
   margin: 0 var(--pad);
   border: 1px dashed var(--line-2);
   border-radius: 6px;
@@ -511,6 +511,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
+}
+.card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .card .thumb .ph {
   position: absolute; inset: 0;
@@ -578,7 +584,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .card .meta a.visit:hover { border-color: var(--accent-2); }
 
 .card .thumb .live {
-  position: absolute; top: 12px; right: 12px;
+  position: absolute; top: 12px; left: 12px;
   display: inline-flex; align-items: center; gap: 6px;
   background: rgba(0,0,0,0.6);
   padding: 5px 10px;
@@ -595,6 +601,49 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   width: 6px; height: 6px; border-radius: 50%;
   background: #3dd68c;
   box-shadow: 0 0 8px #3dd68c;
+}
+
+@media (min-width: 721px) {
+  .work-stage {
+    height: 640px;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    padding: 20px 24px;
+    overflow: hidden;
+    scroll-snap-type: none;
+  }
+  .work-stage .hint-label {
+    display: block;
+  }
+  .work-stage .card {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    flex: 0 0 320px;
+    width: 320px;
+    margin-left: -122px;
+    transform: translateY(0) rotate(var(--shelf-r, 0deg)) !important;
+    transform-origin: center bottom;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, border-color .2s ease;
+  }
+  .work-stage .card:first-of-type { margin-left: 0; }
+
+  .work-stage .card:nth-child(2) { --shelf-r: -3deg; z-index: 1; }
+  .work-stage .card:nth-child(3) { --shelf-r: -1.8deg; z-index: 2; }
+  .work-stage .card:nth-child(4) { --shelf-r: -0.6deg; z-index: 3; }
+  .work-stage .card:nth-child(5) { --shelf-r: 0.8deg; z-index: 4; }
+  .work-stage .card:nth-child(6) { --shelf-r: 1.9deg; z-index: 5; }
+  .work-stage .card:nth-child(7) { --shelf-r: 3deg; z-index: 6; }
+
+  .work-stage .card:hover {
+    transform: translateY(-42px) scale(1.01) rotate(0deg) !important;
+    z-index: 30 !important;
+    border-color: var(--accent-2);
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.8), 0 0 0 1px var(--accent-2);
+  }
 }
 
 /* -------------------- about -------------------- */
@@ -2408,38 +2457,6 @@ body.ty-body { cursor: none; }
   .name-ticker {
     padding: 18px 0 0;
   }
-}
-
-/* =======================================================
-   DESKTOP WORK SECTION — clean grid layout
-   Overrides the absolute-positioned drag canvas on desktop.
-   Mobile horizontal scroll strip is preserved (max-width:720px above).
-   ======================================================= */
-@media (min-width: 721px) {
-  .work-stage {
-    height: auto !important;
-    overflow: hidden;
-    cursor: default;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 24px;
-    align-items: start;
-  }
-  .work-stage .hint-label {
-    display: none;
-  }
-  /* position:static means JS-set left/top/zIndex have no layout effect */
-  .work-stage .card {
-    position: static !important;
-    left: auto !important;
-    top: auto !important;
-    transform: none !important;
-    width: 100% !important;
-  }
-}
-@media (min-width: 721px) and (max-width: 1060px) {
-  .work-stage { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* =======================================================
