@@ -228,6 +228,20 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   }
   .nav.nav-open ul a:active,
   .nav.nav-open ul a:hover { background: none; color: var(--accent); padding-left: 14px; }
+
+  /* CTA pill — hide on closed mobile nav, show in open menu */
+  .nav .cta { display: none; }
+  .nav.nav-open .cta {
+    display: inline-flex;
+    order: 4;
+    width: 100%;
+    justify-content: center;
+    margin: 4px 0 24px;
+    padding: 18px 28px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    border-radius: 100px;
+  }
 }
 
 /* -------------------- HERO -------------------- */
