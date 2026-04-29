@@ -1591,7 +1591,7 @@ html.skip-intro body.intro-open .name-ticker { visibility: visible; }
 /* reduce hero canvas brightness a bit so overlays pop */
 .hero canvas { opacity: 0.85; }
 
-/* combined meta tag — desktop hidden, mobile visible */
+/* combined meta tag — always hidden (unused on all viewports) */
 .meta-combined { display: none; }
 
 @media (max-width: 720px) {
@@ -1599,23 +1599,18 @@ html.skip-intro body.intro-open .name-ticker { visibility: visible; }
   .hero .burst { display: none; }
   .hero .rail { display: none; }
   .hero .mini-marquee { display: none; }
-  /* hide canvas on mobile — shaders are desktop only */
-  .hero canvas { display: none; }
   /* push frame below the fixed nav pill */
   .hero .frame { top: 90px; right: var(--pad); bottom: var(--pad); left: var(--pad); }
-  /* keep top tags in a single column so they don't crowd */
+  /* keep top tags in a single column */
   .hero .top { flex-direction: column; align-items: flex-start; gap: 5px; }
-  /* hide the top "Independent Studio · [clock]" tag — moved to bottom combined */
+  /* hide the top "Independent Studio · [clock]" tag */
   .hero-clock-top { display: none; }
-  /* bottom meta: tighten gap, drop scroll arrow, hide studio/services */
-  .hero .bot .meta { gap: 14px; font-size: 10px; letter-spacing: 0.12em; }
-  .hero .bot .meta div:nth-child(3) { display: none; }
-  .meta-studio { display: none; }
-  .meta-services { display: none; }
-  /* show the combined pink-dot meta tag */
-  .meta-combined { display: flex; align-items: center; gap: 0; }
+  /* hide ALL bottom meta items on mobile — clean hero */
+  .hero .bot .meta { display: none; }
   .hero .scroll { display: none; }
   .hero .bot { gap: 0; }
+  /* aurora shader canvas — show on mobile, softer opacity */
+  .hero canvas { display: block; opacity: 0.7; }
 }
 
 /* Accent color swap across selection/hover states */
@@ -2352,14 +2347,10 @@ body.ty-body { cursor: none; }
     gap: 14px;
   }
   .hero .bot .meta {
-    gap: 18px;
-    flex-wrap: wrap;
+    display: none;
   }
   .hero .scroll {
     display: none;
-  }
-  .hero canvas {
-    touch-action: pan-y;
   }
 
   /* Bigger, bolder hero headline on mobile */
