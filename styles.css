@@ -1657,6 +1657,9 @@ html.skip-intro body.intro-open .name-ticker { visibility: visible; }
 /* combined meta tag — always hidden (unused on all viewports) */
 .meta-combined { display: none; }
 
+/* hero mobile meta — hidden on desktop, shown on mobile */
+.hero-mobile-meta { display: none; }
+
 @media (max-width: 720px) {
   .hero .sticker { display: none; }
   .hero .burst { display: none; }
@@ -1674,6 +1677,20 @@ html.skip-intro body.intro-open .name-ticker { visibility: visible; }
   .hero .bot { gap: 0; }
   /* aurora shader canvas — show on mobile, softer opacity */
   .hero canvas { display: block; opacity: 0.7; }
+  /* increased h1 size for mobile readability */
+  .hero h1 { font-size: clamp(72px, 19vw, 88px); }
+  /* mobile-only bottom meta strip */
+  .hero-mobile-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    padding-top: 18px;
+  }
 }
 
 /* Accent color swap across selection/hover states */
