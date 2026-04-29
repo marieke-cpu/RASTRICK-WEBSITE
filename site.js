@@ -28,8 +28,10 @@
   const enterBtn = document.getElementById('enter-btn');
   const bootBar = document.getElementById('boot-bar-inner');
 
+  const alreadyEntered = !!sessionStorage.getItem('rastrick_entered');
+
   // animate the loader bar from 0 -> 100 over a few seconds, then idle at 100
-  if (bootBar){
+  if (bootBar && !alreadyEntered){
     let pct = 0;
     const start = performance.now();
     const dur = 2200;
@@ -44,26 +46,34 @@
   }
 
   if (intro && enterBtn){
-    let closing = false;
-    const open = () => {
-      if (closing) return;
-      closing = true;
-      // CRT power-off: bright flash, horizontal line, collapse to a point.
-      intro.classList.add('tv-off');
-      setTimeout(() => {
-        intro.classList.add('done');
-        document.body.classList.remove('intro-open');
-      }, 1200);
-      setTimeout(() => { intro.remove(); }, 2000);
-    };
-    enterBtn.addEventListener('click', (e) => { e.stopPropagation(); open(); });
-    // also allow clicking the boot screen itself to enter
-    intro.addEventListener('click', (e) => {
-      if (e.target === enterBtn || enterBtn.contains(e.target)) return;
-      open();
-    });
-    // PRESS ANY KEY ▮ — keyboard activation
-    window.addEventListener('keydown', () => { if (!closing) open(); }, { once: true });
+    if (alreadyEntered) {
+      // Return visit — skip the intro instantly, no animation
+      intro.style.display = 'none';
+      document.body.classList.remove('intro-open');
+      intro.remove();
+    } else {
+      let closing = false;
+      const open = () => {
+        if (closing) return;
+        closing = true;
+        sessionStorage.setItem('rastrick_entered', '1');
+        // CRT power-off: bright flash, horizontal line, collapse to a point.
+        intro.classList.add('tv-off');
+        setTimeout(() => {
+          intro.classList.add('done');
+          document.body.classList.remove('intro-open');
+        }, 1200);
+        setTimeout(() => { intro.remove(); }, 2000);
+      };
+      enterBtn.addEventListener('click', (e) => { e.stopPropagation(); open(); });
+      // also allow clicking the boot screen itself to enter
+      intro.addEventListener('click', (e) => {
+        if (e.target === enterBtn || enterBtn.contains(e.target)) return;
+        open();
+      });
+      // PRESS ANY KEY ▮ — keyboard activation
+      window.addEventListener('keydown', () => { if (!closing) open(); }, { once: true });
+    }
   }
 
   // ==================== kinetic hero word swap ====================

@@ -1293,8 +1293,8 @@ footer .meta a:hover { color: var(--accent-2); }
 .intro.tv-off { animation: introBlowout .55s ease-out forwards; }
 @keyframes introBlowout {
   0%   { background-color: #000; }
-  16%  { background-color: rgba(255,255,255,0.95); }
-  38%  { background-color: rgba(255,255,255,0.25); }
+  16%  { background-color: #fff; }
+  38%  { background-color: #555; }
   100% { background-color: #000; }
 }
 
@@ -1416,6 +1416,15 @@ footer .meta a:hover { color: var(--accent-2); }
 /* body enters after intro splits */
 body.intro-open {
   overflow: hidden;
+}
+/* hide page content behind the intro so nothing bleeds through the TV-off animation */
+body.intro-open .nav,
+body.intro-open .hero,
+body.intro-open section,
+body.intro-open footer,
+body.intro-open .ticker,
+body.intro-open .name-ticker {
+  visibility: hidden;
 }
 
 /* =======================================================
@@ -2334,7 +2343,7 @@ body.ty-body { cursor: none; }
 
   /* Bigger, bolder hero headline on mobile */
   .hero h1 {
-    font-size: clamp(68px, 16.5vw, 280px);
+    font-size: clamp(82px, 21vw, 280px);
     line-height: 0.88;
   }
 
