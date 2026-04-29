@@ -1814,6 +1814,7 @@ body.ty-body { cursor: none; }
 @media (max-width: 720px) {
   .ty-hero .bracket { width: 28px; height: 28px; }
   .ty-hero .bracket.tl, .ty-hero .bracket.tr { top: 60px; }
+  .ty-top .tag:first-child { display: none; }
 }
 
 .ty-frame {

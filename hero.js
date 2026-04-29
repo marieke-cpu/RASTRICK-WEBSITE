@@ -1,6 +1,6 @@
 /* RASTRICK — hero shader system
    Desktop: 8 interactive shaders (cycle on click / arrow keys)
-   Mobile:  Aurora Fields shader (touch-reactive, always-on)
+   Mobile:  5 shaders (tap to cycle, Topology Map default)
 */
 (function () {
   'use strict';
@@ -293,6 +293,15 @@
     }`, 'Aurora Grid'],
   ];
 
+  // ─── Mobile shader set (5 shaders, tap to cycle) ─────────────────────
+  const MOBILE_SHADERS = [
+    SHADERS[6], // 0: Topology Map (default)
+    SHADERS[0], // 1: Liquid Metal
+    SHADERS[5], // 2: Nebula Drift
+    SHADERS[7], // 3: Aurora Grid
+    SHADERS[2], // 4: Plasma Storm
+  ];
+
   // ─── GL helpers ──────────────────────────────────────────────────────
   function compile(type, src) {
     const s = gl.createShader(type);
@@ -331,9 +340,9 @@
   }
 
   // Compile programs
-  let programs, activeProgram;
+  let programs, programs_m;
   if (isMobile) {
-    activeProgram = makeProgram(AURORA_FRAG);
+    programs_m = MOBILE_SHADERS.map(([frag]) => makeProgram(frag));
   } else {
     programs = SHADERS.map(([frag]) => makeProgram(frag));
   }
@@ -347,6 +356,7 @@
   let mx = 0.5, my = 0.5, smx = 0.5, smy = 0.5;
   let clickT = 0, cx = 0.5, cy = 0.5;
   let shader = Math.min(+(localStorage.getItem('rastrick_shader') || 0), SHADERS.length - 1);
+  let mShader = isMobile ? Math.min(+(localStorage.getItem('rastrick_mobile_shader') || 0), MOBILE_SHADERS.length - 1) : 0;
 
   // ─── Resize ──────────────────────────────────────────────────────────
   function resize() {
@@ -376,6 +386,8 @@
       cx = (e.touches[0].clientX - r.left) / r.width;
       cy = 1 - (e.touches[0].clientY - r.top) / r.height;
       clickT = 1.0;
+      mShader = (mShader + 1) % MOBILE_SHADERS.length;
+      localStorage.setItem('rastrick_mobile_shader', mShader);
     }, { passive: true });
   } else {
     // Desktop — mouse tracking
@@ -477,7 +489,7 @@
     clickT = Math.max(0, clickT - dt * 1.1);
 
     if (isMobile) {
-      drawFrame(activeProgram, now);
+      drawFrame(programs_m && programs_m[mShader], now);
     } else {
       drawFrame(programs && programs[shader], now);
     }
