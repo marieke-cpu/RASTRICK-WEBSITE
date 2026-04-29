@@ -29,8 +29,8 @@
 
 <!-- NAV -->
 <nav class="ty-nav">
-  <a href="/" class="logo"><span class="pulse"></span>RASTRICK<em class="dot-em">.</em><sup>©'26</sup></a>
-  <a class="back" href="/">← Back to site</a>
+  <a href="index.html" class="logo"><span class="pulse"></span>RASTRICK<em class="dot-em">.</em><sup>©'26</sup></a>
+  <a class="back" href="index.html">← Back to site</a>
 </nav>
 
 <!-- CONFIRMATION -->
@@ -50,15 +50,15 @@
     <div class="ty-idx">§ 00 / Received</div>
 
     <h1>
-      <span class="line"><span class="chars">Got it.</span></span>
-      <span class="line"><span class="chars"><em>Talk soon.</em></span></span>
+      <span class="line"><span class="chars">Received.</span></span>
+      <span class="line"><span class="chars"><em>You're in.</em></span></span>
     </h1>
 
-    <p class="ty-lead">Your note landed safely — nothing slipped through. Expect a considered reply within <em>one business day</em> (Mon–Fri 9am to 5pm · AEST) with a scope, a timeline, and — if we're a fit — a link to lock in a call.</p>
+    <p class="ty-lead">Your inquiry is logged and already in the queue. Expect a reply within <em>one business day</em> (Mon–Fri 9am to 5pm · AEST) — the right platform, the right scope, and a clear quote.</p>
 
     <div class="ty-actions">
       <a href="#" class="ty-btn primary" data-calendly="true">Skip the wait — book a call <span class="arr">↗</span></a>
-      <a href="/#work" class="ty-btn ghost">See recent work</a>
+      <a href="index.html#work" class="ty-btn ghost">See recent work</a>
     </div>
   </div>
 </section>
@@ -84,7 +84,7 @@
     <article class="step">
       <div class="num">/ 03</div>
       <h3>Design &amp; Build</h3>
-      <p>Deposit locks the slot. Design directions land in your inbox first, then hand-coded HTML, CSS &amp; JavaScript — built to last.</p>
+      <p>Deposit locks the slot. Design directions land in your inbox first, then we build on the right platform for the job — performance-first, built to last.</p>
     </article>
   </div>
 </section>
@@ -97,17 +97,17 @@
   </div>
 
   <div class="wait-grid">
-    <a class="wait" href="/#work">
+    <a class="wait" href="index.html#work">
       <div class="num">/ 01 — Recent work</div>
       <h3>See the builds</h3>
-      <p>Live hand-coded websites, work in progress. Drag the cards around — they're real builds.</p>
+      <p>Live conversion builds — brand sites, ad landing pages, eCommerce stores. Drag the cards.</p>
       <span class="visit">View work ↗</span>
     </a>
 
-    <a class="wait" href="/#services">
+    <a class="wait" href="index.html#services">
       <div class="num">/ 02 — The studio</div>
       <h3>How I work</h3>
-      <p>Custom HTML, CSS &amp; JavaScript — four packages from a single page to a complete digital build. No templates, ever.</p>
+      <p>Platform-smart builds on Wix, Webflow, Shopify, and custom code. Four packages matched to your goals.</p>
       <span class="visit">Read services ↗</span>
     </a>
 
@@ -184,13 +184,18 @@
       <b>© 2026 RASTRICK</b>
       <a>Independent Website Design &amp; Development Studio</a>
       <a>Websites impossible to ignore</a>
-      <a href="/">↑ Back to home</a>
+      <a href="index.html">↑ Back to home</a>
     </div>
   </div>
 </footer>
 
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<script src="site.js?v=3"></script>
+<script src="site.js?v=4"></script>
+<script>
+  document.querySelectorAll('a[href="index.html"], a[href="index.html#work"], a[href="index.html#services"]').forEach(function(a) {
+    a.addEventListener('click', function() { sessionStorage.setItem('rastrick_entered', '1'); });
+  });
+</script>
 
 </body>
 </html>

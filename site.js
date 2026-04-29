@@ -173,7 +173,7 @@
   }
 
   // ==================== calendly popup ====================
-  const CALENDLY_URL = 'https://calendly.com/rastrick/intro-call';
+  const CALENDLY_URL = 'https://calendly.com/rastrick';
   document.querySelectorAll('[data-calendly="true"]').forEach(el => {
     el.addEventListener('click', e => {
       if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function'){

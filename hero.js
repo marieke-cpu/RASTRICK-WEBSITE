@@ -1,5 +1,5 @@
 /* RASTRICK — hero shader system
-   Desktop: 5 interactive shaders (cycle on click / arrow keys)
+   Desktop: 8 interactive shaders (cycle on click / arrow keys)
    Mobile:  Aurora Fields shader (touch-reactive, always-on)
 */
 (function () {
@@ -59,9 +59,41 @@
     gl_FragColor=vec4(clamp(col,0.,1.),1.);
   }`;
 
-  // ─── 5 Desktop shaders ───────────────────────────────────────────────
+  // ─── 8 Desktop shaders ───────────────────────────────────────────────
   const SHADERS = [
-    // 0: GRID RUNNER — retro perspective grid, mouse shifts vanishing point
+    // 0: LIQUID METAL — iridescent flowing noise, mouse creates wave distortion, click ripple
+    [`precision mediump float;
+    uniform float T;uniform vec2 R,M,CP;uniform float CK;
+    float nxl(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+      float a=fract(sin(dot(i,vec2(127.1,311.7)))*43758.5);
+      float b=fract(sin(dot(i+vec2(1,0),vec2(127.1,311.7)))*43758.5);
+      float c=fract(sin(dot(i+vec2(0,1),vec2(127.1,311.7)))*43758.5);
+      float e=fract(sin(dot(i+vec2(1,1),vec2(127.1,311.7)))*43758.5);
+      return mix(mix(a,b,f.x),mix(c,e,f.x),f.y);}
+    void main(){
+      vec2 uv=gl_FragCoord.xy/R;float ar=R.x/R.y;
+      vec2 p=(uv*2.-1.)*vec2(ar,1.);
+      vec2 mp=(M*2.-1.)*vec2(ar,1.);
+      float md=length(p-mp)+.01;
+      vec2 dp=p+normalize(p-mp+vec2(.001,0.))*sin(md*7.-T*2.8)*exp(-md*1.4)*.16;
+      float n1=nxl(dp*2.1+T*.11);
+      float n2=nxl(dp*4.4-T*.08+n1*.45);
+      float n3=nxl(dp*9.+T*.06+n2*.3);
+      float m=n1*.5+n2*.32+n3*.18;
+      float h=m*6.28+T*.18;
+      vec3 lime=vec3(.776,1.,.227),mag=vec3(1.,.239,.941),cyan=vec3(.28,.88,1.),silver=vec3(.65,.72,.78);
+      vec3 ca=mix(silver,lime,sin(h)*.5+.5);
+      vec3 cb=mix(mag,cyan,cos(h*.75+1.2)*.5+.5);
+      vec3 col=mix(vec3(.018,.022,.032),mix(ca,cb,m)*(.5+.6*m),smoothstep(.15,.7,m));
+      vec2 cp=(CP*2.-1.)*vec2(ar,1.);
+      float rip=sin(length(p-cp)*11.-T*7.)*exp(-length(p-cp)*1.8)*CK;
+      col+=lime*max(0.,rip)*.5+mag*max(0.,-rip)*.4;
+      float vig=1.-dot(uv-.5,uv-.5)*1.4;
+      col*=max(0.,vig);
+      gl_FragColor=vec4(clamp(col,0.,1.),1.);
+    }`, 'Liquid Metal'],
+
+    // 1: GRID RUNNER — retro perspective grid, mouse shifts vanishing point
     [`precision mediump float;
     uniform float T;uniform vec2 R,M,CP;uniform float CK;
     void main(){
@@ -202,90 +234,6 @@
       col*=max(0.,vig);
       gl_FragColor=vec4(clamp(col,0.,1.),1.);
     }`, 'Nebula Drift'],
-
-    // 5: WARP SPEED — hyperspace starfield, mouse is vanishing point, click nova
-    [`precision mediump float;
-    uniform float T;uniform vec2 R,M,CP;uniform float CK;
-    float hfw(float n){return fract(sin(n)*43758.545);}
-    void main(){
-      vec2 uv=gl_FragCoord.xy/R;float ar=R.x/R.y;
-      vec2 p=(uv*2.-1.)*vec2(ar,1.);
-      vec2 mp=(M*2.-1.)*vec2(ar,1.);
-      vec2 d=p-mp;float r=length(d)+.001;float a=atan(d.y,d.x);
-      float sid=hfw(floor(a*18.+100.));
-      float z=fract(r*2.2+sid*3.1-T*(1.8+sid*1.1));
-      float streak=pow(max(0.,1.-abs(z-.85)*9.),2.)*exp(-r*.8);
-      vec3 lime=vec3(.776,1.,.227),mag=vec3(1.,.239,.941),white=vec3(.9,.95,1.);
-      vec3 sc=sid<.38?lime:sid<.7?white:mag;
-      vec3 col=mix(vec3(.008,.01,.018),sc,streak);
-      col+=lime*.6*exp(-r*5.5);
-      vec2 cp=(CP*2.-1.)*vec2(ar,1.);
-      col+=lime*CK*.8*exp(-length(p-cp)*3.5)+mag*CK*.4*exp(-length(p-cp)*1.5);
-      float vig=1.-dot(uv-.5,uv-.5)*1.6;
-      col*=max(0.,vig);
-      gl_FragColor=vec4(clamp(col,0.,1.),1.);
-    }`, 'Warp Speed'],
-
-    // 6: CIRCUIT BOARD — PCB traces with pulse propagation, mouse activates, click ring
-    [`precision mediump float;
-    uniform float T;uniform vec2 R,M,CP;uniform float CK;
-    float hfc(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.545);}
-    void main(){
-      vec2 uv=gl_FragCoord.xy/R;float ar=R.x/R.y;
-      vec2 p=uv*vec2(ar,1.)*9.;
-      vec2 mp=(M*2.-1.)*vec2(ar,1.);
-      float md=length(uv*2.-1.-mp);
-      vec2 id=floor(p);vec2 fr=fract(p)-.5;
-      float cell=hfc(id);
-      float trH=smoothstep(.055,.0,abs(fr.y))*(cell>.5?1.:0.);
-      float trV=smoothstep(.055,.0,abs(fr.x))*(cell<=.5?1.:0.);
-      float tr=max(trH,trV);
-      float node=smoothstep(.12,.06,length(fr))*step(.72,hfc(id+.3));
-      float pulse=fract(cell*4.1+T*(.5+cell*.5)-md*.6);
-      float lit=tr*(.2+.8*exp(-abs(pulse-.5)*11.))+node*.6;
-      float nc=hfc(id+1.);
-      vec3 lime=vec3(.776,1.,.227),mag=vec3(1.,.239,.941),cyan=vec3(.28,.88,1.);
-      vec3 tc=nc<.4?lime:nc<.72?cyan:mag;
-      vec3 col=mix(vec3(.012,.016,.024),tc,lit);
-      vec2 cp=(CP*2.-1.)*vec2(ar,1.);
-      float rd=length(uv*2.-1.-cp);
-      col+=lime*exp(-abs(rd-CK*1.6)*8.)*CK*.7;
-      float vig=1.-dot(uv-.5,uv-.5)*1.7;
-      col*=max(0.,vig);
-      gl_FragColor=vec4(clamp(col,0.,1.),1.);
-    }`, 'Circuit Board'],
-
-    // 7: LIQUID METAL — iridescent flowing noise, mouse creates wave distortion, click ripple
-    [`precision mediump float;
-    uniform float T;uniform vec2 R,M,CP;uniform float CK;
-    float nxl(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
-      float a=fract(sin(dot(i,vec2(127.1,311.7)))*43758.5);
-      float b=fract(sin(dot(i+vec2(1,0),vec2(127.1,311.7)))*43758.5);
-      float c=fract(sin(dot(i+vec2(0,1),vec2(127.1,311.7)))*43758.5);
-      float e=fract(sin(dot(i+vec2(1,1),vec2(127.1,311.7)))*43758.5);
-      return mix(mix(a,b,f.x),mix(c,e,f.x),f.y);}
-    void main(){
-      vec2 uv=gl_FragCoord.xy/R;float ar=R.x/R.y;
-      vec2 p=(uv*2.-1.)*vec2(ar,1.);
-      vec2 mp=(M*2.-1.)*vec2(ar,1.);
-      float md=length(p-mp)+.01;
-      vec2 dp=p+normalize(p-mp+vec2(.001,0.))*sin(md*7.-T*2.8)*exp(-md*1.4)*.16;
-      float n1=nxl(dp*2.1+T*.11);
-      float n2=nxl(dp*4.4-T*.08+n1*.45);
-      float n3=nxl(dp*9.+T*.06+n2*.3);
-      float m=n1*.5+n2*.32+n3*.18;
-      float h=m*6.28+T*.18;
-      vec3 lime=vec3(.776,1.,.227),mag=vec3(1.,.239,.941),cyan=vec3(.28,.88,1.),silver=vec3(.65,.72,.78);
-      vec3 ca=mix(silver,lime,sin(h)*.5+.5);
-      vec3 cb=mix(mag,cyan,cos(h*.75+1.2)*.5+.5);
-      vec3 col=mix(vec3(.018,.022,.032),mix(ca,cb,m)*(.5+.6*m),smoothstep(.15,.7,m));
-      vec2 cp=(CP*2.-1.)*vec2(ar,1.);
-      float rip=sin(length(p-cp)*11.-T*7.)*exp(-length(p-cp)*1.8)*CK;
-      col+=lime*max(0.,rip)*.5+mag*max(0.,-rip)*.4;
-      float vig=1.-dot(uv-.5,uv-.5)*1.4;
-      col*=max(0.,vig);
-      gl_FragColor=vec4(clamp(col,0.,1.),1.);
-    }`, 'Liquid Metal'],
 
     // 8: TOPOLOGY MAP — elevation contour lines, mouse raises terrain, click seismic wave
     [`precision mediump float;
