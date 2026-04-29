@@ -79,7 +79,7 @@
   // ==================== kinetic hero word swap ====================
   const kinetic = document.getElementById('kinetic-word');
   if (kinetic){
-    const words = ['scale', 'convert', 'sell', 'grow'];
+    const words = ['scale', 'sell', 'grow'];
     let i = 0;
     const swap = () => {
       i = (i+1) % words.length;
