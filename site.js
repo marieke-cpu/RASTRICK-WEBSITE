@@ -94,11 +94,9 @@
     setInterval(swap, 2400);
   }
 
-  // ==================== draggable work cards ====================
+  // ==================== draggable work cards (mobile only) ====================
   const stage = document.querySelector('.work-stage');
-  if (stage){
-    // Desktop now uses a CSS hover stack interaction instead of drag.
-    if (window.matchMedia('(min-width: 721px)').matches) return;
+  if (stage && !window.matchMedia('(min-width: 721px)').matches){
     const ringEl = document.querySelector('.cursor-ring');
     const cards = stage.querySelectorAll('.card');
     cards.forEach(c => {
@@ -148,29 +146,48 @@
   // ==================== packages slider ====================
   const pkgSlider = document.getElementById('pkg-slider');
   if (pkgSlider) {
-    // drag-scroll
-    let isDown = false, startX = 0, scrollLeft = 0;
+    // mouse drag-scroll (desktop)
+    let isDown = false, startX = 0, scrollLeft = 0, didDrag = false;
     pkgSlider.addEventListener('mousedown', e => {
       isDown = true;
+      didDrag = false;
       pkgSlider.classList.add('is-dragging');
       startX = e.pageX - pkgSlider.offsetLeft;
       scrollLeft = pkgSlider.scrollLeft;
     });
-    const endDrag = () => { isDown = false; pkgSlider.classList.remove('is-dragging'); };
+    const endDrag = () => {
+      isDown = false;
+      pkgSlider.classList.remove('is-dragging');
+    };
     pkgSlider.addEventListener('mouseleave', endDrag);
     pkgSlider.addEventListener('mouseup', endDrag);
     pkgSlider.addEventListener('mousemove', e => {
       if (!isDown) return;
       e.preventDefault();
+      didDrag = true;
       const x = e.pageX - pkgSlider.offsetLeft;
-      pkgSlider.scrollLeft = scrollLeft - (x - startX) * 1.4;
+      pkgSlider.scrollLeft = scrollLeft - (x - startX) * 1.2;
     });
-    // arrow nav — scroll by one card width
+
+    // horizontal wheel scroll (mouse wheel on desktop)
+    pkgSlider.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return; // already horizontal trackpad
+      e.preventDefault();
+      pkgSlider.scrollLeft += e.deltaY * 1.5;
+    }, { passive: false });
+
+    // arrow nav — snap to next/prev card
     const scrollByCard = (dir) => {
-      const card = pkgSlider.querySelector('.pkg');
-      if (!card) return;
-      const cardW = card.offsetWidth + 1; // +1 for gap
-      pkgSlider.scrollBy({ left: dir * cardW, behavior: 'smooth' });
+      const cards = [...pkgSlider.querySelectorAll('.pkg')];
+      if (!cards.length) return;
+      const sliderLeft = pkgSlider.getBoundingClientRect().left;
+      if (dir > 0) {
+        const next = cards.find(c => c.getBoundingClientRect().left > sliderLeft + 10);
+        if (next) pkgSlider.scrollTo({ left: pkgSlider.scrollLeft + next.getBoundingClientRect().left - sliderLeft, behavior: 'smooth' });
+      } else {
+        const prev = [...cards].reverse().find(c => c.getBoundingClientRect().left < sliderLeft - 10);
+        if (prev) pkgSlider.scrollTo({ left: pkgSlider.scrollLeft + prev.getBoundingClientRect().left - sliderLeft, behavior: 'smooth' });
+      }
     };
     const prevBtn = document.getElementById('pkg-prev');
     const nextBtn = document.getElementById('pkg-next');

@@ -851,6 +851,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  touch-action: pan-x;
   cursor: grab;
   user-select: none;
 }
@@ -1109,6 +1110,12 @@ form.book label {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink-dim);
+  cursor: default;
+}
+form.book .chips {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 6px;
+  cursor: default;
 }
 form.book input, form.book textarea, form.book select {
   font-family: inherit;
@@ -1125,10 +1132,6 @@ form.book input:focus, form.book textarea:focus, form.book select:focus {
   border-color: var(--accent);
 }
 form.book textarea { min-height: 100px; resize: vertical; }
-form.book .chips {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  margin-top: 6px;
-}
 form.book .chip {
   padding: 8px 14px;
   font-family: var(--f-mono);
@@ -1140,6 +1143,11 @@ form.book .chip {
   border-radius: 100px;
   cursor: pointer;
   transition: all .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  position: relative;
+  z-index: 1;
 }
 form.book .chip.on {
   background: var(--accent);
