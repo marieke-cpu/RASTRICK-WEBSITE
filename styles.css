@@ -643,7 +643,41 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   box-shadow: 0 0 8px #3dd68c;
 }
 
-@media (min-width: 721px) {
+/* tablet: horizontal scroll slider (matches mobile behaviour) */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .work-stage {
+    height: auto !important;
+    min-height: 0;
+    overflow-x: auto;
+    overflow-y: visible;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 16px;
+    padding: 24px 24px 32px;
+    cursor: default;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 24px;
+    border-radius: 6px;
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+  .work-stage .hint-label { display: none; }
+  .work-stage .card {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    flex-shrink: 0;
+    width: 56vw;
+    max-width: 360px;
+    scroll-snap-align: start;
+  }
+}
+
+/* desktop: stacked shelf */
+@media (min-width: 1025px) {
   .work-stage {
     height: 640px;
     cursor: default;
@@ -925,8 +959,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .pkg-grid { grid-template-columns: repeat(2, 1fr); }
   .pkg .head .name { font-size: 36px; }
 }
+@media (max-width: 1024px) {
+  .pkg { padding: 32px 24px 28px; min-height: 0; }
+}
 @media (max-width: 640px) {
   .pkg-grid { grid-template-columns: 1fr; }
+  .pkg { padding: 28px 20px 24px; }
 }
 
 /* -------------------- faq -------------------- */
@@ -1719,8 +1757,12 @@ html.skip-intro body.intro-open .name-ticker { visibility: visible; }
   }
 }
 
+/* ---- tablet: larger hero h1 ---- */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .hero h1 { font-size: clamp(80px, 16vw, 180px); }
+}
 /* ---- desktop: clamp h1 by viewport height so bot meta never overflows ---- */
-@media (min-width: 721px) {
+@media (min-width: 1025px) {
   .hero h1 { font-size: clamp(48px, min(13vw, 20vh), 280px); }
 }
 
