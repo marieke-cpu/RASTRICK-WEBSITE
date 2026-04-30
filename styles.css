@@ -979,6 +979,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 /* kickstart card: pink accent on name */
 .pkg-kickstart .head .name em { color: var(--accent-2); }
+.pkg-kickstart .flag { color: var(--accent-2); border-color: var(--accent-2); }
 /* pkg slider nav buttons */
 .pkg-nav {
   display: flex; align-items: center; justify-content: flex-end; gap: 10px;

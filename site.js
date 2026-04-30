@@ -195,6 +195,7 @@
   document.querySelectorAll('form.book .chip').forEach(ch => {
     ch.addEventListener('click', e => {
       e.preventDefault();
+      e.stopPropagation();
       ch.classList.toggle('on');
       syncServices();
       syncUpgrades();
