@@ -87,7 +87,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   z-index: 100;
   width: min(calc(100% - 32px), 1320px);
   display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 14px 10px 18px;
+  padding: 6px 14px 6px 14px;
   background: rgba(8,9,11,0.55);
   backdrop-filter: blur(22px) saturate(1.3);
   -webkit-backdrop-filter: blur(22px) saturate(1.3);
@@ -172,8 +172,19 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ---- desktop: hide logo mark, show text ---- */
+/* ---- nav logos: desktop=wordmark, mobile=lettermark ---- */
+/* lettermark (Logo.png) — mobile closed only */
 .nav-logo-mark { display: none; }
+/* wordmark (3.png) — desktop + mobile open */
+.nav-logo-word {
+  display: block;
+  height: 56px;
+  width: auto;
+  border-radius: 4px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+.nav .nav-logo-text { display: none; }
 
 /* ---- base: mobile hides desktop links ---- */
 @media (max-width: 820px) {
@@ -189,14 +200,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     width: auto;
     padding: 6px 10px 6px 12px;
   }
-  .nav .nav-logo-mark {
-    display: block;
-    width: 26px;
-    height: 26px;
-    border-radius: 4px;
-    flex-shrink: 0;
-  }
-  .nav .nav-logo-text { display: none; }
+  /* mobile closed: show lettermark, hide wordmark */
+  .nav .nav-logo-mark { display: block; height: 26px; width: auto; border-radius: 4px; flex-shrink: 0; }
+  .nav .nav-logo-word { display: none; }
   .nav-toggle { display: flex; }
   .nav ul { display: none; }
 
@@ -217,8 +223,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   }
   /* keep logo + toggle on the first row */
   .nav.nav-open .logo { order: 1; flex: 1; }
-  .nav.nav-open .nav-logo-text { display: inline; }
   .nav.nav-open .nav-toggle { order: 2; }
+  /* mobile open: switch to wordmark */
+  .nav.nav-open .nav-logo-mark { display: none; }
+  .nav.nav-open .nav-logo-word { display: block; height: 28px; border-radius: 4px; flex-shrink: 0; }
   /* links drop to second row, full-width */
   .nav.nav-open ul {
     order: 3;
@@ -1823,6 +1831,16 @@ body.ty-body { cursor: none; }
   display: flex; align-items: center; gap: 10px;
   text-transform: uppercase;
 }
+.ty-nav .logo .nav-logo-mark { display: none; }
+.ty-nav .logo .nav-logo-word {
+  display: block;
+  height: 56px;
+  width: auto;
+  border-radius: 4px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+.ty-nav .logo .nav-logo-text { display: none; }
 .ty-nav .logo .pulse {
   width: 8px; height: 8px; border-radius: 50%;
   background: var(--accent);
@@ -1849,6 +1867,8 @@ body.ty-body { cursor: none; }
 @media (max-width: 720px) {
   .ty-nav { width: calc(100% - 48px); padding: 8px 12px 8px 14px; }
   .ty-nav .logo { font-size: 16px; }
+  .ty-nav .logo .nav-logo-mark { display: block; height: 26px; }
+  .ty-nav .logo .nav-logo-word { display: none; }
   .ty-nav .logo sup { display: none; }
   .ty-nav .back { font-size: 10px; padding: 8px 14px; letter-spacing: 0.14em; }
 }
@@ -2219,11 +2239,11 @@ body.ty-body { cursor: none; }
   border-top: 1px solid var(--line);
   overflow: hidden;
   background: var(--bg);
-  padding: 10px 0 0;
+  padding: 18px 0;
   margin-bottom: -1px;
 }
 .name-ticker .track {
-  display: flex; gap: 60px;
+  display: flex; gap: 48px;
   white-space: nowrap;
   animation: scroll-x 30s linear infinite;
   width: max-content;
@@ -2237,7 +2257,7 @@ body.ty-body { cursor: none; }
   font-weight: 400;
   letter-spacing: -0.01em;
   color: var(--ink);
-  display: flex; align-items: center; gap: 60px;
+  display: flex; align-items: center; gap: 48px;
   text-transform: uppercase;
   line-height: 1;
 }
@@ -2258,6 +2278,18 @@ body.ty-body { cursor: none; }
       transparent 340deg 360deg);
   border-radius: 50%;
   animation: spin 8s linear infinite;
+}
+.ticker-logo {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+@media (max-width: 720px) {
+  .ticker-logo { height: clamp(36px, 11vw, 54px); }
 }
 
 /* =======================================================
