@@ -202,7 +202,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   }
   /* mobile closed: show wordmark (4.png), hide lettermark */
   .nav .nav-logo-mark { display: none; }
-  .nav .nav-logo-word { display: block; height: 30px; width: auto; border-radius: 4px; flex-shrink: 0; object-fit: contain; }
+  .nav .nav-logo-word { display: block; height: 48px; width: auto; border-radius: 4px; flex-shrink: 0; object-fit: contain; }
   .nav-toggle { display: flex; }
   .nav ul { display: none; }
 
@@ -226,7 +226,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .nav.nav-open .nav-toggle { order: 2; }
   /* mobile open: show wordmark (4.png) */
   .nav.nav-open .nav-logo-mark { display: none; }
-  .nav.nav-open .nav-logo-word { display: block; height: 32px; width: auto; border-radius: 4px; flex-shrink: 0; object-fit: contain; }
+  .nav.nav-open .nav-logo-word { display: block; height: 48px; width: auto; border-radius: 4px; flex-shrink: 0; object-fit: contain; }
   /* links drop to second row, full-width */
   .nav.nav-open ul {
     order: 3;
@@ -2289,8 +2289,8 @@ body.ty-body { cursor: none; }
   vertical-align: middle;
 }
 @media (max-width: 720px) {
-  .ticker-logo { height: clamp(64px, 18vw, 100px); }
-  .name-ticker .star { width: 44px; height: 44px; }
+  .ticker-logo { height: clamp(80px, 22vw, 120px); }
+  .name-ticker .star { width: 20px; height: 20px; }
 }
 
 /* =======================================================
