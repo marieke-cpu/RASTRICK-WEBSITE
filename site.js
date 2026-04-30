@@ -145,17 +145,59 @@
     });
   }
 
+  // ==================== packages slider ====================
+  const pkgSlider = document.getElementById('pkg-slider');
+  if (pkgSlider) {
+    // drag-scroll
+    let isDown = false, startX = 0, scrollLeft = 0;
+    pkgSlider.addEventListener('mousedown', e => {
+      isDown = true;
+      pkgSlider.classList.add('is-dragging');
+      startX = e.pageX - pkgSlider.offsetLeft;
+      scrollLeft = pkgSlider.scrollLeft;
+    });
+    const endDrag = () => { isDown = false; pkgSlider.classList.remove('is-dragging'); };
+    pkgSlider.addEventListener('mouseleave', endDrag);
+    pkgSlider.addEventListener('mouseup', endDrag);
+    pkgSlider.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - pkgSlider.offsetLeft;
+      pkgSlider.scrollLeft = scrollLeft - (x - startX) * 1.4;
+    });
+    // arrow nav — scroll by one card width
+    const scrollByCard = (dir) => {
+      const card = pkgSlider.querySelector('.pkg');
+      if (!card) return;
+      const cardW = card.offsetWidth + 1; // +1 for gap
+      pkgSlider.scrollBy({ left: dir * cardW, behavior: 'smooth' });
+    };
+    const prevBtn = document.getElementById('pkg-prev');
+    const nextBtn = document.getElementById('pkg-next');
+    if (prevBtn) prevBtn.addEventListener('click', () => scrollByCard(-1));
+    if (nextBtn) nextBtn.addEventListener('click', () => scrollByCard(1));
+  }
+
   // ==================== form chips ====================
   const syncServices = () => {
     const hidden = document.querySelector('#services-val');
     if (!hidden) return;
-    hidden.value = [...document.querySelectorAll('form.book .chip.on')].map(c => c.textContent.trim()).join(', ');
+    hidden.value = [...document.querySelectorAll('form.book .chip.on')]
+      .filter(c => !c.closest('.upgrades'))
+      .map(c => c.textContent.trim()).join(', ');
+  };
+  const syncUpgrades = () => {
+    const hidden = document.querySelector('#upgrades-val');
+    if (!hidden) return;
+    hidden.value = [...document.querySelectorAll('form.book .chips.upgrades .chip.on')]
+      .map(c => c.textContent.trim()).join(', ');
   };
   document.querySelectorAll('form.book .chip').forEach(ch => {
     ch.addEventListener('click', e => {
       e.preventDefault();
       ch.classList.toggle('on');
       syncServices();
+      syncUpgrades();
     });
   });
 
@@ -164,6 +206,7 @@
   if (form){
     form.addEventListener('submit', () => {
       syncServices();
+      syncUpgrades();
       const btn = form.querySelector('button[type=submit]');
       if (btn){
         btn.disabled = true;

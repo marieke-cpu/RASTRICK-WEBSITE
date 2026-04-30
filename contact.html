@@ -507,21 +507,10 @@
           <label>Name<input name="name" type="text" required autocomplete="name" placeholder="Your name"></label>
           <label>Email<input name="email" type="email" required autocomplete="email" placeholder="hello@yourbusiness.com"></label>
         </div>
-        <div class="row">
-          <label>Business / Company (optional)<input name="company" type="text" placeholder="Your business name"></label>
-          <label>Budget
-            <select name="budget">
-              <option value="">Select a range</option>
-              <option>Under AUD 1,500 (Kickstart)</option>
-              <option>AUD 1,500 – 4,000</option>
-              <option>AUD 4,000 – 8,000</option>
-              <option>AUD 8,000+</option>
-              <option>Not sure yet</option>
-            </select>
-          </label>
-        </div>
+        <label>Business / Company (optional)<input name="company" type="text" placeholder="Your business name"></label>
         <label>Which package interests you?
           <div class="chips">
+            <span class="chip" id="chip-kickstart">Kickstart</span>
             <span class="chip">Starter</span>
             <span class="chip">Growth</span>
             <span class="chip">eCommerce</span>
@@ -529,6 +518,17 @@
             <span class="chip">Not sure yet</span>
           </div>
           <input type="hidden" id="services-val" name="services" value="">
+        </label>
+        <label>Growth Upgrades (Optional)
+          <div class="chips upgrades">
+            <span class="chip">Landing Pages (Ads-Ready)</span>
+            <span class="chip">Conversion Optimisation</span>
+            <span class="chip">Advanced Tracking Setup</span>
+            <span class="chip">Ongoing Monthly Care Plan</span>
+            <span class="chip">Performance Pack</span>
+            <span class="chip">Not sure yet</span>
+          </div>
+          <input type="hidden" id="upgrades-val" name="upgrades" value="">
         </label>
         <label>Tell me about the project<textarea name="project" required placeholder="A few sentences about the business, what you want the site to do, and your rough timeline. Not sure which platform? Tell me your goals and I'll recommend the right build path."></textarea></label>
         <button type="submit"><span>Send inquiry</span><span>↗</span></button>

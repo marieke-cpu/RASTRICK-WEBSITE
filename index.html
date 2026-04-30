@@ -146,6 +146,7 @@
       <div class="meta">
         <div class="meta-services"><b>Focus</b>Leads · Sales · Growth</div>
         <div><b>Platforms</b>Wix · Webflow · Shopify · Custom</div>
+        <div><b>Websites built for</b>Service based businesses  · Ecommerce Stores </div>
         <div class="tag meta-combined"><span class="dot"></span>Independent Studio · <span id="clock-2">—</span> · Canberra ACT AU</div>
       </div>
       <div class="hero-mobile-meta">
@@ -294,7 +295,7 @@
     <div class="about-stats">
       <div class="stat"><div class="num"><em>01</em> strategy</div><div class="lbl">Every decision ties back to conversion goals, not trends.</div></div>
       <div class="stat"><div class="num">4</div><div class="lbl">Platform paths: Wix, Webflow, Shopify, or custom code.</div></div>
-      <div class="stat"><div class="num"><em>2–6</em></div><div class="lbl">Weeks to launch depending on scope and platform.</div></div>
+      <div class="stat"><div class="num"><em>1–6</em></div><div class="lbl">Weeks to launch depending on scope and platform.</div></div>
       <div class="stat"><div class="num">AEST</div><div class="lbl">Canberra based, partnering with businesses across AU and beyond.</div></div>
     </div>
   </div>
@@ -371,13 +372,14 @@
     <h2>Choose your <em>growth path.</em></h2>
   </div>
 
-  <div class="pkg-grid">
+  <div class="pkg-grid" id="pkg-slider">
     <article class="pkg">
       <div class="head">
         <div class="kind">Package / 01</div>
         <div class="name">Star<em>ter</em></div>
         <div class="sub">Wix-based starter website for businesses that need to launch quickly, look credible, and start capturing enquiries.</div>
       </div>
+      <div class="price"><span class="cur">From</span><span class="amt">$2,500</span></div>
       <ul>
         <li>1-page conversion-focused website</li>
         <li>Built on Wix for speed-to-launch</li>
@@ -396,6 +398,7 @@
         <div class="name">Grow<em>th</em></div>
         <div class="sub">Webflow growth website for businesses that want stronger positioning, better lead flow, and room to scale.</div>
       </div>
+      <div class="price"><span class="cur">From</span><span class="amt">$4,500</span><span class="per">– $6,000</span></div>
       <ul>
         <li>Up to 5 strategic conversion pages</li>
         <li>Built on Webflow for scale and control</li>
@@ -414,6 +417,7 @@
         <div class="name">e<em>Commerce</em></div>
         <div class="sub">Shopify eCommerce build for brands ready to increase online sales with better UX, clearer offers, and stronger conversion flow.</div>
       </div>
+      <div class="price"><span class="cur">From</span><span class="amt">$6,000</span><span class="per">– $8,000+</span></div>
       <ul>
         <li>Conversion-focused Shopify storefront</li>
         <li>Up to 8 custom pages</li>
@@ -433,6 +437,7 @@
         <div class="name">Cus<em>tom</em></div>
         <div class="sub">Premium custom development for complex requirements, high performance targets, and long-term scalability.</div>
       </div>
+      <div class="price"><span class="cur">From</span><span class="amt">$8,000</span><span class="per">– $12,000+</span></div>
       <ul>
         <li>Everything in eCommerce</li>
         <li>Unlimited pages (agreed scope)</li>
@@ -444,6 +449,28 @@
       </ul>
       <a class="cta" href="#contact">Go custom <span>→</span></a>
     </article>
+
+    <article class="pkg pkg-kickstart">
+      <div class="head">
+        <div class="kind">Kickstart</div>
+        <div class="name">Kick<em>start</em></div>
+        <div class="sub">For early-stage businesses only. Designed for small businesses and startups that need a professional website but are not yet at full budget.</div>
+      </div>
+      <div class="price"><span class="cur">From</span><span class="amt">$1,000</span></div>
+      <ul>
+        <li>1–2 page Wix website</li>
+        <li>Conversion-focused layout</li>
+        <li>Mobile responsive</li>
+        <li>Contact form + analytics</li>
+        <li class="faint">Limited spots — application required</li>
+        <li class="faint">Not for businesses ready to invest in growth</li>
+      </ul>
+      <a class="cta" href="contact.html?pkg=kickstart">Apply for Kickstart <span>→</span></a>
+    </article>
+  </div>
+  <div class="pkg-nav" aria-label="Package navigation">
+    <button class="pkg-nav-btn" id="pkg-prev" aria-label="Previous package">←</button>
+    <button class="pkg-nav-btn" id="pkg-next" aria-label="Next package">→</button>
   </div>
 </section>
 
@@ -535,20 +562,10 @@
         <label>Name<input name="name" type="text" required autocomplete="name"></label>
         <label>Email<input name="email" type="email" required autocomplete="email"></label>
       </div>
-      <div class="row">
-        <label>Company (optional)<input name="company" type="text"></label>
-        <label>Budget
-          <select name="budget">
-            <option value="">Select a range</option>
-            <option>Under AUD 1,500</option>
-            <option>AUD 1,500 – 4,000</option>
-            <option>AUD 4,000 – 8,000</option>
-            <option>AUD 8,000+</option>
-          </select>
-        </label>
-      </div>
+      <label>Company (optional)<input name="company" type="text"></label>
       <label>Which package interests you?
         <div class="chips">
+          <span class="chip">Kickstart</span>
           <span class="chip">Starter</span>
           <span class="chip">Growth</span>
           <span class="chip">eCommerce</span>
@@ -556,6 +573,17 @@
           <span class="chip">Not sure yet</span>
         </div>
         <input type="hidden" id="services-val" name="services" value="">
+      </label>
+      <label>Growth Upgrades (Optional)
+        <div class="chips upgrades">
+          <span class="chip">Landing Pages (Ads-Ready)</span>
+          <span class="chip">Conversion Optimisation</span>
+          <span class="chip">Advanced Tracking Setup</span>
+          <span class="chip">Ongoing Monthly Care Plan</span>
+          <span class="chip">Performance Pack</span>
+          <span class="chip">Not sure yet</span>
+        </div>
+        <input type="hidden" id="upgrades-val" name="upgrades" value="">
       </label>
       <label>Tell me about the project<textarea name="project" required placeholder="A few sentences about the business, the goal, and your ideal timeline."></textarea></label>
       <button type="submit"><span>Get my growth plan</span><span>↗</span></button>
