@@ -1693,6 +1693,51 @@ html.skip-intro body.intro-open .name-ticker { visibility: visible; }
   }
 }
 
+/* ---- desktop: clamp h1 by viewport height so bot meta never overflows ---- */
+@media (min-width: 721px) {
+  .hero h1 { font-size: clamp(48px, min(13vw, 20vh), 280px); }
+}
+
+/* ---- mobile-only badge tags ---- */
+.m-badge { display: none; }
+
+@media (max-width: 720px) {
+  .m-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 5px 11px; border-radius: 100px; width: fit-content;
+    pointer-events: none; white-space: nowrap;
+  }
+  .m-badge-drop { background: rgba(198,255,58,0.1); border: 1px solid var(--accent); color: var(--accent); }
+  .m-badge-time { background: rgba(255,61,240,0.06); border: 1px solid rgba(255,61,240,0.35); color: var(--ink-dim); }
+  .m-rec-dot {
+    display: inline-block; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent-2); flex-shrink: 0; animation: blink 1.8s ease-in-out infinite;
+  }
+}
+
+/* ---- mobile floating icons ---- */
+.hero-m-icons { display: none; }
+
+@keyframes mFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-9px) scale(1.08); }
+}
+@keyframes mSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 720px) {
+  .hero-m-icons {
+    display: block; position: absolute; inset: 0; pointer-events: none; z-index: 3;
+  }
+  .m-icon { position: absolute; pointer-events: none; will-change: transform; }
+  .mi-1 { font-size: 16px; top: 22%; right: 7%;  color: var(--accent);              animation: mFloat 3.6s ease-in-out infinite; }
+  .mi-2 { font-size: 22px; top: 44%; right: 5%;  color: var(--accent-2);            animation: mFloat 4.2s ease-in-out infinite; animation-delay: 0.9s; }
+  .mi-3 { font-size: 13px; bottom: 28%; left: 5%; color: rgba(198,255,58,0.75);     animation: mFloat 3.9s ease-in-out infinite; animation-delay: 1.5s; }
+  .mi-4 { font-size: 18px; bottom: 16%; right: 8%; color: rgba(255,61,240,0.65);   animation: mSpin 9s linear infinite; }
+}
+
 /* Accent color swap across selection/hover states */
 ::selection { background: var(--accent); color: #000; }
 .nav .cta:hover { background: var(--accent); }
