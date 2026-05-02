@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Terms &amp; Conditions — RASTRICK. MADE</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Terms and Conditions for RASTRICK. MADE — governing the use of this website and its content.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="Logo.png">
+<link rel="icon" type="image/png" sizes="96x96" href="Logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="Logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* =============================================
+   LEGAL PAGES — page-specific styles
+   ============================================= */
+
+.legal-hero {
+  padding: clamp(120px, 14vw, 180px) var(--pad) clamp(60px, 8vw, 100px);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.legal-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(800px 500px at 90% -10%, rgba(198,255,58,0.05), transparent 60%),
+    radial-gradient(600px 400px at -5% 80%, rgba(255,61,240,0.04), transparent 60%),
+    var(--bg);
+  pointer-events: none;
+}
+.legal-hero-inner { position: relative; max-width: 860px; }
+.legal-label {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.legal-hero h1 {
+  font-family: var(--f-display);
+  font-size: clamp(48px, 10vw, 120px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.legal-hero p {
+  font-family: var(--f-sans);
+  font-size: clamp(14px, 1.6vw, 17px);
+  color: var(--ink-dim);
+  line-height: 1.7;
+  max-width: 640px;
+}
+
+.legal-body {
+  padding: clamp(60px, 8vw, 100px) var(--pad);
+  max-width: 860px;
+}
+.legal-section {
+  border-top: 1px solid var(--line);
+  padding-top: 48px;
+  margin-bottom: 56px;
+}
+.legal-section:first-child { border-top: none; padding-top: 0; }
+.legal-section h2 {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.legal-section h3 {
+  font-family: var(--f-sans);
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.legal-section p {
+  font-family: var(--f-sans);
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--ink-dim);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.legal-section p:last-child { margin-bottom: 0; }
+.legal-section ul {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+.legal-section ul li {
+  font-family: var(--f-sans);
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--ink-dim);
+  line-height: 1.8;
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 6px;
+}
+.legal-section ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 12px;
+}
+.legal-section a {
+  color: var(--accent);
+  border-bottom: 1px solid rgba(198,255,58,0.3);
+  transition: border-color .2s;
+}
+.legal-section a:hover { border-color: var(--accent); }
+.legal-updated {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 6px;
+}
+</style>
+</head>
+<body>
+
+<!-- custom cursor -->
+<div class="cursor"></div>
+<div class="cursor ring cursor-ring"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="logo"><span class="pulse"></span><img class="nav-logo-mark" src="RM2W.png" alt="RASTRICK. MADE"><img class="nav-logo-word" src="RM2W.png" alt="RASTRICK. MADE"></a>
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="faqs.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="legal-hero">
+  <div class="legal-hero-inner">
+    <div class="legal-label">Legal · RASTRICK. MADE</div>
+    <h1>Terms &amp;<br>Conditions</h1>
+    <p>The terms governing your use of this website and its content. By accessing rastrick.com.au, you agree to the following.</p>
+    <p class="legal-updated">Last updated: May 2026</p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="legal-body">
+
+  <div class="legal-section">
+    <h2>01 — Introduction</h2>
+    <h3>Agreement to terms</h3>
+    <p>These Terms and Conditions govern your use of the RASTRICK. MADE website located at rastrick.com.au, operated by RASTRICK. MADE, an independent web design and development studio based in Canberra, ACT, Australia.</p>
+    <p>By accessing or using this website, you agree to be bound by these terms. If you do not agree with any part of these terms, please do not use this website.</p>
+    <p>These terms may be updated from time to time. Continued use of the website after changes are posted constitutes acceptance of the updated terms.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>02 — Website Use</h2>
+    <h3>Permitted use</h3>
+    <p>This website is provided for general informational purposes about RASTRICK. MADE's services, portfolio, and approach to web design and development.</p>
+    <h3>Prohibited use</h3>
+    <p>You must not use this website in any way that:</p>
+    <ul>
+      <li>Violates any applicable local, national, or international law or regulation</li>
+      <li>Is unlawful, harmful, fraudulent, or deceptive</li>
+      <li>Attempts to gain unauthorised access to any part of the website or its infrastructure</li>
+      <li>Interferes with the normal operation or security of the website</li>
+      <li>Scrapes, harvests, or systematically extracts data from this website without express written permission</li>
+      <li>Misrepresents your identity or affiliation with RASTRICK. MADE</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <h2>03 — Intellectual Property</h2>
+    <h3>Ownership of content</h3>
+    <p>All content on this website — including but not limited to text, copy, design, layout, graphics, imagery, branding, logos, case studies, portfolio work, and code — is the intellectual property of RASTRICK. MADE or its clients, and is protected by applicable copyright and intellectual property laws.</p>
+    <h3>Restrictions on use</h3>
+    <p>You may not, without prior written permission from RASTRICK. MADE:</p>
+    <ul>
+      <li>Copy, reproduce, redistribute, or republish any content from this website</li>
+      <li>Use any content for commercial purposes</li>
+      <li>Remove or alter any copyright, trademark, or proprietary notices</li>
+      <li>Use case study materials, design work, or client outcomes as your own</li>
+      <li>Reverse engineer any aspect of the site's design or functionality</li>
+    </ul>
+    <p>Requests for permission to use content may be directed to <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>04 — Disclaimer</h2>
+    <h3>General information only</h3>
+    <p>The information on this website is provided for general informational purposes only. While we aim to keep all content accurate and up to date, RASTRICK. MADE makes no warranties or representations — express or implied — about the completeness, accuracy, reliability, or suitability of any information on this site.</p>
+    <p>Pricing, packages, service offerings, timelines, and availability described on this site are indicative only and may change without notice. Nothing on this site constitutes a binding offer or contract unless confirmed in writing.</p>
+    <p>Results and outcomes described in case studies reflect specific client projects and cannot be guaranteed for other engagements.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>05 — Limitation of Liability</h2>
+    <h3>No liability for damages</h3>
+    <p>To the fullest extent permitted by law, RASTRICK. MADE shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising from:</p>
+    <ul>
+      <li>Your use of, or inability to use, this website</li>
+      <li>Any errors, omissions, or inaccuracies in the website's content</li>
+      <li>Any unauthorised access to or alteration of your data</li>
+      <li>Any third-party conduct or content linked from this website</li>
+    </ul>
+    <p>This limitation of liability applies regardless of whether the claim is based in contract, tort, negligence, strict liability, or any other legal theory, even if RASTRICK. MADE has been advised of the possibility of such damages.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>06 — External Links</h2>
+    <h3>Third-party websites</h3>
+    <p>This website may contain links to external websites, including client sites, social media platforms, and third-party tools. These links are provided for convenience and informational purposes only.</p>
+    <p>RASTRICK. MADE has no control over the content, privacy practices, or availability of any linked third-party website. We do not endorse or accept responsibility for any content, products, or services found at external URLs. Visiting linked websites is done entirely at your own risk.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>07 — Governing Law</h2>
+    <h3>Jurisdiction</h3>
+    <p>These Terms and Conditions are governed by the laws of the Australian Capital Territory and the Commonwealth of Australia. Any disputes arising in connection with these terms will be subject to the exclusive jurisdiction of the courts of the ACT.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>08 — Contact</h2>
+    <h3>Questions about these terms</h3>
+    <p>If you have any questions about these Terms and Conditions, please contact us:</p>
+    <ul>
+      <li>Email: <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a></li>
+      <li>Studio: RASTRICK. MADE, Canberra ACT 2602, Australia</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- RUNNING NAME TICKER -->
+<div class="name-ticker" aria-hidden="true">
+  <div class="track">
+    <span><img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i></span>
+    <span aria-hidden="true"><img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i></span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="meta">
+    <div>
+      <b>Independent Studio</b>
+      <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>
+      <a href="https://www.instagram.com/rastrick.made" target="_blank" rel="noopener">@rastrick.made</a>
+      <a>Canberra · ACT · AU 2602</a>
+      <a>Mon–Fri 9am to 5pm · AEST</a>
+    </div>
+    <div>
+      <b>Navigate</b>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="packages.html">Packages</a>
+      <a href="faqs.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <b>© 2026 RASTRICK. MADE - ALL RIGHTS RESERVED</b>
+      <a>Independent Website Design &amp; Development Studio</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html" style="color:var(--ink)">Terms &amp; Conditions</a>
+      <a href="/">↑ Back to home</a>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js?v=4"></script>
+
+</body>
+</html>

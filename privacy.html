@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Privacy Policy — RASTRICK. MADE</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Privacy Policy for RASTRICK. MADE — how we collect, use, and protect your personal information.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="Logo.png">
+<link rel="icon" type="image/png" sizes="96x96" href="Logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="Logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* =============================================
+   LEGAL PAGES — page-specific styles
+   ============================================= */
+
+.legal-hero {
+  padding: clamp(120px, 14vw, 180px) var(--pad) clamp(60px, 8vw, 100px);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.legal-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(800px 500px at 90% -10%, rgba(198,255,58,0.05), transparent 60%),
+    radial-gradient(600px 400px at -5% 80%, rgba(255,61,240,0.04), transparent 60%),
+    var(--bg);
+  pointer-events: none;
+}
+.legal-hero-inner { position: relative; max-width: 860px; }
+.legal-label {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.legal-hero h1 {
+  font-family: var(--f-display);
+  font-size: clamp(48px, 10vw, 120px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.legal-hero p {
+  font-family: var(--f-sans);
+  font-size: clamp(14px, 1.6vw, 17px);
+  color: var(--ink-dim);
+  line-height: 1.7;
+  max-width: 640px;
+}
+
+.legal-body {
+  padding: clamp(60px, 8vw, 100px) var(--pad);
+  max-width: 860px;
+}
+.legal-section {
+  border-top: 1px solid var(--line);
+  padding-top: 48px;
+  margin-bottom: 56px;
+}
+.legal-section:first-child { border-top: none; padding-top: 0; }
+.legal-section h2 {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.legal-section h3 {
+  font-family: var(--f-sans);
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.legal-section p {
+  font-family: var(--f-sans);
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--ink-dim);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.legal-section p:last-child { margin-bottom: 0; }
+.legal-section ul {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+.legal-section ul li {
+  font-family: var(--f-sans);
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--ink-dim);
+  line-height: 1.8;
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 6px;
+}
+.legal-section ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 12px;
+}
+.legal-section a {
+  color: var(--accent);
+  border-bottom: 1px solid rgba(198,255,58,0.3);
+  transition: border-color .2s;
+}
+.legal-section a:hover { border-color: var(--accent); }
+.legal-updated {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 6px;
+}
+</style>
+</head>
+<body>
+
+<!-- custom cursor -->
+<div class="cursor"></div>
+<div class="cursor ring cursor-ring"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="logo"><span class="pulse"></span><img class="nav-logo-mark" src="RM2W.png" alt="RASTRICK. MADE"><img class="nav-logo-word" src="RM2W.png" alt="RASTRICK. MADE"></a>
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="faqs.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="legal-hero">
+  <div class="legal-hero-inner">
+    <div class="legal-label">Legal · RASTRICK. MADE</div>
+    <h1>Privacy<br>Policy</h1>
+    <p>How we collect, use, and protect your information when you visit this website or get in touch with us.</p>
+    <p class="legal-updated">Last updated: May 2026</p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="legal-body">
+
+  <div class="legal-section">
+    <h2>01 — Introduction</h2>
+    <h3>Who we are</h3>
+    <p>RASTRICK. MADE is an independent website design and development studio based in Canberra, ACT, Australia. This Privacy Policy explains how we handle personal information collected through this website (rastrick.com.au) and through enquiries submitted via our contact form.</p>
+    <p>By using this website, you agree to the collection and use of information in accordance with this policy. If you have any questions, contact us at <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>02 — Information We Collect</h2>
+    <h3>Personal information</h3>
+    <p>We only collect personal information that you voluntarily provide to us. This may include:</p>
+    <ul>
+      <li>Your name</li>
+      <li>Your email address</li>
+      <li>Your business name and details</li>
+      <li>The content of any message you send us</li>
+      <li>Any other information you choose to include in your enquiry</li>
+    </ul>
+    <h3>Usage data</h3>
+    <p>We also collect anonymous, non-personally identifiable data about how visitors interact with this website via Google Analytics (see Section 04). This data does not identify you as an individual.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>03 — How We Use Your Information</h2>
+    <h3>Purpose of collection</h3>
+    <p>Information you submit is used solely for the following purposes:</p>
+    <ul>
+      <li>Responding to your enquiry or project brief</li>
+      <li>Providing the services you have requested or enquired about</li>
+      <li>Sending follow-up communication related to your enquiry</li>
+      <li>Improving the overall experience of this website</li>
+    </ul>
+    <p>We do not sell, rent, or trade your personal information to third parties. We do not use your information for unsolicited marketing.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>04 — Google Analytics</h2>
+    <h3>Analytics and tracking</h3>
+    <p>This website uses Google Analytics, a web analytics service provided by Google LLC. Google Analytics collects anonymous data about how visitors use this site — including pages visited, time spent, browser type, and general geographic region. This data is aggregated and cannot be used to identify you personally.</p>
+    <p>Google Analytics uses cookies and similar tracking technologies to collect and report this information. The data collected is processed by Google in accordance with their Privacy Policy, available at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.</p>
+    <p>You can opt out of Google Analytics tracking at any time by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a> or by adjusting your browser's cookie settings.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>05 — Cookies</h2>
+    <h3>What are cookies</h3>
+    <p>Cookies are small text files stored on your device when you visit a website. They are widely used to make websites function efficiently and to provide reporting information to site owners.</p>
+    <h3>How we use cookies</h3>
+    <p>This website uses cookies for the following purposes:</p>
+    <ul>
+      <li><strong style="color:var(--ink)">Analytics:</strong> Google Analytics cookies track anonymous usage data to help us understand how visitors interact with the site</li>
+      <li><strong style="color:var(--ink)">Performance:</strong> Session cookies may be used to remember your preferences during a single visit (such as skipping the intro animation on return visits)</li>
+    </ul>
+    <h3>Managing cookies</h3>
+    <p>You can control and disable cookies through your browser settings. Most browsers allow you to refuse cookies, delete existing cookies, or receive a warning before a cookie is stored. Disabling cookies may affect the functionality of some parts of this website.</p>
+    <p>For more information on managing cookies, visit <a href="https://www.allaboutcookies.org" target="_blank" rel="noopener noreferrer">allaboutcookies.org</a>.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>06 — Data Protection</h2>
+    <h3>How we protect your data</h3>
+    <p>We take reasonable steps to protect the personal information you provide against loss, unauthorised access, disclosure, alteration, or destruction. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+    <p>We retain your information only for as long as necessary to fulfil the purpose it was collected for, or as required by applicable law.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>07 — Third-Party Services</h2>
+    <h3>External platforms we use</h3>
+    <p>This website integrates with the following third-party services, which have their own privacy policies:</p>
+    <ul>
+      <li><strong style="color:var(--ink)">Google Analytics</strong> — anonymous website usage tracking</li>
+      <li><strong style="color:var(--ink)">Calendly</strong> — appointment scheduling, if you choose to book a call</li>
+      <li><strong style="color:var(--ink)">Form submission services</strong> — handling and routing of contact form data</li>
+      <li><strong style="color:var(--ink)">Instagram / Meta</strong> — via external links to our Instagram profile</li>
+    </ul>
+    <p>We are not responsible for the privacy practices of these third-party services. We encourage you to review their respective privacy policies.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>08 — Your Rights</h2>
+    <h3>Access and control</h3>
+    <p>You have the right to request access to any personal information we hold about you, request that we correct or delete it, or withdraw consent for us to use it. To make any such request, contact us at <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>.</p>
+    <p>If you are located in the European Economic Area or United Kingdom, you may have additional rights under the GDPR. Australian residents are protected under the Privacy Act 1988 (Cth).</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>09 — Changes to This Policy</h2>
+    <h3>Policy updates</h3>
+    <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date. Continued use of this website after changes are posted constitutes acceptance of the updated policy.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>10 — Contact</h2>
+    <h3>Privacy enquiries</h3>
+    <p>For any questions, concerns, or requests relating to this Privacy Policy, please contact us:</p>
+    <ul>
+      <li>Email: <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a></li>
+      <li>Studio: RASTRICK. MADE, Canberra ACT 2602, Australia</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- RUNNING NAME TICKER -->
+<div class="name-ticker" aria-hidden="true">
+  <div class="track">
+    <span><img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i></span>
+    <span aria-hidden="true"><img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i></span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="meta">
+    <div>
+      <b>Independent Studio</b>
+      <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>
+      <a href="https://www.instagram.com/rastrick.made" target="_blank" rel="noopener">@rastrick.made</a>
+      <a>Canberra · ACT · AU 2602</a>
+      <a>Mon–Fri 9am to 5pm · AEST</a>
+    </div>
+    <div>
+      <b>Navigate</b>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="packages.html">Packages</a>
+      <a href="faqs.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <b>© 2026 RASTRICK. MADE - ALL RIGHTS RESERVED</b>
+      <a>Independent Website Design &amp; Development Studio</a>
+      <a href="privacy.html" style="color:var(--ink)">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="/">↑ Back to home</a>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js?v=4"></script>
+
+</body>
+</html>
