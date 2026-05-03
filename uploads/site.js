@@ -141,8 +141,8 @@
 
   // ==================== calendly popup ====================
   // Replace CALENDLY_URL with your own Calendly event link, e.g.
-  // "https://calendly.com/rastrick/intro-call"
-  const CALENDLY_URL = 'https://calendly.com/rastrick/intro-call';
+  // "https://calendly.com/hello-rastrick"
+  const CALENDLY_URL = 'https://calendly.com/hello-rastrick';
   document.querySelectorAll('[data-calendly="true"]').forEach(el => {
     el.addEventListener('click', e => {
       if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function'){
