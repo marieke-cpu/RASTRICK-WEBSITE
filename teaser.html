@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>RASTRICK. MADE — Coming 22.05.26</title>
+<meta name="description" content="If it looks like every website, it ain't mine. Web design & development studio. Dropping 22 May 2026.">
+<link rel="canonical" href="https://www.rastrick.com.au/teaser.html">
+<link rel="icon" type="image/png" href="Logo.png">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PTWVZZBJ8"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());
+  gtag('config','G-4PTWVZZBJ8');
+</script>
+
+<!-- Fonts: self-host for production (see README). CDN used here for dev speed. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Calendly -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+<link rel="stylesheet" href="teaser.css">
+</head>
+<body>
+
+<!-- ========================================================
+     BOOT OVERLAY
+     Visible on first load. Dismissed by click / key / scroll.
+     Skipped on revisit (sessionStorage: rm_teaser_seen).
+======================================================== -->
+<div class="boot" id="boot" role="dialog" aria-modal="true" aria-label="RASTRICK. MADE loading screen">
+  <!-- Frame lines (draw clockwise via CSS animation) -->
+  <span class="f f-top"    aria-hidden="true"></span>
+  <span class="f f-right"  aria-hidden="true"></span>
+  <span class="f f-bottom" aria-hidden="true"></span>
+  <span class="f f-left"   aria-hidden="true"></span>
+
+  <!-- Ambient FX -->
+  <div class="boot-scanlines" aria-hidden="true"></div>
+  <div class="boot-glow boot-glow-tr" aria-hidden="true"></div>
+  <div class="boot-glow boot-glow-bl" aria-hidden="true"></div>
+
+  <!-- Content -->
+  <div class="boot-inner">
+    <div class="boot-top-row">
+      <span class="boot-sys-label" id="boot-sys-label" aria-hidden="true"></span>
+      <span class="boot-rec" id="boot-rec" aria-hidden="true">
+        <span class="rec-dot"></span> REC
+      </span>
+    </div>
+
+    <div class="boot-mid">
+      <div class="boot-init" id="boot-init" aria-hidden="true"></div>
+      <div class="boot-hl-wrap" aria-hidden="true">
+        <span class="boot-hl" id="boot-hl"></span><span class="block-cur" id="boot-cur"></span>
+      </div>
+      <div class="boot-loader" id="boot-loader">
+        <div class="boot-loader-row">
+          <span id="boot-loader-label">LOADING: THE_FUTURE_OF_WEB</span>
+          <span id="boot-loader-pct">[ 0% ]</span>
+        </div>
+        <div class="boot-bar-track">
+          <div class="boot-bar-fill" id="boot-bar-fill"></div>
+          <div class="boot-bar-tip"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="boot-bot-row" id="boot-bot-row" aria-hidden="true">
+      <span class="boot-cat">TEASER // PRE-LAUNCH</span>
+      <span class="boot-press">PRESS ANY KEY <span class="block-cur-sm blink"></span></span>
+    </div>
+  </div>
+
+  <button class="boot-enter" id="boot-enter" type="button" aria-label="Enter site">
+    <span class="btn-dot" aria-hidden="true">●</span> SCROLL TO ENTER
+  </button>
+</div>
+
+
+<!-- ========================================================
+     PERSISTENT CHROME
+     Fixed frame + labels that stay throughout the page.
+     aria-hidden: decorative UI chrome.
+======================================================== -->
+<div class="chrome" id="chrome" aria-hidden="true">
+  <span class="cf cf-top"></span>
+  <span class="cf cf-right"></span>
+  <span class="cf cf-bottom"></span>
+  <span class="cf cf-left"></span>
+
+  <div class="chrome-tl" id="chrome-tl">RASTRICK. MADE_OS V.2026 // TEASER_BUILD</div>
+  <div class="chrome-tr"><span class="rec-dot"></span> REC</div>
+  <div class="chrome-bl" id="chrome-section">TEASER // PRE-LAUNCH</div>
+  <div class="chrome-scroll-bar" id="chrome-scroll"></div>
+</div>
+
+
+<!-- Custom cursor (desktop only, aria-hidden) -->
+<div class="cur-dot" id="cur-dot" aria-hidden="true"></div>
+<div class="cur-glow" id="cur-glow" aria-hidden="true"></div>
+
+
+<!-- ========================================================
+     MAIN CONTENT
+     Hidden until boot is dismissed.
+======================================================== -->
+<main id="main" class="main" hidden>
+
+  <!-- 01 HERO ------------------------------------------- -->
+  <section class="sec s-hero" id="s01" data-section="#01_INTRO">
+    <div class="sec-inner hero-inner">
+      <div class="pre-label type-in" data-type="> INITIATING_TRANSMISSION" aria-hidden="true">
+        <span class="tt"></span><span class="ic"></span>
+      </div>
+      <h1 class="hero-hl">
+        <span class="hw" data-glitch="IF IT LOOKS LIKE">IF IT LOOKS LIKE</span>
+        <span class="hw mag" data-glitch="EVERY WEBSITE,">EVERY WEBSITE,</span>
+        <span class="hw" data-glitch="IT AIN'T MINE.">IT AIN'T MINE.</span>
+      </h1>
+      <p class="hero-sub">Bold. Fast. Built to sell.<br>Landing <strong>22.05.26</strong>.</p>
+      <div class="est-tag" aria-label="Established 2001">EST. 2001</div>
+    </div>
+  </section>
+
+
+  <!-- 02 COUNTDOWN -------------------------------------- -->
+  <section class="sec s-countdown" id="s02" data-section="#02_COUNTDOWN">
+    <div class="sec-inner">
+      <div class="sec-label type-in" data-type="> COUNTDOWN_TO_DROP" aria-hidden="true">
+        <span class="tt"></span><span class="ic"></span>
+      </div>
+      <div class="countdown" id="countdown" aria-live="polite" aria-label="Launch countdown">
+        <div class="cd-seg">
+          <div class="cd-num" id="cd-days">00</div>
+          <div class="cd-lbl">DAYS</div>
+        </div>
+        <div class="cd-col" aria-hidden="true">:</div>
+        <div class="cd-seg">
+          <div class="cd-num" id="cd-hrs">00</div>
+          <div class="cd-lbl">HRS</div>
+        </div>
+        <div class="cd-col" aria-hidden="true">:</div>
+        <div class="cd-seg">
+          <div class="cd-num" id="cd-min">00</div>
+          <div class="cd-lbl">MIN</div>
+        </div>
+        <div class="cd-col" aria-hidden="true">:</div>
+        <div class="cd-seg">
+          <div class="cd-num" id="cd-sec">00</div>
+          <div class="cd-lbl">SEC</div>
+        </div>
+      </div>
+      <p class="cd-date">22.05.26 // 10:00 AEST</p>
+
+      <!-- Shown when timer hits zero -->
+      <div class="cd-live" id="cd-live" hidden>
+        <span class="cd-live-msg">&gt; SYSTEM_LIVE. ACCESS_NOW.</span>
+        <a href="https://rastrick.com.au" class="pill">
+          <span class="btn-dot" aria-hidden="true">●</span> ENTER THE SITE
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 03 DUAL CTA --------------------------------------- -->
+  <section class="sec s-cta" id="s03" data-section="#03_GET_CLOSE">
+    <div class="sec-inner cta-wrap">
+
+      <div class="cta-col">
+        <div class="cta-label type-in" data-type="> STAY_CLOSE" aria-hidden="true">
+          <span class="tt"></span><span class="ic"></span>
+        </div>
+        <p class="cta-sub">Be first through the door when it drops.<br>No spam. One email. The drop.</p>
+
+        <!-- Web3Forms email signup -->
+        <!-- REPLACE WITH YOUR WEB3FORMS ACCESS KEY -->
+        <form class="email-form" id="ef1" novalidate>
+          <input type="hidden" name="access_key" value="40be2bc5-2582-4b59-a7c5-01ba11d51fb9">
+          <input type="hidden" name="subject" value="New signup — RASTRICK. MADE teaser">
+          <input type="hidden" name="from_name" value="RASTRICK. MADE Teaser">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="email-row">
+            <input type="email" name="email" required placeholder="your@email.com"
+                   class="email-input" aria-label="Your email address">
+            <button type="submit" class="pill">
+              <span class="btn-dot" aria-hidden="true">●</span> I'M IN
+            </button>
+          </div>
+          <div class="form-msg" id="fm1" aria-live="polite" role="status"></div>
+        </form>
+      </div>
+
+      <div class="cta-div" aria-hidden="true">//</div>
+
+      <div class="cta-col">
+        <div class="cta-label type-in" data-type="> GET_CLOSE" aria-hidden="true">
+          <span class="tt"></span><span class="ic"></span>
+        </div>
+        <p class="cta-sub">Book a discovery call.<br>Lock your spot before the queue builds.</p>
+        <button class="pill" id="cal1" type="button">
+          <span class="btn-dot" aria-hidden="true">●</span> BOOK A DISCOVERY CALL
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 04 WORDPLAY --------------------------------------- -->
+  <section class="sec s-words" id="s04" data-section="#04_THE_DIFFERENCE">
+    <div class="sec-inner">
+      <div class="words-stack" aria-label="Brand statements">
+        <p class="word-line type-in" data-type="If it looks like every website, it ain't mine.">
+          <span class="tt"></span><span class="ic"></span>
+        </p>
+        <p class="word-line type-in" data-type="If it loads like every website, it ain't mine.">
+          <span class="tt"></span><span class="ic"></span>
+        </p>
+        <p class="word-line type-in" data-type="If it sells like every website, it ain't mine.">
+          <span class="tt"></span><span class="ic"></span>
+        </p>
+        <p class="word-line type-in" data-type="If it sounds like every website, it ain't mine.">
+          <span class="tt"></span><span class="ic"></span>
+        </p>
+        <p class="word-line type-in" data-type="If it feels like every website, it ain't mine.">
+          <span class="tt"></span><span class="ic"></span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 05 THREE PILLARS ---------------------------------- -->
+  <section class="sec s-pillars" id="s05" data-section="#05_THE_PILLARS">
+    <div class="sec-inner">
+      <div class="sec-label type-in" data-type="> THREE_PILLARS.EXE" aria-hidden="true">
+        <span class="tt"></span><span class="ic"></span>
+      </div>
+      <div class="pillars">
+        <article class="pillar">
+          <div class="pillar-tag">// DESIGN</div>
+          <p class="pillar-body">Not a template. Not a theme. Not a 10-minute Canva job. Built from scratch to look like nobody else in your industry. If your competitor could launch the same site tomorrow — mine would look nothing like it.</p>
+        </article>
+        <article class="pillar">
+          <div class="pillar-tag">// SPEED</div>
+          <p class="pillar-body">If it loads like every website, it ain't mine. Sub-3-second loads aren't a nice-to-have — they're the difference between a bounce and a lead. I build light. I build fast. Every time.</p>
+        </article>
+        <article class="pillar">
+          <div class="pillar-tag">// CONVERSION</div>
+          <p class="pillar-body">Pretty doesn't pay the bills. Every page is structured to move people — from landing to enquiry, from browse to buy. Design that looks unreal and actually sells. That's the whole point.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 06 BUILT FOR / NOT FOR ---------------------------- -->
+  <section class="sec s-filter" id="s06" data-section="#06_BUILT_FOR">
+    <div class="sec-inner">
+      <div class="sec-label type-in" data-type="> RUNNING_ELIGIBILITY_CHECK..." aria-hidden="true">
+        <span class="tt"></span><span class="ic"></span>
+      </div>
+      <div class="filter-grid">
+        <div class="filter-col">
+          <div class="filter-head">
+            <span class="tag-plus" aria-hidden="true">[+]</span> BUILT FOR
+          </div>
+          <ul class="filter-list">
+            <li><span class="tag-plus" aria-hidden="true">[+]</span> Service businesses with something to say</li>
+            <li><span class="tag-plus" aria-hidden="true">[+]</span> Trades ready to stop looking like everyone else</li>
+            <li><span class="tag-plus" aria-hidden="true">[+]</span> Small brands done blending in</li>
+            <li><span class="tag-plus" aria-hidden="true">[+]</span> eComm stores tired of Shopify defaults</li>
+            <li><span class="tag-plus" aria-hidden="true">[+]</span> Creatives who know what they want</li>
+            <li><span class="tag-plus" aria-hidden="true">[+]</span> Anyone who gets why design matters</li>
+          </ul>
+        </div>
+        <div class="filter-col">
+          <div class="filter-head neg">
+            <span class="tag-neg" aria-hidden="true">[-]</span> NOT FOR
+          </div>
+          <ul class="filter-list">
+            <li><span class="tag-neg" aria-hidden="true">[-]</span> Corporate box-tickers</li>
+            <li><span class="tag-neg" aria-hidden="true">[-]</span> "Make it safe" clients</li>
+            <li><span class="tag-neg" aria-hidden="true">[-]</span> Template chasers</li>
+            <li><span class="tag-neg" aria-hidden="true">[-]</span> Anyone who's used the word "synergy"</li>
+            <li><span class="tag-neg" aria-hidden="true">[-]</span> People scared of standing out</li>
+            <li><span class="tag-neg" aria-hidden="true">[-]</span> Brands that want to look like their competitors</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 07 FINAL CTA -------------------------------------- -->
+  <section class="sec s-final" id="s07" data-section="#07_LAST_CALL">
+    <div class="sec-inner">
+      <div class="sec-label type-in" data-type="> LAST_CALL" aria-hidden="true">
+        <span class="tt"></span><span class="ic"></span>
+      </div>
+      <h2 class="final-hl" data-glitch="DOORS OPEN SOON.">DOORS OPEN SOON.</h2>
+      <p class="final-sub">Be on the list. Or be on every other website.</p>
+
+      <div class="cta-wrap">
+        <div class="cta-col">
+          <!-- REPLACE WITH YOUR WEB3FORMS ACCESS KEY -->
+          <form class="email-form" id="ef2" novalidate>
+            <input type="hidden" name="access_key" value="40be2bc5-2582-4b59-a7c5-01ba11d51fb9">
+            <input type="hidden" name="subject" value="New signup — RASTRICK. MADE teaser (final CTA)">
+            <input type="hidden" name="from_name" value="RASTRICK. MADE Teaser">
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+            <div class="email-row">
+              <input type="email" name="email" required placeholder="your@email.com"
+                     class="email-input" aria-label="Your email address">
+              <button type="submit" class="pill">
+                <span class="btn-dot" aria-hidden="true">●</span> GET NOTIFIED
+              </button>
+            </div>
+            <div class="form-msg" id="fm2" aria-live="polite" role="status"></div>
+          </form>
+        </div>
+        <div class="cta-div" aria-hidden="true">//</div>
+        <div class="cta-col">
+          <button class="pill" id="cal2" type="button">
+            <span class="btn-dot" aria-hidden="true">●</span> BOOK THE CALL NOW
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -------------------------------------------- -->
+  <footer class="footer">
+    <div class="footer-inner">
+      RASTRICK. MADE © 2026 // EST. 2001 //
+      <a href="https://www.instagram.com/rastrick.made" target="_blank" rel="noopener">@rastrick.made</a>
+      // <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="teaser.js"></script>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</body>
+</html>
