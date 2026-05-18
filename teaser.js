@@ -190,6 +190,7 @@ function revealMain() {
 // ── APP (runs after boot is cleared) ────────────────────────
 
 function startApp() {
+  setLocalLaunchLabels();
   initCountdown();
   initScrollProgress();
   initSectionLabels();
@@ -198,6 +199,61 @@ function startApp() {
   initForms();
   initCalendly();
   initKonami();
+}
+
+
+// ── LOCAL TIMEZONE LAUNCH LABELS ────────────────────────────
+// Converts the fixed AEST launch time into whatever the visitor's
+// local timezone is. Canberra → Friday 10:00 AM AEST.
+// Wellington NZ → Friday 12:00 PM NZST.
+// Perth → Friday 8:00 AM AWST.
+// New York → Thursday 8:00 PM EDT.
+
+function setLocalLaunchLabels() {
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  // Day name in visitor's timezone
+  const weekday = LAUNCH_DATE.toLocaleDateString('en', {
+    weekday: 'long',
+    timeZone: tz,
+  });
+
+  // Time string — e.g. "10:00 AM"
+  const timeStr = LAUNCH_DATE.toLocaleTimeString('en', {
+    hour:   'numeric',
+    minute: '2-digit',
+    hour12: true,
+    timeZone: tz,
+  }).toUpperCase();
+
+  // Timezone abbreviation — e.g. "AEST", "NZST", "EDT"
+  const tzAbbr = new Intl.DateTimeFormat('en', {
+    timeZoneName: 'short',
+    timeZone: tz,
+  }).formatToParts(LAUNCH_DATE).find(p => p.type === 'timeZoneName')?.value || '';
+
+  // Date in DD.MM.YY format (in visitor's local timezone)
+  const dp = new Intl.DateTimeFormat('en-AU', {
+    day:   '2-digit',
+    month: '2-digit',
+    year:  '2-digit',
+    timeZone: tz,
+  }).formatToParts(LAUNCH_DATE);
+  const gd  = t => (dp.find(p => p.type === t) || {}).value || '';
+  const dateStr = `${gd('day')}.${gd('month')}.${gd('year')}`;
+
+  // Hero sub — "Launching this Friday at 10:00 AM AEST"
+  const heroText = document.getElementById('hero-launch-text');
+  if (heroText) {
+    heroText.innerHTML =
+      `Launching this <strong>${weekday}</strong> at ${timeStr} ${tzAbbr}`;
+  }
+
+  // Countdown date stamp — "22.05.26 // 10:00 AM AEST"
+  const cdLabel = document.getElementById('cd-date-label');
+  if (cdLabel) {
+    cdLabel.textContent = `${dateStr} // ${timeStr} ${tzAbbr}`;
+  }
 }
 
 
