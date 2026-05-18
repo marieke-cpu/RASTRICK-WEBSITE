@@ -199,6 +199,18 @@ button { font: inherit; cursor: pointer; background: none; border: 0; color: inh
   gap: clamp(16px, 3vh, 32px);
 }
 
+.boot-logo-wrap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.boot-logo-img {
+  width: clamp(100px, 18vw, 200px);
+  height: auto;
+  display: block;
+  opacity: 0.92;
+}
+
 .boot-init {
   font-family: var(--f-mono);
   font-size: clamp(11px, 2vw, 14px);
@@ -523,6 +535,13 @@ button { font: inherit; cursor: pointer; background: none; border: 0; color: inh
 ============================================================= */
 
 .hero-inner { position: relative; }
+
+.hero-logo {
+  width: clamp(130px, 22vw, 260px);
+  height: auto;
+  display: block;
+  margin-bottom: clamp(24px, 4vh, 40px);
+}
 
 .hero-hl {
   font-family: var(--f-display);
