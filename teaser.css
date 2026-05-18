@@ -205,7 +205,7 @@ button { font: inherit; cursor: pointer; background: none; border: 0; color: inh
 }
 
 .boot-logo-img {
-  width: clamp(100px, 18vw, 200px);
+  width: clamp(56px, 8vw, 90px);
   height: auto;
   display: block;
   opacity: 0.92;
@@ -537,10 +537,10 @@ button { font: inherit; cursor: pointer; background: none; border: 0; color: inh
 .hero-inner { position: relative; }
 
 .hero-logo {
-  width: clamp(130px, 22vw, 260px);
+  width: clamp(70px, 10vw, 120px);
   height: auto;
   display: block;
-  margin-bottom: clamp(24px, 4vh, 40px);
+  margin-bottom: clamp(20px, 3vh, 32px);
 }
 
 .hero-hl {
