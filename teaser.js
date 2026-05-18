@@ -264,8 +264,6 @@ function initCountdown() {
   const hrs  = document.getElementById('cd-hrs');
   const min  = document.getElementById('cd-min');
   const sec  = document.getElementById('cd-sec');
-  const live = document.getElementById('cd-live');
-  const cd   = document.getElementById('countdown');
 
   if (!days) return;
 
@@ -274,8 +272,7 @@ function initCountdown() {
   function tick() {
     const diff = LAUNCH_DATE - Date.now();
     if (diff <= 0) {
-      if (cd)   cd.hidden = true;
-      if (live) live.hidden = false;
+      days.textContent = hrs.textContent = min.textContent = sec.textContent = '00';
       return;
     }
     const totalSec = Math.floor(diff / 1000);
