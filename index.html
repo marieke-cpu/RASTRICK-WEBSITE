@@ -115,49 +115,54 @@ html.skip-intro body.intro-open .name-ticker{visibility:visible}
 </head>
 <body class="intro-open">
 
-<!-- INTRO GATE — full-screen boot screen. Switches off like a CRT on click. -->
+<!-- INTRO GATE — teaser-identical boot screen. Dismissed on click / key / scroll. -->
 <div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="RASTRICK. MADE loading screen">
   <!-- Frame lines (draw clockwise via CSS animation) -->
-  <span class="if if-top"    aria-hidden="true"></span>
-  <span class="if if-right"  aria-hidden="true"></span>
-  <span class="if if-bottom" aria-hidden="true"></span>
-  <span class="if if-left"   aria-hidden="true"></span>
+  <span class="f f-top"    aria-hidden="true"></span>
+  <span class="f f-right"  aria-hidden="true"></span>
+  <span class="f f-bottom" aria-hidden="true"></span>
+  <span class="f f-left"   aria-hidden="true"></span>
 
   <!-- Ambient FX -->
-  <div class="intro-scanlines" aria-hidden="true"></div>
-  <div class="boot-glow boot-glow-mag" aria-hidden="true"></div>
-  <div class="boot-glow boot-glow-lime" aria-hidden="true"></div>
+  <div class="boot-scanlines" aria-hidden="true"></div>
+  <div class="boot-glow boot-glow-tr" aria-hidden="true"></div>
+  <div class="boot-glow boot-glow-bl" aria-hidden="true"></div>
 
   <!-- Content -->
   <div class="boot-inner">
     <div class="boot-top-row">
-      <span id="intro-sys-label"></span>
-      <span class="boot-rec" id="intro-rec"><span class="boot-rec-dot"></span> REC</span>
+      <span class="boot-sys-label" id="boot-sys-label" aria-hidden="true"></span>
+      <span class="boot-rec" id="boot-rec" aria-hidden="true">
+        <span class="rec-dot"></span> REC
+      </span>
     </div>
 
     <div class="boot-mid">
-      <div class="boot-init" id="intro-init"></div>
-      <div class="boot-logo">
-        <span class="boot-logo-text" id="intro-hl"></span><span class="boot-cursor" aria-hidden="true"></span>
+      <div class="boot-init" id="boot-init" aria-hidden="true"></div>
+      <div class="boot-hl-wrap" aria-hidden="true">
+        <span class="boot-hl" id="boot-hl"></span><span class="block-cur" id="boot-cur"></span>
       </div>
-      <div class="boot-loader" id="intro-loader">
+      <div class="boot-loader" id="boot-loader">
         <div class="boot-loader-row">
-          <span id="intro-loader-label">LOADING: IMPOSSIBLE_TO_IGNORE</span>
-          <span id="intro-bar-pct">[ 0% ]</span>
+          <span id="boot-loader-label">LOADING: IMPOSSIBLE_TO_IGNORE</span>
+          <span id="boot-loader-pct">[ 0% ]</span>
         </div>
-        <div class="boot-bar">
-          <div class="boot-bar-inner" id="boot-bar-inner"></div>
+        <div class="boot-bar-track">
+          <div class="boot-bar-fill" id="boot-bar-fill"></div>
+          <div class="boot-bar-tip"></div>
         </div>
       </div>
     </div>
 
-    <div class="boot-bot-row" id="intro-bot-row">
-      <span>WEBSITE DEVELOPMENT &amp; DESIGN</span>
-      <span class="boot-press">PRESS ANY KEY ▮</span>
+    <div class="boot-bot-row" id="boot-bot-row" aria-hidden="true">
+      <span class="boot-cat">MAIN SITE // LIVE</span>
+      <span class="boot-press">PRESS ANY KEY <span class="block-cur-sm blink"></span></span>
     </div>
   </div>
 
-  <button class="enter-btn" id="enter-btn" type="button" aria-label="Enter site"><span class="blink"></span>Click here to enter</button>
+  <button class="boot-enter" id="boot-enter" type="button" aria-label="Enter site">
+    <span class="btn-dot" aria-hidden="true">●</span> ENTER SITE
+  </button>
 </div>
 
 <a href="#main-content" class="skip-link">Skip to main content</a>

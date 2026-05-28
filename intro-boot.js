@@ -1,7 +1,7 @@
 /* RASTRICK. MADE — Entrance boot sequence
-   Teaser-identical interaction system adapted for the main site entrance gate.
-   Owns the full intro lifecycle: typed sequence → dismiss → cleanup.
-   Mirrors teaser.js exactly: same timing, same utilities, same architecture.
+   Exact teaser.js architecture, utilities, and timing.
+   Adapted for the main site entrance gate.
+   Element IDs and class names mirror teaser exactly.
 */
 (function () {
   'use strict';
@@ -11,17 +11,17 @@
   const prefersReducedMotion =
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // ── Elements ────────────────────────────────────────────────
+  // ── Elements (same ID pattern as teaser) ────────────────────
   const intro    = document.getElementById('intro');
-  const sysLabel = document.getElementById('intro-sys-label');
-  const rec      = document.getElementById('intro-rec');
-  const initEl   = document.getElementById('intro-init');
-  const hlEl     = document.getElementById('intro-hl');
-  const loaderEl = document.getElementById('intro-loader');
-  const barFill  = document.getElementById('boot-bar-inner');
-  const barPct   = document.getElementById('intro-bar-pct');
-  const botRow   = document.getElementById('intro-bot-row');
-  const enterBtn = document.getElementById('enter-btn');
+  const sysLabel = document.getElementById('boot-sys-label');
+  const rec      = document.getElementById('boot-rec');
+  const initEl   = document.getElementById('boot-init');
+  const hlEl     = document.getElementById('boot-hl');
+  const loaderEl = document.getElementById('boot-loader');
+  const barFill  = document.getElementById('boot-bar-fill');
+  const barPct   = document.getElementById('boot-loader-pct');
+  const botRow   = document.getElementById('boot-bot-row');
+  const enterBtn = document.getElementById('boot-enter');
 
   if (!intro || !sysLabel) return;
 
@@ -43,12 +43,11 @@
     if (barPct)   barPct.textContent   = '[ 100% ]';
     if (botRow)   botRow.classList.add('visible');
     if (enterBtn) enterBtn.classList.add('visible');
-    // Dismiss is still available via click
     attachDismiss();
     return;
   }
 
-  // ── Utilities (exact mirrors of teaser.js) ───────────────────
+  // ── Utilities — exact mirrors of teaser.js ───────────────────
 
   function typeInto(el, text, msPerChar, startDelay) {
     return new Promise(resolve => {
@@ -87,11 +86,11 @@
         'COMPILING: ZERO_TEMPLATES',
         'RENDERING: SOMETHING_DIFFERENT',
       ];
+      const labelEl = document.getElementById('boot-loader-label');
       let labelIdx = 0;
       const labelInterval = setInterval(() => {
         labelIdx = (labelIdx + 1) % labels.length;
-        const lbl = document.getElementById('intro-loader-label');
-        if (lbl) lbl.textContent = labels[labelIdx];
+        if (labelEl) labelEl.textContent = labels[labelIdx];
       }, durationMs / 3);
 
       const start = performance.now();
@@ -116,7 +115,7 @@
     return new Promise(r => setTimeout(r, ms));
   }
 
-  // ── Boot sequence (mirrors teaser.js runSequence exactly) ────
+  // ── Boot sequence — exact teaser.js runSequence ──────────────
 
   async function runSequence() {
     // T=200ms: REC appears
@@ -125,7 +124,7 @@
     // T=300ms: Type system label
     await typeInto(sysLabel, 'RASTRICK. MADE_OS v.2026 // INDEPENDENT WEB DESIGN STUDIO', 18, 300);
 
-    // Type init line (50ms delay)
+    // Type init line
     await typeInto(initEl, '> INITIALIZING_BRAND.exe', 22, 50);
 
     // Short pause, type brand headline
@@ -155,7 +154,7 @@
 
   runSequence();
 
-  // ── Dismiss ─────────────────────────────────────────────────
+  // ── Dismiss — exact teaser.js dismiss (700ms) ───────────────
 
   let dismissed = false;
 
@@ -163,16 +162,14 @@
     if (dismissed) return;
     dismissed = true;
     sessionStorage.setItem(SESSION_KEY, '1');
-    intro.classList.add('tv-off');
+    intro.classList.add('dismissing');
     setTimeout(() => {
-      intro.classList.add('done');
+      intro.remove();
       document.body.classList.remove('intro-open');
-    }, 1200);
-    setTimeout(() => { intro.remove(); }, 2000);
+    }, 700);
   }
 
   function attachDismiss() {
-    if (!enterBtn) return;
     enterBtn.addEventListener('click',   e => { e.stopPropagation(); dismiss(); });
     intro.addEventListener('click',      e => {
       if (e.target === enterBtn || enterBtn.contains(e.target)) return;

@@ -1258,14 +1258,17 @@ footer .meta a:hover { color: var(--accent-2); }
    ======================================================= */
 
 /* =======================================================
-   INTRO GATE — teaser-aligned full-screen boot screen
+   INTRO GATE — exact teaser boot system, entrance content
    ======================================================= */
 
 .intro {
+  --lime: var(--accent);
+  --mag:  var(--accent-2);
+
   position: fixed;
   inset: 12px;
   z-index: 10000;
-  background: #08090b;
+  background: var(--bg);
   border-radius: 6px;
   overflow: hidden;
   display: flex;
@@ -1275,26 +1278,21 @@ footer .meta a:hover { color: var(--accent-2); }
   cursor: pointer;
 }
 
-/* Frame lines — draw clockwise */
-.if {
-  position: absolute;
-  background: var(--accent);
-  z-index: 10;
-  border-radius: 2px;
+/* CRT-off dismissal — exact teaser 700ms timing */
+.intro.dismissing {
+  animation: crt-off 700ms ease forwards;
   pointer-events: none;
 }
-.if-top    { top: 0;    left: 0;    height: 2px; width:  0; animation: if-draw-h  160ms   0ms ease forwards; }
-.if-right  { top: 0;    right: 0;   width:  2px; height: 0; animation: if-draw-v  160ms 160ms ease forwards; }
-.if-bottom { bottom: 0; right: 0;   height: 2px; width:  0; animation: if-draw-hl 160ms 320ms ease forwards; }
-.if-left   { bottom: 0; left: 0;    width:  2px; height: 0; animation: if-draw-vb 160ms 480ms ease forwards; }
-
-@keyframes if-draw-h  { to { width:  100%; } }
-@keyframes if-draw-v  { to { height: 100%; } }
-@keyframes if-draw-hl { from { width: 0; right: 0; } to { width: 100%; } }
-@keyframes if-draw-vb { from { height: 0; bottom: 0; } to { height: 100%; } }
+@keyframes crt-off {
+  0%   { opacity: 1; transform: scaleY(1);    filter: brightness(1); }
+  15%  { opacity: 1; transform: scaleY(1);    filter: brightness(4); }
+  35%  { opacity: 1; transform: scaleY(0.02); filter: brightness(3); }
+  60%  { opacity: 0; transform: scaleY(0);    filter: brightness(0); }
+  100% { opacity: 0; transform: scaleY(0); }
+}
 
 /* Scanlines overlay */
-.intro-scanlines {
+.intro .boot-scanlines {
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(
@@ -1317,17 +1315,34 @@ footer .meta a:hover { color: var(--accent-2); }
   pointer-events: none;
   z-index: 0;
 }
-.intro .boot-glow-mag {
+.intro .boot-glow-tr {
   top: -20vmax; right: -20vmax;
   background: radial-gradient(circle, rgba(255,61,240,0.15) 0%, transparent 70%);
 }
-.intro .boot-glow-lime {
+.intro .boot-glow-bl {
   bottom: -20vmax; left: -20vmax;
-  background: radial-gradient(circle, rgba(198,255,58,0.13) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,61,240,0.1) 0%, transparent 70%);
 }
 
-/* Content container */
-.boot-inner {
+/* Frame drawing lines — exact teaser animation */
+.intro .f {
+  position: absolute;
+  background: var(--lime);
+  z-index: 10;
+  border-radius: 2px;
+}
+.intro .f-top    { top: 0;    left: 0;    height: 2px; width:  0; animation: draw-h  160ms   0ms ease forwards; }
+.intro .f-right  { top: 0;    right: 0;   width:  2px; height: 0; animation: draw-v  160ms 160ms ease forwards; }
+.intro .f-bottom { bottom: 0; right: 0;   height: 2px; width:  0; animation: draw-hl 160ms 320ms ease forwards; }
+.intro .f-left   { bottom: 0; left: 0;    width:  2px; height: 0; animation: draw-vb 160ms 480ms ease forwards; }
+
+@keyframes draw-h  { to { width:  100%; } }
+@keyframes draw-v  { to { height: 100%; } }
+@keyframes draw-hl { from { width: 0; right: 0; } to { width: 100%; } }
+@keyframes draw-vb { from { height: 0; bottom: 0; } to { height: 100%; } }
+
+/* Boot inner layout */
+.intro .boot-inner {
   position: relative;
   z-index: 5;
   width: 100%;
@@ -1338,157 +1353,180 @@ footer .meta a:hover { color: var(--accent-2); }
   gap: clamp(24px, 4vh, 48px);
 }
 
-.boot-top-row {
+.intro .boot-top-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  font-family: var(--f-mono);
-  font-size: clamp(9px, 1.8vw, 11px);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--accent);
 }
 
-#intro-sys-label {
+.intro .boot-sys-label {
+  font-family: var(--f-mono);
+  font-size: clamp(8px, 2vw, 11px);
+  color: var(--lime);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  min-width: 0;
 }
 
-.boot-rec {
-  display: inline-flex;
+.intro .boot-rec {
+  font-family: var(--f-mono);
+  font-size: clamp(8px, 2vw, 11px);
+  color: var(--mag);
+  letter-spacing: 0.1em;
+  display: flex;
   align-items: center;
   gap: 6px;
-  color: var(--accent-2);
   flex-shrink: 0;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.boot-rec.visible { opacity: 1; }
+.intro .boot-rec.visible { opacity: 1; }
 
-.boot-rec-dot {
+.intro .rec-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--accent-2);
-  box-shadow: 0 0 8px var(--accent-2);
-  animation: bootRecBlink 1.4s ease-in-out infinite;
+  background: var(--mag);
+  box-shadow: 0 0 8px var(--mag);
+  animation: blink-dot 1.2s ease-in-out infinite;
   display: inline-block;
 }
-@keyframes bootRecBlink { 50% { opacity: 0.25; } }
+@keyframes blink-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
 
 /* Boot mid */
-.boot-mid {
+.intro .boot-mid {
   display: flex;
   flex-direction: column;
-  gap: clamp(10px, 1.6vw, 18px);
+  gap: clamp(16px, 3vh, 32px);
 }
 
-.boot-init {
+.intro .boot-init {
   font-family: var(--f-mono);
-  font-size: clamp(10px, 1.1vw, 14px);
-  color: var(--accent);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-size: clamp(11px, 2vw, 14px);
+  color: var(--lime);
+  letter-spacing: 0.05em;
+  min-height: 1.4em;
 }
 
-.boot-logo {
+.intro .boot-hl-wrap {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0;
+  line-height: 1;
+}
+
+.intro .boot-hl {
   font-family: var(--f-display);
-  font-weight: 400;
-  font-size: clamp(48px, 13vw, 156px);
-  line-height: 0.85;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.8rem, 10vw, 6.5rem);
+  line-height: 1;
   color: var(--ink);
   text-transform: uppercase;
-  display: inline-flex;
-  align-items: flex-start;
-  gap: clamp(4px, 0.8vw, 10px);
-  width: 100%;
+  letter-spacing: -0.01em;
 }
 
-.boot-logo-text {
-  position: relative;
+/* Blinking block cursor */
+.intro .block-cur {
   display: inline-block;
+  width: 0.55em;
+  height: 0.9em;
+  background: var(--mag);
+  margin-left: 4px;
+  vertical-align: baseline;
+  animation: blink-block 0.9s step-end infinite;
 }
-
-.boot-cursor {
-  display: inline-block;
-  width: clamp(10px, 1.7vw, 24px);
-  height: clamp(60px, 11vw, 130px);
-  background: var(--accent-2);
-  animation: bootCursorBlink 1s steps(2) infinite;
-  box-shadow: 0 0 20px rgba(255,61,240,0.55);
+@keyframes blink-block {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
-@keyframes bootCursorBlink { 50% { opacity: 0; } }
 
 /* Loading bar */
-.boot-loader {
-  width: 100%;
+.intro .boot-loader {
   opacity: 0;
   transition: opacity 0.4s ease;
 }
-.boot-loader.visible { opacity: 1; }
+.intro .boot-loader.visible { opacity: 1; }
 
-.boot-loader-row {
+.intro .boot-loader-row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-family: var(--f-mono);
-  font-size: clamp(9px, 1vw, 11px);
-  letter-spacing: 0.2em;
-  color: var(--accent);
-  margin-bottom: 6px;
-  text-transform: uppercase;
+  font-size: clamp(9px, 1.8vw, 12px);
+  color: var(--lime);
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
 }
 
-.boot-bar {
-  width: 100%;
-  height: clamp(16px, 2.2vw, 22px);
-  border: 1.5px solid var(--accent);
-  padding: 2px;
-  display: flex;
+.intro .boot-bar-track {
   position: relative;
-  background: #000;
+  height: 6px;
+  background: rgba(198,255,58,0.15);
+  border: 1px solid var(--lime);
+  border-radius: 2px;
+  overflow: hidden;
 }
 
-.boot-bar-inner {
+.intro .boot-bar-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg,
-    var(--accent) 0%, var(--accent) 86%,
-    var(--accent-2) 86%, var(--accent-2) 94%,
-    transparent 94%, transparent 100%);
-  transition: width 0.1s linear;
-  box-shadow: 0 0 12px rgba(198,255,58,0.4);
+  background: var(--lime);
+  transition: width 0.05s linear;
+  border-radius: 2px;
+}
+
+.intro .boot-bar-tip {
+  position: absolute;
+  top: 0; right: 0;
+  width: 20px; height: 100%;
+  background: var(--mag);
+  mix-blend-mode: screen;
 }
 
 /* Bottom row */
-.boot-bot-row {
+.intro .boot-bot-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-family: var(--f-mono);
-  font-size: clamp(9px, 1.8vw, 11px);
+  font-size: clamp(9px, 2vw, 12px);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(198,255,58,0.66);
   opacity: 0;
   transition: opacity 0.5s ease;
 }
-.boot-bot-row.visible { opacity: 1; }
+.intro .boot-bot-row.visible { opacity: 1; }
 
-.boot-press { color: var(--accent-2); }
+.intro .boot-cat   { color: var(--lime); }
+.intro .boot-press { color: var(--mag); }
 
-/* Enter button — teaser-identical pill */
-.intro .enter-btn {
+.intro .block-cur-sm {
+  display: inline-block;
+  width: 0.55em;
+  height: 0.9em;
+  background: var(--mag);
+  vertical-align: baseline;
+}
+.intro .blink { animation: blink-block 0.9s step-end infinite; }
+
+/* Enter CTA — exact teaser styling */
+.intro .boot-enter {
   position: absolute;
   bottom: clamp(24px, 5vh, 48px);
   left: 50%;
   transform: translateX(-50%);
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 14px 28px;
-  background: var(--accent);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--lime);
   color: #000;
   font-family: var(--f-mono);
   font-size: clamp(11px, 2vw, 14px);
@@ -1496,40 +1534,18 @@ footer .meta a:hover { color: var(--accent-2); }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   border-radius: 100px;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--lime);
   white-space: nowrap;
   opacity: 0;
   transition: opacity 0.5s ease, transform 0.2s ease, box-shadow 0.2s ease;
   min-height: 44px;
-  z-index: 10001;
 }
-.intro .enter-btn.visible { opacity: 1; }
-.intro .enter-btn:hover {
+.intro .boot-enter.visible { opacity: 1; }
+.intro .boot-enter:hover {
   transform: translateX(-50%) scale(1.04);
   box-shadow: 0 0 24px rgba(198,255,58,0.5);
 }
-.intro .enter-btn:active { transform: translateX(-50%) scale(0.97); }
-.intro .enter-btn .blink {
-  display: inline-block; width: 8px; height: 8px; border-radius: 50%;
-  background: #000;
-  animation: blink 1s steps(2) infinite;
-}
-
-/* CRT-off dismissal */
-.intro.tv-off {
-  animation: crt-off 1.2s ease forwards;
-  pointer-events: none;
-}
-@keyframes crt-off {
-  0%   { opacity: 1; transform: scaleY(1);    filter: brightness(1); }
-  15%  { opacity: 1; transform: scaleY(1);    filter: brightness(4); }
-  30%  { opacity: 1; transform: scaleY(0.02); filter: brightness(3); }
-  55%  { opacity: 0; transform: scaleY(0);    filter: brightness(0); }
-  100% { opacity: 0; transform: scaleY(0); }
-}
-.intro.tv-off .enter-btn { opacity: 0; transition: opacity .2s ease; }
-
-.intro.done { opacity: 0; pointer-events: none; }
+.intro .boot-enter:active { transform: translateX(-50%) scale(0.97); }
 
 /* body state during intro */
 body.intro-open { overflow: hidden; }
@@ -1551,8 +1567,6 @@ html.skip-intro body.intro-open .name-ticker { visibility: visible; }
 
 @media (max-width: 720px) {
   .intro { inset: 6px; }
-  .boot-loader-row { font-size: 9px; }
-  .boot-init { font-size: 10px; }
 }
 
 
