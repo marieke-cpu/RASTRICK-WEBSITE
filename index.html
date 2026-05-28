@@ -30,10 +30,29 @@
 <link rel="apple-touch-icon" sizes="180x180" href="Logo.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#08090b">
+<!-- Critical inline CSS — prevents FOUC when styles.css loads async -->
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{background:#08090b}
+body{margin:0;background:#08090b}
+body.intro-open{overflow:hidden}
+body.intro-open .nav,body.intro-open .hero,body.intro-open section,
+body.intro-open footer,body.intro-open .ticker,body.intro-open .name-ticker{visibility:hidden}
+.intro{position:fixed;inset:0;z-index:10000;background:#000;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;cursor:pointer}
+html.skip-intro #intro{display:none!important}
+html.skip-intro body.intro-open{overflow:visible}
+html.skip-intro body.intro-open .nav,
+html.skip-intro body.intro-open .hero,
+html.skip-intro body.intro-open section,
+html.skip-intro body.intro-open footer,
+html.skip-intro body.intro-open .ticker,
+html.skip-intro body.intro-open .name-ticker{visibility:visible}
+</style>
 <!-- Preconnect critical origins -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://assets.calendly.com" crossorigin>
+<link rel="dns-prefetch" href="https://assets.calendly.com">
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 <link rel="dns-prefetch" href="https://api.web3forms.com">
 <!-- Preload critical logo -->
@@ -41,8 +60,10 @@
 <!-- Non-blocking Google Fonts -->
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="styles.css">
-<!-- Calendly CSS — non-blocking -->
+<!-- Non-blocking styles.css — critical CSS above handles first-paint -->
+<link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="styles.css"></noscript>
+<!-- Calendly CSS — non-blocking, loaded on demand with widget -->
 <link rel="stylesheet" media="print" onload="this.media='all'" href="https://assets.calendly.com/assets/external/widget.css">
 <noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
 <script type="application/ld+json">
@@ -240,122 +261,6 @@
 
 <main id="main-content">
 
-<!-- RASTRICK GIVEAWAY — v2  22.05.26 -->
-<section class="gw-section" id="giveaway" aria-label="Giveaway draw">
-  <div class="gw-inner">
-
-    <!-- STATE 1: Countdown -->
-    <div id="gw-pre">
-      <div class="gw-pre-ghost" aria-hidden="true">ONE FREE</div>
-      <span class="gw-corner gw-corner--tl" aria-hidden="true"></span>
-      <span class="gw-corner gw-corner--tr" aria-hidden="true"></span>
-      <span class="gw-corner gw-corner--bl" aria-hidden="true"></span>
-      <span class="gw-corner gw-corner--br" aria-hidden="true"></span>
-
-      <div class="gw-hl-stack">
-        <div class="gw-hl-wrap"><div class="gw-hl-line">ONE WINNER.</div></div>
-        <div class="gw-hl-wrap"><div class="gw-hl-line gw-hl-accent">ONE FREE</div></div>
-        <div class="gw-hl-wrap"><div class="gw-hl-line">WEBSITE.</div></div>
-      </div>
-
-      <div class="gw-cd" aria-live="polite" aria-label="Time remaining">
-        <div class="gw-cd-block">
-          <span class="gw-cd-num" id="gcd-days">00</span>
-          <span class="gw-cd-lbl">DAYS</span>
-        </div>
-        <div class="gw-cd-sep" aria-hidden="true">:</div>
-        <div class="gw-cd-block">
-          <span class="gw-cd-num" id="gcd-hrs">00</span>
-          <span class="gw-cd-lbl">HRS</span>
-        </div>
-        <div class="gw-cd-sep" aria-hidden="true">:</div>
-        <div class="gw-cd-block">
-          <span class="gw-cd-num" id="gcd-min">00</span>
-          <span class="gw-cd-lbl">MIN</span>
-        </div>
-        <div class="gw-cd-sep" aria-hidden="true">:</div>
-        <div class="gw-cd-block">
-          <span class="gw-cd-num" id="gcd-sec">00</span>
-          <span class="gw-cd-lbl">SEC</span>
-        </div>
-      </div>
-
-      <!-- Prize breakdown bar -->
-      <div class="gw-prize-bar">
-        <div class="gw-pb-block">
-          <span class="gw-pb-label">PRIZE VALUE</span>
-          <span class="gw-pb-num">$3,500+</span>
-          <span class="gw-pb-sub">Fully built website</span>
-        </div>
-        <div class="gw-pb-block">
-          <span class="gw-pb-label">WHAT'S INCLUDED</span>
-          <span class="gw-pb-big">Design. Dev. Copy.</span>
-          <span class="gw-pb-sub">Custom — not a template</span>
-        </div>
-        <div class="gw-pb-block">
-          <span class="gw-pb-label">DRAW DATE</span>
-          <span class="gw-pb-date">22.05.26</span>
-          <span class="gw-pb-sub">10AM Sydney time</span>
-        </div>
-      </div>
-
-      <div class="gw-rail" aria-hidden="true">
-        <span>22.05.26</span>
-        <span>&#9670;</span>
-        <span>FREE WEBSITE DRAW</span>
-        <span>&#9670;</span>
-        <span>ONE WINNER</span>
-        <span>&#9670;</span>
-        <span>RASTRICK. MADE</span>
-      </div>
-    </div>
-
-    <!-- STATE 2: Drum machine -->
-    <div id="gw-slot" hidden>
-      <p class="gw-slot-label">DRAWING NOW</p>
-      <div class="gw-drum-wrap">
-        <div class="gw-drum-mask">
-          <div class="gw-drum" id="gw-drum" aria-live="polite"></div>
-        </div>
-        <div class="gw-drum-highlight" aria-hidden="true"></div>
-      </div>
-      <p class="gw-slot-count"><span id="gw-entrant-count">9</span> ENTRANTS</p>
-      <div class="gw-progress-wrap" aria-hidden="true">
-        <div class="gw-progress-bar" id="gw-progress-bar"></div>
-      </div>
-    </div>
-
-    <!-- STATE 3: Winner revealed -->
-    <div id="gw-result" hidden>
-      <p class="gw-result-label">AND THE WINNER IS</p>
-      <div class="gw-winner-panel">
-        <div class="gw-winner-ghost" id="gw-winner-ghost" aria-hidden="true"></div>
-        <div class="gw-winner-handle" id="gw-winner" aria-live="polite"></div>
-      </div>
-      <div class="gw-stats">
-        <div class="gw-stat">
-          <span class="gw-stat-num">1</span>
-          <span class="gw-stat-lbl">WINNER</span>
-        </div>
-        <div class="gw-stat">
-          <span class="gw-stat-num">9</span>
-          <span class="gw-stat-lbl">ENTRANTS</span>
-        </div>
-        <div class="gw-stat">
-          <span class="gw-stat-num">$3,500+</span>
-          <span class="gw-stat-lbl">VALUE</span>
-        </div>
-      </div>
-      <div class="gw-result-ctas">
-        <p class="gw-claim-text">DM to claim your free website.</p>
-        <a class="gw-cta-btn"
-           href="https://www.instagram.com/rastrick.made"
-           target="_blank" rel="noopener">DM @RASTRICK.MADE &#8594;</a>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <!-- TICKER -->
 <div class="ticker" aria-hidden="true">
@@ -807,11 +712,8 @@
   </div>
 </footer>
 
-<script src="hero.js?v=3"></script>
-<script src="site.js?v=5"></script>
-<script src="giveaway.js?v=2" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script src="hero.js?v=4" defer></script>
+<script src="site.js?v=6" defer></script>
 
 </body>
 </html>

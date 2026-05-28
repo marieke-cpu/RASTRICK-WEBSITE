@@ -1,7 +1,8 @@
 /* RASTRICK — hero shader system
    Desktop: 8 interactive shaders (cycle on click / arrow keys)
    Mobile:  5 shaders (tap to cycle, Topology Map default)
-   v3: lazy shader compilation + visibility API pause
+   v4: async shader compilation (KHR_parallel_shader_compile)
+       cached canvas rect · dot UI deferred to requestIdleCallback
 */
 (function () {
   'use strict';
@@ -13,6 +14,7 @@
   if (!gl) return;
 
   const isMobile = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const KHR = gl.getExtension('KHR_parallel_shader_compile');
 
   // ─── Shared vertex shader ────────────────────────────────────────────
   const VERT = `attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
@@ -284,7 +286,7 @@
     }`, 'Aurora Grid'],
   ];
 
-  // ─── Mobile shader set (5 shaders, tap to cycle) ─────────────────────
+  // ─── Mobile shader set ───────────────────────────────────────────────
   const MOBILE_SHADERS = [
     SHADERS[6], // 0: Topology Map (default)
     SHADERS[0], // 1: Liquid Metal
@@ -293,53 +295,71 @@
     SHADERS[2], // 4: Plasma Storm
   ];
 
-  // ─── GL helpers ──────────────────────────────────────────────────────
-  function compile(type, src) {
-    const s = gl.createShader(type);
-    gl.shaderSource(s, src);
-    gl.compileShader(s);
-    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
-      console.warn('[hero.js]', gl.getShaderInfoLog(s));
-      return null;
-    }
-    return s;
-  }
+  // ─── Async shader compilation ────────────────────────────────────────
+  //   gl.compileShader / gl.linkProgram submit GPU work without blocking.
+  //   The blocking calls (getShaderParameter / getProgramParameter LINK_STATUS)
+  //   are deferred: polled non-blocking via KHR extension, or scheduled at
+  //   idle time as a fallback.
+  const idleQ = typeof requestIdleCallback !== 'undefined'
+    ? fn => requestIdleCallback(fn)
+    : fn => setTimeout(fn, 0);
 
-  function makeProgram(fragSrc) {
-    const vs = compile(gl.VERTEX_SHADER, VERT);
-    const fs = compile(gl.FRAGMENT_SHADER, fragSrc);
-    if (!vs || !fs) return null;
+  function startProgram(fragSrc) {
+    const vs = gl.createShader(gl.VERTEX_SHADER);
+    gl.shaderSource(vs, VERT);
+    gl.compileShader(vs);
+
+    const fs = gl.createShader(gl.FRAGMENT_SHADER);
+    gl.shaderSource(fs, fragSrc);
+    gl.compileShader(fs);
+
     const prog = gl.createProgram();
     gl.attachShader(prog, vs);
     gl.attachShader(prog, fs);
     gl.linkProgram(prog);
-    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
-      console.warn('[hero.js link]', gl.getProgramInfoLog(prog));
-      return null;
+    gl.deleteShader(vs);
+    gl.deleteShader(fs);
+
+    const entry = { prog, ready: false, loc: null, err: false };
+
+    if (!KHR) {
+      // No parallel compile extension — schedule the blocking status check during idle
+      idleQ(() => tryFinalize(entry));
     }
-    return {
-      prog,
-      loc: {
-        p:  gl.getAttribLocation(prog,  'p'),
-        T:  gl.getUniformLocation(prog, 'T'),
-        R:  gl.getUniformLocation(prog, 'R'),
-        M:  gl.getUniformLocation(prog, 'M'),
-        CP: gl.getUniformLocation(prog, 'CP'),
-        CK: gl.getUniformLocation(prog, 'CK'),
-      },
-    };
+
+    return entry;
   }
 
-  // ─── Lazy shader cache — compile only on first use ───────────────────
-  const cache = {};
+  function tryFinalize(entry) {
+    if (entry.ready || entry.err) return;
+    // With KHR: poll without blocking; bail if GPU not done yet
+    if (KHR && !gl.getProgramParameter(entry.prog, KHR.COMPLETION_STATUS_KHR)) return;
+    // Status check (blocking without KHR, but called at idle time in that path)
+    if (!gl.getProgramParameter(entry.prog, gl.LINK_STATUS)) {
+      entry.err = true;
+      return;
+    }
+    entry.loc = {
+      p:  gl.getAttribLocation(entry.prog, 'p'),
+      T:  gl.getUniformLocation(entry.prog, 'T'),
+      R:  gl.getUniformLocation(entry.prog, 'R'),
+      M:  gl.getUniformLocation(entry.prog, 'M'),
+      CP: gl.getUniformLocation(entry.prog, 'CP'),
+      CK: gl.getUniformLocation(entry.prog, 'CK'),
+    };
+    entry.ready = true;
+  }
+
+  // ─── Lazy shader cache ───────────────────────────────────────────────
+  const cache  = {};
   const cacheM = {};
 
   function getProgram(idx) {
-    if (!cache[idx]) cache[idx] = makeProgram(SHADERS[idx][0]);
+    if (!cache[idx])  cache[idx]  = startProgram(SHADERS[idx][0]);
     return cache[idx];
   }
   function getMobileProgram(idx) {
-    if (!cacheM[idx]) cacheM[idx] = makeProgram(MOBILE_SHADERS[idx][0]);
+    if (!cacheM[idx]) cacheM[idx] = startProgram(MOBILE_SHADERS[idx][0]);
     return cacheM[idx];
   }
 
@@ -351,10 +371,12 @@
   // ─── State ───────────────────────────────────────────────────────────
   let mx = 0.5, my = 0.5, smx = 0.5, smy = 0.5;
   let clickT = 0, cx = 0.5, cy = 0.5;
-  let shader = Math.min(+(localStorage.getItem('rastrick_shader') || 0), SHADERS.length - 1);
+  let shader  = Math.min(+(localStorage.getItem('rastrick_shader')        || 0), SHADERS.length - 1);
   let mShader = isMobile ? Math.min(+(localStorage.getItem('rastrick_mobile_shader') || 0), MOBILE_SHADERS.length - 1) : 0;
 
-  // ─── Resize ──────────────────────────────────────────────────────────
+  // ─── Cached canvas rect (avoids getBoundingClientRect on every event) ─
+  let canvasRect = canvas.getBoundingClientRect();
+
   function resize() {
     const dpr = isMobile
       ? Math.min(window.devicePixelRatio || 1, 1.2)
@@ -362,40 +384,43 @@
     canvas.width  = Math.floor(canvas.clientWidth  * dpr);
     canvas.height = Math.floor(canvas.clientHeight * dpr);
     gl.viewport(0, 0, canvas.width, canvas.height);
+    canvasRect = canvas.getBoundingClientRect();
   }
   resize();
   new ResizeObserver(resize).observe(canvas);
+  window.addEventListener('scroll', () => { canvasRect = canvas.getBoundingClientRect(); }, { passive: true });
+
+  // Pre-kick compilation of the starting shader immediately
+  if (isMobile) getMobileProgram(mShader);
+  else          getProgram(shader);
 
   // ─── Input ───────────────────────────────────────────────────────────
   if (isMobile) {
     canvas.addEventListener('touchmove', e => {
       if (!e.touches.length) return;
-      const r = canvas.getBoundingClientRect();
-      mx = (e.touches[0].clientX - r.left) / r.width;
-      my = 1 - (e.touches[0].clientY - r.top) / r.height;
+      mx = (e.touches[0].clientX - canvasRect.left) / canvasRect.width;
+      my = 1 - (e.touches[0].clientY - canvasRect.top)  / canvasRect.height;
     }, { passive: true });
 
     canvas.addEventListener('touchstart', e => {
       if (!e.touches.length) return;
-      const r = canvas.getBoundingClientRect();
-      cx = (e.touches[0].clientX - r.left) / r.width;
-      cy = 1 - (e.touches[0].clientY - r.top) / r.height;
+      cx = (e.touches[0].clientX - canvasRect.left) / canvasRect.width;
+      cy = 1 - (e.touches[0].clientY - canvasRect.top)  / canvasRect.height;
       clickT = 1.0;
       mShader = (mShader + 1) % MOBILE_SHADERS.length;
       localStorage.setItem('rastrick_mobile_shader', mShader);
     }, { passive: true });
   } else {
     window.addEventListener('pointermove', e => {
-      const r = canvas.getBoundingClientRect();
+      const r = canvasRect;
       if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) return;
       mx = (e.clientX - r.left) / r.width;
-      my = 1 - (e.clientY - r.top) / r.height;
+      my = 1 - (e.clientY - r.top)  / r.height;
     }, { passive: true });
 
     canvas.addEventListener('pointerdown', e => {
-      const r = canvas.getBoundingClientRect();
-      cx = (e.clientX - r.left) / r.width;
-      cy = 1 - (e.clientY - r.top) / r.height;
+      cx = (e.clientX - canvasRect.left) / canvasRect.width;
+      cy = 1 - (e.clientY - canvasRect.top)  / canvasRect.height;
       clickT = 1.0;
       shader = (shader + 1) % SHADERS.length;
       localStorage.setItem('rastrick_shader', shader);
@@ -404,55 +429,59 @@
 
     window.addEventListener('keydown', e => {
       if (document.activeElement && document.activeElement !== document.body) return;
-      if (e.key === 'ArrowRight') { shader = (shader + 1) % SHADERS.length; localStorage.setItem('rastrick_shader', shader); updateUI(); }
+      if (e.key === 'ArrowRight') { shader = (shader + 1) % SHADERS.length;                  localStorage.setItem('rastrick_shader', shader); updateUI(); }
       if (e.key === 'ArrowLeft')  { shader = (shader - 1 + SHADERS.length) % SHADERS.length; localStorage.setItem('rastrick_shader', shader); updateUI(); }
     });
 
-    // ─── Desktop shader selector dots ──────────────────────────────────
-    const ui = document.createElement('div');
-    ui.setAttribute('aria-hidden', 'true');
-    Object.assign(ui.style, {
-      position: 'absolute',
-      bottom: 'clamp(28px,4vh,52px)',
-      right: 'clamp(20px,4vw,56px)',
-      display: 'flex',
-      gap: '10px',
-      zIndex: '4',
-      alignItems: 'center',
-    });
+    // ─── Shader selector dots — built during idle time ──────────────────
+    let updateUI = () => {};
 
-    const dots = SHADERS.map(([, name], i) => {
-      const btn = document.createElement('button');
-      btn.title = name;
-      Object.assign(btn.style, {
-        width: '7px', height: '7px', borderRadius: '50%',
-        border: '1px solid rgba(255,255,255,.22)',
-        background: 'transparent', padding: '0',
-        cursor: 'pointer', flexShrink: '0',
-        transition: 'all .22s',
+    idleQ(() => {
+      const ui = document.createElement('div');
+      ui.setAttribute('aria-hidden', 'true');
+      Object.assign(ui.style, {
+        position:   'absolute',
+        bottom:     'clamp(28px,4vh,52px)',
+        right:      'clamp(20px,4vw,56px)',
+        display:    'flex',
+        gap:        '10px',
+        zIndex:     '4',
+        alignItems: 'center',
       });
-      btn.addEventListener('pointerdown', e => {
-        e.stopPropagation();
-        shader = i;
-        clickT = 0.8;
-        localStorage.setItem('rastrick_shader', shader);
-        updateUI();
-      });
-      ui.appendChild(btn);
-      return btn;
-    });
-    canvas.parentElement.appendChild(ui);
 
-    function updateUI() {
-      dots.forEach((d, i) => {
-        const on = i === shader;
-        d.style.background  = on ? '#c6ff3a' : 'transparent';
-        d.style.borderColor = on ? '#c6ff3a' : 'rgba(255,255,255,.22)';
-        d.style.transform   = on ? 'scale(1.7)' : 'scale(1)';
-        d.style.boxShadow   = on ? '0 0 6px #c6ff3a' : 'none';
+      const dots = SHADERS.map(([, name], i) => {
+        const btn = document.createElement('button');
+        btn.title = name;
+        Object.assign(btn.style, {
+          width: '7px', height: '7px', borderRadius: '50%',
+          border: '1px solid rgba(255,255,255,.22)',
+          background: 'transparent', padding: '0',
+          cursor: 'pointer', flexShrink: '0',
+          transition: 'all .22s',
+        });
+        btn.addEventListener('pointerdown', e => {
+          e.stopPropagation();
+          shader = i;
+          clickT = 0.8;
+          localStorage.setItem('rastrick_shader', shader);
+          updateUI();
+        });
+        ui.appendChild(btn);
+        return btn;
       });
-    }
-    updateUI();
+      canvas.parentElement.appendChild(ui);
+
+      updateUI = () => {
+        dots.forEach((d, i) => {
+          const on = i === shader;
+          d.style.background  = on ? '#c6ff3a' : 'transparent';
+          d.style.borderColor = on ? '#c6ff3a' : 'rgba(255,255,255,.22)';
+          d.style.transform   = on ? 'scale(1.7)' : 'scale(1)';
+          d.style.boxShadow   = on ? '0 0 6px #c6ff3a' : 'none';
+        });
+      };
+      updateUI();
+    });
   }
 
   // ─── Render ──────────────────────────────────────────────────────────
@@ -461,7 +490,11 @@
   let rafHandle = 0;
 
   function drawFrame(entry, now) {
-    if (!entry) return;
+    if (!entry || entry.err) return;
+    if (!entry.ready) {
+      if (KHR) tryFinalize(entry); // non-blocking poll each frame
+      return;
+    }
     const { prog, loc } = entry;
     gl.useProgram(prog);
     gl.bindBuffer(gl.ARRAY_BUFFER, buf);
@@ -481,15 +514,12 @@
     smx += (mx - smx) * (isMobile ? 0.04 : 0.055);
     smy += (my - smy) * (isMobile ? 0.04 : 0.055);
     clickT = Math.max(0, clickT - dt * 1.1);
-    if (isMobile) {
-      drawFrame(getMobileProgram(mShader), now);
-    } else {
-      drawFrame(getProgram(shader), now);
-    }
+    if (isMobile) drawFrame(getMobileProgram(mShader), now);
+    else          drawFrame(getProgram(shader), now);
     rafHandle = requestAnimationFrame(frame);
   }
 
-  // ─── Visibility API — pause render loop when tab is hidden ───────────
+  // ─── Visibility API — pause render loop when tab hidden ──────────────
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       if (rafHandle) { cancelAnimationFrame(rafHandle); rafHandle = 0; }
