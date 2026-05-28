@@ -14,9 +14,21 @@
 <title>Web Design Services | Wix, Webflow, Shopify & Custom</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Web design and development services for service businesses and eCommerce. Wix, Webflow, Shopify, and custom code — conversion-focused and built to scale.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.rastrick.com.au/services">
+<meta property="og:title" content="Web Design Services | Wix, Webflow, Shopify & Custom">
+<meta property="og:description" content="Web design and development services for service businesses and eCommerce. Wix, Webflow, Shopify, and custom code — conversion-focused and built to scale.">
+<meta property="og:image" content="https://www.rastrick.com.au/RM2W-sm.png">
+<meta property="og:site_name" content="RASTRICK. MADE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Web Design Services | Wix, Webflow, Shopify & Custom">
+<meta name="twitter:description" content="Web design and development services for service businesses and eCommerce. Wix, Webflow, Shopify, and custom code — conversion-focused and built to scale.">
+<meta name="twitter:image" content="https://www.rastrick.com.au/RM2W-sm.png">
 <link rel="icon" type="image/png" sizes="32x32" href="Logo.png">
 <link rel="icon" type="image/png" sizes="96x96" href="Logo.png">
 <link rel="apple-touch-icon" sizes="180x180" href="Logo.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#08090b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
@@ -490,6 +502,28 @@
   .sv-steps { grid-template-columns: 1fr; }
 }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.rastrick.com.au/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://www.rastrick.com.au/services"
+    }
+  ]
+}
+</script>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
 </head>
 <body>
 
@@ -499,9 +533,9 @@
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="/" class="logo"><span class="pulse"></span><img class="nav-logo-mark" src="RM2W-sm.png" alt="RASTRICK. MADE" width="52" height="26" decoding="async" fetchpriority="high"><img class="nav-logo-word" src="RM2W-sm.png" alt="RASTRICK. MADE" width="104" height="52" decoding="async" fetchpriority="high"></a>
+  <a href="/" class="logo"><span class="pulse"></span><img class="nav-logo-mark" src="RM2W-sm.png" alt="" width="52" height="26" decoding="async" fetchpriority="high"><img class="nav-logo-word" src="RM2W-sm.png" alt="RASTRICK. MADE" width="104" height="52" decoding="async" fetchpriority="high"></a>
   <ul>
-    <li><a href="home.html">Home</a></li>
+    <li><a href="index.html">Home</a></li>
     <li><a href="work.html">Work</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="services.html" style="color:var(--ink)">Services</a></li>
@@ -512,7 +546,11 @@
   <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
+<a href="#services-main" class="skip-link">Skip to main content</a>
+
 <!-- HERO -->
+<main id="services-main">
+
 <section class="sv-hero">
   <div class="grain"></div>
   <div class="checker top"></div>
@@ -826,14 +864,16 @@
 </div>
 
 <!-- FOOTER -->
+</main>
+
 <footer>
   <div class="meta">
     <div>
       <b>Independent Studio</b>
       <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>
       <a href="https://www.instagram.com/rastrick.made" target="_blank" rel="noopener">@rastrick.made</a>
-      <a>Canberra · ACT · AU 2602</a>
-      <a>Mon–Fri 9am to 5pm · AEST</a>
+      <span>Canberra · ACT · AU 2602</span>
+      <span>Mon–Fri 9am to 5pm · AEST</span>
     </div>
     <div>
       <b>Navigate</b>
@@ -845,7 +885,7 @@
     </div>
     <div>
       <b>© 2026 RASTRICK. MADE - ALL RIGHTS RESERVED</b>
-      <a>Independent Website Design &amp; Development Studio</a>
+      <span>Independent Website Design &amp; Development Studio</span>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms &amp; Conditions</a>
       <a href="/">↑ Back to home</a>

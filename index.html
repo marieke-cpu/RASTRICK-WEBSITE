@@ -15,9 +15,21 @@
 <title>Web Design for Service Businesses | RASTRICK. MADE</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Conversion-focused websites for service businesses and eCommerce. Built on Wix, Webflow, Shopify, and custom code. Based in Canberra, working Australia-wide.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.rastrick.com.au/">
+<meta property="og:title" content="Web Design for Service Businesses | RASTRICK. MADE">
+<meta property="og:description" content="Conversion-focused websites for service businesses and eCommerce. Built on Wix, Webflow, Shopify, and custom code. Based in Canberra, working Australia-wide.">
+<meta property="og:image" content="https://www.rastrick.com.au/RM2W-sm.png">
+<meta property="og:site_name" content="RASTRICK. MADE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Web Design for Service Businesses | RASTRICK. MADE">
+<meta name="twitter:description" content="Conversion-focused websites for service businesses and eCommerce. Built on Wix, Webflow, Shopify, and custom code. Based in Canberra, working Australia-wide.">
+<meta name="twitter:image" content="https://www.rastrick.com.au/RM2W-sm.png">
 <link rel="icon" type="image/png" sizes="32x32" href="Logo.png">
 <link rel="icon" type="image/png" sizes="96x96" href="Logo.png">
 <link rel="apple-touch-icon" sizes="180x180" href="Logo.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#08090b">
 <!-- Preconnect critical origins -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,6 +45,52 @@
 <!-- Calendly CSS — non-blocking -->
 <link rel="stylesheet" media="print" onload="this.media='all'" href="https://assets.calendly.com/assets/external/widget.css">
 <noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.rastrick.com.au/#business",
+      "name": "RASTRICK. MADE",
+      "description": "Conversion-focused web design and development studio. Wix, Webflow, Shopify, and custom code for service businesses and eCommerce.",
+      "url": "https://www.rastrick.com.au/",
+      "logo": "https://www.rastrick.com.au/Logo.png",
+      "image": "https://www.rastrick.com.au/RM2W-sm.png",
+      "email": "hello@rastrick.com.au",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Canberra",
+        "addressRegion": "ACT",
+        "postalCode": "2602",
+        "addressCountry": "AU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -35.2809,
+        "longitude": 149.1300
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      },
+      "areaServed": "Australia",
+      "serviceType": ["Web Design","Web Development","eCommerce","SEO"],
+      "sameAs": ["https://www.instagram.com/rastrick.made"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.rastrick.com.au/#website",
+      "name": "RASTRICK. MADE",
+      "url": "https://www.rastrick.com.au/",
+      "publisher": { "@id": "https://www.rastrick.com.au/#business" }
+    }
+  ]
+}
+</script>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
 </head>
 <body class="intro-open">
 
@@ -86,15 +144,17 @@
   <button class="enter-btn" id="enter-btn" type="button"><span class="blink"></span>Click here to enter</button>
 </div>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- custom cursor -->
 <div class="cursor"></div>
 <div class="cursor ring cursor-ring"></div>
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="#top" class="logo"><span class="pulse"></span><img class="nav-logo-mark" src="RM2W-sm.png" alt="RASTRICK. MADE" width="104" height="52" decoding="async"><img class="nav-logo-word" src="RM2W-sm.png" alt="RASTRICK. MADE" width="104" height="52" decoding="async" fetchpriority="high"></a>
+  <a href="#top" class="logo"><span class="pulse"></span><img class="nav-logo-mark" src="RM2W-sm.png" alt="" width="104" height="52" decoding="async"><img class="nav-logo-word" src="RM2W-sm.png" alt="RASTRICK. MADE" width="104" height="52" decoding="async" fetchpriority="high"></a>
   <ul>
-    <li><a href="home.html">Home</a></li>
+    <li><a href="index.html">Home</a></li>
     <li><a href="work.html">Work</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="services.html">Services</a></li>
@@ -177,6 +237,8 @@
     </div>
   </div>
 </header>
+
+<main id="main-content">
 
 <!-- RASTRICK GIVEAWAY — v2  22.05.26 -->
 <section class="gw-section" id="giveaway" aria-label="Giveaway draw">
@@ -656,7 +718,7 @@
 <section class="contact" id="contact">
   <div class="contact-grid">
     <div>
-      <h3>Ready for a site that drives <span class="underline">more leads</span> and <em>sales?</em></h3>
+      <h2>Ready for a site that drives <span class="underline">more leads</span> and <em>sales?</em></h2>
       <p class="sub">Share your business goals, traffic source, and timeline. You’ll get a clear recommendation on platform, scope, and next steps within one business day.</p>
       <div class="direct">
         <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>
@@ -713,6 +775,8 @@
   </div>
 </div>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
   <div></div>
@@ -721,8 +785,8 @@
       <b>Independent Studio</b>
       <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>
       <a href="https://www.instagram.com/rastrick.made" target="_blank" rel="noopener">@rastrick.made</a>
-      <a>Canberra · ACT · AU 2602</a>
-      <a>Mon–Fri 9am to 5pm · AEST</a>
+      <span>Canberra · ACT · AU 2602</span>
+      <span>Mon–Fri 9am to 5pm · AEST</span>
     </div>
     <div>
       <b>Navigate</b>
@@ -735,7 +799,7 @@
     </div>
     <div>
       <b>© 2026 RASTRICK. MADE - ALL RIGHTS RESERVED</b>
-      <a>Conversion-focused web development & design studio</a>
+      <span>Conversion-focused web development & design studio</span>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms &amp; Conditions</a>
       <a href="#top">↑ Back to top</a>
