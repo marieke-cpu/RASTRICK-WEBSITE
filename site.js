@@ -33,53 +33,6 @@
     });
   }
 
-  // ==================== intro gate (TV off) ====================
-  const intro    = document.getElementById('intro');
-  const enterBtn = document.getElementById('enter-btn');
-  const bootBar  = document.getElementById('boot-bar-inner');
-
-  const alreadyEntered = !!sessionStorage.getItem('rastrick_entered');
-
-  if (bootBar && !alreadyEntered){
-    let pct = 0;
-    const start = performance.now();
-    const dur = 2200;
-    function tick(now){
-      const t = Math.min(1, (now - start)/dur);
-      pct = Math.round((1 - Math.pow(1 - t, 2)) * 100);
-      bootBar.style.width = pct + '%';
-      if (t < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-
-  if (intro && enterBtn){
-    if (alreadyEntered) {
-      intro.style.display = 'none';
-      document.body.classList.remove('intro-open');
-      intro.remove();
-    } else {
-      let closing = false;
-      const open = () => {
-        if (closing) return;
-        closing = true;
-        sessionStorage.setItem('rastrick_entered', '1');
-        intro.classList.add('tv-off');
-        setTimeout(() => {
-          intro.classList.add('done');
-          document.body.classList.remove('intro-open');
-        }, 1200);
-        setTimeout(() => { intro.remove(); }, 2000);
-      };
-      enterBtn.addEventListener('click', (e) => { e.stopPropagation(); open(); });
-      intro.addEventListener('click', (e) => {
-        if (e.target === enterBtn || enterBtn.contains(e.target)) return;
-        open();
-      });
-      window.addEventListener('keydown', () => { if (!closing) open(); }, { once: true });
-    }
-  }
-
   // ==================== kinetic hero word swap ====================
   const kinetic = document.getElementById('kinetic-word');
   if (kinetic){

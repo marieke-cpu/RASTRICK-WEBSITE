@@ -131,19 +131,19 @@ html.skip-intro body.intro-open .name-ticker{visibility:visible}
   <!-- Content -->
   <div class="boot-inner">
     <div class="boot-top-row">
-      <span>RASTRICK. MADE_OS v.2026 // INDEPENDENT WEB DESIGN STUDIO</span>
-      <span class="boot-rec"><span class="boot-rec-dot"></span> REC</span>
+      <span id="intro-sys-label"></span>
+      <span class="boot-rec" id="intro-rec"><span class="boot-rec-dot"></span> REC</span>
     </div>
 
     <div class="boot-mid">
-      <div class="boot-init">&gt; INITIALIZING_BRAND.exe</div>
+      <div class="boot-init" id="intro-init"></div>
       <div class="boot-logo">
-        <span class="boot-logo-text">RASTRICK. MADE</span><span class="boot-cursor" aria-hidden="true"></span>
+        <span class="boot-logo-text" id="intro-hl"></span><span class="boot-cursor" aria-hidden="true"></span>
       </div>
-      <div class="boot-loader">
+      <div class="boot-loader" id="intro-loader">
         <div class="boot-loader-row">
-          <span>LOADING: IMPOSSIBLE_TO_IGNORE</span>
-          <span>[ 100% ]</span>
+          <span id="intro-loader-label">LOADING: IMPOSSIBLE_TO_IGNORE</span>
+          <span id="intro-bar-pct">[ 0% ]</span>
         </div>
         <div class="boot-bar">
           <div class="boot-bar-inner" id="boot-bar-inner"></div>
@@ -151,7 +151,7 @@ html.skip-intro body.intro-open .name-ticker{visibility:visible}
       </div>
     </div>
 
-    <div class="boot-bot-row">
+    <div class="boot-bot-row" id="intro-bot-row">
       <span>WEBSITE DEVELOPMENT &amp; DESIGN</span>
       <span class="boot-press">PRESS ANY KEY ▮</span>
     </div>
@@ -708,6 +708,7 @@ html.skip-intro body.intro-open .name-ticker{visibility:visible}
 </footer>
 
 <script src="hero.js?v=4" defer></script>
+<script src="intro-boot.js?v=1" defer></script>
 <script src="site.js?v=6" defer></script>
 
 </body>
