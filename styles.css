@@ -1257,263 +1257,212 @@ footer .meta a:hover { color: var(--accent-2); }
    Y2K INTRO GATE + STREET-URBAN HERO
    ======================================================= */
 
+/* =======================================================
+   INTRO GATE — teaser-aligned full-screen boot screen
+   ======================================================= */
+
 .intro {
-  position: fixed; inset: 0;
+  position: fixed;
+  inset: 12px;
   z-index: 10000;
-  background: #000;
+  background: #08090b;
+  border-radius: 6px;
   overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: opacity .2s;
-}
-.intro::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 3px),
-    radial-gradient(ellipse at 50% 60%, rgba(198,255,58,0.08), transparent 55%),
-    radial-gradient(ellipse at 30% 30%, rgba(255,61,240,0.08), transparent 55%);
-  pointer-events: none;
-}
-.intro::after {
-  content: '';
-  position: absolute; inset: 0;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.95'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
-  opacity: 0.35;
-  mix-blend-mode: overlay;
-  pointer-events: none;
 }
 
-.intro .stage {
-  position: relative;
-  width: min(92vw, 1400px);
-  display: flex; align-items: center; justify-content: center;
-}
-
-/* TV screen container â€” glitchy CRT housing */
-.tv-screen {
-  position: relative;
-  width: 100%;
-  padding: clamp(28px, 6vw, 80px) clamp(20px, 4vw, 60px);
-  display: flex; align-items: center; justify-content: center;
-  background:
-    radial-gradient(ellipse at 50% 45%, rgba(22,24,30,0.9), rgba(0,0,0,0.98) 70%);
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow:
-    inset 0 0 120px rgba(0,0,0,0.9),
-    0 30px 120px rgba(0,0,0,0.6);
-  transform-origin: center;
-  will-change: transform, opacity;
-}
-
-.tv-screen .tv-noise {
-  position: absolute; inset: -20%;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
-  opacity: 0.10;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-}
-@keyframes tv-noise-shift {
-  0%   { transform: translate(0, 0); }
-  20%  { transform: translate(-4%, 3%); }
-  40%  { transform: translate(3%, -5%); }
-  60%  { transform: translate(-2%, 2%); }
-  80%  { transform: translate(5%, -3%); }
-  100% { transform: translate(-3%, 4%); }
-}
-
-.tv-screen .tv-scanlines {
-  position: absolute; inset: 0;
-  background-image: repeating-linear-gradient(
-    0deg,
-    rgba(0,0,0,0.35) 0 2px,
-    transparent 2px 4px
-  );
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  animation: tv-scan-shift 8s linear infinite;
-}
-@keyframes tv-scan-shift {
-  0%   { background-position: 0 0; }
-  100% { background-position: 0 120px; }
-}
-
-.tv-screen .tv-flicker {
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,0.02) 0%,
-    rgba(255,255,255,0) 40%,
-    rgba(255,255,255,0) 60%,
-    rgba(255,255,255,0.02) 100%
-  );
-  pointer-events: none;
-  mix-blend-mode: screen;
-  opacity: 0.6;
-}
-@keyframes tv-flicker {
-  0%, 100% { opacity: 0.6; }
-  10% { opacity: 0.2; }
-  30% { opacity: 0.9; }
-  55% { opacity: 0.35; }
-  80% { opacity: 0.7; }
-}
-
-/* Horizontal hot-line that appears during TV-off collapse */
-.tv-screen .tv-off-line {
+/* Frame lines — draw clockwise */
+.if {
   position: absolute;
-  left: 0; right: 0;
-  top: 50%;
-  height: 2px;
-  background: #fff;
-  box-shadow: 0 0 30px #fff, 0 0 60px rgba(198,255,58,0.9);
-  opacity: 0;
-  transform: scaleX(0);
+  background: var(--accent);
+  z-index: 10;
+  border-radius: 2px;
   pointer-events: none;
 }
+.if-top    { top: 0;    left: 0;    height: 2px; width:  0; animation: if-draw-h  160ms   0ms ease forwards; }
+.if-right  { top: 0;    right: 0;   width:  2px; height: 0; animation: if-draw-v  160ms 160ms ease forwards; }
+.if-bottom { bottom: 0; right: 0;   height: 2px; width:  0; animation: if-draw-hl 160ms 320ms ease forwards; }
+.if-left   { bottom: 0; left: 0;    width:  2px; height: 0; animation: if-draw-vb 160ms 480ms ease forwards; }
 
-/* The big "RASTRICK." text logo */
-.intro-logo {
+@keyframes if-draw-h  { to { width:  100%; } }
+@keyframes if-draw-v  { to { height: 100%; } }
+@keyframes if-draw-hl { from { width: 0; right: 0; } to { width: 100%; } }
+@keyframes if-draw-vb { from { height: 0; bottom: 0; } to { height: 100%; } }
+
+/* Scanlines overlay */
+.intro-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.18) 2px,
+    rgba(0,0,0,0.18) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Corner glows */
+.intro .boot-glow {
+  position: absolute;
+  width: 50vmax;
+  height: 50vmax;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.intro .boot-glow-mag {
+  top: -20vmax; right: -20vmax;
+  background: radial-gradient(circle, rgba(255,61,240,0.15) 0%, transparent 70%);
+}
+.intro .boot-glow-lime {
+  bottom: -20vmax; left: -20vmax;
+  background: radial-gradient(circle, rgba(198,255,58,0.13) 0%, transparent 70%);
+}
+
+/* Content container */
+.boot-inner {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1200px;
+  padding: clamp(40px, 6vh, 80px) clamp(20px, 5vw, 56px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 4vh, 48px);
+}
+
+.boot-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--f-mono);
+  font-size: clamp(9px, 1.8vw, 11px);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.boot-rec {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-2);
+  flex-shrink: 0;
+}
+
+.boot-rec-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  box-shadow: 0 0 8px var(--accent-2);
+  animation: bootRecBlink 1.4s ease-in-out infinite;
+  display: inline-block;
+}
+@keyframes bootRecBlink { 50% { opacity: 0.25; } }
+
+/* Boot mid */
+.boot-mid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.6vw, 18px);
+}
+
+.boot-init {
+  font-family: var(--f-mono);
+  font-size: clamp(10px, 1.1vw, 14px);
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.boot-logo {
   font-family: var(--f-display);
   font-weight: 400;
-  font-size: clamp(64px, 18vw, 260px);
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  color: #fff;
+  font-size: clamp(48px, 13vw, 156px);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: var(--ink);
   text-transform: uppercase;
-  position: relative;
-  z-index: 3;
-  margin: 0;
-  transition: transform .4s cubic-bezier(.2,.8,.2,1), letter-spacing .4s, filter .4s;
-  cursor: pointer;
-  user-select: none;
-  will-change: transform;
-}
-
-.intro-logo em {
-  font-style: normal;
-  color: var(--accent);
-  font-family: inherit;
-  display: inline;
-  text-shadow:
-    0 0 30px var(--accent),
-    0 0 60px rgba(198,255,58,0.55);
-}
-
-.intro-logo-text {
-  display: inline-block;
-  position: relative;
-}
-
-.intro-logo-text::before,
-.intro-logo-text::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0; left: 0;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: clamp(4px, 0.8vw, 10px);
   width: 100%;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  text-shadow: none;
-}
-.intro-logo-text::before {
-  color: #ff3df0;
-  animation: rgb-split-1 2.6s steps(10) infinite;
-}
-.intro-logo-text::after {
-  color: #3df0ff;
-  animation: rgb-split-2 2.9s steps(10) infinite;
 }
 
-@keyframes rgb-split-1 {
-  0%, 100% { transform: translate(-3px, 0);  clip-path: inset(0 0 70% 0); }
-  20%      { transform: translate(-6px, -1px); clip-path: inset(20% 0 40% 0); }
-  40%      { transform: translate(-2px, 2px);  clip-path: inset(55% 0 10% 0); }
-  60%      { transform: translate(-7px, 0);    clip-path: inset(10% 0 65% 0); }
-  80%      { transform: translate(-4px, 1px);  clip-path: inset(75% 0 5% 0); }
-}
-@keyframes rgb-split-2 {
-  0%, 100% { transform: translate(3px, 0);   clip-path: inset(60% 0 10% 0); }
-  25%      { transform: translate(6px, 1px); clip-path: inset(10% 0 55% 0); }
-  50%      { transform: translate(2px, -2px);clip-path: inset(30% 0 30% 0); }
-  75%      { transform: translate(7px, 0);   clip-path: inset(45% 0 20% 0); }
-}
-@keyframes tv-jitter {
-  0%   { transform: translate(0, 0); }
-  20%  { transform: translate(-1px, 0); }
-  40%  { transform: translate(1px, -1px); }
-  60%  { transform: translate(-1px, 1px); }
-  80%  { transform: translate(1px, 0); }
-  100% { transform: translate(0, 0); }
+.boot-logo-text {
+  position: relative;
+  display: inline-block;
 }
 
-/* Hover â€” text enlarges + glow intensifies */
-.intro-logo:hover {
-  transform: scale(1.06);
+.boot-cursor {
+  display: inline-block;
+  width: clamp(10px, 1.7vw, 24px);
+  height: clamp(60px, 11vw, 130px);
+  background: var(--accent-2);
+  animation: bootCursorBlink 1s steps(2) infinite;
+  box-shadow: 0 0 20px rgba(255,61,240,0.55);
 }
-.intro-logo:hover .intro-logo-text {
-  text-shadow:
-    0 0 50px rgba(255,255,255,0.7),
-    0 0 140px rgba(198,255,58,0.55);
-}
-.intro-logo:hover em {
-  text-shadow:
-    0 0 50px var(--accent),
-    0 0 140px rgba(198,255,58,0.8);
+@keyframes bootCursorBlink { 50% { opacity: 0; } }
+
+/* Loading bar */
+.boot-loader { width: 100%; }
+
+.boot-loader-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--f-mono);
+  font-size: clamp(9px, 1vw, 11px);
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 6px;
+  text-transform: uppercase;
 }
 
-/* TV-OFF sequence â€” triggered when "Click here to enter" is pressed */
-.intro.tv-off .tv-screen { animation: tvOffScreen 1.2s forwards cubic-bezier(.7,0,.3,1); }
-.intro.tv-off .intro-logo,
-.intro.tv-off .tv-noise,
-.intro.tv-off .tv-flicker,
-.intro.tv-off .tv-scanlines { animation-play-state: paused; }
-.intro.tv-off .tv-off-line { animation: tvOffLine 1.2s forwards cubic-bezier(.7,0,.3,1); }
-.intro.tv-off .enter-btn,
-.intro.tv-off .corners,
-.intro.tv-off .title-row,
-.intro.tv-off .side-note { opacity: 0; transition: opacity .2s ease; }
-.intro.tv-off::before,
-.intro.tv-off::after { opacity: 0; transition: opacity .3s ease; }
-
-/* Full-screen phosphor blowout flash on shutdown */
-.intro.tv-off { animation: introBlowout .55s ease-out forwards; }
-@keyframes introBlowout {
-  0%   { background-color: #000; }
-  16%  { background-color: #fff; }
-  38%  { background-color: #555; }
-  100% { background-color: #000; }
+.boot-bar {
+  width: 100%;
+  height: clamp(16px, 2.2vw, 22px);
+  border: 1.5px solid var(--accent);
+  padding: 2px;
+  display: flex;
+  position: relative;
+  background: #000;
 }
 
-@keyframes tvOffScreen {
-  0%   { transform: scale(1, 1);         filter: brightness(1)    contrast(1); }
-  10%  { transform: scale(1.01, 1.01);   filter: brightness(4)    contrast(1.8) saturate(0.4); }
-  18%  { transform: scale(1, 1);         filter: brightness(1.5)  contrast(1.3); }
-  28%  { transform: scale(1.05, 1);      filter: brightness(10)   contrast(3); }
-  40%  { transform: scale(1.22, 0.009);  filter: brightness(18)   contrast(4); }
-  54%  { transform: scale(0.95, 0.006);  filter: brightness(12)   contrast(3); }
-  70%  { transform: scale(0.38, 0.003);  filter: brightness(7)    contrast(2.5); }
-  86%  { transform: scale(0.07, 0.002);  filter: brightness(3)    contrast(1.8); }
-  100% { transform: scale(0, 0);         filter: brightness(0)    contrast(1); opacity: 0; }
-}
-@keyframes tvOffLine {
-  0%   { opacity: 0;   transform: scaleX(0);    height: 2px; box-shadow: none; }
-  20%  { opacity: 1;   transform: scaleX(1.08); height: 6px;
-         box-shadow: 0 0 50px 8px #fff, 0 0 110px 18px #c6ff3a, 0 0 220px 40px rgba(198,255,58,0.65); }
-  44%  { opacity: 1;   transform: scaleX(0.92); height: 9px;
-         box-shadow: 0 0 70px 14px #fff, 0 0 150px 28px #c6ff3a, 0 0 300px 60px rgba(198,255,58,0.5); }
-  65%  { opacity: 0.9; transform: scaleX(0.32); height: 5px;
-         box-shadow: 0 0 55px 9px #fff, 0 0 110px 18px #c6ff3a; }
-  84%  { opacity: 0.5; transform: scaleX(0.05); height: 3px;
-         box-shadow: 0 0 35px 5px #fff; }
-  100% { opacity: 0;   transform: scaleX(0);    height: 2px; box-shadow: none; }
+.boot-bar-inner {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg,
+    var(--accent) 0%, var(--accent) 86%,
+    var(--accent-2) 86%, var(--accent-2) 94%,
+    transparent 94%, transparent 100%);
+  transition: width 0.1s linear;
+  box-shadow: 0 0 12px rgba(198,255,58,0.4);
 }
 
-.intro.done {
-  opacity: 0;
-  pointer-events: none;
+/* Bottom row */
+.boot-bot-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--f-mono);
+  font-size: clamp(9px, 1.8vw, 11px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(198,255,58,0.66);
 }
 
+.boot-press { color: var(--accent-2); }
+
+/* Enter button — pill style */
 .intro .enter-btn {
   position: fixed;
   left: 50%; bottom: 10vh;
@@ -1540,81 +1489,38 @@ footer .meta a:hover { color: var(--accent-2); }
   0%, 100% { transform: translate(-50%, 0); }
   50%      { transform: translate(-50%, -6px); }
 }
-.intro .enter-btn:hover {
-  background: var(--accent-2);
-  color: #fff;
-}
+.intro .enter-btn:hover { background: var(--accent-2); color: #fff; }
 .intro .enter-btn .blink {
   display: inline-block; width: 8px; height: 8px; border-radius: 50%;
   background: #000;
   animation: blink 1s steps(2) infinite;
 }
 
-.intro .corners {
-  position: absolute; inset: 32px;
+/* CRT-off dismissal */
+.intro.tv-off {
+  animation: crt-off 1.2s ease forwards;
   pointer-events: none;
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
 }
-.intro .corners span {
-  position: absolute;
-  display: flex; align-items: center; gap: 8px;
+@keyframes crt-off {
+  0%   { opacity: 1; transform: scaleY(1);    filter: brightness(1); }
+  15%  { opacity: 1; transform: scaleY(1);    filter: brightness(4); }
+  30%  { opacity: 1; transform: scaleY(0.02); filter: brightness(3); }
+  55%  { opacity: 0; transform: scaleY(0);    filter: brightness(0); }
+  100% { opacity: 0; transform: scaleY(0); }
 }
-.intro .corners .tl { top: 0; left: 0; }
-.intro .corners .tr { top: 0; right: 0; }
-.intro .corners .bl { bottom: 0; left: 0; }
-.intro .corners .br { bottom: 0; right: 0; }
-.intro .corners .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+.intro.tv-off .enter-btn { opacity: 0; transition: opacity .2s ease; }
 
-.intro .title-row {
-  position: absolute;
-  left: 50%; top: 32px;
-  transform: translateX(-50%);
-  font-family: var(--f-display);
-  font-size: 14px;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: #fff;
-  display: flex; gap: 32px;
-  align-items: center;
-  white-space: nowrap;
-}
-.intro .title-row::before, .intro .title-row::after {
-  content: ''; width: 60px; height: 1px; background: rgba(255,255,255,0.3);
-}
+.intro.done { opacity: 0; pointer-events: none; }
 
-/* side ticker inside intro */
-.intro .side-note {
-  position: absolute;
-  left: 50%;
-  bottom: 32px;
-  transform: translateX(-50%);
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
-  white-space: nowrap;
-}
-
-/* body enters after intro splits */
-body.intro-open {
-  overflow: hidden;
-}
-/* hide page content behind the intro so nothing bleeds through the TV-off animation */
+/* body state during intro */
+body.intro-open { overflow: hidden; }
 body.intro-open .nav,
 body.intro-open .hero,
 body.intro-open section,
 body.intro-open footer,
 body.intro-open .ticker,
-body.intro-open .name-ticker {
-  visibility: hidden;
-}
+body.intro-open .name-ticker { visibility: hidden; }
 
-/* ── return-visit: skip-intro class added by inline head script ── */
 html.skip-intro #intro { display: none !important; }
 html.skip-intro body.intro-open { overflow: visible; }
 html.skip-intro body.intro-open .nav,
@@ -1623,6 +1529,13 @@ html.skip-intro body.intro-open section,
 html.skip-intro body.intro-open footer,
 html.skip-intro body.intro-open .ticker,
 html.skip-intro body.intro-open .name-ticker { visibility: visible; }
+
+@media (max-width: 720px) {
+  .intro { inset: 6px; }
+  .boot-loader-row { font-size: 9px; }
+  .boot-init { font-size: 10px; }
+}
+
 
 /* =======================================================
    Y2K / STREET-URBAN HERO ENHANCEMENTS
@@ -2390,181 +2303,6 @@ body.ty-body { cursor: none; }
   .name-ticker .star { width: 20px; height: 20px; }
 }
 
-/* =======================================================
-   05A BOOT SCREEN — intro entrance logo
-   ======================================================= */
-
-/* Hide the old text-based intro logo styling — now rendered as full boot screen */
-.intro .title-row { display: none !important; }
-.intro .corners { display: none !important; }
-.intro .side-note { display: none !important; }
-
-.intro .stage {
-  width: min(94vw, 1280px);
-  aspect-ratio: 16 / 10;
-  max-height: 78vh;
-}
-
-.tv-screen {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  border-radius: 18px;
-}
-
-.boot {
-  position: absolute;
-  inset: 0;
-  background: #000;
-  overflow: hidden;
-  font-family: var(--f-mono);
-  color: #c6ff3d;
-  z-index: 2;
-}
-.boot-glow {
-  position: absolute;
-  width: 40%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  filter: blur(2px);
-  pointer-events: none;
-}
-.boot-glow-mag {
-  top: -10%; right: -10%;
-  background: radial-gradient(circle, rgba(255,26,140,0.20), transparent 60%);
-}
-.boot-glow-lime {
-  bottom: -10%; left: -10%;
-  background: radial-gradient(circle, rgba(198,255,61,0.13), transparent 60%);
-}
-
-.boot-frame {
-  position: absolute;
-  inset: clamp(16px, 3.5%, 40px);
-  border: 1.5px solid rgba(198,255,61,0.4);
-  padding: clamp(14px, 2.6%, 28px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: clamp(10px, 2vw, 18px);
-}
-
-.boot-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: clamp(9px, 1vw, 11px);
-  letter-spacing: 0.18em;
-  color: rgba(198,255,61,0.8);
-  text-transform: uppercase;
-  font-weight: 500;
-}
-.boot-row.bot { color: rgba(198,255,61,0.66); }
-.boot-press { color: #ff1a8c; }
-.boot-rec { display: inline-flex; align-items: center; gap: 8px; color: rgba(198,255,61,0.85); }
-.boot-rec-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #ff1a8c;
-  box-shadow: 0 0 10px #ff1a8c;
-  animation: bootRecBlink 1.4s ease-in-out infinite;
-}
-@keyframes bootRecBlink { 50% { opacity: 0.25; } }
-
-.boot-mid {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: clamp(10px, 1.6vw, 18px);
-  width: 100%;
-}
-.boot-init {
-  font-size: clamp(10px, 1.1vw, 14px);
-  color: #c6ff3d;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-.boot-logo {
-  font-family: "Anton", "Archivo Narrow", "Archivo Black", sans-serif;
-  font-weight: 400;
-  font-size: clamp(48px, 13vw, 156px);
-  line-height: 0.85;
-  letter-spacing: -0.03em;
-  color: #F2F0EA;
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: flex-start;
-  gap: clamp(4px, 0.8vw, 10px);
-  width: 100%;
-  position: relative;
-}
-.boot-logo-text {
-  position: relative;
-  display: inline-block;
-}
-.boot-logo-text::before,
-.boot-logo-text::after { content: none; display: none; }
-
-.boot-cursor {
-  display: inline-block;
-  width: clamp(10px, 1.7vw, 24px);
-  height: clamp(60px, 11vw, 130px);
-  background: #ff1a8c;
-  margin-top: 0;
-  animation: bootCursorBlink 1s steps(2) infinite;
-  box-shadow: 0 0 20px rgba(255,26,140,0.55);
-}
-@keyframes bootCursorBlink { 50% { opacity: 0; } }
-
-.boot-loader {
-  width: 100%;
-  margin-top: clamp(4px, 1vw, 10px);
-}
-.boot-loader-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: clamp(9px, 1vw, 11px);
-  letter-spacing: 0.2em;
-  color: #c6ff3d;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-}
-.boot-bar {
-  width: 100%;
-  height: clamp(16px, 2.2vw, 22px);
-  border: 1.5px solid #c6ff3d;
-  padding: 2px;
-  display: flex;
-  position: relative;
-  background: #000;
-}
-.boot-bar-inner {
-  height: 100%;
-  width: 0%;
-  background:
-    linear-gradient(90deg,
-      #c6ff3d 0%, #c6ff3d 86%,
-      #ff1a8c 86%, #ff1a8c 94%,
-      transparent 94%, transparent 100%);
-  background-size: 100% 100%;
-  transition: width 0.1s linear;
-  box-shadow: 0 0 12px rgba(198,255,61,0.4);
-}
-
-@media (max-width: 720px) {
-  .intro .stage { aspect-ratio: 9 / 12; max-height: 78vh; }
-  .boot-row { font-size: 9px; letter-spacing: 0.14em; }
-  .boot-loader-row { font-size: 9px; }
-  .boot-init { font-size: 10px; }
-}
-
-/* TV-OFF: also collapse the boot screen content with the screen */
-.intro.tv-off .boot {
-  animation: bootFadeOut .45s forwards ease-out;
-}
-@keyframes bootFadeOut {
-  to { opacity: 0; filter: brightness(2); }
-}
 
 /* =======================================================
    MOBILE WORK SECTION — horizontal scroll strip

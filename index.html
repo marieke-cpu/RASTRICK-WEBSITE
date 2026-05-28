@@ -38,8 +38,8 @@ body{margin:0;background:#08090b}
 body.intro-open{overflow:hidden}
 body.intro-open .nav,body.intro-open .hero,body.intro-open section,
 body.intro-open footer,body.intro-open .ticker,body.intro-open .name-ticker{visibility:hidden}
-.intro{position:fixed;inset:0;z-index:10000;background:#000;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;cursor:pointer}
+.intro{position:fixed;inset:12px;z-index:10000;background:#08090b;border-radius:6px;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}
 html.skip-intro #intro{display:none!important}
 html.skip-intro body.intro-open{overflow:visible}
 html.skip-intro body.intro-open .nav,
@@ -115,54 +115,49 @@ html.skip-intro body.intro-open .name-ticker{visibility:visible}
 </head>
 <body class="intro-open">
 
-<!-- INTRO GATE — 05A BOOT SCREEN as the entrance logo. Switches off like a CRT on click. -->
-<div class="intro" id="intro">
-  <div class="stage">
-    <div class="tv-screen" id="tv-screen">
-      <div class="tv-noise" aria-hidden="true"></div>
-      <div class="tv-scanlines" aria-hidden="true"></div>
-      <div class="tv-flicker" aria-hidden="true"></div>
+<!-- INTRO GATE — full-screen boot screen. Switches off like a CRT on click. -->
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="RASTRICK. MADE loading screen">
+  <!-- Frame lines (draw clockwise via CSS animation) -->
+  <span class="if if-top"    aria-hidden="true"></span>
+  <span class="if if-right"  aria-hidden="true"></span>
+  <span class="if if-bottom" aria-hidden="true"></span>
+  <span class="if if-left"   aria-hidden="true"></span>
 
-      <!-- 05A BOOT SCREEN -->
-      <div class="boot" id="boot-screen">
-        <div class="boot-glow boot-glow-mag"></div>
-        <div class="boot-glow boot-glow-lime"></div>
+  <!-- Ambient FX -->
+  <div class="intro-scanlines" aria-hidden="true"></div>
+  <div class="boot-glow boot-glow-mag" aria-hidden="true"></div>
+  <div class="boot-glow boot-glow-lime" aria-hidden="true"></div>
 
-        <div class="boot-frame">
-          <div class="boot-row top">
-            <span>RASTRICK. MADE_OS v.2026 // INDEPENDENT WEB DESIGN STUDIO</span>
-            <span class="boot-rec"><span class="boot-rec-dot"></span> REC</span>
-          </div>
+  <!-- Content -->
+  <div class="boot-inner">
+    <div class="boot-top-row">
+      <span>RASTRICK. MADE_OS v.2026 // INDEPENDENT WEB DESIGN STUDIO</span>
+      <span class="boot-rec"><span class="boot-rec-dot"></span> REC</span>
+    </div>
 
-          <div class="boot-mid">
-            <div class="boot-init">&gt; INITIALIZING_BRAND.exe</div>
-            <div class="boot-logo">
-              <span class="boot-logo-text">RASTRICK. MADE</span><span class="boot-cursor" aria-hidden="true"></span>
-            </div>
-
-            <div class="boot-loader">
-              <div class="boot-loader-row">
-                <span>LOADING: IMPOSSIBLE_TO_IGNORE</span>
-                <span>[ 100% ]</span>
-              </div>
-              <div class="boot-bar">
-                <div class="boot-bar-inner" id="boot-bar-inner"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="boot-row bot">
-            <span>WEBSITE DEVELOPMENT & DESIGN</span>
-            <span class="boot-press">PRESS ANY KEY ▮</span>
-          </div>
+    <div class="boot-mid">
+      <div class="boot-init">&gt; INITIALIZING_BRAND.exe</div>
+      <div class="boot-logo">
+        <span class="boot-logo-text">RASTRICK. MADE</span><span class="boot-cursor" aria-hidden="true"></span>
+      </div>
+      <div class="boot-loader">
+        <div class="boot-loader-row">
+          <span>LOADING: IMPOSSIBLE_TO_IGNORE</span>
+          <span>[ 100% ]</span>
+        </div>
+        <div class="boot-bar">
+          <div class="boot-bar-inner" id="boot-bar-inner"></div>
         </div>
       </div>
+    </div>
 
-      <div class="tv-off-line" aria-hidden="true"></div>
+    <div class="boot-bot-row">
+      <span>WEBSITE DEVELOPMENT &amp; DESIGN</span>
+      <span class="boot-press">PRESS ANY KEY ▮</span>
     </div>
   </div>
 
-  <button class="enter-btn" id="enter-btn" type="button"><span class="blink"></span>Click here to enter</button>
+  <button class="enter-btn" id="enter-btn" type="button" aria-label="Enter site"><span class="blink"></span>Click here to enter</button>
 </div>
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
