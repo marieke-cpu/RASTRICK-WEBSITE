@@ -1,6 +1,9 @@
 /* RASTRICK — cursor, draggable work cards, kinetic copy, form, intro TV-off */
 (function(){
 
+  // intervals that should pause when the tab is hidden
+  const _pauseables = [];
+
   // ==================== custom cursor ====================
   const dot = document.querySelector('.cursor');
   const ring = document.querySelector('.cursor-ring');
@@ -91,7 +94,11 @@
         { duration: 700, easing: 'cubic-bezier(.2,.8,.2,1)' }
       );
     };
-    setInterval(swap, 2400);
+    let swapHandle = setInterval(swap, 2400);
+    _pauseables.push({
+      pause:  () => { clearInterval(swapHandle); swapHandle = 0; },
+      resume: () => { if (!swapHandle) swapHandle = setInterval(swap, 2400); }
+    });
   }
 
   // ==================== draggable work cards (mobile only) ====================
@@ -286,7 +293,18 @@
       if (clockMobile) clockMobile.textContent = t;
     };
     tick();
-    setInterval(tick, 1000);
+    let clockHandle = setInterval(tick, 1000);
+    _pauseables.push({
+      pause:  () => { clearInterval(clockHandle); clockHandle = 0; },
+      resume: () => { if (!clockHandle) { tick(); clockHandle = setInterval(tick, 1000); } }
+    });
+  }
+
+  // ==================== visibility — pause intervals when tab hidden ====================
+  if (_pauseables.length) {
+    document.addEventListener('visibilitychange', () => {
+      _pauseables.forEach(p => document.hidden ? p.pause() : p.resume());
+    });
   }
 
 })();

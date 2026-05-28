@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <link rel="canonical" href="https://www.rastrick.com.au/" />
-<!-- Google Analytics -->
+<!-- Google Analytics — async, non-blocking -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PTWVZZBJ8"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -18,13 +18,21 @@
 <link rel="icon" type="image/png" sizes="32x32" href="Logo.png">
 <link rel="icon" type="image/png" sizes="96x96" href="Logo.png">
 <link rel="apple-touch-icon" sizes="180x180" href="Logo.png">
+<!-- Preconnect critical origins -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://assets.calendly.com" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://api.web3forms.com">
+<!-- Preload critical logo -->
+<link rel="preload" href="RM2W-sm.png" as="image">
+<!-- Non-blocking Google Fonts -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="styles.css">
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<!-- RASTRICK GIVEAWAY — added 22.05.26 -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<!-- Calendly CSS — non-blocking -->
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://assets.calendly.com/assets/external/widget.css">
+<noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
 </head>
 <body class="intro-open">
 
@@ -84,7 +92,7 @@
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="#top" class="logo"><span class="pulse"></span><img class="nav-logo-mark" src="RM2W.png" alt="RASTRICK. MADE"><img class="nav-logo-word" src="RM2W.png" alt="RASTRICK. MADE"></a>
+  <a href="#top" class="logo"><span class="pulse"></span><img class="nav-logo-mark" src="RM2W-sm.png" alt="RASTRICK. MADE" width="104" height="52" decoding="async"><img class="nav-logo-word" src="RM2W-sm.png" alt="RASTRICK. MADE" width="104" height="52" decoding="async" fetchpriority="high"></a>
   <ul>
     <li><a href="home.html">Home</a></li>
     <li><a href="work.html">Work</a></li>
@@ -308,7 +316,7 @@
     <article class="card" data-x="30" data-y="30" data-r="-2.5">
       <div class="thumb">
         <span class="live">Live</span>
-        <img src="assets/work/poly-home.png" alt="Poly Concreting website preview" loading="lazy">
+        <img src="assets/work/poly-home-sm.png" alt="Poly Concreting website preview" width="680" height="528" loading="lazy" decoding="async">
       </div>
       <div class="meta">
         <div class="client">Poly Concreting · Morayfield QLD</div>
@@ -327,7 +335,7 @@
     <article class="card" data-x="400" data-y="40" data-r="1.5">
       <div class="thumb">
         <span class="live">Live</span>
-        <img src="assets/work/commercial-lander.png" alt="Commercial Concreting landing page preview" loading="lazy">
+        <img src="assets/work/commercial-lander-sm.png" alt="Commercial Concreting landing page preview" width="680" height="529" loading="lazy" decoding="async">
       </div>
       <div class="meta">
         <div class="client">Poly Concreting · Lander 01</div>
@@ -344,7 +352,7 @@
     <article class="card" data-x="770" data-y="30" data-r="-1.5">
       <div class="thumb">
         <span class="live">Live</span>
-        <img src="assets/work/moretonbay-lander.png" alt="Moreton Bay services landing page preview" loading="lazy">
+        <img src="assets/work/moretonbay-lander-sm.png" alt="Moreton Bay services landing page preview" width="680" height="528" loading="lazy" decoding="async">
       </div>
       <div class="meta">
         <div class="client">Poly Concreting · Lander 02</div>
@@ -377,7 +385,7 @@
     <article class="card" data-x="800" data-y="260" data-r="1.8">
       <div class="thumb">
         <span class="live">Live</span>
-        <img src="assets/work/ipswich-lander.png" alt="Ipswich concreting services landing page preview" loading="lazy">
+        <img src="assets/work/ipswich-lander-sm.png" alt="Ipswich concreting services landing page preview" width="680" height="529" loading="lazy" decoding="async">
       </div>
       <div class="meta">
         <div class="client">Poly Concreting · Lander 03</div>
@@ -394,7 +402,7 @@
     <article class="card" data-x="250" data-y="520" data-r="2.2">
       <div class="thumb">
         <span class="live">Live</span>
-        <img src="assets/work/sunshinecoast-lander.png" alt="Sunshine Coast concreting services landing page preview" loading="lazy">
+        <img src="assets/work/sunshinecoast-lander-sm.png" alt="Sunshine Coast concreting services landing page preview" width="680" height="528" loading="lazy" decoding="async">
       </div>
       <div class="meta">
         <div class="client">Poly Concreting · Lander 04</div>
@@ -700,8 +708,8 @@
 <!-- RASTRICK. MADE RUNNING NAME TICKER -->
 <div class="name-ticker" aria-hidden="true">
   <div class="track">
-    <span><img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i></span>
-    <span aria-hidden="true"><img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i> <img class="ticker-logo" src="RM2B.png" alt="RASTRICK. MADE"> <i class="star"></i></span>
+    <span><img class="ticker-logo" src="RM2B-sm.png" alt="RASTRICK. MADE" width="160" height="160" loading="lazy" decoding="async"> <i class="star"></i> <img class="ticker-logo" src="RM2B-sm.png" alt="RASTRICK. MADE" width="160" height="160" loading="lazy" decoding="async"> <i class="star"></i> <img class="ticker-logo" src="RM2B-sm.png" alt="RASTRICK. MADE" width="160" height="160" loading="lazy" decoding="async"> <i class="star"></i> <img class="ticker-logo" src="RM2B-sm.png" alt="RASTRICK. MADE" width="160" height="160" loading="lazy" decoding="async"> <i class="star"></i> <img class="ticker-logo" src="RM2B-sm.png" alt="RASTRICK. MADE" width="160" height="160" loading="lazy" decoding="async"> <i class="star"></i> <img class="ticker-logo" src="RM2B-sm.png" alt="RASTRICK. MADE" width="160" height="160" loading="lazy" decoding="async"> <i class="star"></i></span>
+    <span aria-hidden="true"><img class="ticker-logo" src="RM2B-sm.png" alt="RASTRICK. MADE" width="160" height="160" loading="lazy" decoding="async"> <i class="star"></i> <img class="ticker-logo" src="RM2B-sm.png" alt="RASTRICK. MADE" width="160" height="160" loading="lazy" decoding="async"> <i class="star"></i> <img class="ticker-logo" src="RM2B-sm.png" alt="RASTRICK. MADE" width="160" height="160" loading="lazy" decoding="async"> <i class="star"></i> <img class="ticker-logo" src="RM2B-sm.png" alt="RASTRICK. MADE" width="160" height="160" loading="lazy" decoding="async"> <i class="star"></i> <img class="ticker-logo" src="RM2B-sm.png" alt="RASTRICK. MADE" width="160" height="160" loading="lazy" decoding="async"> <i class="star"></i> <img class="ticker-logo" src="RM2B-sm.png" alt="RASTRICK. MADE" width="160" height="160" loading="lazy" decoding="async"> <i class="star"></i></span>
   </div>
 </div>
 
@@ -735,9 +743,10 @@
   </div>
 </footer>
 
-<script src="hero.js?v=2"></script>
-<script src="site.js?v=4"></script>
-<script src="giveaway.js"></script>
+<script src="hero.js?v=3"></script>
+<script src="site.js?v=5"></script>
+<script src="giveaway.js?v=2" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 </body>

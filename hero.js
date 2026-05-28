@@ -1,6 +1,7 @@
 /* RASTRICK — hero shader system
    Desktop: 8 interactive shaders (cycle on click / arrow keys)
    Mobile:  5 shaders (tap to cycle, Topology Map default)
+   v3: lazy shader compilation + visibility API pause
 */
 (function () {
   'use strict';
@@ -17,8 +18,6 @@
   const VERT = `attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
 
   // ─── Aurora Fields (mobile) ──────────────────────────────────────────
-  // 3 flowing curtain bands. Touch X = horizontal wave phase.
-  // Touch Y = vertical band position. Tap = lime burst.
   const AURORA_FRAG = `precision mediump float;
   uniform float T;uniform vec2 R,M,CP;uniform float CK;
   float hn(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.545);}
@@ -26,34 +25,26 @@
     vec2 uv=gl_FragCoord.xy/R;
     float ar=R.x/R.y;
     float mx=M.x,my=M.y;
-    // Band 1 — main curtain
     float y1=.60+sin(uv.x*ar*2.0+T*.30+(mx-.5)*2.8)*.13
                +cos(uv.x*ar*.75-T*.20+(my-.5)*2.0)*.08;
     float a1=exp(-abs(uv.y-y1)*9.)*.85;
-    // Band 2 — secondary shimmer
     float y2=.50+sin(uv.x*ar*3.4+T*.50+(mx-.5)*2.0)*.09
                +cos(uv.x*ar*1.6-T*.28+(my-.5)*1.2)*.06;
     float a2=exp(-abs(uv.y-y2)*13.)*.55;
-    // Band 3 — faint upper glow
     float y3=.72+sin(uv.x*ar*1.2+T*.18+(mx-.5)*1.4)*.07;
     float a3=exp(-abs(uv.y-y3)*5.)*.35;
     float aurora=min(1.,a1+a2+a3);
-    // Color — shifts with position, time, and touch
     float hue=fract(uv.x*ar*.22+T*.07+(mx-.5)*.45);
     vec3 lime=vec3(.776,1.,.227),mag=vec3(1.,.239,.941),cyan=vec3(.28,.88,1.);
     vec3 aColor=mix(mix(cyan,lime,hue),mag,sin(hue*3.14+T*.25)*.38+.28);
     vec3 bg=vec3(.01,.012,.02);
     vec3 col=mix(bg,aColor,aurora);
-    // Stars — visible where aurora is faint
     float star=step(.9984,hn(floor(gl_FragCoord.xy)));
     col+=star*vec3(.8,.92,1.)*.55*max(0.,1.-aurora*2.5);
-    // Ground fade to dark
     col=mix(col,bg,smoothstep(.32,.0,uv.y)*.85);
-    // Touch tap glow
     vec2 pp=(uv*2.-1.)*vec2(ar,1.);
     vec2 cp=(CP*2.-1.)*vec2(ar,1.);
     col+=lime*CK*.65*exp(-length(pp-cp)*3.2);
-    // Vignette
     float vig=1.-dot(uv-.5,uv-.5)*1.3;
     col*=max(0.,vig);
     gl_FragColor=vec4(clamp(col,0.,1.),1.);
@@ -61,7 +52,7 @@
 
   // ─── 8 Desktop shaders ───────────────────────────────────────────────
   const SHADERS = [
-    // 0: LIQUID METAL — iridescent flowing noise, mouse creates wave distortion, click ripple
+    // 0: LIQUID METAL
     [`precision mediump float;
     uniform float T;uniform vec2 R,M,CP;uniform float CK;
     float nxl(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
@@ -93,7 +84,7 @@
       gl_FragColor=vec4(clamp(col,0.,1.),1.);
     }`, 'Liquid Metal'],
 
-    // 1: GRID RUNNER — retro perspective grid, mouse shifts vanishing point
+    // 1: GRID RUNNER
     [`precision mediump float;
     uniform float T;uniform vec2 R,M,CP;uniform float CK;
     void main(){
@@ -121,7 +112,7 @@
       gl_FragColor=vec4(clamp(col,0.,1.),1.);
     }`, 'Grid Runner'],
 
-    // 1: PLASMA STORM — sine plasma, mouse vortex
+    // 2: PLASMA STORM
     [`precision mediump float;
     uniform float T;uniform vec2 R,M,CP;uniform float CK;
     void main(){
@@ -147,7 +138,7 @@
       gl_FragColor=vec4(clamp(col,0.,1.),1.);
     }`, 'Plasma Storm'],
 
-    // 2: DIGITAL RAIN — falling columns, mouse scanline
+    // 3: DIGITAL RAIN
     [`precision mediump float;
     uniform float T;uniform vec2 R,M,CP;uniform float CK;
     float hf(float n){return fract(sin(n)*43758.545);}
@@ -174,7 +165,7 @@
       gl_FragColor=vec4(clamp(c,0.,1.),1.);
     }`, 'Digital Rain'],
 
-    // 3: VOID CELLS — voronoi, mouse repels cells
+    // 4: VOID CELLS
     [`precision mediump float;
     uniform float T;uniform vec2 R,M,CP;uniform float CK;
     vec2 hv2(vec2 p){return fract(sin(vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))))*43758.545);}
@@ -206,7 +197,7 @@
       gl_FragColor=vec4(clamp(col,0.,1.),1.);
     }`, 'Void Cells'],
 
-    // 4: NEBULA DRIFT — FBM nebula, mouse drags field, stars
+    // 5: NEBULA DRIFT
     [`precision mediump float;
     uniform float T;uniform vec2 R,M,CP;uniform float CK;
     float hn(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.545);}
@@ -235,7 +226,7 @@
       gl_FragColor=vec4(clamp(col,0.,1.),1.);
     }`, 'Nebula Drift'],
 
-    // 8: TOPOLOGY MAP — elevation contour lines, mouse raises terrain, click seismic wave
+    // 6: TOPOLOGY MAP
     [`precision mediump float;
     uniform float T;uniform vec2 R,M,CP;uniform float CK;
     float nxt(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
@@ -264,7 +255,7 @@
       gl_FragColor=vec4(clamp(col,0.,1.),1.);
     }`, 'Topology Map'],
 
-    // 9: AURORA GRID — aurora curtains over fine grid, mouse moves bands, click flash
+    // 7: AURORA GRID
     [`precision mediump float;
     uniform float T;uniform vec2 R,M,CP;uniform float CK;
     void main(){
@@ -339,12 +330,17 @@
     };
   }
 
-  // Compile programs
-  let programs, programs_m;
-  if (isMobile) {
-    programs_m = MOBILE_SHADERS.map(([frag]) => makeProgram(frag));
-  } else {
-    programs = SHADERS.map(([frag]) => makeProgram(frag));
+  // ─── Lazy shader cache — compile only on first use ───────────────────
+  const cache = {};
+  const cacheM = {};
+
+  function getProgram(idx) {
+    if (!cache[idx]) cache[idx] = makeProgram(SHADERS[idx][0]);
+    return cache[idx];
+  }
+  function getMobileProgram(idx) {
+    if (!cacheM[idx]) cacheM[idx] = makeProgram(MOBILE_SHADERS[idx][0]);
+    return cacheM[idx];
   }
 
   // Fullscreen quad
@@ -361,7 +357,7 @@
   // ─── Resize ──────────────────────────────────────────────────────────
   function resize() {
     const dpr = isMobile
-      ? Math.min(window.devicePixelRatio || 1, 1.5)
+      ? Math.min(window.devicePixelRatio || 1, 1.2)
       : Math.min(window.devicePixelRatio || 1, 2);
     canvas.width  = Math.floor(canvas.clientWidth  * dpr);
     canvas.height = Math.floor(canvas.clientHeight * dpr);
@@ -372,7 +368,6 @@
 
   // ─── Input ───────────────────────────────────────────────────────────
   if (isMobile) {
-    // Touch tracking — passive so page can still scroll
     canvas.addEventListener('touchmove', e => {
       if (!e.touches.length) return;
       const r = canvas.getBoundingClientRect();
@@ -390,13 +385,12 @@
       localStorage.setItem('rastrick_mobile_shader', mShader);
     }, { passive: true });
   } else {
-    // Desktop — mouse tracking
     window.addEventListener('pointermove', e => {
       const r = canvas.getBoundingClientRect();
       if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) return;
       mx = (e.clientX - r.left) / r.width;
       my = 1 - (e.clientY - r.top) / r.height;
-    });
+    }, { passive: true });
 
     canvas.addEventListener('pointerdown', e => {
       const r = canvas.getBoundingClientRect();
@@ -464,6 +458,7 @@
   // ─── Render ──────────────────────────────────────────────────────────
   const t0 = performance.now();
   let last = t0;
+  let rafHandle = 0;
 
   function drawFrame(entry, now) {
     if (!entry) return;
@@ -483,20 +478,26 @@
   function frame(now) {
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
-
     smx += (mx - smx) * (isMobile ? 0.04 : 0.055);
     smy += (my - smy) * (isMobile ? 0.04 : 0.055);
     clickT = Math.max(0, clickT - dt * 1.1);
-
     if (isMobile) {
-      drawFrame(programs_m && programs_m[mShader], now);
+      drawFrame(getMobileProgram(mShader), now);
     } else {
-      drawFrame(programs && programs[shader], now);
+      drawFrame(getProgram(shader), now);
     }
-
-    requestAnimationFrame(frame);
+    rafHandle = requestAnimationFrame(frame);
   }
 
-  requestAnimationFrame(frame);
+  // ─── Visibility API — pause render loop when tab is hidden ───────────
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (rafHandle) { cancelAnimationFrame(rafHandle); rafHandle = 0; }
+    } else {
+      if (!rafHandle) { last = performance.now(); rafHandle = requestAnimationFrame(frame); }
+    }
+  });
+
+  rafHandle = requestAnimationFrame(frame);
 
 })();
