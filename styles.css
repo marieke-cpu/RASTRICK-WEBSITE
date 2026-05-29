@@ -316,7 +316,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero .top, .hero .mid, .hero .bot {
   display: flex; justify-content: space-between; align-items: flex-end;
 }
-.hero .mid { flex: 1; align-items: center; }
+.hero .mid { flex: 1; flex-direction: column; align-items: flex-start; justify-content: center; }
 
 .hero .tag {
   font-family: var(--f-mono);
@@ -465,14 +465,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* -------------------- section frame -------------------- */
 .section {
-  padding: clamp(80px, 12vw, 180px) var(--pad);
+  padding: clamp(80px, 10vw, 140px) var(--pad);
   position: relative;
 }
 .section-head {
   display: grid;
   grid-template-columns: 140px 1fr;
   gap: 40px;
-  margin-bottom: clamp(48px, 8vw, 120px);
+  margin-bottom: clamp(36px, 5vw, 72px);
   align-items: start;
 }
 .section-head .idx {
@@ -507,7 +507,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* -------------------- work / drag canvas -------------------- */
 .work {
-  padding: clamp(80px, 12vw, 180px) 0;
+  padding: clamp(80px, 10vw, 140px) 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background: var(--bg-2);
@@ -738,12 +738,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* -------------------- about -------------------- */
 .about {
-  padding: clamp(80px, 12vw, 180px) var(--pad);
+  padding: clamp(80px, 10vw, 140px) var(--pad);
   border-bottom: 1px solid var(--line);
 }
 .about-grid {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 56px;
   align-items: start;
 }
 .about-grid p {
@@ -791,7 +791,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* -------------------- services -------------------- */
 .services {
-  padding: clamp(80px, 12vw, 180px) var(--pad);
+  padding: clamp(80px, 10vw, 140px) var(--pad);
   border-bottom: 1px solid var(--line);
   background: var(--bg-2);
 }
@@ -854,7 +854,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* -------------------- pricing -------------------- */
 .pricing {
-  padding: clamp(80px, 12vw, 180px) var(--pad);
+  padding: clamp(80px, 10vw, 140px) var(--pad);
   border-bottom: 1px solid var(--line);
 }
 .pkg-grid {
@@ -1022,7 +1022,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* -------------------- faq -------------------- */
 .faq {
-  padding: clamp(80px, 12vw, 180px) var(--pad);
+  padding: clamp(80px, 10vw, 140px) var(--pad);
   border-bottom: 1px solid var(--line);
   background: var(--bg-2);
 }
@@ -1060,13 +1060,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* -------------------- contact -------------------- */
 .contact {
-  padding: clamp(100px, 14vw, 200px) var(--pad);
+  padding: clamp(80px, 11vw, 156px) var(--pad);
   position: relative;
   overflow: hidden;
 }
 .contact-grid {
   display: grid; grid-template-columns: 1.1fr 1fr;
-  gap: 100px;
+  gap: 72px;
   align-items: start;
 }
 .contact h2, .contact h3 {
@@ -1203,7 +1203,7 @@ form.book .note {
 
 /* -------------------- footer -------------------- */
 footer {
-  padding: 80px var(--pad) 40px;
+  padding: 56px var(--pad) 40px;
   border-top: 1px solid var(--line);
   background: var(--bg);
 }
@@ -1767,9 +1767,36 @@ html.skip-intro body.intro-open .name-ticker { visibility: visible; }
 @media (min-width: 721px) and (max-width: 1024px) {
   .hero h1 { font-size: clamp(80px, 16vw, 180px); }
 }
-/* ---- desktop: clamp h1 by viewport height so bot meta never overflows ---- */
+/* ---- desktop: scale h1 so it never overflows the inset frame ---- */
+/*
+   Frame inset = --pad + 24px (≈ 80px each side at ≥1400px).
+   Available width ≈ 100vw - 160px.
+   Anton uppercase "WEBSITES BUILT" ≈ 8.5em wide.
+   Safe ceiling: (100vw - 160px) / 8.5 ≈ 11.5vw - 19px.
+   vh fallback caps the size on short/landscape viewports.
+*/
 @media (min-width: 1025px) {
-  .hero h1 { font-size: clamp(48px, min(13vw, 20vh), 280px); }
+  .hero h1 {
+    font-size: clamp(48px, min(9.5vw, 17vh), 162px);
+    line-height: 0.9;
+    letter-spacing: -0.015em;
+    width: 100%;
+  }
+
+  /* stack h1 + hero-sub vertically in .mid */
+  .hero .mid {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+  }
+
+  /* reveal the sub-line on desktop */
+  .hero-sub {
+    display: block;
+    max-width: min(62ch, 56vw);
+    margin-top: clamp(10px, 1.4vh, 20px);
+  }
 }
 
 /* ---- mobile-only badge tags ---- */
@@ -2079,7 +2106,7 @@ body.ty-body { cursor: none; }
 
 /* ---------- steps (what happens next) ---------- */
 .ty-steps {
-  padding: clamp(80px, 12vw, 160px) var(--pad);
+  padding: clamp(64px, 9vw, 120px) var(--pad);
   border-bottom: 1px solid var(--line);
   background: var(--bg-2);
 }
@@ -2140,7 +2167,7 @@ body.ty-body { cursor: none; }
 
 /* ---------- while you wait ---------- */
 .ty-wait {
-  padding: clamp(80px, 12vw, 160px) var(--pad);
+  padding: clamp(64px, 9vw, 120px) var(--pad);
   border-bottom: 1px solid var(--line);
 }
 .wait-grid {
@@ -2220,13 +2247,13 @@ body.ty-body { cursor: none; }
 
 /* ---------- direct contact fallback ---------- */
 .ty-direct {
-  padding: clamp(80px, 12vw, 160px) var(--pad);
+  padding: clamp(64px, 9vw, 120px) var(--pad);
   background: var(--bg-2);
   border-bottom: 1px solid var(--line);
 }
 .direct-grid {
   display: grid; grid-template-columns: 1.1fr 1fr;
-  gap: 80px;
+  gap: 56px;
   align-items: start;
   max-width: var(--maxw);
   margin: 0 auto;
@@ -2475,19 +2502,25 @@ body.ty-body { cursor: none; }
 /* =======================================================
    PART 1 — HERO CLARITY: positioning sub-line
    ======================================================= */
+@keyframes heroSubIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
 .hero-sub {
+  display: none; /* hidden on mobile/tablet — shown via desktop MQ above */
   font-family: var(--f-sans);
-  font-size: clamp(14px, 1.5vw, 18px);
+  font-size: clamp(13px, 1.35vw, 17px);
   line-height: 1.5;
   color: var(--ink-dim);
   max-width: 56ch;
-  margin-top: 18px;
+  margin-top: 16px;
   font-weight: 300;
   letter-spacing: -0.01em;
   pointer-events: none;
   opacity: 0;
-  animation: lineUp 0.9s cubic-bezier(.2,.8,.2,1) forwards;
-  animation-delay: 0.75s;
+  animation: heroSubIn 0.85s cubic-bezier(.2,.8,.2,1) forwards;
+  animation-delay: 0.8s;
 }
 .hero-sub em {
   color: var(--accent);
@@ -2496,15 +2529,76 @@ body.ty-body { cursor: none; }
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0;
-  font-size: 0.92em;
+  font-size: 0.9em;
+}
+
+/* ---- hero CTA system ---- */
+.hero-cta-wrap {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 26px);
+  margin-top: clamp(20px, 2.8vh, 32px);
+  opacity: 0;
+  animation: heroSubIn 0.85s cubic-bezier(.2,.8,.2,1) forwards;
+  animation-delay: 1.15s;
+  flex-wrap: nowrap;
+}
+.hero-cta-wrap, .hcta { pointer-events: auto; }
+.hcta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  will-change: transform;
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1),
+              color 0.25s ease,
+              border-color 0.25s ease;
+}
+.hcta-arr {
+  display: inline-block;
+  font-size: 12px;
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+}
+.hcta-p {
+  color: var(--ink);
+  border: 1px solid rgba(255,255,255,0.13);
+  padding: 10px 18px;
+}
+.hcta-p:hover {
+  transform: translate(-2px,-2px);
+  color: var(--accent);
+  border-color: rgba(198,255,58,0.4);
+}
+.hcta-p:hover .hcta-arr { transform: translate(3px,-3px); }
+.hcta-s {
+  color: var(--ink-dim);
+}
+.hcta-s:hover {
+  transform: translate(-2px,-2px);
+  color: var(--ink);
+}
+.hcta-s:hover .hcta-arr { transform: translate(3px,-3px); }
+.hcta-div {
+  width: 1px;
+  height: 14px;
+  background: rgba(255,255,255,0.11);
+  flex-shrink: 0;
+}
+@media (min-width: 1025px) {
+  .hcta { font-size: 11px; letter-spacing: 0.22em; }
+  .hcta-p { padding: 12px 22px; }
+  .hcta-arr { font-size: 13px; }
+  .hcta-div { height: 16px; }
 }
 @media (max-width: 720px) {
-  .hero-sub {
-    font-size: 13px;
-    max-width: 34ch;
-    margin-top: 10px;
-    animation-delay: 0.65s;
-  }
+  .hero-cta-wrap { margin-top: clamp(18px, 4vw, 28px); gap: 12px; }
+  .hcta { font-size: 9px; letter-spacing: 0.2em; }
+  .hcta-p { padding: 9px 15px; }
 }
 
 
@@ -2577,7 +2671,7 @@ body.ty-body { cursor: none; }
 
 /* ---- results / case study section ---- */
 .results {
-  padding: clamp(80px, 12vw, 160px) var(--pad);
+  padding: clamp(72px, 9vw, 130px) var(--pad);
   border-bottom: 1px solid var(--line);
 }
 .results-grid {
@@ -2949,7 +3043,7 @@ body.ty-body { cursor: none; }
 @media (min-width: 721px) and (max-width: 1024px) {
   .results-grid { grid-template-columns: 1fr; }
   .result-card .result-num { font-size: clamp(64px, 10vw, 100px); }
-  .contact-grid { gap: 60px; }
+  .contact-grid { gap: 48px; }
   .proof-inner { flex-wrap: wrap; gap: 0; }
   .proof-stat { padding: 20px 20px; }
   .proof-stat:first-child { padding-left: 0; }
@@ -2962,7 +3056,7 @@ body.ty-body { cursor: none; }
    ======================================================= */
 /* packages section needs explicit padding (was missing .section class) */
 .packages {
-  padding: clamp(80px, 12vw, 180px) var(--pad);
+  padding: clamp(80px, 10vw, 140px) var(--pad);
   border-bottom: 1px solid var(--line);
 }
 

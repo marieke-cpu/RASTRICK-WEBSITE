@@ -594,6 +594,150 @@
 .wk-btn.primary:hover { background: var(--accent-2); color: #fff; border-color: var(--accent-2); }
 .wk-btn.ghost:hover { background: rgba(255,255,255,0.04); border-color: var(--ink-dim); }
 
+/* ---- currently building ---- */
+.wk-current {
+  padding: clamp(60px, 8vw, 100px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+.wk-current-hdr {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px; margin-bottom: clamp(36px, 5vw, 56px);
+}
+.wk-current-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--accent-2); border: 1px solid rgba(255,61,240,0.3);
+  border-radius: 100px; padding: 7px 16px;
+}
+.wk-current-label .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-2); box-shadow: 0 0 10px var(--accent-2);
+  animation: blink 1.8s ease-in-out infinite;
+}
+.wk-current-geo {
+  font-family: var(--f-display); font-size: clamp(22px, 3vw, 36px);
+  font-weight: 400; text-transform: uppercase; color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.wk-current-geo em {
+  font-style: normal; color: var(--accent); font-family: var(--f-sans);
+  font-weight: 300; text-transform: lowercase; font-size: 0.7em;
+  margin: 0 8px;
+}
+.wk-current-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 80px); align-items: start;
+}
+.wk-current-card {
+  border: 1px solid rgba(255,61,240,0.25);
+  padding: clamp(28px, 4vw, 48px);
+  position: relative; background: var(--bg-2);
+}
+.wk-cc-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 16px;
+}
+.wk-cc-badge {
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent-2); border: 1px solid var(--accent-2);
+  border-radius: 100px; padding: 4px 10px;
+}
+.wk-cc-num {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint);
+}
+.wk-cc-client {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-faint); margin-bottom: 8px;
+}
+.wk-cc-name {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(32px, 4vw, 56px);
+  text-transform: uppercase; color: var(--ink); line-height: 1;
+  margin-bottom: 20px;
+}
+.wk-cc-desc {
+  font-family: var(--f-sans); font-size: 15px;
+  line-height: 1.65; color: var(--ink-dim); font-weight: 300;
+  margin-bottom: 20px;
+}
+.wk-cc-footer {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent-2); margin-top: 20px;
+  padding-top: 16px; border-top: 1px solid var(--line);
+  display: flex; align-items: center; gap: 8px;
+}
+.wk-cc-footer::before {
+  content: ''; display: block; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--accent-2);
+  box-shadow: 0 0 8px var(--accent-2);
+  animation: blink 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.wk-current-info {
+  display: flex; flex-direction: column; gap: 24px;
+  justify-content: center; padding: clamp(24px, 3vw, 40px) 0;
+}
+.wk-ci-kicker {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-faint);
+}
+.wk-ci-geo {
+  display: flex; flex-direction: column; gap: 4px;
+  font-family: var(--f-display); font-size: clamp(28px, 4.5vw, 60px);
+  font-weight: 400; text-transform: uppercase; line-height: 0.95;
+}
+.wk-ci-geo span { color: var(--ink); }
+.wk-ci-cross { color: var(--accent); font-family: var(--f-sans); font-weight: 300; font-size: 0.55em; text-transform: lowercase; }
+.wk-current-info > p {
+  font-family: var(--f-sans); font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.65; color: var(--ink-dim); font-weight: 300; max-width: 38ch;
+}
+.wk-pr-tag--wip { color: var(--accent-2) !important; border-color: rgba(255,61,240,0.4) !important; }
+
+/* ---- condensed landers summary ---- */
+.wk-landers-intro {
+  font-family: var(--f-sans); font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.65; color: var(--ink-dim); font-weight: 300;
+  max-width: 60ch; margin: clamp(20px, 2.5vw, 32px) 0 0;
+}
+.wk-lander-summary {
+  margin-top: 40px; border: 1px solid var(--line);
+}
+.wk-ls-row {
+  display: grid; grid-template-columns: 60px 1fr auto auto;
+  gap: 24px; align-items: center;
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--line);
+  transition: background .2s;
+}
+.wk-ls-row:last-child { border-bottom: none; }
+.wk-ls-row:hover { background: rgba(255,255,255,0.02); }
+.wk-ls-row:hover .wk-ls-link { transform: translate(4px, -4px); color: var(--accent); }
+.wk-ls-num {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint);
+}
+.wk-ls-title {
+  font-family: var(--f-display); font-size: clamp(18px, 2.2vw, 28px);
+  font-weight: 400; text-transform: uppercase; color: var(--ink); line-height: 1;
+}
+.wk-ls-sub {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-faint); margin-top: 6px;
+}
+.wk-ls-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.wk-ls-link {
+  font-family: var(--f-mono); font-size: 18px;
+  color: var(--ink-faint); transition: transform .3s, color .3s;
+}
+
 /* ---- responsive ---- */
 @media (max-width: 1000px) {
   .wk-cs-title-grid { grid-template-columns: 1fr; }
@@ -616,6 +760,9 @@
   .wk-hero .bracket.tl, .wk-hero .bracket.tr { top: 20px; }
   .wk-hero .bracket.bl, .wk-hero .bracket.br { bottom: 20px; }
   .wk-hero-top .tag:last-child { display: none; }
+  .wk-current-grid { grid-template-columns: 1fr; }
+  .wk-ls-row { grid-template-columns: 1fr auto; }
+  .wk-ls-num, .wk-ls-tags { display: none; }
 }
 </style>
 
@@ -691,6 +838,7 @@
     <p class="wk-hero-lead">
       Every project shown here is live and built around one purpose: generating more business for the client.
       <em>Real briefs. Real problems. Real outcomes.</em> Strategy-led from day one, built to convert from launch.
+      Working across Australia and New Zealand.
     </p>
   </div>
 </section>
@@ -699,7 +847,7 @@
 <section class="wk-index">
   <div class="section-head">
     <div class="idx">§ 01 / All projects</div>
-    <h2>Projects that <em>delivered.</em></h2>
+    <h2>Curated. <em>Real builds.</em></h2>
   </div>
 
   <div class="wk-index-grid">
@@ -707,20 +855,71 @@
     <a class="wk-project-row" href="#poly">
       <div class="wk-pr-num">/ 01</div>
       <div class="wk-pr-info">
-        <div class="wk-pr-client">Poly Concreting · Morayfield QLD</div>
-        <div class="wk-pr-name">Wix rebuild · 6 pages · 4 ad landers · $1M+ revenue</div>
+        <div class="wk-pr-client">Poly Concreting · Morayfield QLD · Australia</div>
+        <div class="wk-pr-name">Wix rebuild · 6 pages · 4 ad landers · $300k+ revenue</div>
         <div class="wk-pr-tags">
           <span class="wk-pr-tag">Web design</span>
           <span class="wk-pr-tag">Development</span>
           <span class="wk-pr-tag">Landing pages</span>
           <span class="wk-pr-tag">CRO</span>
           <span class="wk-pr-tag">SEO</span>
-          <span class="wk-pr-tag">WIX rebuild</span>
+          <span class="wk-pr-tag">Wix rebuild</span>
         </div>
       </div>
       <div class="wk-pr-arr">↗</div>
     </a>
 
+    <a class="wk-project-row" href="#bin-revivals">
+      <div class="wk-pr-num">/ 02</div>
+      <div class="wk-pr-info">
+        <div class="wk-pr-client">Bin Revivals · Palmerston North, New Zealand</div>
+        <div class="wk-pr-name">Full brand site · service business · current build</div>
+        <div class="wk-pr-tags">
+          <span class="wk-pr-tag">Web design</span>
+          <span class="wk-pr-tag">Development</span>
+          <span class="wk-pr-tag">CRO</span>
+          <span class="wk-pr-tag wk-pr-tag--wip">In development</span>
+        </div>
+      </div>
+      <div class="wk-pr-arr">↗</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- CURRENTLY BUILDING -->
+<section class="wk-current" id="bin-revivals">
+  <div class="wk-current-hdr">
+    <div class="wk-current-label"><span class="dot"></span>Currently in the studio</div>
+    <div class="wk-current-geo">AU <em>+</em> NZ</div>
+  </div>
+  <div class="wk-current-grid">
+    <div class="wk-current-card">
+      <div class="wk-cc-top">
+        <div class="wk-cc-num">/ 02</div>
+        <div class="wk-cc-badge">In development</div>
+      </div>
+      <div class="wk-cc-client">Bin Revivals · Palmerston North, New Zealand</div>
+      <div class="wk-cc-name">BIN REVIVALS</div>
+      <div class="wk-cc-desc">A full brand site for a rubbish bin cleaning service launching in Palmerston North, New Zealand. Built from scratch — clean identity, mobile-first, built to generate local service bookings from day one. Zero templates. Conversion-focused from the ground up.</div>
+      <div class="wk-pr-tags" style="margin-bottom:0;">
+        <span class="wk-pr-tag">Web design</span>
+        <span class="wk-pr-tag">Development</span>
+        <span class="wk-pr-tag">Service business</span>
+        <span class="wk-pr-tag">New Zealand</span>
+        <span class="wk-pr-tag">CRO</span>
+      </div>
+      <div class="wk-cc-footer">Active build · Expected launch Q3 2026</div>
+    </div>
+    <div class="wk-current-info">
+      <div class="wk-ci-kicker">Studio reach</div>
+      <div class="wk-ci-geo">
+        <span>Australia</span>
+        <span class="wk-ci-cross">+</span>
+        <span>New Zealand</span>
+      </div>
+      <p>RASTRICK. MADE builds conversion websites for service businesses across Australia and New Zealand. Every build is purpose-built, strategy-first, and zero templates.</p>
+    </div>
   </div>
 </section>
 
@@ -782,8 +981,8 @@
 
       <div class="wk-stats">
         <div class="wk-stat">
-          <div class="num"><em>$1M+</em></div>
-          <div class="lbl">Revenue milestone reached after full site and landing page rebuild</div>
+          <div class="num"><em>$300k+</em></div>
+          <div class="lbl">Revenue generated in the two months since launch</div>
         </div>
         <div class="wk-stat">
           <div class="num">6</div>
@@ -837,8 +1036,8 @@
         </p>
         <p>
           Six custom pages. Four dedicated ad landing pages. A new Wix build designed and structured from scratch — not from a template.
-          <strong>Poly Concreting has since crossed $1 million in revenue.</strong>
-          The website stopped being a liability and started being part of why the business keeps growing.
+          The full rebuild went live two months ago. Since launch, <strong>Poly Concreting has generated over $300k in revenue</strong> — and the site is still running.
+          It stopped being a liability and started working for the business.
         </p>
       </div>
     </div>
@@ -956,150 +1155,64 @@
       <h2>Built to <em>convert clicks.</em></h2>
     </div>
 
-    <div class="wk-lander-list">
+    <p class="wk-landers-intro">Four dedicated landing pages — each purpose-built for a specific ad campaign, region, and audience. No navigation. One conversion goal per page. Built to turn paid clicks into booked quote requests.</p>
 
-      <div class="wk-lander">
-        <div class="wk-lander-left">
-          <div class="wk-lander-num">Landing page / 01 · Mircosoft Ads</div>
-          <h3>Commercial <em>Concreting Services</em></h3>
-          <p>
-            Purpose-built for Poly Concreting's commercial Mircosoft Ads campaign. Designed to convert a click from a commercial building manager or construction company into a qualified quote request — nothing more, nothing less. <em>No main site navigation. No distractions. Just a clear case for why Poly Concreting is the right choice for commercial work in Greater Brisbane Queensland.</em>
-          </p>
-          <p>
-            Targets commercial-specific search terms — slab work, warehouse floors, car parks, commercial driveways. Strong hero, credibility stack, commercial project examples, and a quote form that stays visible as you scroll.
-          </p>
-          <a href="https://www.polyconcreting.com.au/commercial-concreting" target="_blank" rel="noopener" class="wk-lander-visit">Visit this lander ↗</a>
+    <div class="wk-lander-summary">
+
+      <div class="wk-ls-row">
+        <div class="wk-ls-num">/ 01</div>
+        <div>
+          <div class="wk-ls-title">Commercial Concreting Services</div>
+          <div class="wk-ls-sub">Microsoft Ads · Greater Brisbane · Commercial jobs</div>
         </div>
-        <div class="wk-lander-right">
-          <div>
-            <h4>Conversion architecture</h4>
-            <ul>
-              <li>No main nav — traffic stays on the page</li>
-              <li>Hero with clear commercial-focused headline</li>
-              <li>Services specific to commercial jobs</li>
-              <li>Google Reviews integration — trust from real customers</li>
-              <li>Sticky quote CTA visible throughout scroll</li>
-              <li>Click-to-call button prominent on mobile</li>
-              <li>Fast load — no WIX overhead on paid traffic</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Targeting</h4>
-            <ul>
-              <li>Mircosoft Ads — commercial concreting keywords</li>
-              <li>Greater Brisbane targeting</li>
-              <li>High-intent search terms: "commercial concreter QLD", "concrete slab contractor Brisbane"</li>
-            </ul>
-          </div>
+        <div class="wk-ls-tags">
+          <span class="wk-pr-tag">No nav</span>
+          <span class="wk-pr-tag">Sticky CTA</span>
+          <span class="wk-pr-tag">Commercial</span>
         </div>
+        <a href="https://www.polyconcreting.com.au/commercial-concreting" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
       </div>
 
-      <div class="wk-lander">
-        <div class="wk-lander-left">
-          <div class="wk-lander-num">Landing page / 02 · Google & Microsoft Ads</div>
-          <h3>Moreton Bay <em>Concreting Services</em></h3>
-          <p>
-            Regional lander built for Google and Microsoft Ads targeting the Moreton Bay area — Morayfield, Caboolture, Narangba, Burpengary, North Lakes and surrounding suburbs. <em>Hyper-local trust signals are the conversion lever here</em> — the page makes it clear Poly Concreting are locals who have worked in the exact suburbs the visitor is searching from.
-          </p>
-          <p>
-            Google & Microsoft Ads reaches a different audience — often older, homeowner-focused. The page tone and layout were built for that: straightforward, reassuring, focused entirely on the quote form as the single conversion goal.
-          </p>
-          <a href="https://www.polyconcreting.com.au/concrete-services-moretonbay" target="_blank" rel="noopener" class="wk-lander-visit">Visit this lander ↗</a>
+      <div class="wk-ls-row">
+        <div class="wk-ls-num">/ 02</div>
+        <div>
+          <div class="wk-ls-title">Moreton Bay Concreting Services</div>
+          <div class="wk-ls-sub">Google &amp; Microsoft Ads · Moreton Bay region · Residential</div>
         </div>
-        <div class="wk-lander-right">
-          <div>
-            <h4>Conversion architecture</h4>
-            <ul>
-              <li>No main nav — traffic stays on the page</li>
-              <li>Regional headline: "Concreting across Moreton Bay"</li>
-              <li>Suburb list — visible local area coverage</li>
-              <li>Residential focus: driveways, paths, shed slabs</li>
-              <li>Before/after project photos from local jobs</li>
-              <li>Google Reviews — social proof from nearby customers</li>
-              <li>Quote form above the fold on mobile</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Targeting</h4>
-            <ul>
-              <li>Google & Microsoft Ads — Moreton Bay residential search terms</li>
-              <li>Suburb-level geo-targeting</li>
-              <li>High-intent terms: "concreters Morayfield", "driveway concreting Caboolture"</li>
-            </ul>
-          </div>
+        <div class="wk-ls-tags">
+          <span class="wk-pr-tag">No nav</span>
+          <span class="wk-pr-tag">Hyper-local</span>
+          <span class="wk-pr-tag">Residential</span>
         </div>
+        <a href="https://www.polyconcreting.com.au/concrete-services-moretonbay" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
       </div>
 
-      <div class="wk-lander">
-        <div class="wk-lander-left">
-          <div class="wk-lander-num">Landing page / 03 · Microsoft Ads</div>
-          <h3>Ipswich <em>Concreting Services</em></h3>
-          <p>
-            Regional Microsoft Ads lander built to capture high-intent concreting leads across Ipswich and surrounding suburbs — Redbank, Springfield, Ripley, Goodna, and the broader Ipswich LGA. <em>Every element on the page is designed to do one thing: convert a search click into a quote request.</em> No distractions, no offsite links, no reason to leave before the form is filled.
-          </p>
-          <p>
-            Suburb-level copy reinforces local credibility instantly. Homeowner-focused tone, fast mobile load, and a sticky quote CTA keep the conversion path frictionless from first scroll to form submission.
-          </p>
-          <a href="https://www.polyconcreting.com.au/concrete-services-ipswich" target="_blank" rel="noopener" class="wk-lander-visit">Visit this lander ↗</a>
+      <div class="wk-ls-row">
+        <div class="wk-ls-num">/ 03</div>
+        <div>
+          <div class="wk-ls-title">Ipswich Concreting Services</div>
+          <div class="wk-ls-sub">Microsoft Ads · Ipswich LGA · Residential</div>
         </div>
-        <div class="wk-lander-right">
-          <div>
-            <h4>Conversion architecture</h4>
-            <ul>
-              <li>No main nav — paid traffic stays on the page</li>
-              <li>Ipswich-specific headline and suburb coverage list</li>
-              <li>Residential focus: driveways, shed slabs, paths, exposed aggregate</li>
-              <li>Google Reviews — verified social proof from local customers</li>
-              <li>Quote form above the fold on mobile</li>
-              <li>Click-to-call prominent on all screen sizes</li>
-              <li>Single conversion goal — no competing CTAs</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Targeting</h4>
-            <ul>
-              <li>Microsoft Ads — Ipswich residential concreting keywords</li>
-              <li>Suburb-level geo-targeting across Ipswich LGA</li>
-              <li>High-intent terms: "concreters Ipswich", "driveway concreting Springfield"</li>
-            </ul>
-          </div>
+        <div class="wk-ls-tags">
+          <span class="wk-pr-tag">No nav</span>
+          <span class="wk-pr-tag">Single CTA</span>
+          <span class="wk-pr-tag">Residential</span>
         </div>
+        <a href="https://www.polyconcreting.com.au/concrete-services-ipswich" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
       </div>
 
-      <div class="wk-lander">
-        <div class="wk-lander-left">
-          <div class="wk-lander-num">Landing page / 04 · Microsoft Ads</div>
-          <h3>Sunshine Coast <em>Concreting Services</em></h3>
-          <p>
-            Microsoft Ads lander targeting the Sunshine Coast — Maroochydore, Caloundra, Noosa, Buderim, Sippy Downs, and surrounding areas. Built for homeowner search intent with <em>hyper-local copy and a conversion structure engineered to turn a paid click into a booked quote.</em>
-          </p>
-          <p>
-            Microsoft Ads on the Sunshine Coast skews toward an older, property-owning demographic — the page tone, layout, and trust architecture were built with that audience in mind. Straightforward, credible, and focused entirely on one outcome.
-          </p>
-          <a href="https://www.polyconcreting.com.au/concrete-services-sunshinecoast" target="_blank" rel="noopener" class="wk-lander-visit">Visit this lander ↗</a>
+      <div class="wk-ls-row">
+        <div class="wk-ls-num">/ 04</div>
+        <div>
+          <div class="wk-ls-title">Sunshine Coast Concreting Services</div>
+          <div class="wk-ls-sub">Microsoft Ads · Sunshine Coast · Residential</div>
         </div>
-        <div class="wk-lander-right">
-          <div>
-            <h4>Conversion architecture</h4>
-            <ul>
-              <li>No main nav — traffic contained within the page</li>
-              <li>Sunshine Coast headline with visible suburb coverage</li>
-              <li>Residential services: driveways, pool surrounds, shed bases, paths</li>
-              <li>Before/after project photos from Sunshine Coast jobs</li>
-              <li>Google Reviews — local social proof above the fold</li>
-              <li>Quote form visible on mobile without scrolling</li>
-              <li>One CTA — one goal — no drop-off points</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Targeting</h4>
-            <ul>
-              <li>Microsoft Ads — Sunshine Coast residential search terms</li>
-              <li>Suburb-level geo-targeting across the Sunshine Coast region</li>
-              <li>High-intent terms: "concreters Sunshine Coast", "driveway concreting Noosa"</li>
-            </ul>
-          </div>
+        <div class="wk-ls-tags">
+          <span class="wk-pr-tag">No nav</span>
+          <span class="wk-pr-tag">Hyper-local</span>
+          <span class="wk-pr-tag">Residential</span>
         </div>
+        <a href="https://www.polyconcreting.com.au/concrete-services-sunshinecoast" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
       </div>
 
     </div>
@@ -1115,25 +1228,25 @@
 
       <div class="wk-impact-grid">
         <div class="wk-impact-left">
-          <h2>From family<br>business to <em>$1M+.</em></h2>
+          <h2>From family<br>business to <em>$300k+.</em></h2>
           <p>
             Poly Concreting was already a well-run operation before the rebuild.
             Good tradespeople, strong reputation, active ad spend. But the digital side wasn't keeping pace —
-            the site couldn't convert the traffic they were paying for, and it didn't reflect the level they were operating at.
+            the site couldn't convert the traffic they were paying for, and it didn't reflect the level they were actually operating at.
           </p>
           <p>
-            The rebuild changed that. <em>Faster pages. Dedicated landing pages with a single conversion goal. A main site that matched the business they'd actually built.</em> Ad spend that was generating clicks but losing them at the page started translating into quote requests.
+            The rebuild changed that. <em>Faster pages. Dedicated landing pages with a single conversion goal. A main site that matched the business they'd built.</em> Ad spend that had been generating clicks but losing them at the page started translating into real quote requests.
           </p>
           <p>
-            Poly Concreting has since crossed the <strong>$1 million revenue milestone</strong>.
-            That's Angelo and Sharimay's achievement — exceptional operators who back themselves.
-            The website just stopped working against them and started working for them.
+            The rebuilt site went live two months ago. Since then, the business has generated <strong>over $300k in revenue</strong>.
+            That result belongs to Angelo and Sharimay — exceptional operators who back themselves.
+            The website just got out of their way.
           </p>
         </div>
         <div class="wk-impact-right">
           <div class="wk-impact-stat">
-            <div class="num"><em>$1M+</em></div>
-            <div class="lbl">Revenue milestone — a family business scaled into a serious operation</div>
+            <div class="num"><em>$300k+</em></div>
+            <div class="lbl">Revenue generated in the two months since the rebuild went live</div>
           </div>
           <div class="wk-impact-stat">
             <div class="num">6</div>
@@ -1212,9 +1325,9 @@
 <section class="wk-cta">
   <div class="wk-cta-inner">
     <div class="wk-idx">§ 09 / Your turn</div>
-    <h2>Want results like <em>this?</em></h2>
+    <h2>Want a site that <em>works?</em></h2>
     <p>
-      Every project starts with a conversation. Tell me about the business, the problem you need solved, and where you want to be in 12 months. I'll come back with the right build path, the right platform, and a straight answer.
+      Every project starts with a conversation. Tell me about the business, the problem you need solved, and where you want to be in 12 months. Based in Canberra — building for clients across Australia and New Zealand. I'll come back with the right build path, the right platform, and a straight answer.
     </p>
     <div class="wk-cta-actions">
       <a href="contact.html" class="wk-btn primary">Start a project <span class="arr">↗</span></a>
