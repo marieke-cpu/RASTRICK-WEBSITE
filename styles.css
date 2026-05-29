@@ -1479,9 +1479,11 @@ footer .meta a:hover { color: var(--accent-2); }
 
 .intro .boot-bar-fill {
   height: 100%;
-  width: 0%;
+  width: 100%;
   background: var(--lime);
-  transition: width 0.05s linear;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.05s linear;
   border-radius: 2px;
 }
 
@@ -2133,11 +2135,13 @@ body.ty-body { cursor: none; }
   content: '';
   position: absolute;
   left: 36px; top: 0;
-  width: 0; height: 2px;
+  width: 48px; height: 2px;
   background: var(--accent);
-  transition: width .4s cubic-bezier(.2,.8,.2,1);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .4s cubic-bezier(.2,.8,.2,1);
 }
-.step:hover::before { width: 48px; }
+.step:hover::before { transform: scaleX(1); }
 .step .num {
   font-family: var(--f-mono);
   font-size: 12px;
@@ -2495,12 +2499,16 @@ body.ty-body { cursor: none; }
 
 /* =======================================================
    PERFORMANCE — content-visibility for below-fold sections
+   Desktop only: mobile intrinsic-size estimates are unreliable
+   (single-column layout is taller → wrong estimates → CLS)
    ======================================================= */
-.about    { content-visibility: auto; contain-intrinsic-block-size: 900px; }
-.services { content-visibility: auto; contain-intrinsic-block-size: 1400px; }
-.faq      { content-visibility: auto; contain-intrinsic-block-size: 1000px; }
-.contact  { content-visibility: auto; contain-intrinsic-block-size: 900px; }
-.results  { content-visibility: auto; contain-intrinsic-block-size: 700px; }
+@media (min-width: 721px) {
+  .about    { content-visibility: auto; contain-intrinsic-block-size: 900px; }
+  .services { content-visibility: auto; contain-intrinsic-block-size: 1400px; }
+  .faq      { content-visibility: auto; contain-intrinsic-block-size: 1000px; }
+  .contact  { content-visibility: auto; contain-intrinsic-block-size: 900px; }
+  .results  { content-visibility: auto; contain-intrinsic-block-size: 700px; }
+}
 
 
 /* =======================================================
@@ -2601,7 +2609,7 @@ body.ty-body { cursor: none; }
 }
 @media (max-width: 720px) {
   .hero-cta-wrap { margin-top: clamp(18px, 4vw, 28px); gap: 12px; }
-  .hcta { font-size: 9px; letter-spacing: 0.2em; }
+  .hcta { font-size: 9px; letter-spacing: 0.2em; will-change: auto; }
   .hcta-p { padding: 9px 15px; }
 }
 
@@ -2701,11 +2709,13 @@ body.ty-body { cursor: none; }
   content: '';
   position: absolute;
   left: clamp(28px, 3.5vw, 48px); top: 0;
-  width: 0; height: 2px;
+  width: 60px; height: 2px;
   background: var(--accent);
-  transition: width .4s cubic-bezier(.2,.8,.2,1);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .4s cubic-bezier(.2,.8,.2,1);
 }
-.result-card:hover::after { width: 60px; }
+.result-card:hover::after { transform: scaleX(1); }
 .result-card .idx {
   font-family: var(--f-mono);
   font-size: 10px;

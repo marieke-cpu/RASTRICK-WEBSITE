@@ -42,7 +42,7 @@
     if (initEl)   initEl.textContent   = '> INITIALIZING_BRAND.exe';
     if (hlEl)     hlEl.textContent     = 'IMPOSSIBLE TO IGNORE.';
     if (loaderEl) loaderEl.classList.add('visible');
-    if (barFill)  barFill.style.width  = '100%';
+    if (barFill)  barFill.style.transform = 'scaleX(1)';
     if (barPct)   barPct.textContent   = '[ 100% ]';
     if (botRow)   botRow.classList.add('visible');
     if (enterBtn) enterBtn.classList.add('visible');
@@ -100,7 +100,7 @@
       function tick(now) {
         const t   = Math.min(1, (now - start) / durationMs);
         const pct = Math.round((1 - Math.pow(1 - t, 1.8)) * 100);
-        if (barFill) barFill.style.width = pct + '%';
+        if (barFill) barFill.style.transform = 'scaleX(' + (pct / 100) + ')';
         if (barPct)  barPct.textContent  = '[ ' + String(pct).padStart(3, ' ') + '% ]';
         if (t < 1) {
           requestAnimationFrame(tick);
