@@ -11,6 +11,9 @@
   const prefersReducedMotion =
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  const isMobile =
+    window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
   // ── Elements (same ID pattern as teaser) ────────────────────
   const intro    = document.getElementById('intro');
   const sysLabel = document.getElementById('boot-sys-label');
@@ -118,35 +121,37 @@
   // ── Boot sequence — exact teaser.js runSequence ──────────────
 
   async function runSequence() {
-    // T=200ms: REC appears
-    setTimeout(() => { if (rec) rec.classList.add('visible'); }, 200);
-
-    // T=300ms: Type system label
-    await typeInto(sysLabel, 'RASTRICK. MADE_OS v.2026 // INDEPENDENT WEB DESIGN STUDIO', 18, 300);
-
-    // Type init line
-    await typeInto(initEl, '> INITIALIZING_BRAND.exe', 22, 50);
-
-    // Short pause, type brand headline
-    await delay(200);
-    await typeInto(hlEl, 'RASTRICK. MADE', 55, 0);
-
-    // Pause with blinking cursor, then delete
-    await delay(500);
-    await deleteFrom(hlEl, 25);
-
-    // Short pause, type the display message
-    await delay(150);
-    await typeInto(hlEl, 'IMPOSSIBLE TO IGNORE.', 50, 0);
-
-    // Start loading bar (overlaps with final typing completing)
-    await delay(100);
-    const barDone = fillBar(1400);
-
-    // Show bottom row partway through loading
-    setTimeout(() => { if (botRow) botRow.classList.add('visible'); }, 600);
-
-    await barDone;
+    if (isMobile) {
+      // Mobile: compressed timing to minimise LCP
+      sysLabel.textContent = 'RASTRICK. MADE_OS v.2026 // INDEPENDENT WEB DESIGN STUDIO';
+      setTimeout(() => { if (rec) rec.classList.add('visible'); }, 100);
+      await typeInto(initEl, '> INITIALIZING_BRAND.exe', 8, 100);
+      await delay(100);
+      await typeInto(hlEl, 'RASTRICK. MADE', 22, 0);
+      await delay(250);
+      await deleteFrom(hlEl, 10);
+      await delay(80);
+      await typeInto(hlEl, 'IMPOSSIBLE TO IGNORE.', 20, 0);
+      await delay(50);
+      const barDone = fillBar(700);
+      setTimeout(() => { if (botRow) botRow.classList.add('visible'); }, 300);
+      await barDone;
+    } else {
+      // Desktop: cinematic timing
+      setTimeout(() => { if (rec) rec.classList.add('visible'); }, 200);
+      await typeInto(sysLabel, 'RASTRICK. MADE_OS v.2026 // INDEPENDENT WEB DESIGN STUDIO', 18, 300);
+      await typeInto(initEl, '> INITIALIZING_BRAND.exe', 22, 50);
+      await delay(200);
+      await typeInto(hlEl, 'RASTRICK. MADE', 55, 0);
+      await delay(500);
+      await deleteFrom(hlEl, 25);
+      await delay(150);
+      await typeInto(hlEl, 'IMPOSSIBLE TO IGNORE.', 50, 0);
+      await delay(100);
+      const barDone = fillBar(1400);
+      setTimeout(() => { if (botRow) botRow.classList.add('visible'); }, 600);
+      await barDone;
+    }
 
     // Show enter CTA
     if (enterBtn) enterBtn.classList.add('visible');

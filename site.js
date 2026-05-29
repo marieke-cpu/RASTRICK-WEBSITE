@@ -43,6 +43,7 @@
   }
 
   // ==================== kinetic hero word swap ====================
+  const isMobileDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
   const kinetic = document.getElementById('kinetic-word');
   if (kinetic){
     const words = ['scale', 'sell', 'grow'];
@@ -52,15 +53,19 @@
       const w = words[i];
       kinetic.innerHTML = `<span class="ghost" aria-hidden="true">${w}</span>${w}`;
       kinetic.animate(
-        [{ transform: 'translateY(30%) skewX(-8deg)', opacity: 0, filter: 'blur(6px)' },
-         { transform: 'translateY(0) skewX(0)', opacity: 1, filter: 'blur(0)' }],
+        isMobileDevice
+          ? [{ transform: 'translateY(30%) skewX(-8deg)', opacity: 0 },
+             { transform: 'translateY(0) skewX(0)', opacity: 1 }]
+          : [{ transform: 'translateY(30%) skewX(-8deg)', opacity: 0, filter: 'blur(6px)' },
+             { transform: 'translateY(0) skewX(0)', opacity: 1, filter: 'blur(0)' }],
         { duration: 700, easing: 'cubic-bezier(.2,.8,.2,1)' }
       );
     };
-    let swapHandle = setInterval(swap, 2400);
+    const swapInterval = isMobileDevice ? 3200 : 2400;
+    let swapHandle = setInterval(swap, swapInterval);
     _pauseables.push({
       pause:  () => { clearInterval(swapHandle); swapHandle = 0; },
-      resume: () => { if (!swapHandle) swapHandle = setInterval(swap, 2400); }
+      resume: () => { if (!swapHandle) swapHandle = setInterval(swap, swapInterval); }
     });
   }
 
