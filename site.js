@@ -1,7 +1,16 @@
 /* RASTRICK — cursor, draggable work cards, kinetic copy, form, intro TV-off
-   v6: lazy Calendly injection · requestIdleCallback for non-critical init
+   v7: failsafe intro-open removal · hero rAF deferred past intro
 */
 (function(){
+
+  // Failsafe: if intro-boot.js fails to load, unblock the page after 10s
+  setTimeout(() => {
+    if (document.body.classList.contains('intro-open')) {
+      document.body.classList.remove('intro-open');
+      const intro = document.getElementById('intro');
+      if (intro) intro.remove();
+    }
+  }, 10000);
 
   const _pauseables = [];
   const idleQ = typeof requestIdleCallback !== 'undefined'

@@ -528,6 +528,18 @@
     }
   });
 
-  rafHandle = requestAnimationFrame(frame);
+  // Don't burn GPU while the intro gate is visible
+  if (document.body.classList.contains('intro-open')) {
+    const obs = new MutationObserver(() => {
+      if (!document.body.classList.contains('intro-open')) {
+        obs.disconnect();
+        last = performance.now();
+        rafHandle = requestAnimationFrame(frame);
+      }
+    });
+    obs.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  } else {
+    rafHandle = requestAnimationFrame(frame);
+  }
 
 })();
