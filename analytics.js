@@ -646,11 +646,21 @@
   }
 
   // ── Calendly booking complete — Task 2 ───────────────────────
-  // Fires ONLY on Calendly's event_scheduled postMessage (successful booking).
+  // Official postMessage API: origin check is required for the listener to
+  // receive Calendly's cross-frame messages in all browser/embed configurations.
+  // Handles both object payloads and JSON-string payloads (popup vs inline embed).
+  var _bookingFired = false;
   window.addEventListener('message', function (e) {
     try {
-      if (!e.data || typeof e.data !== 'object') return;
-      if (e.data.event !== 'calendly.event_scheduled') return;
+      if (e.origin !== 'https://calendly.com') return;
+      var data = e.data;
+      if (typeof data === 'string') {
+        try { data = JSON.parse(data); } catch (_) { return; }
+      }
+      if (!data || data.event !== 'calendly.event_scheduled') return;
+      if (_bookingFired) return; // prevent duplicate on rapid re-render
+      _bookingFired = true;
+      console.log('Calendly booking completed', data); // remove after GA4 verification
       track('calendly_booking_complete', Object.assign(_fullAttrib(), {
         highest_interest_package: _topPkg(),
         viewed_packages_count:    _pkgFunnel.viewed.length,
