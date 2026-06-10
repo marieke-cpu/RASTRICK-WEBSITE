@@ -11,18 +11,18 @@
   gtag('js', new Date());
   gtag('config', 'G-4PTWVZZBJ8');
 </script>
-<title>Web Design Services | Wix, Shopify & Custom</title>
+<title>Custom Website Services | RASTRICK. MADE</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Web design and development services for service businesses and eCommerce. Wix, Shopify, and custom code — conversion-focused and built to scale.">
+<meta name="description" content="Custom-coded websites for service businesses, community organisations, not-for-profits, sporting clubs and local brands. Built by hand in Canberra — no templates, no page builders.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.rastrick.com.au/services">
-<meta property="og:title" content="Web Design Services | Wix, Shopify & Custom">
-<meta property="og:description" content="Web design and development services for service businesses and eCommerce. Wix, Shopify, and custom code — conversion-focused and built to scale.">
+<meta property="og:title" content="Custom Website Services | RASTRICK. MADE">
+<meta property="og:description" content="Custom-coded websites for service businesses, community organisations, not-for-profits and local brands. Built by hand in Canberra.">
 <meta property="og:image" content="https://www.rastrick.com.au/RM2W-sm.png">
 <meta property="og:site_name" content="RASTRICK. MADE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Web Design Services | Wix, Shopify & Custom">
-<meta name="twitter:description" content="Web design and development services for service businesses and eCommerce. Wix, Shopify, and custom code — conversion-focused and built to scale.">
+<meta name="twitter:title" content="Custom Website Services | RASTRICK. MADE">
+<meta name="twitter:description" content="Custom-coded websites for service businesses, community organisations, not-for-profits and local brands. Built by hand in Canberra.
 <meta name="twitter:image" content="https://www.rastrick.com.au/RM2W-sm.png">
 <link rel="icon" type="image/png" sizes="32x32" href="Logo.png">
 <link rel="icon" type="image/png" sizes="96x96" href="Logo.png">
@@ -126,15 +126,15 @@
 
 /* ---- services in depth ---- */
 .sv-services {
-  padding: clamp(80px, 12vw, 160px) var(--pad);
+  padding: clamp(48px, 6vw, 80px) var(--pad);
   border-bottom: 1px solid var(--line);
 }
-.sv-svc-list { margin-top: 60px; }
+.sv-svc-list { margin-top: 40px; }
 .sv-svc {
   display: grid;
   grid-template-columns: 80px 1fr 1fr 60px;
-  gap: 40px;
-  padding: 52px 0;
+  gap: 32px;
+  padding: 36px 0;
   border-top: 1px solid var(--line);
   align-items: start;
   transition: background .3s;
@@ -184,22 +184,22 @@
 
 /* ---- packages ---- */
 .sv-packages {
-  padding: clamp(80px, 10vw, 140px) var(--pad);
+  padding: clamp(48px, 6vw, 80px) var(--pad);
   border-bottom: 1px solid var(--line);
   background: var(--bg-2);
 }
 .sv-pkg-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
+  display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
-  margin-top: 60px;
+  margin-top: 40px;
 }
 .sv-pkg {
   background: var(--bg-2);
-  padding: 40px 36px 36px;
-  display: flex; flex-direction: column; gap: 24px;
-  position: relative; min-height: 620px;
+  padding: 36px 32px 32px;
+  display: flex; flex-direction: column; gap: 20px;
+  position: relative;
   transition: background .3s;
 }
 .sv-pkg:hover { background: #0f1216; }
@@ -247,6 +247,19 @@
 }
 .sv-pkg ul li.faint { color: var(--ink-faint); text-decoration: line-through; }
 .sv-pkg ul li.faint::before { background: var(--ink-faint); }
+.sv-pkg-price {
+  display: flex; align-items: baseline; gap: 6px;
+}
+.sv-pkg-price .cur {
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent);
+}
+.sv-pkg-price .amt {
+  font-family: var(--f-display); font-size: 48px;
+  font-weight: 400; letter-spacing: 0; line-height: 1;
+  color: var(--ink);
+}
 .sv-pkg .cta {
   display: inline-flex; justify-content: space-between; align-items: center;
   padding: 16px 20px;
@@ -262,7 +275,7 @@
 
 /* ---- kickstart offer ---- */
 .sv-kickstart {
-  padding: clamp(80px, 12vw, 160px) var(--pad);
+  padding: clamp(48px, 6vw, 80px) var(--pad);
   border-bottom: 1px solid var(--line);
   background: var(--bg);
   position: relative;
@@ -285,7 +298,7 @@
   border: 1px solid var(--accent-2);
   border-radius: 100px;
   padding: 7px 16px;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 .sv-kickstart-badge .dot {
   width: 6px; height: 6px; border-radius: 50%;
@@ -318,20 +331,11 @@
 
 .sv-kickstart-card {
   background: var(--panel);
-  border: 1px solid rgba(255,61,240,0.25);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: clamp(32px, 4vw, 52px);
   display: flex; flex-direction: column; gap: 28px;
   position: relative;
-  box-shadow: 0 0 60px rgba(255,61,240,0.06);
-}
-.sv-kickstart-card::before {
-  content: 'EXCLUSIVE';
-  position: absolute; top: -12px; left: 28px;
-  font-family: var(--f-mono); font-size: 9px;
-  letter-spacing: 0.3em; text-transform: uppercase;
-  background: var(--accent-2); color: #fff;
-  padding: 4px 12px; border-radius: 100px;
 }
 .sv-kickstart-card .kk-head {
   padding-bottom: 24px;
@@ -377,13 +381,13 @@
 .sv-kickstart-card .kk-cta {
   display: inline-flex; justify-content: space-between; align-items: center;
   padding: 18px 24px;
-  background: var(--accent-2); color: #fff;
-  border: 1px solid var(--accent-2);
+  background: var(--accent); color: #000;
+  border: 1px solid var(--accent);
   border-radius: 100px;
   font-family: var(--f-mono); font-size: 11px;
   letter-spacing: 0.2em; text-transform: uppercase;
   transition: background .2s, color .2s, border-color .2s, transform .2s;
-  box-shadow: 0 0 0 3px rgba(255,61,240,0.15), 0 20px 40px rgba(0,0,0,0.3);
+  box-shadow: 0 0 0 3px rgba(198,255,58,0.18), 0 20px 40px rgba(0,0,0,0.3);
 }
 .sv-kickstart-card .kk-cta:hover {
   background: var(--ink); color: #000;
@@ -392,20 +396,20 @@
 
 /* ---- process ---- */
 .sv-process {
-  padding: clamp(80px, 12vw, 160px) var(--pad);
+  padding: clamp(48px, 6vw, 80px) var(--pad);
   border-bottom: 1px solid var(--line);
   background: var(--panel);
 }
 .sv-steps {
-  display: grid; grid-template-columns: repeat(4, 1fr);
+  display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px; background: var(--line);
   border: 1px solid var(--line);
-  margin-top: 60px;
+  margin-top: 40px;
 }
 .sv-step {
   background: var(--panel);
-  padding: 40px 32px;
-  display: flex; flex-direction: column; gap: 16px;
+  padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 12px;
   transition: background .3s;
 }
 .sv-step:hover { background: #1a1e26; }
@@ -426,7 +430,7 @@
 
 /* ---- CTA strip ---- */
 .sv-cta {
-  padding: clamp(80px, 11vw, 156px) var(--pad);
+  padding: clamp(48px, 6vw, 80px) var(--pad);
   position: relative; overflow: hidden;
   background: var(--bg-2);
   border-bottom: 1px solid var(--line);
@@ -453,7 +457,7 @@
 .sv-cta p {
   font-family: var(--f-sans); font-size: clamp(16px, 1.6vw, 20px);
   line-height: 1.55; color: var(--ink-dim); font-weight: 300;
-  max-width: 44ch; margin: clamp(24px, 3vw, 36px) 0 clamp(36px, 5vw, 56px);
+  max-width: 44ch; margin: clamp(16px, 2vw, 24px) 0 clamp(24px, 3vw, 36px);
 }
 .sv-cta-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 .sv-btn {
@@ -475,22 +479,89 @@
 .sv-btn.primary:hover { background: var(--accent-2); color: #fff; border-color: var(--accent-2); }
 .sv-btn.ghost:hover { background: rgba(255,255,255,0.04); border-color: var(--ink-dim); }
 
+/* ---- who I build for ---- */
+.sv-who {
+  padding: clamp(48px, 6vw, 80px) var(--pad);
+  border-bottom: 1px solid var(--line);
+}
+.sv-who-intro {
+  max-width: 56ch; margin-top: 12px;
+}
+.sv-who-intro p {
+  font-family: var(--f-sans); font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.65; color: var(--ink-dim); font-weight: 300;
+}
+.sv-who-intro p em { font-style: normal; color: var(--ink); font-weight: 400; }
+.sv-who .section-head { margin-bottom: 16px; }
+.sv-who-list { margin-top: 20px; }
+.sv-who-item {
+  display: grid; grid-template-columns: 1fr 1.6fr;
+  gap: clamp(24px, 4vw, 56px); align-items: start;
+  padding: clamp(28px, 3.5vw, 44px) 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 80px;
+}
+.sv-who-item:first-child { border-top: 1px solid var(--line); }
+.sv-who-item-left { position: sticky; top: 100px; }
+.sv-who-num {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 14px;
+}
+.sv-who-item h3 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(28px, 3.5vw, 52px);
+  text-transform: uppercase; line-height: 0.92; color: var(--ink);
+}
+.sv-who-item h3 em {
+  font-style: normal; color: var(--accent);
+  font-family: var(--f-sans); font-weight: 300; text-transform: lowercase;
+}
+.sv-who-right { display: flex; flex-direction: column; gap: 24px; }
+.sv-who-right p {
+  font-family: var(--f-sans); font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
+}
+.sv-who-right p em { font-style: normal; color: var(--ink); font-weight: 400; }
+.sv-who-examples {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.sv-who-examples span {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-dim); border: 1px solid var(--line);
+  padding: 5px 12px; border-radius: 100px;
+}
+.sv-who-needs { border: 1px solid var(--line); }
+.sv-who-need {
+  padding: 14px 20px; border-bottom: 1px solid var(--line);
+  display: flex; gap: 14px; align-items: baseline;
+  font-family: var(--f-sans); font-size: 14px;
+  line-height: 1.55; color: var(--ink-dim); font-weight: 300;
+}
+.sv-who-need:last-child { border-bottom: none; }
+.sv-who-need::before {
+  content: '✓'; color: var(--accent); flex-shrink: 0;
+  font-family: var(--f-sans); font-weight: 500; font-size: 13px;
+}
+
 /* ---- responsive ---- */
 @media (max-width: 1100px) {
   .sv-svc { grid-template-columns: 60px 1fr; }
   .sv-svc-right { grid-column: 1 / -1; }
   .sv-svc .arr { display: none; }
-  .sv-pkg-grid { grid-template-columns: repeat(2, 1fr); }
   .sv-pkg .head .name { font-size: 36px; }
-  .sv-steps { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 860px) {
+  .sv-pkg-grid { grid-template-columns: repeat(2, 1fr); }
+  .sv-steps { grid-template-columns: repeat(2, 1fr); }
   .sv-kickstart-grid { grid-template-columns: 1fr; }
+  .sv-who-item { grid-template-columns: 1fr; }
+  .sv-who-item-left { position: static; }
 }
 @media (max-width: 640px) {
   .sv-hero { min-height: 70vh; padding-top: clamp(100px, 14vw, 140px); }
   .sv-pkg-grid { grid-template-columns: 1fr; }
-  .sv-steps { grid-template-columns: 1fr 1fr; }
   .sv-hero .bracket { width: 28px; height: 28px; }
   .sv-hero .bracket.tl, .sv-hero .bracket.tr { top: 20px; }
   .sv-hero .bracket.bl, .sv-hero .bracket.br { bottom: 20px; }
@@ -536,11 +607,10 @@
   <a href="/" class="logo"><span class="pulse"></span><img class="nav-logo-mark" src="RM2W-sm.png" alt="" width="52" height="26" decoding="async" fetchpriority="high"><img class="nav-logo-word" src="RM2W-sm.png" alt="RASTRICK. MADE" width="104" height="52" decoding="async" fetchpriority="high"></a>
   <ul>
     <li><a href="index.html">Home</a></li>
-    <li><a href="work.html">Work</a></li>
-    <li><a href="about.html">About</a></li>
     <li><a href="services.html" style="color:var(--ink)">Services</a></li>
-    <li><a href="packages.html">Packages</a></li>
-    <li><a href="faqs.html">FAQ</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="packages.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -562,21 +632,21 @@
 
   <div class="sv-hero-frame">
     <div class="sv-hero-top">
-      <div class="tag"><span class="dot"></span>Conversion Websites &amp; eCommerce · Canberra · AU</div>
-      <div class="tag">Wix · Shopify · Custom</div>
+      <div class="tag"><span class="dot"></span>Custom-coded websites · Canberra · AU</div>
+      <div class="tag">No templates · No page builders</div>
     </div>
 
     <div class="sv-idx">§ 00 / Services</div>
 
     <h1>
-      Web design and<br>
-      <em>development</em> services.
+      Custom website<br>
+      <em>services.</em>
     </h1>
 
     <p class="sv-hero-lead">
-      RASTRICK. MADE builds conversion-focused websites and stores for businesses that want more leads, more sales, and better performance online.
-      <em>Every project starts with the right platform — Wix for fast launches, Shopify for product sales and growth, custom code for peak performance.</em>
-      Strategy first. Build second. Results always.
+      RASTRICK. MADE builds custom-coded websites for service businesses, community organisations, not-for-profits, and local brands.
+      <em>Every project is built from scratch — no templates, no page builders, no shortcuts.</em>
+      Strategy first. Built by hand. Designed to earn trust and generate meaningful enquiries.
     </p>
   </div>
 </section>
@@ -584,30 +654,30 @@
 <!-- SERVICES IN DEPTH -->
 <section class="sv-services">
   <div class="section-head">
-    <div class="idx">§ 01 / What's included</div>
-    <h2>Platform-smart execution. <em>Conversion-first outcomes.</em></h2>
+    <div class="idx">§ 01 / What we build</div>
+    <h2>Handmade websites. <em>Built for trust.</em></h2>
   </div>
 
   <div class="sv-svc-list">
 
     <div class="sv-svc">
       <div class="num">/ 01</div>
-      <div class="ttl">Starter &amp; Growth <em>websites</em></div>
+      <div class="ttl">Custom website <em>design</em></div>
       <div class="sv-svc-right">
         <p>
-          For businesses that need to grow their online presence and generate more leads.
-          <em>Wix is used for fast, cost-effective launches — ideal for small businesses that need to move quickly. Shopify or custom-coded builds are used for growth-stage brands that need scalability, design control, and premium performance.</em>
-          Both are built around your conversion goals, not just your content.
+          Every website built by RASTRICK. MADE is designed and coded from scratch.
+          <em>No templates. No Wix. No drag-and-drop. Just clean HTML, CSS, and JavaScript built around your organisation, your goals, and your audience.</em>
+          The result: a faster, more flexible website that looks and performs like nothing else in your space.
         </p>
         <ul>
-          <li>Wix builds — fast go-live for small businesses and startups</li>
-          <li>Shopify and custom builds — scalable design for growth-stage brands</li>
-          <li>Conversion-led page hierarchy and CTA structure</li>
-          <li>Mobile-first responsive UX across all devices</li>
-          <li>Offer clarity and lead capture optimised for your audience</li>
-          <li>Ad-ready landing pages built for paid traffic campaigns</li>
-          <li>Brand-consistent visual system that builds trust on arrival</li>
-          <li>Built for SMEs investing in digital performance</li>
+          <li>Built from scratch — HTML, CSS, and JavaScript only</li>
+          <li>No templates, no page builders, no platform limitations</li>
+          <li>Mobile-first responsive design across all devices</li>
+          <li>Conversion-focused page structure and CTA hierarchy</li>
+          <li>SEO foundations built into every page</li>
+          <li>Brand-consistent visual identity throughout</li>
+          <li>Fast load times and clean, lightweight code</li>
+          <li>For service businesses, community groups, and local brands</li>
         </ul>
       </div>
       <div class="arr">↗</div>
@@ -615,22 +685,21 @@
 
     <div class="sv-svc">
       <div class="num">/ 02</div>
-      <div class="ttl">Shopify <em>eCommerce</em></div>
+      <div class="ttl">Website <em>rebuilds</em></div>
       <div class="sv-svc-right">
         <p>
-          For product businesses that need their store to convert, not just exist.
-          <em>Shopify builds are architected around the buyer journey — product discovery, trust, and checkout flow all designed to reduce friction and increase completed sales.</em>
-          Your store becomes a revenue engine, not a digital catalogue.
+          If your current website is outdated, slow, or built inside a platform that's holding you back, a full rebuild is the answer.
+          <em>RASTRICK. MADE does not edit or maintain websites built on Wix, Squarespace, WordPress, Shopify, or any page builder. If you're on one of these platforms, the project becomes a complete custom-coded rebuild.</em>
+          That's a good thing — the result is faster, cleaner, and built to last.
         </p>
         <ul>
-          <li>Shopify setup and strategic store architecture</li>
-          <li>High-converting product and collection page design</li>
-          <li>Offer, bundle, and upsell-ready conversion flow</li>
-          <li>Checkout friction reduction and abandonment recovery setup</li>
-          <li>Ad campaign landing pages built for paid traffic</li>
-          <li>Analytics, conversion events, and revenue tracking</li>
-          <li>Mobile-first shopping experience built for phone buyers</li>
-          <li>Built for repeatable revenue growth</li>
+          <li>Complete custom rebuild from scratch</li>
+          <li>Content, branding, and imagery migrated where relevant</li>
+          <li>Replaces sites built on Wix, Squarespace, WordPress, and others</li>
+          <li>Faster load times and better Core Web Vitals</li>
+          <li>Stronger SEO and conversion structure from day one</li>
+          <li>No platform lock-in — you own the code</li>
+          <li>Upgrade path to any package tier</li>
         </ul>
       </div>
       <div class="arr">↗</div>
@@ -638,22 +707,109 @@
 
     <div class="sv-svc">
       <div class="num">/ 03</div>
-      <div class="ttl">Custom <em>development</em></div>
+      <div class="ttl">Lead generation <em>websites</em></div>
       <div class="sv-svc-right">
         <p>
-          For businesses with advanced requirements, performance targets that platforms can't meet, or complex integrations that demand full control.
-          <em>Custom builds are engineered for speed, scalability, and long-term flexibility</em>
-          — with no platform constraints standing between your business and what it needs to do.
+          For service businesses that need their website to do one thing above all else: generate qualified enquiries.
+          <em>Lead generation builds are architected around your audience, your offer, and your conversion funnel</em>
+          — with clear CTAs, trust signals, and mobile-first UX that turns visitors into enquiries.
         </p>
         <ul>
-          <li>Custom-coded architecture — HTML, CSS and JavaScript from scratch</li>
-          <li>Performance-first front-end engineering</li>
-          <li>Advanced custom interactions and functionality</li>
-          <li>Complex integrations and API connections</li>
-          <li>Technical SEO foundations and structured data</li>
-          <li>Cross-browser and cross-device QA</li>
-          <li>Scalable codebase with full documentation</li>
-          <li>Premium builds for businesses with serious growth targets</li>
+          <li>Conversion-focused homepage and services architecture</li>
+          <li>Trust-building sections — reviews, credentials, case studies</li>
+          <li>Strong CTA hierarchy throughout every page</li>
+          <li>Contact forms optimised for completion</li>
+          <li>Local SEO foundations built in from day one</li>
+          <li>GA4 event tracking and conversion goals</li>
+          <li>Ad landing pages for Google and Meta campaigns</li>
+          <li>For tradies, consultants, health, legal, and professional services</li>
+        </ul>
+      </div>
+      <div class="arr">↗</div>
+    </div>
+
+    <div class="sv-svc">
+      <div class="num">/ 04</div>
+      <div class="ttl">Community organisation <em>websites</em></div>
+      <div class="sv-svc-right">
+        <p>
+          Sporting clubs, churches, cultural groups, local associations — your community deserves a website that reflects the pride and purpose behind your organisation.
+          <em>Community builds are clear, welcoming, and easy to navigate</em>
+          — with information structures, event schedules, and contact flows that serve your members and supporters.
+        </p>
+        <ul>
+          <li>Clean, welcoming design that reflects your organisation's identity</li>
+          <li>Member information and team/committee pages</li>
+          <li>Events and news sections</li>
+          <li>Registration and enquiry forms</li>
+          <li>Contact pages optimised for all ages and devices</li>
+          <li>Accessible, clear navigation structure</li>
+          <li>Affordable packages designed for smaller budgets</li>
+          <li>For sporting clubs, churches, cultural groups, and associations</li>
+        </ul>
+      </div>
+      <div class="arr">↗</div>
+    </div>
+
+    <div class="sv-svc">
+      <div class="num">/ 05</div>
+      <div class="ttl">Not-for-profit &amp; charity <em>websites</em></div>
+      <div class="sv-svc-right">
+        <p>
+          Not-for-profits and charities need a website that communicates trust, transparency, and purpose — one that turns casual visitors into supporters, donors, and volunteers.
+          <em>NFP builds are designed to tell your story, showcase your impact, and make it easy for people to get involved.</em>
+        </p>
+        <ul>
+          <li>Impact-first storytelling and page structure</li>
+          <li>Donation and volunteer enquiry flows</li>
+          <li>Program and services information architecture</li>
+          <li>About and team pages that build credibility</li>
+          <li>News and updates sections</li>
+          <li>Contact forms for supporters, donors, and partners</li>
+          <li>For charities, NFPs, foundations, and social enterprises</li>
+        </ul>
+      </div>
+      <div class="arr">↗</div>
+    </div>
+
+    <div class="sv-svc">
+      <div class="num">/ 06</div>
+      <div class="ttl">Local SEO <em>foundations</em></div>
+      <div class="sv-svc-right">
+        <p>
+          Built into every website as standard — but for businesses that want to go further, Local SEO Foundations is a dedicated service to maximise local search visibility.
+          <em>The goal: make sure your business appears when someone in your area searches for what you offer.</em>
+        </p>
+        <ul>
+          <li>Local keyword research and page optimisation</li>
+          <li>Google Business Profile setup and optimisation</li>
+          <li>Location-specific service area pages</li>
+          <li>Schema markup for local business</li>
+          <li>Review generation guidance</li>
+          <li>GA4 setup with local tracking goals</li>
+          <li>For businesses targeting local customers in specific areas</li>
+        </ul>
+      </div>
+      <div class="arr">↗</div>
+    </div>
+
+    <div class="sv-svc">
+      <div class="num">/ 07</div>
+      <div class="ttl">Ad landing <em>pages</em></div>
+      <div class="sv-svc-right">
+        <p>
+          Dedicated landing pages built specifically for paid traffic — Google Ads, Meta, or Microsoft Ads.
+          <em>Message-matched, no-nav, conversion-optimised pages designed to turn your ad spend into qualified enquiries.</em>
+          No generic templates. No builder limitations. Fast, focused, and built to convert.
+        </p>
+        <ul>
+          <li>No-nav, single-goal conversion page design</li>
+          <li>Message-matched to your specific ad campaigns</li>
+          <li>Mobile-first with sticky CTAs</li>
+          <li>Fast load times optimised for Quality Score</li>
+          <li>GA4 event tracking and conversion goals</li>
+          <li>A/B ready structure for ongoing optimisation</li>
+          <li>For Google Ads, Meta Ads, and Microsoft Ads campaigns</li>
         </ul>
       </div>
       <div class="arr">↗</div>
@@ -666,7 +822,7 @@
 <section class="sv-packages">
   <div class="section-head">
     <div class="idx">§ 02 / Packages</div>
-    <h2>Pick your <em>package.</em></h2>
+    <h2>Three packages. <em>Fair pricing.</em></h2>
   </div>
 
   <div class="sv-pkg-grid">
@@ -675,133 +831,108 @@
       <div class="head">
         <div class="kind">Package / 01</div>
         <div class="name">Star<em>ter</em></div>
-        <div class="sub">Wix. Fast launch. For small businesses that need a credible, conversion-focused presence online without the agency price.</div>
+        <div class="sub">For sole traders, small businesses, community groups, and sporting clubs that need a professional online presence — built properly from day one.</div>
       </div>
+      <div class="sv-pkg-price"><span class="cur">From</span><span class="amt">$995</span></div>
       <ul>
-        <li>1–3 page Wix website</li>
-        <li>Conversion-focused layout and CTA structure</li>
+        <li>Custom-coded website</li>
+        <li>Up to 3 pages</li>
         <li>Mobile-first responsive design</li>
-        <li>Contact form + analytics</li>
-        <li>SEO foundations</li>
-        <li>1 round of revisions</li>
-        <li>14-day post-launch support</li>
-        <li class="faint">Multi-page navigation beyond 3 pages</li>
-        <li class="faint">Custom animations</li>
-        <li class="faint">Landing pages for ads</li>
+        <li>Contact form integration</li>
+        <li>Basic SEO setup</li>
+        <li>Google Analytics setup</li>
+        <li>Domain connection assistance</li>
+        <li>Launch support</li>
       </ul>
-      <a class="cta" href="contact.html">Start Starter <span>→</span></a>
-    </article>
-
-    <article class="sv-pkg">
-      <div class="head">
-        <div class="kind">Package / 02</div>
-        <div class="name">Grow<em>th</em></div>
-        <div class="sub">Shopify or custom-coded. Scale-ready. For growing businesses that need a full multi-page site with performance, flexibility, and more leads.</div>
-      </div>
-      <ul>
-        <li>Up to 5 pages — Shopify or custom-coded to suit your goals</li>
-        <li>Conversion-led page hierarchy and UX flow</li>
-        <li>Mobile-first responsive design</li>
-        <li>Lead capture forms + analytics</li>
-        <li>SEO foundations on every page</li>
-        <li>2 rounds of revisions</li>
-        <li>21-day post-launch support</li>
-        <li class="faint">Custom animations</li>
-        <li class="faint">Landing pages for ads</li>
-      </ul>
-      <a class="cta" href="contact.html">Start Growth <span>→</span></a>
+      <a class="cta" href="contact.html">Get a Quote <span>→</span></a>
     </article>
 
     <article class="sv-pkg feat">
-      <div class="flag">Most popular</div>
+      <div class="flag">Most Popular</div>
       <div class="head">
-        <div class="kind">Package / 03</div>
-        <div class="name">e<em>Commerce</em></div>
-        <div class="sub">Shopify. Built to sell. For product businesses that need their store to convert visitors into customers on every device and campaign.</div>
+        <div class="kind">Package / 02 — Recommended</div>
+        <div class="name">Grow<em>th</em></div>
+        <div class="sub">Built for organisations wanting stronger credibility, better SEO foundations, and a website that generates consistent enquiries.</div>
       </div>
+      <div class="sv-pkg-price"><span class="cur">From</span><span class="amt">$1,995</span></div>
       <ul>
-        <li>Shopify store built from scratch</li>
-        <li>High-converting product and collection pages</li>
-        <li>Mobile-first shopping experience</li>
-        <li>Ad landing pages for paid traffic</li>
-        <li>Checkout optimisation + conversion tracking</li>
-        <li>SEO foundations + on-page optimisation</li>
-        <li>3 rounds of revisions</li>
-        <li>30-day post-launch support</li>
+        <li>Everything in Starter, plus</li>
+        <li>Up to 6 pages</li>
+        <li>Conversion-focused homepage strategy</li>
+        <li>Reviews and testimonials section</li>
+        <li>FAQ section</li>
+        <li>Local SEO foundations</li>
+        <li>GA4 event tracking</li>
+        <li>14 days post-launch support</li>
       </ul>
-      <a class="cta" href="contact.html">Start eCommerce <span>→</span></a>
+      <a class="cta" href="contact.html">Get a Quote <span>→</span></a>
     </article>
 
     <article class="sv-pkg">
       <div class="head">
-        <div class="kind">Package / 04</div>
-        <div class="name">Cus<em>tom</em></div>
-        <div class="sub">Custom code. No limits. For businesses with serious performance targets and requirements that platforms simply can't meet.</div>
+        <div class="kind">Package / 03</div>
+        <div class="name">Local <em>Authority</em></div>
+        <div class="sub">For businesses and organisations wanting to become the trusted, go-to name in their local area.</div>
       </div>
+      <div class="sv-pkg-price"><span class="cur">From</span><span class="amt">$2,995</span></div>
       <ul>
-        <li>Fully custom-coded — HTML, CSS &amp; JS</li>
-        <li>Unlimited pages (agreed scope)</li>
-        <li>Advanced interactions and motion design</li>
-        <li>Multiple ad landing pages</li>
-        <li>Full performance optimisation</li>
-        <li>Priority turnaround</li>
-        <li>60-day post-launch support</li>
-        <li>Ongoing care plan included (3 months)</li>
+        <li>Everything in Growth, plus</li>
+        <li>Up to 10 pages</li>
+        <li>Service area pages</li>
+        <li>Advanced website architecture</li>
+        <li>Premium custom animations</li>
+        <li>Full GA4 conversion tracking</li>
+        <li>Launch strategy session</li>
+        <li>Priority post-launch support</li>
       </ul>
-      <a class="cta" href="contact.html">Start Custom <span>→</span></a>
+      <a class="cta" href="contact.html">Get a Quote <span>→</span></a>
     </article>
 
   </div>
 </section>
 
-<!-- KICKSTART — small/startup offer -->
-<section class="sv-kickstart">
+<!-- WHY CUSTOM CODED -->
+<section class="sv-kickstart" style="background:rgba(198,255,58,0.03); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
   <div class="sv-kickstart-inner">
     <div class="sv-kickstart-badge">
       <span class="dot"></span>
-      Exclusive · Small &amp; Startup Businesses Only
+      Our approach · Custom code only
     </div>
 
     <div class="sv-kickstart-grid">
       <div class="sv-kickstart-left">
-        <div class="sv-idx">§ 03 / Kickstart</div>
-        <h2>Starting out<br>shouldn't mean<br><em>going without.</em></h2>
+        <div class="sv-idx">§ 03 / Why custom-coded</div>
+        <h2>Why not just<br>use a website<br><em>builder?</em></h2>
         <p>
-          Not every business launches with a full budget. That's the reality — and it shouldn't mean
-          you're stuck with a weak online presence while competitors invest in theirs.
+          Page builders like Wix, Squarespace, WordPress, and Shopify are convenient — but they come with real trade-offs: bloated code, shared infrastructure, limited design control, and ongoing platform fees.
         </p>
         <p style="margin-top:20px;">
-          <em>RASTRICK. MADE keeps a limited number of spots each quarter for small businesses and startups</em>
-          who need a real, conversion-focused website at a price that fits where they are right now.
-          Built on Wix for speed and affordability. <strong>Same strategic thinking. Same design process. Just a price that's actually accessible.</strong>
+          <em>RASTRICK. MADE builds every website from scratch</em> — HTML, CSS, and JavaScript. No templates. No platform lock-in. No hidden limitations. The result is a faster, more flexible, and more cost-effective website in the long run.
         </p>
         <p style="margin-top:20px;">
-          This is not a discounted version of the work. It's the right build for your current stage
-          — with a clear path to upgrade as the business grows.
+          <strong>You own the code outright.</strong> No monthly platform subscription required to keep your website online. No permission needed to make it yours.
         </p>
       </div>
 
       <div class="sv-kickstart-card">
         <div class="kk-head">
-          <div class="kk-name">Kick<em>start</em></div>
-          <div class="kk-sub">For small businesses and startups launching on a tight budget. Built on Wix, designed for conversions, priced to move you forward.</div>
+          <div class="kk-name">Custom <em>vs platforms</em></div>
+          <div class="kk-sub">Here's what changes when you go custom-coded instead of building inside a platform.</div>
         </div>
         <ul class="kk-includes">
-          <li>1–2 page Wix website — designed and structured for conversions</li>
-          <li>Mobile-first responsive design — tested on all devices</li>
-          <li>Lead capture form so visitors can reach you directly</li>
-          <li>SEO foundations built in from day one</li>
-          <li>Google Analytics connected and tracking</li>
-          <li>Domain &amp; hosting setup guidance</li>
-          <li>1 round of revisions included</li>
-          <li>14-day post-launch support window</li>
-          <li>Upgrade path to any full package — your investment isn't wasted</li>
+          <li>Faster load times — no platform bloat or third-party scripts</li>
+          <li>No monthly CMS or platform subscription fees</li>
+          <li>Complete design control — no template constraints</li>
+          <li>You own the code outright — no platform lock-in</li>
+          <li>Better Core Web Vitals — clean, purpose-built code</li>
+          <li>Easier to maintain and update as your organisation grows</li>
+          <li>No platform rules about what you can and can't build</li>
+          <li>Higher trust perception — especially for professional services</li>
         </ul>
         <div class="kk-note">
-          <strong>Who this is for:</strong> Sole traders, new small businesses, startups, community organisations, and anyone building from the ground up who needs a proper online presence without the premium price. <br><br>
-          Spots are limited each quarter. Get in touch — I'll let you know if Kickstart is the right fit.
+          <strong>Already on Wix, Squarespace, WordPress, or Shopify?</strong> RASTRICK. MADE doesn't work inside those platforms — but if you want to move forward together, the project becomes a complete custom-coded rebuild. That's a fresh start with no compromises.
         </div>
-        <a href="contact.html?pkg=kickstart" class="kk-cta">Apply for Kickstart <span>↗</span></a>
+        <a href="contact.html" class="kk-cta">Get a Quote ↗</a>
       </div>
     </div>
   </div>
@@ -817,40 +948,191 @@
   <div class="sv-steps">
     <div class="sv-step">
       <div class="step-num">01</div>
-      <h3>Strategy</h3>
-      <p>We define your goals, audience, offer, and conversion targets. Platform choice, page structure, and budget are all aligned before a pixel is designed.</p>
+      <h3>Discovery</h3>
+      <p>We define your goals, audience, offer, and what your website needs to do. Scope, structure, and budget are agreed before a pixel is designed.</p>
     </div>
     <div class="sv-step">
       <div class="step-num">02</div>
-      <h3>Design</h3>
-      <p>You get a clear visual direction and page structure built for clarity, trust, and action — matched to your platform and your audience.</p>
+      <h3>Content planning</h3>
+      <p>Page structure, messaging hierarchy, and content plan are mapped before design begins. What goes on each page and why.</p>
     </div>
     <div class="sv-step">
       <div class="step-num">03</div>
-      <h3>Build</h3>
-      <p>Your site or store is built on the right platform — Wix, Shopify, or custom — with speed, responsiveness, and tracking baked in from the start.</p>
+      <h3>Design</h3>
+      <p>A clear visual direction and page-by-page layout is developed — built for trust, clarity, and action aligned to your goals and your audience.</p>
     </div>
     <div class="sv-step">
       <div class="step-num">04</div>
-      <h3>Launch</h3>
-      <p>After QA and performance checks, we launch confidently and support early optimisation to maximise performance from day one.</p>
+      <h3>Build</h3>
+      <p>Your website is coded from scratch in HTML, CSS, and JavaScript — fast, mobile-first, SEO-ready, and built to last without a platform subscription.</p>
     </div>
+    <div class="sv-step">
+      <div class="step-num">05</div>
+      <h3>Review</h3>
+      <p>Two rounds of revisions, cross-device QA, performance testing, and any refinements before we're ready to go live.</p>
+    </div>
+    <div class="sv-step">
+      <div class="step-num">06</div>
+      <h3>Launch</h3>
+      <p>Go live with confidence. Domain connection, analytics setup, and post-launch support included so you're not on your own after handover.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO I BUILD FOR -->
+<section class="sv-who" id="who-i-build-for">
+  <div class="section-head">
+    <div class="idx">§ 05 / Who I Build For</div>
+    <h2>Built for organisations <em>that do real work.</em></h2>
+  </div>
+  <div class="sv-who-intro">
+    <p>RASTRICK. MADE works with businesses and organisations that care about their reputation — and need a website that <em>genuinely reflects the quality of what they do.</em> Here's exactly who that is.</p>
+  </div>
+
+  <div class="sv-who-list">
+
+    <div class="sv-who-item" id="service-businesses">
+      <div class="sv-who-item-left">
+        <div class="sv-who-num">01 ——</div>
+        <h3>Service <em>Businesses</em></h3>
+      </div>
+      <div class="sv-who-right">
+        <p>Service businesses live and die by their reputation. Your website is often the first thing a potential customer checks before picking up the phone — it needs to build trust fast, communicate clearly, and make it easy to get in touch.</p>
+        <p><em>Most service businesses lose work to competitors with better-looking websites, not better work.</em> A properly built site changes that equation.</p>
+        <div class="sv-who-examples">
+          <span>Plumbers</span><span>Electricians</span><span>Builders</span><span>Landscapers</span><span>Painters</span><span>Tilers</span><span>HVAC</span><span>Cleaners</span><span>Pest Control</span><span>Security</span><span>Arborists</span><span>Auto Mechanics</span><span>Removalists</span><span>Concreters</span><span>Pool &amp; Spa</span><span>Earth Moving</span><span>All trades</span>
+        </div>
+        <div class="sv-who-needs">
+          <div class="sv-who-need">Service pages that rank in local Google searches</div>
+          <div class="sv-who-need">Reviews, credentials, and trust signals front and centre</div>
+          <div class="sv-who-need">Prominent contact details and easy enquiry forms</div>
+          <div class="sv-who-need">Mobile-first design for on-the-go searches</div>
+          <div class="sv-who-need">Ad landing pages for Google and Meta campaigns</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sv-who-item" id="community-organisations">
+      <div class="sv-who-item-left">
+        <div class="sv-who-num">02 ——</div>
+        <h3>Community <em>Organisations</em></h3>
+      </div>
+      <div class="sv-who-right">
+        <p>Community organisations need a website that feels welcoming, communicates their mission clearly, and helps people connect — whether they're looking to join, volunteer, find support, or simply learn more about what you do.</p>
+        <p><em>Generic templates don't communicate the warmth and purpose of community-led work.</em> A custom site does.</p>
+        <div class="sv-who-examples">
+          <span>Resident Associations</span><span>Cultural Groups</span><span>Multicultural Organisations</span><span>Community Centres</span><span>Neighbourhood Groups</span><span>Environmental Groups</span><span>Women's Groups</span><span>Men's Groups</span><span>Senior Groups</span><span>Youth Groups</span><span>Language Groups</span>
+        </div>
+        <div class="sv-who-needs">
+          <div class="sv-who-need">Mission and values clearly communicated</div>
+          <div class="sv-who-need">How to get involved and membership information</div>
+          <div class="sv-who-need">Events calendar and upcoming activities</div>
+          <div class="sv-who-need">News and announcements section</div>
+          <div class="sv-who-need">Contact, meeting times, and location details</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sv-who-item" id="sporting-clubs">
+      <div class="sv-who-item-left">
+        <div class="sv-who-num">03 ——</div>
+        <h3>Sporting <em>Clubs</em></h3>
+      </div>
+      <div class="sv-who-right">
+        <p>From suburban junior clubs to competitive teams, sporting clubs need a website that keeps members informed, attracts new players and families, and presents the club professionally to sponsors and the wider community.</p>
+        <p><em>Clubs that look professional online attract more members, better sponsors, and more support</em> — and reflect the effort their committees put in.</p>
+        <div class="sv-who-examples">
+          <span>AFL &amp; AusKick</span><span>NRL &amp; Rugby League</span><span>Rugby Union</span><span>Cricket</span><span>Netball</span><span>Soccer</span><span>Basketball</span><span>Athletics</span><span>Swimming</span><span>Tennis</span><span>Golf</span><span>Hockey</span><span>Rowing</span><span>Cycling</span><span>Martial Arts</span><span>All sport codes</span>
+        </div>
+        <div class="sv-who-needs">
+          <div class="sv-who-need">Season fixtures, results, and draw information</div>
+          <div class="sv-who-need">Registration and membership sign-up</div>
+          <div class="sv-who-need">Team, squad, and committee pages</div>
+          <div class="sv-who-need">Sponsor acknowledgement and visibility</div>
+          <div class="sv-who-need">Club news, announcements, and event information</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sv-who-item" id="churches">
+      <div class="sv-who-item-left">
+        <div class="sv-who-num">04 ——</div>
+        <h3>Churches &amp; <em>Faith Communities</em></h3>
+      </div>
+      <div class="sv-who-right">
+        <p>Faith communities rely on connection and trust. A well-built website helps new visitors understand who you are and feel welcome before they walk through the door — and keeps existing members informed and engaged throughout the week.</p>
+        <p><em>Your website is often the first impression someone has of your community.</em> It should feel warm, clear, and genuinely welcoming.</p>
+        <div class="sv-who-examples">
+          <span>Churches</span><span>Christian Communities</span><span>Mosques</span><span>Temples</span><span>Synagogues</span><span>Gurdwaras</span><span>Faith Ministries</span><span>Youth Ministries</span><span>Community Outreach</span><span>All faiths</span>
+        </div>
+        <div class="sv-who-needs">
+          <div class="sv-who-need">Service times, location, and how to visit</div>
+          <div class="sv-who-need">About the community, beliefs, and vision</div>
+          <div class="sv-who-need">Events, programs, and community groups</div>
+          <div class="sv-who-need">Pastoral care and contact information</div>
+          <div class="sv-who-need">Welcoming visual design built for new visitors</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sv-who-item" id="not-for-profits">
+      <div class="sv-who-item-left">
+        <div class="sv-who-num">05 ——</div>
+        <h3>Not-for-<em>Profits</em></h3>
+      </div>
+      <div class="sv-who-right">
+        <p>Not-for-profits need a website that builds donor confidence, communicates impact clearly, and makes it easy for people to get involved. A professional, custom-built website signals that you take your work — and your organisation — seriously.</p>
+        <p><em>Donors, volunteers, and grant bodies assess credibility online before committing.</em> Your website needs to meet that standard.</p>
+        <div class="sv-who-examples">
+          <span>Registered Charities</span><span>Advocacy Groups</span><span>Disability Support</span><span>Mental Health Services</span><span>Homelessness Services</span><span>Youth Services</span><span>Animal Welfare</span><span>Indigenous Organisations</span><span>Environmental NFPs</span><span>Research Foundations</span>
+        </div>
+        <div class="sv-who-needs">
+          <div class="sv-who-need">Mission, impact, and outcomes clearly communicated</div>
+          <div class="sv-who-need">Donation pathways and volunteer recruitment</div>
+          <div class="sv-who-need">Annual reports and transparency information</div>
+          <div class="sv-who-need">News, stories, and program updates</div>
+          <div class="sv-who-need">Grant and partnership acknowledgement</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sv-who-item" id="local-brands">
+      <div class="sv-who-item-left">
+        <div class="sv-who-num">06 ——</div>
+        <h3>Local <em>Brands</em></h3>
+      </div>
+      <div class="sv-who-right">
+        <p>Independent local businesses have something the chains don't — authenticity, community connection, and a genuine story. A custom-coded website that reflects your brand properly can be the difference between someone choosing you or scrolling past.</p>
+        <p><em>Local brands deserve websites that feel as considered as the businesses themselves</em> — not a template that looks like every other small business in the suburb.</p>
+        <div class="sv-who-examples">
+          <span>Independent Retailers</span><span>Cafés</span><span>Restaurants</span><span>Wellness Studios</span><span>Barbers &amp; Salons</span><span>Tattoo Studios</span><span>Florists</span><span>Bookshops</span><span>Boutiques</span><span>Fitness Studios</span><span>Photography Studios</span><span>Local Service Providers</span>
+        </div>
+        <div class="sv-who-needs">
+          <div class="sv-who-need">Strong brand identity expressed online</div>
+          <div class="sv-who-need">Product or service showcase</div>
+          <div class="sv-who-need">About page that tells your story</div>
+          <div class="sv-who-need">Local SEO to appear in neighbourhood searches</div>
+          <div class="sv-who-need">Simple booking, contact, or enquiry mechanism</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- CTA -->
 <section class="sv-cta">
   <div class="sv-cta-inner">
-    <div class="sv-idx">§ 05 / Start</div>
-    <h2>Ready for a site that drives <em>results?</em></h2>
+    <div class="sv-idx">§ 06 / Start</div>
+    <h2>Ready for a website built <em>properly?</em></h2>
     <p>
-      Tell me your goals, your current traffic source, and what growth looks like for your business.
-      I’ll recommend the right platform, scope, and build path to get you more leads or sales.
-      Clear plan. Straight answer.
+      Tell me about your organisation, your goals, and what you need your website to do.
+      You’ll get a clear recommendation on scope, package, and next steps within one business day.
+      No fluff. Straight answer.
     </p>
     <div class="sv-cta-actions">
-      <a href="contact.html" class="sv-btn primary">Get my build plan <span class="arr">↗</span></a>
-      <a href="about.html" class="sv-btn ghost">Learn about RASTRICK. MADE <span class="arr">↗</span></a>
+      <a href="contact.html" class="sv-btn primary">Get a Quote <span class="arr">↗</span></a>
+      <a href="packages.html" class="sv-btn ghost">View Pricing <span class="arr">↗</span></a>
     </div>
   </div>
 </section>
@@ -866,10 +1148,27 @@
 <!-- FOOTER -->
 </main>
 
+
+<section class="ack-country" aria-label="Acknowledgement of Country">
+  <div class="ack-country-inner">
+    <div class="ack-flags" aria-hidden="true">
+      <img class="ack-flag" src="aboriginal.jpg" alt="Aboriginal Flag of Australia">
+      <img class="ack-flag" src="tsi.jpg" alt="Torres Strait Islander Flag">
+    </div>
+    <div class="ack-content">
+      <div class="ack-label">Acknowledgement of Country</div>
+      <p class="ack-text">RASTRICK. MADE acknowledges the <em>Ngunnawal people</em> as the Traditional Custodians of Canberra and the surrounding region, the land on which this studio operates.</p>
+      <p class="ack-text">We extend this acknowledgement to all Traditional Custodians of Country throughout Australia and pay our respects to <em>Elders past, present, and emerging.</em></p>
+      <p class="ack-text">We recognise and honour the strength, resilience, cultures, and knowledge of <em>Aboriginal and Torres Strait Islander peoples,</em> and their enduring connection to Country, community, and culture.</p>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="meta">
     <div>
-      <b>Independent Studio</b>
+      <b>RASTRICK. MADE</b>
+      <span>Custom websites for businesses and community organisations. Built by hand in Canberra.</span>
       <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>
       <a href="https://www.instagram.com/rastrick.made" target="_blank" rel="noopener">@rastrick.made</a>
       <span>Canberra · ACT · AU 2602</span>
@@ -877,15 +1176,17 @@
     </div>
     <div>
       <b>Navigate</b>
-      <a href="/#work">Work</a>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="packages.html">Pricing</a>
       <a href="about.html">About</a>
-      <a href="services.html">Services &amp; Packages</a>
       <a href="contact.html">Contact</a>
-      <a href="/#faq">FAQ</a>
     </div>
     <div>
       <b>© 2026 RASTRICK. MADE - ALL RIGHTS RESERVED</b>
-      <span>Independent Website Design &amp; Development Studio</span>
+      <span>Independent Custom Website Studio · Canberra, ACT</span>
+      <a href="contact.html" style="color:var(--accent)">Start Your Website ↗</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms &amp; Conditions</a>
       <a href="/">↑ Back to home</a>

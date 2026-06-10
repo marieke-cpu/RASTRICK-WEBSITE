@@ -11,18 +11,18 @@
   gtag('js', new Date());
   gtag('config', 'G-4PTWVZZBJ8');
 </script>
-<title>Website Packages & Pricing | RASTRICK. MADE</title>
+<title>Website Pricing | Custom Websites from $995 | RASTRICK. MADE</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Website packages for every stage — Wix, Shopify, and custom code. Transparent pricing, conversion-first builds. Find the right package for your business.">
+<meta name="description" content="Three custom website packages for service businesses, community organisations, and local brands. Starter from $995 · Growth from $1,995 · Local Authority from $2,995. No templates. No page builders.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.rastrick.com.au/packages">
-<meta property="og:title" content="Website Packages & Pricing | RASTRICK. MADE">
-<meta property="og:description" content="Website packages for every stage — Wix, Shopify, and custom code. Transparent pricing, conversion-first builds. Find the right package for your business.">
+<meta property="og:title" content="Website Pricing | Custom Websites from $995 | RASTRICK. MADE">
+<meta property="og:description" content="Three custom website packages. Starter from $995 · Growth from $1,995 · Local Authority from $2,995. Built by hand in Canberra.">
 <meta property="og:image" content="https://www.rastrick.com.au/RM2W-sm.png">
 <meta property="og:site_name" content="RASTRICK. MADE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Website Packages & Pricing | RASTRICK. MADE">
-<meta name="twitter:description" content="Website packages for every stage — Wix, Shopify, and custom code. Transparent pricing, conversion-first builds. Find the right package for your business.">
+<meta name="twitter:title" content="Website Pricing | Custom Websites from $995 | RASTRICK. MADE">
+<meta name="twitter:description" content="Three custom website packages. Starter from $995 · Growth from $1,995 · Local Authority from $2,995. Built by hand in Canberra.">
 <meta name="twitter:image" content="https://www.rastrick.com.au/RM2W-sm.png">
 <link rel="icon" type="image/png" sizes="32x32" href="Logo.png">
 <link rel="icon" type="image/png" sizes="96x96" href="Logo.png">
@@ -43,8 +43,8 @@
 /* ---- hero ---- */
 .pk-hero {
   position: relative;
-  min-height: 80vh;
-  padding: clamp(100px, 14vw, 160px) var(--pad) clamp(60px, 8vw, 100px);
+  min-height: 70vh;
+  padding: clamp(80px, 10vw, 120px) var(--pad) clamp(40px, 5vw, 60px);
   overflow: hidden;
   display: flex; align-items: flex-end;
   border-bottom: 1px solid var(--line);
@@ -74,7 +74,7 @@
 .pk-hero-top {
   display: flex; justify-content: space-between; align-items: center;
   gap: 20px; flex-wrap: wrap;
-  margin-bottom: clamp(40px, 6vw, 80px);
+  margin-bottom: clamp(20px, 3vw, 40px);
 }
 .pk-hero-top .tag {
   font-family: var(--f-mono); font-size: 11px;
@@ -109,25 +109,25 @@
 .pk-hero-lead {
   font-family: var(--f-sans); font-size: clamp(18px, 2.2vw, 26px);
   line-height: 1.45; color: var(--ink-dim);
-  max-width: 56ch; margin-top: clamp(28px, 4vw, 48px);
+  max-width: 56ch; margin-top: clamp(16px, 2.5vw, 28px);
   font-weight: 300; letter-spacing: -0.01em;
 }
 .pk-hero-lead em { font-style: normal; color: var(--ink); }
 
 /* ---- package cards ---- */
 .pk-cards {
-  padding: clamp(80px, 12vw, 160px) var(--pad);
+  padding: clamp(44px, 5.5vw, 72px) var(--pad);
   border-bottom: 1px solid var(--line);
 }
 .pk-cards-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr);
+  display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px; background: var(--line);
   border: 1px solid var(--line);
-  margin-top: 60px;
+  margin-top: 36px;
 }
 .pk-card {
   background: var(--bg);
-  padding: 52px 44px 44px;
+  padding: 28px 24px 24px;
   display: flex; flex-direction: column; gap: 0;
   position: relative;
   transition: background .3s;
@@ -136,7 +136,7 @@
 .pk-card.feat { background: var(--panel); }
 .pk-card.feat:hover { background: #191c22; }
 .pk-card .flag {
-  position: absolute; top: 28px; right: 28px;
+  position: absolute; top: 24px; right: 24px;
   font-family: var(--f-mono); font-size: 9px;
   letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--accent); border: 1px solid var(--accent);
@@ -145,43 +145,54 @@
 .pk-card-num {
   font-family: var(--f-mono); font-size: 10px;
   letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--ink-faint); margin-bottom: 12px;
+  color: var(--ink-faint); margin-bottom: 10px;
 }
 .pk-card-name {
   font-family: var(--f-display); font-weight: 400;
-  font-size: clamp(44px, 5vw, 72px);
+  font-size: clamp(36px, 4vw, 60px);
   text-transform: uppercase; color: var(--ink); line-height: 0.9;
   margin-bottom: 16px;
 }
 .pk-card-name em { font-style: normal; color: var(--accent); }
-.pk-card.feat .pk-card-name em { color: var(--accent); }
-.pk-card-tagline {
-  font-family: var(--f-display); font-weight: 400;
-  font-size: clamp(18px, 2vw, 26px);
-  text-transform: uppercase; color: var(--ink-dim);
-  line-height: 1; margin-bottom: 24px;
-  letter-spacing: 0;
+.pk-card-price {
+  display: flex; align-items: baseline; gap: 6px;
+  margin-bottom: 6px;
 }
-.pk-card-divider { height: 1px; background: var(--line); margin: 0 0 28px; }
+.pk-card-price .cur {
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.pk-card-price .amt {
+  font-family: var(--f-display); font-size: 52px;
+  font-weight: 400; letter-spacing: 0; line-height: 1;
+  color: var(--ink);
+}
+.pk-card-tagline {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-dim); margin-bottom: 24px;
+}
+.pk-card-divider { height: 1px; background: var(--line); margin: 0 0 24px; }
 .pk-card-sub {
-  font-family: var(--f-sans); font-size: 16px;
-  line-height: 1.6; color: var(--ink-dim); font-weight: 300;
-  max-width: 40ch; margin-bottom: 36px;
+  font-family: var(--f-sans); font-size: 14px;
+  line-height: 1.65; color: var(--ink-dim); font-weight: 300;
+  margin-bottom: 24px;
 }
 .pk-card-sub em { font-style: normal; color: var(--ink); }
 .pk-card-section-label {
   font-family: var(--f-mono); font-size: 9px;
   letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--ink-faint); margin-bottom: 12px; margin-top: 28px;
+  color: var(--ink-faint); margin-bottom: 10px; margin-top: 20px;
 }
 .pk-card-section-label:first-of-type { margin-top: 0; }
 .pk-card-list {
-  list-style: none; display: flex; flex-direction: column; gap: 0; margin-bottom: 8px;
+  list-style: none; display: flex; flex-direction: column; gap: 0; margin-bottom: 8px; flex: 1;
 }
 .pk-card-list li {
-  display: flex; align-items: baseline; gap: 14px;
-  font-family: var(--f-sans); font-size: 14px;
-  color: var(--ink); padding: 9px 0;
+  display: flex; align-items: baseline; gap: 12px;
+  font-family: var(--f-sans); font-size: 13px;
+  color: var(--ink); padding: 8px 0;
   border-bottom: 1px solid var(--line); line-height: 1.4;
 }
 .pk-card-list li:first-child { border-top: 1px solid var(--line); }
@@ -189,11 +200,21 @@
   content: ''; width: 4px; height: 4px; border-radius: 50%;
   background: var(--accent-2); flex-shrink: 0; transform: translateY(-2px);
 }
-.pk-card-list li.faint { color: var(--ink-faint); text-decoration: line-through; }
-.pk-card-list li.faint::before { background: var(--ink-faint); }
+.pk-card-for {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 20px; margin-bottom: 4px;
+}
+.pk-card-for span {
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-dim); background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 4px 10px; border-radius: 100px;
+}
+.pk-card.feat .pk-card-for span { background: var(--bg-2); }
 .pk-card-cta {
   display: inline-flex; justify-content: space-between; align-items: center;
-  padding: 18px 24px; margin-top: 36px;
+  padding: 16px 20px; margin-top: 28px;
   border: 1px solid var(--line-2); border-radius: 100px;
   font-family: var(--f-mono); font-size: 11px;
   letter-spacing: 0.18em; text-transform: uppercase;
@@ -205,15 +226,13 @@
 
 /* ---- comparison table ---- */
 .pk-compare {
-  padding: clamp(80px, 12vw, 160px) var(--pad);
+  padding: clamp(44px, 5.5vw, 72px) var(--pad);
   border-bottom: 1px solid var(--line);
   background: var(--bg-2);
   overflow-x: auto;
 }
-.pk-table-wrap { min-width: 700px; margin-top: 60px; }
-.pk-table {
-  width: 100%; border-collapse: collapse;
-}
+.pk-table-wrap { min-width: 700px; margin-top: 36px; }
+.pk-table { width: 100%; border-collapse: collapse; }
 .pk-table thead th {
   font-family: var(--f-mono); font-size: 10px;
   letter-spacing: 0.22em; text-transform: uppercase;
@@ -242,187 +261,124 @@
 .pk-table .cross { color: var(--ink-faint); }
 .pk-table .val { color: var(--ink); font-weight: 400; }
 
-/* ---- kickstart ---- */
-.pk-kickstart {
-  padding: clamp(80px, 12vw, 160px) var(--pad);
+/* ---- every build ---- */
+.pk-every {
+  padding: clamp(44px, 5.5vw, 72px) var(--pad);
   border-bottom: 1px solid var(--line);
-  background: var(--bg);
+  background: var(--panel);
   position: relative; overflow: hidden;
 }
-.pk-kickstart::before {
+.pk-every::before {
   content: '';
   position: absolute; inset: 0;
-  background:
-    radial-gradient(1000px 600px at 50% 0%, rgba(255,61,240,0.06), transparent 60%),
-    radial-gradient(600px 400px at 80% 100%, rgba(198,255,58,0.03), transparent 60%);
+  background: radial-gradient(900px 500px at 80% 0%, rgba(198,255,58,0.05), transparent 60%);
   pointer-events: none;
 }
-.pk-kickstart-inner { position: relative; z-index: 2; }
-.pk-kickstart-badge {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--f-mono); font-size: 10px;
-  letter-spacing: 0.26em; text-transform: uppercase;
-  color: var(--accent-2); border: 1px solid var(--accent-2);
-  border-radius: 100px; padding: 7px 16px; margin-bottom: 40px;
+.pk-every-inner { position: relative; z-index: 2; }
+.pk-every-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 36px;
 }
-.pk-kickstart-badge .dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent-2); box-shadow: 0 0 10px var(--accent-2);
-  animation: blink 1.8s ease-in-out infinite;
+.pk-every-left {
+  background: var(--panel);
+  padding: clamp(36px, 5vw, 60px);
+  display: flex; flex-direction: column; gap: 0;
 }
-.pk-kickstart-intro {
-  max-width: 68ch; margin-bottom: 60px;
-}
-.pk-kickstart-intro h2 {
+.pk-every-left h3 {
   font-family: var(--f-display); font-weight: 400;
-  font-size: clamp(48px, 8vw, 120px);
-  line-height: 0.88; letter-spacing: -0.01em;
-  text-transform: uppercase; color: var(--ink);
-  margin-bottom: clamp(24px, 3vw, 36px);
+  font-size: clamp(40px, 5vw, 80px);
+  line-height: 0.9; text-transform: uppercase; color: var(--ink);
+  margin-bottom: clamp(20px, 3vw, 32px);
 }
-.pk-kickstart-intro h2 em {
-  font-style: normal; color: var(--accent-2);
+.pk-every-left h3 em {
+  font-style: normal; color: var(--accent);
   font-family: var(--f-sans); font-weight: 300;
   text-transform: lowercase; letter-spacing: -0.02em;
 }
-.pk-kickstart-intro p {
-  font-family: var(--f-sans); font-size: clamp(16px, 1.7vw, 20px);
+.pk-every-left p {
+  font-family: var(--f-sans); font-size: clamp(14px, 1.4vw, 17px);
   line-height: 1.7; color: var(--ink-dim); font-weight: 300;
-  max-width: 62ch;
+  max-width: 38ch;
 }
-.pk-kickstart-intro p em { font-style: normal; color: var(--ink); }
-.pk-kickstart-intro p strong { color: var(--accent-2); font-weight: 500; }
-.pk-kickstart-intro p + p { margin-top: 18px; }
-
-.pk-kickstart-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; background: rgba(255,61,240,0.18);
-  border: 1px solid rgba(255,61,240,0.18);
-  border-radius: 8px; overflow: hidden;
-}
-.pk-kk-left {
-  background: var(--panel);
+.pk-every-left p em { font-style: normal; color: var(--ink); }
+.pk-every-left p + p { margin-top: 14px; }
+.pk-every-right {
+  background: var(--bg);
   padding: clamp(36px, 5vw, 60px);
 }
-.pk-kk-left .kk-name {
-  font-family: var(--f-display); font-size: 64px;
-  font-weight: 400; text-transform: uppercase;
-  color: var(--ink); line-height: 0.9; margin-bottom: 20px;
-}
-.pk-kk-left .kk-name em { font-style: normal; color: var(--accent-2); }
-.pk-kk-left .kk-tagline {
-  font-family: var(--f-display); font-size: 22px;
-  text-transform: uppercase; color: var(--ink-dim);
-  margin-bottom: 28px; line-height: 1;
-}
-.pk-kk-left .kk-divider { height: 1px; background: rgba(255,61,240,0.2); margin-bottom: 28px; }
-.pk-kk-left .kk-desc {
-  font-family: var(--f-sans); font-size: 15px;
-  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
-  margin-bottom: 28px;
-}
-.pk-kk-left .kk-desc em { font-style: normal; color: var(--ink); }
-.pk-kk-left .kk-note {
-  background: rgba(255,61,240,0.06);
-  border-left: 3px solid var(--accent-2);
-  padding: 16px 20px;
-  font-family: var(--f-sans); font-size: 14px;
-  line-height: 1.6; color: var(--ink-dim);
-  margin-bottom: 36px;
-}
-.pk-kk-left .kk-note strong { color: var(--accent-2); }
-.pk-kk-left .kk-cta {
-  display: inline-flex; align-items: center; justify-content: space-between;
-  gap: 14px; padding: 18px 28px; width: 100%;
-  background: var(--accent-2); color: #fff;
-  border: 1px solid var(--accent-2); border-radius: 100px;
-  font-family: var(--f-mono); font-size: 11px;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  transition: background .2s, color .2s, border-color .2s, transform .2s;
-  box-shadow: 0 0 0 3px rgba(255,61,240,0.15), 0 20px 40px rgba(0,0,0,0.3);
-}
-.pk-kk-left .kk-cta:hover { background: var(--ink); color: #000; border-color: var(--ink); transform: translateY(-2px); }
-
-.pk-kk-right {
-  background: rgba(255,61,240,0.03);
-  padding: clamp(36px, 5vw, 60px);
-  display: flex; flex-direction: column; gap: 36px;
-}
-.pk-kk-right .kk-section-label {
+.pk-every-label {
   font-family: var(--f-mono); font-size: 9px;
   letter-spacing: 0.3em; text-transform: uppercase;
-  color: rgba(255,61,240,0.6); margin-bottom: 12px;
+  color: var(--ink-faint); margin-bottom: 16px;
 }
-.pk-kk-right .kk-list {
+.pk-every-list {
   list-style: none; display: flex; flex-direction: column; gap: 0;
 }
-.pk-kk-right .kk-list li {
-  display: flex; align-items: flex-start; gap: 14px;
+.pk-every-list li {
+  display: flex; align-items: baseline; gap: 14px;
   font-family: var(--f-sans); font-size: 14px;
   color: var(--ink-dim); padding: 11px 0;
   border-bottom: 1px solid var(--line); line-height: 1.5;
 }
-.pk-kk-right .kk-list li:first-child { border-top: 1px solid var(--line); }
-.pk-kk-right .kk-list li::before {
-  content: '✓'; color: var(--accent-2);
-  font-family: var(--f-mono); font-size: 11px;
-  flex-shrink: 0; margin-top: 1px;
+.pk-every-list li:first-child { border-top: 1px solid var(--line); }
+.pk-every-list li::before {
+  content: '✓'; color: var(--accent);
+  font-family: var(--f-mono); font-size: 11px; flex-shrink: 0;
 }
-.pk-kk-right .kk-eligibility {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 6px; padding: 24px;
-}
-.pk-kk-right .kk-eligibility .el-head {
-  font-family: var(--f-mono); font-size: 10px;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--accent-2); margin-bottom: 14px;
-}
-.pk-kk-right .kk-eligibility p {
-  font-family: var(--f-sans); font-size: 14px;
-  line-height: 1.65; color: var(--ink-dim); font-weight: 300;
-}
-.pk-kk-right .kk-eligibility p em { font-style: normal; color: var(--ink); }
 
-/* ---- what you get ---- */
-.pk-whyyou {
-  padding: clamp(80px, 12vw, 160px) var(--pad);
+/* ---- add-ons ---- */
+.pk-addons {
+  padding: clamp(44px, 5.5vw, 72px) var(--pad);
   border-bottom: 1px solid var(--line);
-  background: var(--panel);
+  background: var(--bg-2);
 }
-.pk-why-grid {
+.pk-addons-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px; background: var(--line);
   border: 1px solid var(--line);
-  margin-top: 60px;
+  margin-top: 36px;
 }
-.pk-why-item {
-  background: var(--panel); padding: 40px 32px;
-  display: flex; flex-direction: column; gap: 16px;
+.pk-addon {
+  background: var(--bg-2);
+  padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 14px;
   transition: background .3s;
 }
-.pk-why-item:hover { background: #1a1e26; }
-.pk-why-item .wi-num {
-  font-family: var(--f-display); font-size: 64px;
+.pk-addon:hover { background: #0f1216; }
+.pk-addon-price {
+  font-family: var(--f-display); font-size: 28px;
   font-weight: 400; color: var(--accent);
   line-height: 1; text-transform: uppercase;
 }
-.pk-why-item h3 {
-  font-family: var(--f-display); font-size: 26px;
+.pk-addon h3 {
+  font-family: var(--f-display); font-size: 22px;
   font-weight: 400; text-transform: uppercase;
   color: var(--ink); line-height: 1;
 }
-.pk-why-item p {
+.pk-addon p {
   font-family: var(--f-sans); font-size: 14px;
   line-height: 1.65; color: var(--ink-dim); font-weight: 300;
 }
-.pk-why-item p em { font-style: normal; color: var(--ink); }
+.pk-addon p em { font-style: normal; color: var(--ink); }
+.pk-addon.cta-tile { border: 1px solid var(--line-2); }
+.pk-addon.cta-tile .pk-addon-price { color: var(--ink-faint); }
+.pk-addon.cta-tile a {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: auto;
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent);
+  transition: gap .2s;
+}
+.pk-addon.cta-tile a:hover { gap: 14px; }
 
 /* ---- CTA ---- */
 .pk-cta {
-  padding: clamp(80px, 11vw, 156px) var(--pad);
+  padding: clamp(44px, 5.5vw, 72px) var(--pad);
   position: relative; overflow: hidden;
-  background: var(--bg-2); border-bottom: 1px solid var(--line);
+  background: var(--bg); border-bottom: 1px solid var(--line);
 }
 .pk-cta::before {
   content: ''; position: absolute; inset: 0;
@@ -442,10 +398,25 @@
   font-style: normal; color: var(--accent); font-family: var(--f-sans);
   font-weight: 300; text-transform: lowercase; letter-spacing: -0.02em;
 }
-.pk-cta p {
-  font-family: var(--f-sans); font-size: clamp(16px, 1.6vw, 20px);
-  line-height: 1.55; color: var(--ink-dim); font-weight: 300;
-  max-width: 44ch; margin: clamp(24px, 3vw, 36px) 0 clamp(36px, 5vw, 56px);
+.pk-cta-guide {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+  margin: clamp(20px, 2.5vw, 32px) 0 clamp(24px, 3vw, 36px);
+}
+.pk-cta-guide-item {
+  background: var(--bg);
+  padding: 20px 24px;
+  display: flex; align-items: baseline; gap: 16px;
+}
+.pk-cta-guide-item .gi-tag {
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); flex-shrink: 0;
+}
+.pk-cta-guide-item .gi-text {
+  font-family: var(--f-sans); font-size: 14px;
+  color: var(--ink-dim); line-height: 1.4;
 }
 .pk-cta-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 .pk-btn {
@@ -465,9 +436,10 @@
 
 /* ---- responsive ---- */
 @media (max-width: 1000px) {
-  .pk-cards-grid { grid-template-columns: 1fr; }
-  .pk-kickstart-grid { grid-template-columns: 1fr; }
-  .pk-why-grid { grid-template-columns: 1fr 1fr; }
+  .pk-cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .pk-addons-grid { grid-template-columns: repeat(2, 1fr); }
+  .pk-every-grid { grid-template-columns: 1fr; }
+  .pk-cta-guide { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .pk-hero { min-height: 70vh; padding-top: clamp(100px, 14vw, 140px); }
@@ -475,8 +447,9 @@
   .pk-hero .bracket.tl, .pk-hero .bracket.tr { top: 20px; }
   .pk-hero .bracket.bl, .pk-hero .bracket.br { bottom: 20px; }
   .pk-hero-top .tag:last-child { display: none; }
-  .pk-why-grid { grid-template-columns: 1fr; }
-  .pk-card { padding: 36px 24px 32px; }
+  .pk-cards-grid { grid-template-columns: 1fr; }
+  .pk-addons-grid { grid-template-columns: 1fr; }
+  .pk-card { padding: 32px 24px 28px; }
 }
 </style>
 
@@ -494,7 +467,7 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Packages",
+      "name": "Pricing",
       "item": "https://www.rastrick.com.au/packages"
     }
   ]
@@ -513,13 +486,13 @@
   <a href="/" class="logo"><span class="pulse"></span><img class="nav-logo-mark" src="RM2W-sm.png" alt="" width="52" height="26" decoding="async" fetchpriority="high"><img class="nav-logo-word" src="RM2W-sm.png" alt="RASTRICK. MADE" width="104" height="52" decoding="async" fetchpriority="high"></a>
   <ul>
     <li><a href="index.html">Home</a></li>
-    <li><a href="work.html">Work</a></li>
-    <li><a href="about.html">About</a></li>
     <li><a href="services.html">Services</a></li>
-    <li><a href="packages.html" style="color:var(--ink)">Packages</a></li>
-    <li><a href="faqs.html">FAQ</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="packages.html" style="color:var(--ink)">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+  <a href="contact.html" class="cta">Get a Quote <span class="arr">↗</span></a>
   <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
@@ -539,21 +512,21 @@
 
   <div class="pk-hero-frame">
     <div class="pk-hero-top">
-      <div class="tag"><span class="dot"></span>4 packages · Wix · Shopify · Custom</div>
-      <div class="tag">Conversion-first · Fixed price</div>
+      <div class="tag"><span class="dot"></span>3 packages · Custom-coded · No templates</div>
+      <div class="tag">Transparent pricing · Fair investment</div>
     </div>
 
-    <div class="pk-idx">§ 00 / Packages</div>
+    <div class="pk-idx">§ 00 / Pricing</div>
 
     <h1>
-      Website packages<br>
-      <em>and pricing.</em>
+      Website pricing<br>
+      <em>and packages.</em>
     </h1>
 
     <p class="pk-hero-lead">
-      Four packages matched to your platform, your goals, and your stage of growth.
-      Wix for fast, affordable launches. Shopify for eCommerce and growth. Custom code for peak performance.
-      Every build is structured around one outcome — <em>more leads, more sales, better results.</em>
+      Three packages for service businesses, community organisations, not-for-profits, and local brands.
+      Every website is custom-coded from scratch — no templates, no page builders, no platform lock-in.
+      Clear pricing. Honest investment. <em>Built for trust and long-term results.</em>
     </p>
   </div>
 </section>
@@ -562,172 +535,118 @@
 <section class="pk-cards">
   <div class="section-head">
     <div class="idx">§ 01 / The packages</div>
-    <h2>Right platform. Right build. <em>Right results.</em></h2>
+    <h2>Custom-coded. <em>Fair pricing.</em></h2>
   </div>
 
   <div class="pk-cards-grid">
 
     <!-- STARTER -->
     <article class="pk-card">
-      <div class="flag">Most popular</div>
       <div class="pk-card-num">Package / 01</div>
       <div class="pk-card-name">Star<em>ter</em></div>
-      <div class="pk-card-tagline">Fast launch. Lead-ready. · From $2,500</div>
+      <div class="pk-card-price"><span class="cur">From</span><span class="amt">$995</span></div>
+      <div class="pk-card-tagline">Professional presence, built properly.</div>
       <div class="pk-card-divider"></div>
       <div class="pk-card-sub">
-        For businesses ready to take their online presence seriously.
-        Built on Wix for speed and efficiency — but structured like a real conversion tool.
-        Clean hierarchy, strong CTA flow, and built to start generating leads immediately.
-        <em>Professional presence from day one — built to convert, not just look good.</em>
-        Recommended: Add landing pages to support paid traffic.
+        A clean, professional custom-coded website — built from scratch, no templates.
+        <em>The right foundation for any organisation starting their online presence or replacing an outdated site.</em>
       </div>
 
       <div class="pk-card-section-label">What's included</div>
       <ul class="pk-card-list">
-        <li>1–3 page Wix website — designed and structured from scratch</li>
-        <li>Conversion-focused page layout and clear CTA architecture</li>
-        <li>Mobile-first responsive design — tested on all devices</li>
-        <li>Contact form and lead capture connected from day one</li>
-        <li>Google Analytics setup and basic tracking</li>
-        <li>SEO foundations: meta tags, titles, page structure</li>
-        <li>Domain &amp; hosting setup guidance</li>
-        <li>1 round of revisions included</li>
-        <li>14-day post-launch support window</li>
-        <li>Full handover with easy edit instructions</li>
-        <li class="faint">Multi-page navigation beyond 3 pages</li>
-        <li class="faint">Custom animations and interactions</li>
-        <li class="faint">Landing pages for paid ad campaigns</li>
+        <li>Custom-coded HTML, CSS &amp; JavaScript from scratch</li>
+        <li>Up to 3 pages (Home, About, Contact)</li>
+        <li>Mobile-first responsive design</li>
+        <li>Contact form integration</li>
+        <li>Basic SEO: meta titles, descriptions, page structure</li>
+        <li>Google Analytics 4 setup</li>
+        <li>Domain connection assistance</li>
+        <li>1 round of revisions · Launch support</li>
       </ul>
 
       <div class="pk-card-section-label">Best for</div>
-      <ul class="pk-card-list">
-        <li>Professional presence from day one</li>
-        <li>Built to convert — not just look good</li>
-        <li>Launch fast without cutting corners</li>
-        <li>Anyone who needs to go live fast and start generating leads</li>
-      </ul>
+      <div class="pk-card-for">
+        <span>Sole traders</span>
+        <span>Small businesses</span>
+        <span>Sporting clubs</span>
+        <span>Community groups</span>
+        <span>Local associations</span>
+      </div>
 
-      <a class="pk-card-cta" href="contact.html">Get Started <span>→</span></a>
+      <a class="pk-card-cta" href="contact.html">Get a Quote <span>→</span></a>
     </article>
 
     <!-- GROWTH -->
-    <article class="pk-card">
-      <div class="flag">Recommended for scaling</div>
-      <div class="pk-card-num">Package / 02</div>
-      <div class="pk-card-name">Grow<em>th</em></div>
-      <div class="pk-card-tagline">Built to scale. · From $4,500 – $6,000</div>
-      <div class="pk-card-divider"></div>
-      <div class="pk-card-sub">
-        For businesses that don't just want a website — they want results.
-        More flexibility, more pages, and a structure designed to support traffic, campaigns, and long-term growth.
-        Built on Shopify for eCommerce-focused businesses, or custom-coded for service brands that need full flexibility.
-        <em>Most businesses that plan to run ads or grow choose Growth.</em>
-        Common additions: Conversion optimisation and tracking setup.
-      </div>
-
-      <div class="pk-card-section-label">What's included</div>
-      <ul class="pk-card-list">
-        <li>Up to 5 pages — Shopify for eCommerce, custom-coded for service brands</li>
-        <li>Conversion-led page hierarchy and UX flow</li>
-        <li>Mobile-first responsive design across all pages</li>
-        <li>Lead capture forms and CTA optimisation</li>
-        <li>Google Analytics + basic conversion tracking</li>
-        <li>SEO foundations on every page</li>
-        <li>Domain &amp; hosting setup guidance</li>
-        <li>2 rounds of revisions included</li>
-        <li>21-day post-launch support window</li>
-        <li>Full handover with CMS edit access</li>
-        <li class="faint">Custom animations and interactions</li>
-        <li class="faint">Landing pages for paid ad campaigns</li>
-      </ul>
-
-      <div class="pk-card-section-label">Best for</div>
-      <ul class="pk-card-list">
-        <li>Built for ads and marketing campaigns</li>
-        <li>Scalable structure — grow without rebuilding</li>
-        <li>Designed for long-term growth</li>
-        <li>Brands ready to invest in performance, not just presence</li>
-      </ul>
-
-      <a class="pk-card-cta" href="contact.html">Go Growth <span>→</span></a>
-    </article>
-
-    <!-- ECOMMERCE -->
     <article class="pk-card feat">
-      <div class="pk-card-num">Package / 03</div>
-      <div class="pk-card-name">e<em>Commerce</em></div>
-      <div class="pk-card-tagline">Built to sell. · From $6,000 – $8,000+</div>
+      <div class="flag">Most Popular</div>
+      <div class="pk-card-num">Package / 02 — Recommended</div>
+      <div class="pk-card-name">Grow<em>th</em></div>
+      <div class="pk-card-price"><span class="cur">From</span><span class="amt">$1,995</span></div>
+      <div class="pk-card-tagline">Credibility, SEO and consistent enquiries.</div>
       <div class="pk-card-divider"></div>
       <div class="pk-card-sub">
-        Designed specifically for online stores — focused on conversion, user experience, and increasing revenue.
-        Built on Shopify with a strategy-first approach: product discovery, trust architecture, and checkout flow
-        all designed to turn traffic into completed sales. <em>Your store works while you do.</em>
-        Recommended: Performance optimisation and advanced tracking.
+        For businesses and organisations that want a stronger online presence — one that builds credibility, ranks in local search, and generates consistent enquiries.
+        <em>The most chosen package for service businesses, NFPs, and community organisations that take their website seriously.</em>
       </div>
 
       <div class="pk-card-section-label">What's included</div>
       <ul class="pk-card-list">
-        <li>Shopify store — designed and structured from scratch</li>
-        <li>High-converting product and collection page design</li>
-        <li>Mobile-first shopping experience — built for phone buyers</li>
-        <li>Checkout optimisation and upsell-ready conversion flow</li>
-        <li>Ad campaign landing pages for paid traffic</li>
-        <li>Analytics and conversion event tracking</li>
-        <li>Product page trust signals: reviews, urgency, social proof</li>
-        <li>SEO foundations and on-page optimisation per collection</li>
-        <li>Performance audit before launch</li>
-        <li>3 rounds of revisions included</li>
-        <li>30-day post-launch support window</li>
-        <li>Full store handover and edit instructions</li>
+        <li>Everything in Starter, plus</li>
+        <li>Up to 6 pages</li>
+        <li>Conversion-focused homepage strategy</li>
+        <li>Services or programs page with clear structure</li>
+        <li>Reviews and testimonials section</li>
+        <li>FAQ section</li>
+        <li>Local SEO foundations</li>
+        <li>GA4 event tracking (form submissions, clicks)</li>
+        <li>2 rounds of revisions · 14 days post-launch support</li>
       </ul>
 
       <div class="pk-card-section-label">Best for</div>
-      <ul class="pk-card-list">
-        <li>Product businesses launching or rebuilding their online store</li>
-        <li>Brands running or planning paid ads to drive product sales</li>
-        <li>Businesses with an existing store that isn't converting</li>
-        <li>Any eCommerce brand where revenue per visitor matters</li>
-      </ul>
+      <div class="pk-card-for">
+        <span>Service businesses</span>
+        <span>NFPs &amp; charities</span>
+        <span>Community organisations</span>
+        <span>Where trust matters</span>
+      </div>
 
-      <a class="pk-card-cta" href="contact.html">Start eCommerce <span>→</span></a>
+      <a class="pk-card-cta" href="contact.html">Get a Quote <span>→</span></a>
     </article>
 
-    <!-- CUSTOM -->
+    <!-- LOCAL AUTHORITY -->
     <article class="pk-card">
-      <div class="pk-card-num">Package / 04</div>
-      <div class="pk-card-name">Cus<em>tom</em></div>
-      <div class="pk-card-tagline">No limits. · From $8,000 – $12,000+</div>
+      <div class="pk-card-num">Package / 03</div>
+      <div class="pk-card-name">Local <em>Authority</em></div>
+      <div class="pk-card-price"><span class="cur">From</span><span class="amt">$2,995</span></div>
+      <div class="pk-card-tagline">Become the go-to name locally.</div>
       <div class="pk-card-divider"></div>
       <div class="pk-card-sub">
-        For brands that need full control, flexibility, and a completely tailored solution.
-        Custom-coded from scratch — every page, every interaction, every performance metric engineered exactly to spec.
-        <em>The build that stands alone.</em> Fully owned. Fully scalable. Built to last.
+        For businesses and organisations that want to dominate their local area — the most trusted, most visible, most chosen option in their market.
+        <em>Advanced architecture, service area pages, full conversion tracking, and premium custom animations.</em>
       </div>
 
       <div class="pk-card-section-label">What's included</div>
       <ul class="pk-card-list">
-        <li>Fully custom-coded website — HTML, CSS &amp; JavaScript from scratch</li>
-        <li>Unlimited pages within agreed project scope</li>
-        <li>Advanced custom interactions and motion design</li>
-        <li>Multiple conversion-optimised landing pages for ads</li>
-        <li>Full performance optimisation suite</li>
-        <li>Comprehensive technical SEO implementation</li>
-        <li>Advanced analytics, event tracking and conversion setup</li>
-        <li>Priority turnaround — front of the queue</li>
-        <li>60-day post-launch support window</li>
-        <li>3 months ongoing care plan included</li>
-        <li>Full code handover with complete documentation</li>
+        <li>Everything in Growth, plus</li>
+        <li>Up to 10 pages</li>
+        <li>Service area pages for local SEO dominance</li>
+        <li>Advanced website architecture and internal linking</li>
+        <li>Premium custom animations and micro-interactions</li>
+        <li>Full GA4 conversion tracking and goal setup</li>
+        <li>Schema markup for local business and services</li>
+        <li>Launch strategy session</li>
+        <li>3 rounds of revisions · 30 days priority support</li>
       </ul>
 
       <div class="pk-card-section-label">Best for</div>
-      <ul class="pk-card-list">
-        <li>Premium brands that need a build that matches their ambition</li>
-        <li>Businesses launching with multiple products, services or campaigns</li>
-        <li>Companies that want one partner to own strategy through to launch</li>
-        <li>Any project where performance and uniqueness are non-negotiable</li>
-      </ul>
+      <div class="pk-card-for">
+        <span>Multi-suburb businesses</span>
+        <span>Category leaders</span>
+        <span>Long-term SEO investment</span>
+        <span>Premium presence</span>
+      </div>
 
-      <a class="pk-card-cta" href="contact.html">Start Custom <span>→</span></a>
+      <a class="pk-card-cta" href="contact.html">Get a Quote <span>→</span></a>
     </article>
 
   </div>
@@ -744,40 +663,35 @@
     <table class="pk-table">
       <thead>
         <tr>
-          <th style="width:28%">Feature</th>
-          <th>Starter</th>
-          <th>Growth</th>
-          <th class="feat-col">eCommerce</th>
-          <th>Custom</th>
+          <th style="width:30%">Feature</th>
+          <th>Starter<br><small style="font-weight:300;opacity:0.6">From $995</small></th>
+          <th class="feat-col">Growth<br><small style="font-weight:300;opacity:0.6">From $1,995</small></th>
+          <th>Local Authority<br><small style="font-weight:300;opacity:0.6">From $2,995</small></th>
         </tr>
       </thead>
       <tbody>
-        <tr class="group-head"><td colspan="5">Platform &amp; Scope</td></tr>
+        <tr class="group-head"><td colspan="4">Build &amp; Scope</td></tr>
         <tr>
-          <td>Platform</td>
-          <td class="val">Wix</td>
-          <td class="val">Shopify / Custom</td>
-          <td class="val feat-col">Shopify</td>
-          <td class="val">Custom code</td>
+          <td>Build method</td>
+          <td class="val">Custom-coded</td>
+          <td class="val feat-col">Custom-coded</td>
+          <td class="val">Custom-coded</td>
         </tr>
         <tr>
-          <td>Pages / scope</td>
-          <td class="val">1–3 pages</td>
-          <td class="val">Up to 5</td>
-          <td class="val feat-col">Full store</td>
-          <td class="val">Unlimited*</td>
+          <td>Pages</td>
+          <td class="val">Up to 3</td>
+          <td class="val feat-col">Up to 6</td>
+          <td class="val">Up to 10</td>
         </tr>
         <tr>
-          <td>Landing page</td>
+          <td>Service area pages</td>
           <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td class="feat-col"><span class="check">✓</span></td>
-          <td><span class="check">✓</span> Multiple</td>
+          <td class="feat-col"><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
         </tr>
-        <tr class="group-head"><td colspan="5">Design &amp; Development</td></tr>
+        <tr class="group-head"><td colspan="4">Design</td></tr>
         <tr>
           <td>Custom design (no templates)</td>
-          <td><span class="check">✓</span></td>
           <td><span class="check">✓</span></td>
           <td class="feat-col"><span class="check">✓</span></td>
           <td><span class="check">✓</span></td>
@@ -785,215 +699,155 @@
         <tr>
           <td>Mobile responsive</td>
           <td><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
           <td class="feat-col"><span class="check">✓</span></td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
-          <td>Custom animations</td>
+          <td>Premium animations</td>
           <td><span class="cross">—</span></td>
+          <td class="feat-col"><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr class="group-head"><td colspan="4">Conversion &amp; SEO</td></tr>
+        <tr>
+          <td>Conversion homepage strategy</td>
+          <td><span class="cross">—</span></td>
+          <td class="feat-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Reviews / testimonials section</td>
+          <td><span class="cross">—</span></td>
+          <td class="feat-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Local SEO foundations</td>
           <td><span class="cross">—</span></td>
           <td class="feat-col"><span class="check">✓</span></td>
           <td><span class="check">✓</span> Advanced</td>
         </tr>
         <tr>
-          <td>Micro-interactions</td>
+          <td>Schema markup</td>
           <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td class="feat-col"><span class="check">✓</span></td>
+          <td class="feat-col"><span class="cross">—</span></td>
           <td><span class="check">✓</span></td>
         </tr>
-        <tr class="group-head"><td colspan="5">Forms &amp; Tracking</td></tr>
+        <tr class="group-head"><td colspan="4">Tracking &amp; Analytics</td></tr>
         <tr>
-          <td>Contact form</td>
-          <td><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td class="feat-col"><span class="check">✓</span> Multi-step</td>
-          <td><span class="check">✓</span> Advanced</td>
-        </tr>
-        <tr>
-          <td>Google Analytics</td>
-          <td><span class="check">✓</span></td>
+          <td>Google Analytics 4</td>
           <td><span class="check">✓</span></td>
           <td class="feat-col"><span class="check">✓</span></td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
-          <td>Conversion tracking</td>
+          <td>GA4 event tracking</td>
           <td><span class="cross">—</span></td>
-          <td>Basic</td>
           <td class="feat-col"><span class="check">✓</span></td>
           <td><span class="check">✓</span> Full</td>
         </tr>
-        <tr class="group-head"><td colspan="5">SEO &amp; Performance</td></tr>
-        <tr>
-          <td>SEO foundations</td>
-          <td><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td class="feat-col"><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-        </tr>
-        <tr>
-          <td>On-page SEO optimisation</td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td class="feat-col"><span class="check">✓</span></td>
-          <td><span class="check">✓</span> Comprehensive</td>
-        </tr>
-        <tr>
-          <td>Performance optimisation</td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td class="feat-col"><span class="check">✓</span></td>
-          <td><span class="check">✓</span> Full suite</td>
-        </tr>
-        <tr class="group-head"><td colspan="5">Revisions &amp; Support</td></tr>
+        <tr class="group-head"><td colspan="4">Support</td></tr>
         <tr>
           <td>Revision rounds</td>
           <td class="val">1 round</td>
-          <td class="val">2 rounds</td>
-          <td class="val feat-col">3 rounds</td>
+          <td class="val feat-col">2 rounds</td>
           <td class="val">3 rounds</td>
         </tr>
         <tr>
           <td>Post-launch support</td>
-          <td class="val">14 days</td>
-          <td class="val">21 days</td>
-          <td class="val feat-col">30 days</td>
-          <td class="val">60 days</td>
+          <td class="val">Included</td>
+          <td class="val feat-col">14 days</td>
+          <td class="val">30 days priority</td>
         </tr>
         <tr>
-          <td>Ongoing care plan</td>
-          <td><span class="cross">—</span></td>
-          <td><span class="cross">—</span></td>
-          <td class="feat-col"><span class="cross">—</span></td>
-          <td><span class="check">✓</span> 3 months</td>
-        </tr>
-        <tr>
-          <td>Priority turnaround</td>
-          <td><span class="cross">—</span></td>
+          <td>Launch strategy session</td>
           <td><span class="cross">—</span></td>
           <td class="feat-col"><span class="cross">—</span></td>
           <td><span class="check">✓</span></td>
         </tr>
       </tbody>
     </table>
-    <p style="margin-top:16px;font-family:var(--f-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);">* Unlimited pages within agreed project scope — defined in the written proposal.</p>
   </div>
 </section>
 
-<!-- KICKSTART -->
-<section class="pk-kickstart">
-  <div class="pk-kickstart-inner">
-
-    <div class="pk-kickstart-badge">
-      <span class="dot"></span>
-      Kickstart (Limited Access)
+<!-- EVERY WEBSITE INCLUDES -->
+<section class="pk-every">
+  <div class="pk-every-inner">
+    <div class="section-head">
+      <div class="idx">§ 03 / Every build</div>
+      <h2>Built by hand. <em>Every time.</em></h2>
     </div>
 
-    <div class="pk-kickstart-intro">
-      <div class="pk-idx">§ 03 / Kickstart</div>
-      <h2>For early-stage<br>businesses<br><em>only.</em></h2>
-      <p>
-        Kickstart is reserved for small businesses and startups that genuinely need a professional website but aren't at full budget yet.
-      </p>
-      <p>
-        This isn't a discounted service — it's a controlled entry point.
-      </p>
-      <p>
-        If you're an established business — <em>this isn't for you.</em>
-        Limited spots each quarter. Application required.
-      </p>
-    </div>
-
-    <div class="pk-kickstart-grid">
-      <div class="pk-kk-left">
-        <div class="kk-name">Kick<em>start</em></div>
-        <div class="kk-tagline">Limited access · Application required. · From $1,000</div>
-        <div class="kk-divider"></div>
-        <div class="kk-desc">
-          A 1–2 page website on Wix — designed and structured specifically for your business —
-          at an accessible price. <em>The same strategy, the same design thinking, the same conversion focus.</em>
-          Built for where you are now, with room to grow into.
-        </div>
-        <div class="kk-note">
-          <strong>Limited spots per quarter.</strong> Kickstart is reserved for businesses that genuinely need it — sole traders, new small businesses, startups, and anyone building from the ground up.
-          If you're an established business looking for a discount — this isn't the right fit.
-          Apply and tell me about your business — I'll let you know if Kickstart is right for you.
-        </div>
-        <a href="contact.html?pkg=kickstart" class="kk-cta">Apply for Kickstart <span>↗</span></a>
+    <div class="pk-every-grid">
+      <div class="pk-every-left">
+        <h3>No templates.<br>No shortcuts.<br><em>Ever.</em></h3>
+        <p>
+          Regardless of which package you choose, every website built by RASTRICK. MADE is custom-coded from scratch in HTML, CSS, and JavaScript.
+        </p>
+        <p>
+          <em>No Wix. No Shopify. No WordPress. No drag-and-drop.</em> Clean, purpose-built code owned entirely by you — with no ongoing platform subscription required to keep it online.
+        </p>
+        <p>
+          Already on a platform? That's fine. The project becomes a complete custom rebuild — a fresh start with no compromises.
+        </p>
       </div>
 
-      <div class="pk-kk-right">
-        <div>
-          <div class="kk-section-label">What's included</div>
-          <ul class="kk-list">
-            <li>1–2 page Wix website — designed and structured from scratch</li>
-            <li>Conversion-focused layout with clear CTA architecture</li>
-            <li>Mobile-first responsive design — tested on all devices</li>
-            <li>Contact form and lead capture connected from day one</li>
-            <li>SEO foundations built in from day one</li>
-            <li>Google Analytics connected</li>
-            <li>Domain &amp; hosting setup guidance</li>
-            <li>1 round of revisions included</li>
-            <li>14-day post-launch support window</li>
-            <li>Upgrade path to any full package — your investment isn't wasted</li>
-          </ul>
-        </div>
-
-        <div class="kk-eligibility">
-          <div class="el-head">Who is this for?</div>
-          <p>
-            Kickstart is <em>exclusively for small businesses and startups</em> in early stages
-            who need a proper, conversion-focused website but aren't yet at full package budget. This includes:
-            sole traders, freelancers, new small businesses, startups, and anyone building something real from the ground up.
-          </p>
-          <p style="margin-top:12px;">
-            If you're an established business — <em>this isn't for you. The other packages are built for exactly where you are.</em>
-          </p>
-        </div>
+      <div class="pk-every-right">
+        <div class="pk-every-label">Every website includes</div>
+        <ul class="pk-every-list">
+          <li>Custom-coded in HTML, CSS, and JavaScript — no templates</li>
+          <li>Mobile-first responsive design, tested on all devices</li>
+          <li>Contact form integration (Web3Forms — no spam)</li>
+          <li>Google Analytics 4 setup and connection</li>
+          <li>SEO foundations: title tags, meta descriptions, page structure</li>
+          <li>Domain connection assistance</li>
+          <li>Performance testing and optimisation before launch</li>
+          <li>Post-launch support window</li>
+          <li>Full code handover — you own it outright</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHY RASTRICK. MADE -->
-<section class="pk-whyyou">
+<!-- ADD-ONS -->
+<section class="pk-addons">
   <div class="section-head">
-    <div class="idx">§ 04 / Growth Upgrades</div>
-    <h2>Enhance performance, <em>traffic, and results.</em></h2>
+    <div class="idx">§ 04 / Add-ons</div>
+    <h2>Extend your website's <em>reach.</em></h2>
   </div>
 
-  <div class="pk-why-grid">
-    <div class="pk-why-item">
-      <div class="wi-num">+ $750 / page</div>
-      <h3>Landing Page Pack</h3>
-      <p>Built for Google &amp; Microsoft Ads — designed to capture and convert traffic. <em>Most clients running ads add 2–3 landing pages.</em></p>
+  <div class="pk-addons-grid">
+    <div class="pk-addon">
+      <div class="pk-addon-price">+ $250 / page</div>
+      <h3>Extra Pages</h3>
+      <p>Need more pages than your package includes? Add individual pages to any package — each built to the same custom-coded standard as the rest of your site.</p>
     </div>
-    <div class="pk-why-item">
-      <div class="wi-num">+ $800</div>
-      <h3>Conversion Optimisation</h3>
-      <p>Turn more visitors into leads without increasing traffic. CTA restructure, trust signals, and form optimisation — applied across your site. <em>Most clients add this when choosing Growth.</em></p>
+    <div class="pk-addon">
+      <div class="pk-addon-price">From $500 / page</div>
+      <h3>Ad Landing Pages</h3>
+      <p>Dedicated no-nav landing pages built for Google Ads, Meta Ads, or Microsoft Ads campaigns. <em>Message-matched, mobile-first, conversion-focused.</em></p>
     </div>
-    <div class="pk-why-item">
-      <div class="wi-num">+ $500</div>
-      <h3>Advanced Tracking Setup</h3>
-      <p>See exactly what's working with conversion tracking and analytics insights — Google Analytics 4, event tracking, and campaign attribution all configured and verified.</p>
+    <div class="pk-addon">
+      <div class="pk-addon-price">$350</div>
+      <h3>Local SEO Setup</h3>
+      <p>Deep local keyword research, on-page optimisation for your target areas, and schema markup. For businesses that want to rank in local search and Google Maps.</p>
     </div>
-    <div class="pk-why-item">
-      <div class="wi-num">$150 – $300 / month</div>
-      <h3>Ongoing Care Plan</h3>
-      <p>Ongoing updates, improvements, and support after launch. Monthly site care so your website keeps working as hard as you do — no one-time fix and forget.</p>
+    <div class="pk-addon">
+      <div class="pk-addon-price">$200</div>
+      <h3>Google Business Profile</h3>
+      <p>Full Google Business Profile setup and optimisation — photos, categories, services, posts, and review strategy. <em>Essential for any local business.</em></p>
     </div>
-    <div class="pk-why-item">
-      <div class="wi-num">$1,800 bundle</div>
-      <h3>Performance Pack</h3>
-      <p>2 Landing Pages · Conversion Optimisation · Advanced Tracking — bundled together for maximum impact. <em>The fastest way to turn a new website into a traffic and leads machine.</em></p>
+    <div class="pk-addon">
+      <div class="pk-addon-price">$150 – $250 / mo</div>
+      <h3>Monthly Care Plan</h3>
+      <p>Ongoing updates, content changes, and technical support after launch. Your website stays current without you having to manage it yourself.</p>
     </div>
-    <div class="pk-why-item">
-      <div class="wi-num">→</div>
+    <div class="pk-addon cta-tile">
+      <div class="pk-addon-price">→</div>
       <h3>Not sure what to add?</h3>
-      <p>Book a call and I'll recommend the right upgrades for your goals and budget. Most clients that plan to run paid traffic or grow their lead volume choose at least one upgrade. <em>There's no obligation to decide now.</em></p>
+      <p>Get in touch and I'll recommend the right add-ons for your goals and budget. <em>No obligation — just a clear recommendation based on what will actually help.</em></p>
+      <a href="contact.html">Get in touch ↗</a>
     </div>
   </div>
 </section>
@@ -1002,18 +856,30 @@
 <section class="pk-cta">
   <div class="pk-cta-inner">
     <div class="pk-idx">§ 05 / Let's go</div>
-    <h2>Not sure what <em>to choose?</em></h2>
-    <p>
-      Just starting → Starter<br>
-      Need a proper business website → Starter<br>
-      Ready to grow and scale → Growth<br>
-      Selling products → eCommerce<br>
-      Need something unique → Custom<br>
-      Early-stage, tight budget → Kickstart (application required)
-    </p>
+    <h2>Not sure which <em>package?</em></h2>
+
+    <div class="pk-cta-guide">
+      <div class="pk-cta-guide-item">
+        <span class="gi-tag">Starter</span>
+        <span class="gi-text">Sole trader, community group, or anyone needing a clean professional presence</span>
+      </div>
+      <div class="pk-cta-guide-item">
+        <span class="gi-tag">Growth</span>
+        <span class="gi-text">Service business, NFP, or organisation wanting local enquiries and SEO</span>
+      </div>
+      <div class="pk-cta-guide-item">
+        <span class="gi-tag">Local Authority</span>
+        <span class="gi-text">Businesses wanting to dominate local search and lead their market</span>
+      </div>
+      <div class="pk-cta-guide-item">
+        <span class="gi-tag">Rebuild</span>
+        <span class="gi-text">Replacing a Wix, Squarespace, WordPress, or Shopify site — any package applies</span>
+      </div>
+    </div>
+
     <div class="pk-cta-actions">
-      <a href="contact.html" class="pk-btn primary">Book a call <span class="arr">↗</span></a>
-      <a href="contact.html?pkg=kickstart" class="pk-btn ghost">Apply for Kickstart <span class="arr">↗</span></a>
+      <a href="contact.html" class="pk-btn primary">Get a Quote <span class="arr">↗</span></a>
+      <a href="services.html" class="pk-btn ghost">View all services <span class="arr">↗</span></a>
     </div>
   </div>
 </section>
@@ -1029,10 +895,27 @@
 <!-- FOOTER -->
 </main>
 
+
+<section class="ack-country" aria-label="Acknowledgement of Country">
+  <div class="ack-country-inner">
+    <div class="ack-flags" aria-hidden="true">
+      <img class="ack-flag" src="aboriginal.jpg" alt="Aboriginal Flag of Australia">
+      <img class="ack-flag" src="tsi.jpg" alt="Torres Strait Islander Flag">
+    </div>
+    <div class="ack-content">
+      <div class="ack-label">Acknowledgement of Country</div>
+      <p class="ack-text">RASTRICK. MADE acknowledges the <em>Ngunnawal people</em> as the Traditional Custodians of Canberra and the surrounding region, the land on which this studio operates.</p>
+      <p class="ack-text">We extend this acknowledgement to all Traditional Custodians of Country throughout Australia and pay our respects to <em>Elders past, present, and emerging.</em></p>
+      <p class="ack-text">We recognise and honour the strength, resilience, cultures, and knowledge of <em>Aboriginal and Torres Strait Islander peoples,</em> and their enduring connection to Country, community, and culture.</p>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="meta">
     <div>
-      <b>Independent Studio</b>
+      <b>RASTRICK. MADE</b>
+      <span>Custom websites for businesses and community organisations. Built by hand in Canberra.</span>
       <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>
       <a href="https://www.instagram.com/rastrick.made" target="_blank" rel="noopener">@rastrick.made</a>
       <span>Canberra · ACT · AU 2602</span>
@@ -1040,16 +923,17 @@
     </div>
     <div>
       <b>Navigate</b>
-      <a href="/#work">Work</a>
-      <a href="about.html">About</a>
+      <a href="index.html">Home</a>
       <a href="services.html">Services</a>
-      <a href="packages.html">Packages</a>
-      <a href="faqs.html">FAQ</a>
+      <a href="work.html">Work</a>
+      <a href="packages.html">Pricing</a>
+      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </div>
     <div>
       <b>© 2026 RASTRICK. MADE - ALL RIGHTS RESERVED</b>
-      <span>Independent Website Design &amp; Development Studio</span>
+      <span>Independent Custom Website Studio · Canberra, ACT</span>
+      <a href="contact.html" style="color:var(--accent)">Start Your Website ↗</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms &amp; Conditions</a>
       <a href="/">↑ Back to home</a>

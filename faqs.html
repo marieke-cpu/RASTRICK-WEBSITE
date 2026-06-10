@@ -43,8 +43,8 @@
 /* ---- hero ---- */
 .fq-hero {
   position: relative;
-  min-height: 70vh;
-  padding: clamp(100px, 14vw, 160px) var(--pad) clamp(60px, 8vw, 100px);
+  min-height: 60vh;
+  padding: clamp(80px, 10vw, 120px) var(--pad) clamp(40px, 5vw, 60px);
   overflow: hidden; display: flex; align-items: flex-end;
   border-bottom: 1px solid var(--line);
 }
@@ -71,7 +71,7 @@
 .fq-hero-frame { position: relative; z-index: 3; width: 100%; }
 .fq-hero-top {
   display: flex; justify-content: space-between; align-items: center;
-  gap: 20px; flex-wrap: wrap; margin-bottom: clamp(32px, 5vw, 60px);
+  gap: 20px; flex-wrap: wrap; margin-bottom: clamp(20px, 3vw, 36px);
 }
 .fq-hero-top .tag {
   font-family: var(--f-mono); font-size: 11px;
@@ -101,7 +101,7 @@
 .fq-hero-lead {
   font-family: var(--f-sans); font-size: clamp(16px, 1.8vw, 22px);
   line-height: 1.5; color: var(--ink-dim); max-width: 52ch;
-  margin-top: clamp(24px, 3.5vw, 40px); font-weight: 300;
+  margin-top: clamp(14px, 2vw, 24px); font-weight: 300;
 }
 .fq-hero-lead em { font-style: normal; color: var(--ink); }
 
@@ -127,14 +127,14 @@
 
 /* ---- FAQ sections ---- */
 .fq-section {
-  padding: clamp(60px, 8vw, 100px) var(--pad);
+  padding: clamp(40px, 5vw, 64px) var(--pad);
   border-bottom: 1px solid var(--line);
 }
 .fq-section:nth-child(even) { background: var(--bg-2); }
 .fq-section-head {
   display: grid; grid-template-columns: 280px 1fr;
-  gap: 60px; align-items: start;
-  margin-bottom: 48px;
+  gap: 36px; align-items: start;
+  margin-bottom: 28px;
 }
 .fq-section-head .cat-label {
   font-family: var(--f-mono); font-size: 10px;
@@ -214,7 +214,7 @@
 
 /* ---- CTA strip ---- */
 .fq-cta {
-  padding: clamp(80px, 12vw, 160px) var(--pad);
+  padding: clamp(44px, 5.5vw, 72px) var(--pad);
   position: relative; overflow: hidden; background: var(--panel);
   border-bottom: 1px solid var(--line);
 }
@@ -303,7 +303,7 @@
       "name": "How does the process work from start to launch?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It starts with your goal: more leads, more sales, or better conversion from existing traffic. From there: strategy (goals, audience, offer), platform fit (Wix, Shopify, or Custom), scope with fixed timeline and investment, design, build, launch, and post-launch optimisation."
+        "text": "It starts with your goal. From there: discovery (goals, audience, offer), content planning, design approval, build (custom-coded from scratch), review and QA, then launch with post-launch support."
       }
     },
     {
@@ -311,7 +311,7 @@
       "name": "Do I need a full brief before reaching out?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. A rough outline is enough. If you can share what you sell, who you sell to, and what result you want from the site, that is plenty to begin."
+        "text": "No. A rough outline is enough. If you can share what your organisation does, who it serves, and what you need the website to do, that is plenty to begin."
       }
     },
     {
@@ -319,7 +319,15 @@
       "name": "Do you only build custom-coded websites?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. RASTRICK. MADE builds on Wix, Shopify, and custom code. The platform is selected based on business goals, speed-to-launch, budget, and required flexibility."
+        "text": "Yes. Every website built by RASTRICK. MADE is custom-coded from scratch using HTML, CSS, and JavaScript. We do not build on Wix, Shopify, WordPress, Squarespace, or any page builder platform."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you redesign or rebuild Wix, Squarespace, WordPress or Shopify websites?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We do not work inside those platforms. If your current website is on Wix, Squarespace, WordPress, Shopify or similar, working with RASTRICK. MADE means a complete custom-coded rebuild — not a redesign inside the existing platform."
       }
     },
     {
@@ -327,7 +335,7 @@
       "name": "How long does a project usually take?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "General guide: Starter / Kickstart 1–2 weeks; Growth 2–4 weeks; eCommerce 3–5 weeks; Custom 4–8 weeks. Timing depends on scope readiness, feedback speed, and integration complexity."
+        "text": "General guide: Starter 1–2 weeks; Growth 2–3 weeks; Local Authority 3–5 weeks. Timing depends on scope readiness, feedback speed, and content availability."
       }
     },
     {
@@ -335,7 +343,7 @@
       "name": "How are projects priced?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Projects are fixed-price. You receive clear scope, timeline, deliverables, and investment before work begins. If scope changes, it is quoted and approved before implementation."
+        "text": "Projects are fixed-price. Packages start from $995 (Starter), $1,995 (Growth), and $2,995 (Local Authority). You receive a clear scope, timeline, deliverables, and investment before work begins."
       }
     },
     {
@@ -343,23 +351,23 @@
       "name": "Do you include SEO foundations?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Every build includes technical SEO fundamentals: search-friendly page structure and metadata, clean URLs and image alt text, mobile-first performance, and analytics and conversion tracking setup."
+        "text": "Yes. Every build includes technical SEO fundamentals: search-friendly page structure and metadata, clean URLs and image alt text, mobile-first performance, and analytics setup."
       }
     },
     {
       "@type": "Question",
-      "name": "Who owns the website or store after launch?",
+      "name": "Who owns the website after launch?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You do. Full ownership of the website, content, assets, and platform account transfers to you at project completion."
+        "text": "You do. You own the code outright. There is no ongoing platform subscription required — just your own domain and hosting."
       }
     },
     {
       "@type": "Question",
-      "name": "Which package is right for my business?",
+      "name": "Which package is right for my organisation?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Quick guide: Starter for a fast Wix launch for service businesses and early-stage operators; Growth for a multi-page site built on Shopify or custom-coded for lead generation and scaling; eCommerce for a Shopify conversion store for product businesses; Custom for a custom-coded build with advanced performance requirements. Kickstart is a reduced-rate Wix option for eligible early-stage businesses."
+        "text": "Quick guide: Starter (from $995) for sole traders, small businesses, community groups and sporting clubs; Growth (from $1,995) for service businesses wanting stronger credibility, better SEO, and more enquiries; Local Authority (from $2,995) for businesses and organisations wanting to dominate local search."
       }
     },
     {
@@ -394,11 +402,10 @@
   <a href="/" class="logo"><span class="pulse"></span><img class="nav-logo-mark" src="RM2W-sm.png" alt="" width="52" height="26" decoding="async" fetchpriority="high"><img class="nav-logo-word" src="RM2W-sm.png" alt="RASTRICK. MADE" width="104" height="52" decoding="async" fetchpriority="high"></a>
   <ul>
     <li><a href="index.html">Home</a></li>
-    <li><a href="work.html">Work</a></li>
-    <li><a href="about.html">About</a></li>
     <li><a href="services.html">Services</a></li>
-    <li><a href="packages.html">Packages</a></li>
-    <li><a href="faqs.html" style="color:var(--ink)">FAQ</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="packages.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -441,7 +448,7 @@
   <a href="#seo" class="fq-cat-btn">SEO &amp; Performance</a>
   <a href="#ownership" class="fq-cat-btn">Ownership &amp; Handover</a>
   <a href="#afterlaunch" class="fq-cat-btn">After Launch</a>
-  <a href="#kickstart" class="fq-cat-btn">Kickstart</a>
+  <a href="#kickstart" class="fq-cat-btn">Platform Rebuilds</a>
   <a href="#working" class="fq-cat-btn">Working Together</a>
 </nav>
 
@@ -462,13 +469,13 @@
       <div class="fq-ans">
         <p>It starts with your goal: more leads, more sales, or better conversion from existing traffic. I reply within one business day. From there:</p>
         <ul>
-          <li><em>Strategy</em> — goals, audience, offer, and traffic source are defined</li>
-          <li><em>Platform fit</em> — Wix, Shopify, or Custom chosen for your use case</li>
-          <li><em>Scope</em> — fixed scope, timeline, and fixed investment</li>
-          <li><em>Design</em> — conversion-focused page structure and visual direction</li>
-          <li><em>Build</em> — implementation with speed, responsiveness, and tracking</li>
-          <li><em>Launch</em> — QA, performance checks, and go-live setup</li>
-          <li><em>Optimise</em> — post-launch support and next-step recommendations</li>
+          <li><em>Discovery</em> — goals, audience, offer, and what the website needs to achieve</li>
+          <li><em>Content planning</em> — page structure, messaging hierarchy, and content map</li>
+          <li><em>Scope</em> — fixed scope, timeline, and fixed investment agreed before work begins</li>
+          <li><em>Design</em> — visual direction and page-by-page layout built for trust and action</li>
+          <li><em>Build</em> — custom-coded from scratch in HTML, CSS, and JavaScript</li>
+          <li><em>Review</em> — revisions, cross-device QA, and performance testing</li>
+          <li><em>Launch</em> — go live with domain connection, analytics setup, and support</li>
         </ul>
       </div>
     </details>
@@ -529,20 +536,23 @@
     <details class="fq-item">
       <summary><span class="q-num">06</span><span class="q-text">Do you only build custom-coded websites?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>No. RASTRICK. MADE builds on <em>Wix, Shopify, and custom code</em>.</p>
-        <p>The platform is selected based on business goals, speed-to-launch, budget, and required flexibility. One stack does not fit every business.</p>
+        <p>Yes. Every website built by RASTRICK. MADE is custom-coded from scratch using <em>HTML, CSS, and JavaScript</em>.</p>
+        <p>We don't build on Wix, Shopify, WordPress, Squarespace, or any page builder platform. This means faster performance, cleaner code, no platform lock-in, and a website built specifically around your organisation's goals.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">07</span><span class="q-text">How do you choose the right platform?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">07</span><span class="q-text">Why don't you work with website builders?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Platform choice is based on commercial fit:</p>
+        <p>Page builders are convenient, but they come with real trade-offs — bloated code, shared infrastructure, limited design control, and ongoing platform fees.</p>
+        <p>Custom-coded websites are:</p>
         <ul>
-          <li><em>Wix</em> — fast and cost-effective launch</li>
-          <li><em>Shopify</em> — eCommerce and conversion flow</li>
-          <li><em>Custom</em> — advanced performance and flexibility</li>
+          <li><em>Faster</em> — no platform bloat, no unnecessary scripts</li>
+          <li><em>More flexible</em> — no template constraints or platform rules</li>
+          <li><em>Fully owned</em> — you own the code, no monthly subscription required</li>
+          <li><em>Better performing</em> — cleaner Core Web Vitals, better SEO potential</li>
         </ul>
+        <p>The decision to build custom isn't just a preference — it's a commitment to quality of output for every client.</p>
       </div>
     </details>
 
@@ -593,10 +603,10 @@
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">12</span><span class="q-text">Why isn't there a one-size pricing list?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">12</span><span class="q-text">Why does pricing vary between packages?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Because project needs vary by platform, complexity, and commercial goal.</p>
-        <p>A fast Wix launch and a custom high-performance build are different jobs. Pricing reflects fit and outcome.</p>
+        <p>Because project needs vary by scope, complexity, and depth of strategy required.</p>
+        <p>A 3-page Starter and a 10-page Local Authority build with service area pages and full tracking are fundamentally different jobs. Pricing reflects that — and all three packages are priced fairly for what they include.</p>
       </div>
     </details>
 
@@ -608,17 +618,15 @@
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">14</span><span class="q-text">Which package is right for my business?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">14</span><span class="q-text">Which package is right for my organisation?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>Quick guide:</p>
         <ul>
-          <li><em>Starter</em> — fast Wix launch for service businesses and early-stage operators</li>
-          <li><em>Growth</em> — multi-page site built on Shopify or custom-coded, for lead generation and scaling</li>
-          <li><em>eCommerce</em> — Shopify conversion store, from product discovery to checkout</li>
-          <li><em>Custom</em> — custom-coded from scratch for advanced performance and complex requirements</li>
-          <li><em>Kickstart</em> — reduced-rate Wix option for eligible early-stage businesses (application required)</li>
+          <li><em>Starter (from $995)</em> — sole traders, small businesses, community groups, and sporting clubs needing a professional online presence</li>
+          <li><em>Growth (from $1,995)</em> — service businesses, NFPs, and community organisations wanting better credibility, local SEO, and consistent enquiries</li>
+          <li><em>Local Authority (from $2,995)</em> — businesses and organisations wanting to be the trusted, go-to name in their local area</li>
         </ul>
-        <p>If you’re unsure, I’ll recommend the best fit based on goals, not upsell targets.</p>
+        <p>If you’re unsure, I’ll recommend the best fit based on your goals and budget — no upsell pressure.</p>
       </div>
     </details>
 
@@ -649,12 +657,11 @@
       <div class="fq-ans">
         <p>As a general guide:</p>
         <ul>
-          <li>Starter / Kickstart — 1 to 2 weeks</li>
-          <li>Growth — 2 to 4 weeks</li>
-          <li>eCommerce — 3 to 5 weeks</li>
-          <li>Custom — 4 to 8 weeks</li>
+          <li>Starter — 1 to 2 weeks</li>
+          <li>Growth — 2 to 3 weeks</li>
+          <li>Local Authority — 3 to 5 weeks</li>
         </ul>
-        <p>Timing depends on scope readiness, feedback speed, and integration complexity.</p>
+        <p>Timing depends on scope readiness, content availability, and feedback speed.</p>
       </div>
     </details>
 
@@ -715,10 +722,10 @@
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">21</span><span class="q-text">Does platform choice affect SEO performance?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">21</span><span class="q-text">Is custom code better for SEO than platform-built sites?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Yes. Platform choice impacts speed, structure control, and flexibility, which all influence SEO and conversion performance.</p>
-        <p>The goal is not to force one platform; it is to choose the option that gives your business the best growth upside.</p>
+        <p>Generally, yes. Custom-coded websites have cleaner code, faster load times, more control over technical SEO structure, and no platform-generated scripts bloating the page.</p>
+        <p>These factors all contribute to better Core Web Vitals, which Google weighs in rankings. Faster, cleaner sites tend to perform better in search over time.</p>
       </div>
     </details>
 
@@ -756,8 +763,7 @@
     <details class="fq-item">
       <summary><span class="q-num">24</span><span class="q-text">Can my team update content after launch?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Yes. Wix and Shopify builds are straightforward to update in-house.</p>
-        <p>Custom builds can be handed over with documentation or managed through support if preferred.</p>
+        <p>Yes. Custom-coded builds are handed over with clear documentation and update guidance. For teams that prefer not to manage updates themselves, an optional monthly care plan covers ongoing changes.</p>
       </div>
     </details>
 
@@ -820,69 +826,69 @@
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">30</span><span class="q-text">Can you improve or rebuild an existing website?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">30</span><span class="q-text">Can you rebuild an existing website?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Yes. Audits, conversion upgrades, platform migrations, and full rebuilds are all available. You’ll get an honest recommendation based on ROI, not rework for the sake of it.</p>
+        <p>Yes. Full custom-coded rebuilds are available for any existing website — whether it’s on Wix, Squarespace, WordPress, Shopify, or is an old custom build. You’ll get an honest recommendation on scope, what to keep, and what to rebuild fresh.</p>
       </div>
     </details>
 
   </div>
 </section>
 
-<!-- KICKSTART -->
+<!-- PLATFORM REBUILDS -->
 <section class="fq-section" id="kickstart">
   <div class="fq-section-head">
     <div>
       <div class="cat-label">§ 08 / Category</div>
-      <h2>Kick<em>start.</em></h2>
+      <h2>Platform <em>rebuilds.</em></h2>
     </div>
-    <div class="cat-desc">How the Kickstart option works for early-stage businesses.</div>
+    <div class="cat-desc">What happens when you’re moving from Wix, Squarespace, WordPress, Shopify, or any other platform.</div>
   </div>
 
   <div class="fq-list">
 
     <details class="fq-item">
-      <summary><span class="q-num">31</span><span class="q-text">What is the Kickstart package?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">31</span><span class="q-text">Do you redesign or work inside Wix, Squarespace, WordPress, or Shopify websites?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Kickstart is a reduced-rate option for qualified early-stage businesses that need a credible launch website without full-package investment.</p>
-        <p>It is scoped to essentials so you can go live quickly and upgrade cleanly later.</p>
+        <p>No. RASTRICK. MADE does not edit, maintain, redesign, or develop websites inside Wix, Squarespace, WordPress, Shopify, GoDaddy, or any page builder platform.</p>
+        <p>If your current website is on one of these platforms and you want to work together, the project becomes a complete custom-coded rebuild.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">32</span><span class="q-text">Who is Kickstart designed for?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">32</span><span class="q-text">Can you migrate my existing website content?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Kickstart is for early-stage operators such as:</p>
+        <p>Yes. Content migration is included as part of any website rebuild. Your existing copy, branding, and imagery are reviewed, refined, and rebuilt into the new custom-coded website.</p>
+        <p>The goal is never to just copy and paste — it’s to take what’s useful from your existing site and make it better.</p>
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary><span class="q-num">33</span><span class="q-text">Why is a rebuild better than redesigning my existing site?</span><span class="sign">+</span></summary>
+      <div class="fq-ans">
+        <p>Redesigning inside a platform leaves you with the same underlying limitations — slow load times, template constraints, platform fees, and code you don’t own.</p>
+        <p>A custom-coded rebuild gives you:</p>
         <ul>
-          <li>Sole traders and service businesses launching properly</li>
-          <li>Startups validating offers and demand</li>
-          <li>Founders running ads who need a conversion-ready destination</li>
-          <li>Teams with constrained launch budgets</li>
+          <li><em>Faster performance</em> — no platform bloat or unnecessary scripts</li>
+          <li><em>Full design control</em> — no template grid, no widget limitations</li>
+          <li><em>Code ownership</em> — you own it, no ongoing subscription to keep it live</li>
+          <li><em>Better SEO foundations</em> — cleaner code structure and faster load times</li>
         </ul>
-        <p>If your scope is broader, another package will be a better fit.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">33</span><span class="q-text">How do I apply for Kickstart?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">34</span><span class="q-text">Will I lose my existing Google rankings if I rebuild?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Use the contact form and select Kickstart. Share your business stage, offer, and launch goal.</p>
-        <p>You’ll get a fit assessment and next-step recommendation within one business day.</p>
+        <p>Done correctly, a rebuild should maintain or improve your rankings. URL structures are preserved wherever possible, and 301 redirects are set up for any changed pages.</p>
+        <p>The technical SEO foundations in a custom rebuild are typically stronger than what you had on a platform, which can improve rankings over time.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">34</span><span class="q-text">How many Kickstart spots are available?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">35</span><span class="q-text">How long does a rebuild take compared to a new build?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Kickstart spots are capped each quarter to protect quality and delivery speed.</p>
-        <p>If the current intake is full, the next available window is provided up front.</p>
-      </div>
-    </details>
-
-    <details class="fq-item">
-      <summary><span class="q-num">35</span><span class="q-text">Can I upgrade from Kickstart later?</span><span class="sign">+</span></summary>
-      <div class="fq-ans">
-        <p>Yes. Kickstart is built as a launch foundation so you can expand into broader packages without starting over.</p>
+        <p>Similar timeframes. Having existing content can actually speed up the process since there’s less to create from scratch. The rebuild follows the same process: discovery, content planning, design, build, review, and launch.</p>
       </div>
     </details>
 
@@ -944,11 +950,11 @@
 <!-- CTA -->
 <section class="fq-cta">
   <div class="fq-cta-inner">
-    <h2>Ready to <em>grow?</em></h2>
+    <h2>Ready to <em>build?</em></h2>
     <div class="fq-cta-right">
-      <p>Tell me your goals, traffic source, and timeline. You’ll get a clear recommendation on platform, scope, and next steps.</p>
-      <a href="contact.html" class="fq-btn primary">Get my growth plan <span class="arr">↗</span></a>
-      <a href="packages.html" class="fq-btn ghost">See packages <span class="arr">↗</span></a>
+      <p>Tell me about your organisation, your goals, and what you need your website to do. You’ll get a clear recommendation on scope and package within one business day.</p>
+      <a href="contact.html" class="fq-btn primary">Get a Quote <span class="arr">↗</span></a>
+      <a href="packages.html" class="fq-btn ghost">View Pricing <span class="arr">↗</span></a>
     </div>
   </div>
 </section>
@@ -964,10 +970,27 @@
 <!-- FOOTER -->
 </main>
 
+
+<section class="ack-country" aria-label="Acknowledgement of Country">
+  <div class="ack-country-inner">
+    <div class="ack-flags" aria-hidden="true">
+      <img class="ack-flag" src="aboriginal.jpg" alt="Aboriginal Flag of Australia">
+      <img class="ack-flag" src="tsi.jpg" alt="Torres Strait Islander Flag">
+    </div>
+    <div class="ack-content">
+      <div class="ack-label">Acknowledgement of Country</div>
+      <p class="ack-text">RASTRICK. MADE acknowledges the <em>Ngunnawal people</em> as the Traditional Custodians of Canberra and the surrounding region, the land on which this studio operates.</p>
+      <p class="ack-text">We extend this acknowledgement to all Traditional Custodians of Country throughout Australia and pay our respects to <em>Elders past, present, and emerging.</em></p>
+      <p class="ack-text">We recognise and honour the strength, resilience, cultures, and knowledge of <em>Aboriginal and Torres Strait Islander peoples,</em> and their enduring connection to Country, community, and culture.</p>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="meta">
     <div>
-      <b>Independent Studio</b>
+      <b>RASTRICK. MADE</b>
+      <span>Custom websites for businesses and community organisations. Built by hand in Canberra.</span>
       <a href="mailto:hello@rastrick.com.au">hello@rastrick.com.au</a>
       <a href="https://www.instagram.com/rastrick.made" target="_blank" rel="noopener">@rastrick.made</a>
       <span>Canberra · ACT · AU 2602</span>
@@ -975,16 +998,17 @@
     </div>
     <div>
       <b>Navigate</b>
-      <a href="/#work">Work</a>
-      <a href="about.html">About</a>
+      <a href="index.html">Home</a>
       <a href="services.html">Services</a>
-      <a href="packages.html">Packages</a>
-      <a href="faqs.html">FAQ</a>
+      <a href="work.html">Work</a>
+      <a href="packages.html">Pricing</a>
+      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </div>
     <div>
       <b>© 2026 RASTRICK. MADE - ALL RIGHTS RESERVED</b>
-      <span>Conversion-focused Website Design &amp; Development Studio</span>
+      <span>Independent Custom Website Studio · Canberra, ACT</span>
+      <a href="contact.html" style="color:var(--accent)">Start Your Website ↗</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms &amp; Conditions</a>
       <a href="/">↑ Back to home</a>
