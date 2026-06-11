@@ -13,16 +13,16 @@
 </script>
 <title>Frequently Asked Questions | RASTRICK. MADE</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Common questions about working with RASTRICK. MADE — process, pricing, platforms, timelines, SEO, ownership, handover, and what to expect after launch.">
+<meta name="description" content="Common questions about working with RASTRICK. MADE — process, timelines, custom code, ownership, hosting, SEO, pricing, and what to expect after launch.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.rastrick.com.au/faqs">
 <meta property="og:title" content="Frequently Asked Questions | RASTRICK. MADE">
-<meta property="og:description" content="Common questions about working with RASTRICK. MADE — process, pricing, platforms, timelines, SEO, ownership, handover, and what to expect after launch.">
+<meta property="og:description" content="Common questions about working with RASTRICK. MADE — process, timelines, custom code, ownership, hosting, SEO, pricing, and what to expect after launch.">
 <meta property="og:image" content="https://www.rastrick.com.au/RM2W-sm.png">
 <meta property="og:site_name" content="RASTRICK. MADE">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Frequently Asked Questions | RASTRICK. MADE">
-<meta name="twitter:description" content="Common questions about working with RASTRICK. MADE — process, pricing, platforms, timelines, SEO, ownership, handover, and what to expect after launch.">
+<meta name="twitter:description" content="Common questions about working with RASTRICK. MADE — process, timelines, custom code, ownership, hosting, SEO, pricing, and what to expect after launch.">
 <meta name="twitter:image" content="https://www.rastrick.com.au/RM2W-sm.png">
 <link rel="icon" type="image/png" sizes="32x32" href="Logo.png">
 <link rel="icon" type="image/png" sizes="96x96" href="Logo.png">
@@ -196,6 +196,23 @@
 }
 .fq-ans p em { font-style: normal; color: var(--ink); }
 .fq-ans p strong { color: var(--accent); font-weight: 500; }
+.fq-ans ol {
+  list-style: none; display: flex; flex-direction: column; gap: 0;
+  max-width: 60ch; margin-top: 4px; counter-reset: ol-counter;
+}
+.fq-ans ol li {
+  counter-increment: ol-counter;
+  display: flex; align-items: baseline; gap: 14px;
+  font-family: var(--f-sans); font-size: 15px;
+  color: var(--ink-dim); padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.fq-ans ol li:first-child { border-top: 1px solid var(--line); }
+.fq-ans ol li::before {
+  content: counter(ol-counter, decimal-leading-zero);
+  color: var(--accent); font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.12em; flex-shrink: 0; min-width: 26px;
+}
 .fq-ans ul {
   list-style: none; display: flex; flex-direction: column; gap: 0;
   max-width: 60ch; margin-top: 4px;
@@ -311,7 +328,7 @@
       "name": "Do I need a full brief before reaching out?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. A rough outline is enough. If you can share what your organisation does, who it serves, and what you need the website to do, that is plenty to begin."
+        "text": "No. A rough outline is enough. If you can share what your organisation does, who it serves, and what you need the website to achieve, that is plenty to begin."
       }
     },
     {
@@ -319,23 +336,15 @@
       "name": "Do you only build custom-coded websites?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Every website built by RASTRICK. MADE is custom-coded from scratch using HTML, CSS, and JavaScript. We do not build on Wix, Shopify, WordPress, Squarespace, or any page builder platform."
+        "text": "Yes. Every website built by RASTRICK. MADE is custom-coded from scratch using HTML, CSS, and JavaScript. We do not build on Wix, Shopify, WordPress, Squarespace, Webflow, or any page builder platform."
       }
     },
     {
       "@type": "Question",
-      "name": "Do you redesign or rebuild Wix, Squarespace, WordPress or Shopify websites?",
+      "name": "Do you work with ecommerce businesses?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We do not work inside those platforms. If your current website is on Wix, Squarespace, WordPress, Shopify or similar, working with RASTRICK. MADE means a complete custom-coded rebuild — not a redesign inside the existing platform."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does a project usually take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "General guide: Starter 1–2 weeks; Growth 2–3 weeks; Local Authority 3–5 weeks. Timing depends on scope readiness, feedback speed, and content availability."
+        "text": "No. RASTRICK. MADE does not build ecommerce stores or Shopify websites. The studio focuses on custom-coded websites for service businesses, community organisations, not-for-profits, churches, sporting clubs, and local brands."
       }
     },
     {
@@ -348,6 +357,14 @@
     },
     {
       "@type": "Question",
+      "name": "How long does a project usually take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "General guide: Starter 1–2 weeks; Growth 2–3 weeks; Local Authority 3–5 weeks. Timing depends on scope readiness, feedback speed, and content availability."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Do you include SEO foundations?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -356,10 +373,58 @@
     },
     {
       "@type": "Question",
+      "name": "Do you offer Google Business Profile setup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Google Business Profile setup and optimisation is available as an add-on. This is especially useful for local businesses that want to improve their visibility on Google Search and Google Maps. Setup can include business category selection, service setup, business description, website connection, basic optimisation, and verification guidance."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Who owns the website after launch?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You do. You own the code outright. There is no ongoing platform subscription required — just your own domain and hosting."
+        "text": "You do. Once final payment is complete, you own your website content, branding assets, imagery supplied by you, and the final website delivered for your business or organisation. There is no platform lock-in and no mandatory ongoing retainer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I edit my website myself after it's launched?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but custom-coded websites work differently to platforms like Wix, Squarespace, or Shopify. You won't be logging into a drag-and-drop page builder to make changes yourself. For updates, you can subscribe to a Website Care Plan, request updates as a one-off service, or work with another developer in the future. You own your website and there is no lock-in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to pay ongoing monthly subscriptions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. RASTRICK. MADE websites do not require Wix, Squarespace, Shopify, WordPress, plugin, theme, or page-builder subscriptions. The only ongoing costs are your domain name, website hosting, and an optional Website Care Plan if you would like ongoing support and updates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer website hosting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Website hosting can be arranged as part of your Website Care Plan, or you can use your own hosting provider if preferred. If hosting is managed through RASTRICK. MADE, your website will be kept online, monitored, and supported without requiring you to manage the technical setup yourself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you rebuild an existing website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. RASTRICK. MADE offers complete custom-coded website rebuilds for businesses, community organisations, and not-for-profits. Whether your current website is built on Wix, Squarespace, WordPress, Shopify, Webflow, GoDaddy Website Builder, or another platform, it can be rebuilt from scratch using custom code. Existing content, branding, imagery, and website assets can be reviewed and incorporated into the new build where appropriate. RASTRICK. MADE does not work inside these platforms — rebuild projects are completed as entirely new custom-coded websites."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why choose a one-person studio instead of an agency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When you work with RASTRICK. MADE, you work directly with the person designing and building your website from start to finish. No account managers, no sales teams, no unnecessary layers. Just direct communication, transparent pricing, and a custom-coded website built specifically around your organisation."
       }
     },
     {
@@ -367,7 +432,7 @@
       "name": "Which package is right for my organisation?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Quick guide: Starter (from $995) for sole traders, small businesses, community groups and sporting clubs; Growth (from $1,995) for service businesses wanting stronger credibility, better SEO, and more enquiries; Local Authority (from $2,995) for businesses and organisations wanting to dominate local search."
+        "text": "Starter (from $995) for sole traders, small businesses, community groups, and sporting clubs; Growth (from $1,995) for service businesses wanting stronger credibility, better SEO, and more enquiries; Local Authority (from $2,995) for businesses and organisations wanting to dominate local search."
       }
     },
     {
@@ -433,7 +498,7 @@
     <div class="fq-idx">§ 00 / FAQs</div>
     <h1>Questions,<br><em>answered.</em></h1>
     <p class="fq-hero-lead">
-      Everything you'd want to know before reaching out — process, timelines, tech, ownership, SEO, pricing and more.
+      Everything you'd want to know before reaching out — process, timelines, ownership, hosting, SEO, pricing, and more.
       <em>If it's not here, just ask.</em>
     </p>
   </div>
@@ -452,7 +517,7 @@
   <a href="#working" class="fq-cat-btn">Working Together</a>
 </nav>
 
-<!-- PROCESS -->
+<!-- § 01 PROCESS -->
 <section class="fq-section" id="process">
   <div class="fq-section-head">
     <div>
@@ -467,11 +532,11 @@
     <details class="fq-item">
       <summary><span class="q-num">01</span><span class="q-text">How does the process work from start to launch?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>It starts with your goal: more leads, more sales, or better conversion from existing traffic. I reply within one business day. From there:</p>
+        <p>It starts with your goal — more enquiries, stronger credibility, better local visibility, or a clearer online presence. I reply within one business day. From there:</p>
         <ul>
-          <li><em>Discovery</em> — goals, audience, offer, and what the website needs to achieve</li>
+          <li><em>Discovery</em> — goals, audience, and what the website needs to achieve</li>
           <li><em>Content planning</em> — page structure, messaging hierarchy, and content map</li>
-          <li><em>Scope</em> — fixed scope, timeline, and fixed investment agreed before work begins</li>
+          <li><em>Scope</em> — fixed scope, timeline, and investment agreed before work begins</li>
           <li><em>Design</em> — visual direction and page-by-page layout built for trust and action</li>
           <li><em>Build</em> — custom-coded from scratch in HTML, CSS, and JavaScript</li>
           <li><em>Review</em> — revisions, cross-device QA, and performance testing</li>
@@ -483,8 +548,8 @@
     <details class="fq-item">
       <summary><span class="q-num">02</span><span class="q-text">Do I need a full brief before reaching out?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>No. A rough outline is enough. If you can share what you sell, who you sell to, and what result you want from the site, that is plenty to begin.</p>
-        <p>I’ll help turn that into a clear scope and the right build path. <em>No polished brief required.</em></p>
+        <p>No. A rough outline is enough. If you can share what your organisation does, who it serves, and what you need the website to achieve, that is plenty to begin.</p>
+        <p>I'll help turn that into a clear scope and the right build path. <em>No polished brief required.</em></p>
       </div>
     </details>
 
@@ -493,11 +558,10 @@
       <div class="fq-ans">
         <p>Once scope is approved and deposit is paid, I need:</p>
         <ul>
-          <li>Core business information and your main offer</li>
-          <li>Brand assets (logo, colors, fonts) if available</li>
+          <li>Core information about your organisation and what you offer</li>
+          <li>Brand assets (logo, colours, fonts) if available</li>
           <li>Content and imagery, or direction for sourcing</li>
-          <li>Any current ad campaigns or traffic priorities</li>
-          <li>Domain/hosting or platform access when launch is due</li>
+          <li>Domain and hosting access when launch is due</li>
         </ul>
         <p>If anything is missing, we map it in the kickoff plan.</p>
       </div>
@@ -521,14 +585,14 @@
   </div>
 </section>
 
-<!-- TECH & CODE -->
+<!-- § 02 TECH & CODE -->
 <section class="fq-section" id="tech">
   <div class="fq-section-head">
     <div>
       <div class="cat-label">§ 02 / Category</div>
       <h2>Tech <em>&amp; code.</em></h2>
     </div>
-    <div class="cat-desc">How platform choice and technical decisions affect conversion, speed, and scalability.</div>
+    <div class="cat-desc">How custom code affects performance, ownership, and long-term flexibility compared to page builder platforms.</div>
   </div>
 
   <div class="fq-list">
@@ -537,7 +601,7 @@
       <summary><span class="q-num">06</span><span class="q-text">Do you only build custom-coded websites?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>Yes. Every website built by RASTRICK. MADE is custom-coded from scratch using <em>HTML, CSS, and JavaScript</em>.</p>
-        <p>We don't build on Wix, Shopify, WordPress, Squarespace, or any page builder platform. This means faster performance, cleaner code, no platform lock-in, and a website built specifically around your organisation's goals.</p>
+        <p>We don't build on Wix, Shopify, WordPress, Squarespace, Webflow, or any page builder platform. This means faster performance, cleaner code, no platform lock-in, and a website built specifically around your organisation's goals.</p>
       </div>
     </details>
 
@@ -549,7 +613,7 @@
         <ul>
           <li><em>Faster</em> — no platform bloat, no unnecessary scripts</li>
           <li><em>More flexible</em> — no template constraints or platform rules</li>
-          <li><em>Fully owned</em> — you own the code, no monthly subscription required</li>
+          <li><em>Fully owned</em> — you own the code, no monthly subscription required to keep it live</li>
           <li><em>Better performing</em> — cleaner Core Web Vitals, better SEO potential</li>
         </ul>
         <p>The decision to build custom isn't just a preference — it's a commitment to quality of output for every client.</p>
@@ -557,18 +621,17 @@
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">08</span><span class="q-text">Can you build landing pages for paid ads?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">08</span><span class="q-text">Can you build landing pages?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Yes. Ad landing pages are built around message match, offer clarity, mobile speed, and low-friction enquiry or checkout flow.</p>
-        <p>They are designed to improve conversion rate from paid traffic, not just look polished.</p>
+        <p>Yes. Custom landing pages are built around message clarity, mobile speed, and low-friction enquiry or booking flow.</p>
+        <p>They are designed to communicate what your organisation offers and make it easy for visitors to take the next step.</p>
       </div>
     </details>
 
     <details class="fq-item">
       <summary><span class="q-num">09</span><span class="q-text">Will my website be mobile-optimised?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Yes. Every build is mobile-first because most users and ad clicks come from mobile devices.</p>
-        <p>Layouts, forms, and CTAs are tested for speed and usability before launch.</p>
+        <p>Yes. Every build is mobile-first. Layouts, forms, and CTAs are tested for speed and usability across devices before launch.</p>
       </div>
     </details>
 
@@ -579,23 +642,32 @@
       </div>
     </details>
 
+    <details class="fq-item">
+      <summary><span class="q-num">11</span><span class="q-text">Do you work with ecommerce businesses?</span><span class="sign">+</span></summary>
+      <div class="fq-ans">
+        <p>No. RASTRICK. MADE does not build ecommerce stores or Shopify websites.</p>
+        <p>The studio focuses on custom-coded websites for <em>service businesses, community organisations, not-for-profits, churches, sporting clubs, and local brands</em>.</p>
+        <p>This allows RASTRICK. MADE to specialise in websites that prioritise trust, visibility, enquiries, bookings, memberships, registrations, donations, and community engagement — rather than online retail systems.</p>
+      </div>
+    </details>
+
   </div>
 </section>
 
-<!-- PACKAGES & PRICING -->
+<!-- § 03 PACKAGES & PRICING -->
 <section class="fq-section" id="packages">
   <div class="fq-section-head">
     <div>
       <div class="cat-label">§ 03 / Category</div>
       <h2>Packages <em>&amp; pricing.</em></h2>
     </div>
-    <div class="cat-desc">How investment is scoped, how platform choice affects delivery, and what each package is built for.</div>
+    <div class="cat-desc">How investment is scoped, what each package is built for, and how to choose the right fit.</div>
   </div>
 
   <div class="fq-list">
 
     <details class="fq-item">
-      <summary><span class="q-num">11</span><span class="q-text">How are projects priced?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">12</span><span class="q-text">How are projects priced?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>Projects are fixed-price. You receive clear scope, timeline, deliverables, and investment before work begins.</p>
         <p>If scope changes, it is quoted and approved before implementation.</p>
@@ -603,7 +675,7 @@
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">12</span><span class="q-text">Why does pricing vary between packages?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">13</span><span class="q-text">Why does pricing vary between packages?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>Because project needs vary by scope, complexity, and depth of strategy required.</p>
         <p>A 3-page Starter and a 10-page Local Authority build with service area pages and full tracking are fundamentally different jobs. Pricing reflects that — and all three packages are priced fairly for what they include.</p>
@@ -611,36 +683,36 @@
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">13</span><span class="q-text">What are your payment terms?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">14</span><span class="q-text">What are your payment terms?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>A deposit secures your slot and starts production. Remaining payments are milestone-based and documented in your proposal.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">14</span><span class="q-text">Which package is right for my organisation?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">15</span><span class="q-text">Which package is right for my organisation?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>Quick guide:</p>
         <ul>
           <li><em>Starter (from $995)</em> — sole traders, small businesses, community groups, and sporting clubs needing a professional online presence</li>
-          <li><em>Growth (from $1,995)</em> — service businesses, NFPs, and community organisations wanting better credibility, local SEO, and consistent enquiries</li>
+          <li><em>Growth (from $1,995)</em> — service businesses, not-for-profits, and community organisations wanting better credibility, local SEO, and consistent enquiries</li>
           <li><em>Local Authority (from $2,995)</em> — businesses and organisations wanting to be the trusted, go-to name in their local area</li>
         </ul>
-        <p>If you’re unsure, I’ll recommend the best fit based on your goals and budget — no upsell pressure.</p>
+        <p>If you're unsure, I'll recommend the best fit based on your goals and budget — no upsell pressure.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">15</span><span class="q-text">Can we start smaller and scale later?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">16</span><span class="q-text">Can we start smaller and scale later?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Yes. Projects are structured to scale. You can launch lean, then add pages, funnels, products, or features in planned phases.</p>
+        <p>Yes. Projects are structured to scale. You can launch lean, then add pages, landing pages, service areas, content sections, or additional functionality in planned phases.</p>
       </div>
     </details>
 
   </div>
 </section>
 
-<!-- TIMELINES -->
+<!-- § 04 TIMELINES -->
 <section class="fq-section" id="timeline">
   <div class="fq-section-head">
     <div>
@@ -653,7 +725,7 @@
   <div class="fq-list">
 
     <details class="fq-item">
-      <summary><span class="q-num">16</span><span class="q-text">How long does a project usually take?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">17</span><span class="q-text">How long does a project usually take?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>As a general guide:</p>
         <ul>
@@ -666,27 +738,27 @@
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">17</span><span class="q-text">Can you launch quickly if we have a deadline?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">18</span><span class="q-text">Can you launch quickly if we have a deadline?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>Yes, where scope allows. If content and approvals are ready, fast-turnaround launches are possible.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">18</span><span class="q-text">What causes delays?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">19</span><span class="q-text">What causes delays?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>Most delays come from incomplete content, slow feedback, or mid-project scope changes.</p>
         <ul>
           <li>Late content or asset delivery</li>
           <li>Delayed decision-making on key pages</li>
-          <li>Access delays for domains, platforms, or integrations</li>
+          <li>Access delays for domains or integrations</li>
         </ul>
         <p>Clear kickoff and milestone approvals reduce this risk significantly.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">19</span><span class="q-text">Do you offer priority delivery?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">20</span><span class="q-text">Do you offer priority delivery?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>Yes, when capacity allows. Priority delivery is scoped around deadline, complexity, and readiness.</p>
       </div>
@@ -695,20 +767,20 @@
   </div>
 </section>
 
-<!-- SEO & PERFORMANCE -->
+<!-- § 05 SEO & PERFORMANCE -->
 <section class="fq-section" id="seo">
   <div class="fq-section-head">
     <div>
       <div class="cat-label">§ 05 / Category</div>
       <h2>SEO <em>&amp; performance.</em></h2>
     </div>
-    <div class="cat-desc">How technical SEO and site speed are handled across different platform builds.</div>
+    <div class="cat-desc">How technical SEO and site speed are built into every custom-coded website.</div>
   </div>
 
   <div class="fq-list">
 
     <details class="fq-item">
-      <summary><span class="q-num">20</span><span class="q-text">Do you include SEO foundations?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">21</span><span class="q-text">Do you include SEO foundations?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>Yes. Every build includes technical SEO fundamentals:</p>
         <ul>
@@ -722,89 +794,150 @@
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">21</span><span class="q-text">Is custom code better for SEO than platform-built sites?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">22</span><span class="q-text">Is custom code better for SEO than platform-built sites?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Generally, yes. Custom-coded websites have cleaner code, faster load times, more control over technical SEO structure, and no platform-generated scripts bloating the page.</p>
-        <p>These factors all contribute to better Core Web Vitals, which Google weighs in rankings. Faster, cleaner sites tend to perform better in search over time.</p>
+        <p>Generally, yes. Custom-coded websites have cleaner code, faster load times, more control over technical structure, and no platform-generated scripts bloating the page.</p>
+        <p>These factors all contribute to better Core Web Vitals and a cleaner technical foundation. Faster, lighter code is better for users and for search engines alike.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">22</span><span class="q-text">How fast will my website be?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">23</span><span class="q-text">How fast will my website be?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>Fast by default. Performance targets are set during scope and validated before launch.</p>
         <p>Image handling, script control, and mobile optimisation are treated as core build requirements.</p>
       </div>
     </details>
 
+    <details class="fq-item">
+      <summary><span class="q-num">24</span><span class="q-text">Do you offer Google Business Profile setup?</span><span class="sign">+</span></summary>
+      <div class="fq-ans">
+        <p>Yes. Google Business Profile setup and optimisation is available as an add-on.</p>
+        <p>This is especially useful for local businesses and organisations that want to improve their visibility on <em>Google Search and Google Maps</em>.</p>
+        <p>Setup can include:</p>
+        <ul>
+          <li>Business category selection</li>
+          <li>Service setup and description</li>
+          <li>Website connection and basic optimisation</li>
+          <li>Verification guidance</li>
+        </ul>
+      </div>
+    </details>
+
   </div>
 </section>
 
-<!-- OWNERSHIP & HANDOVER -->
+<!-- § 06 OWNERSHIP & HANDOVER -->
 <section class="fq-section" id="ownership">
   <div class="fq-section-head">
     <div>
       <div class="cat-label">§ 06 / Category</div>
       <h2>Ownership <em>&amp; handover.</em></h2>
     </div>
-    <div class="cat-desc">What you own after launch, how updates work, and what handover includes.</div>
+    <div class="cat-desc">What you own after launch, how updates work, hosting, and what handover includes.</div>
   </div>
 
   <div class="fq-list">
 
     <details class="fq-item">
-      <summary><span class="q-num">23</span><span class="q-text">Who owns the website or store after launch?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">25</span><span class="q-text">Who owns the website after launch?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>You do. Access and ownership are transferred at handover based on your platform setup.</p>
-        <p>You are not locked into ongoing management retainers unless you choose support.</p>
+        <p>You do.</p>
+        <p>Once final payment is complete, you own your website content, branding assets, imagery supplied by you, and the final website delivered for your business or organisation.</p>
+        <p>RASTRICK. MADE may retain internal development processes, reusable code libraries, frameworks, and tools used during development — but your completed website belongs to you.</p>
+        <p><em>There is no platform lock-in and no mandatory ongoing retainer.</em></p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">24</span><span class="q-text">Can my team update content after launch?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">26</span><span class="q-text">Can I edit my website myself after it's launched?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Yes. Custom-coded builds are handed over with clear documentation and update guidance. For teams that prefer not to manage updates themselves, an optional monthly care plan covers ongoing changes.</p>
+        <p>Yes, but custom-coded websites work differently to platforms like Wix, Squarespace, or Shopify.</p>
+        <p>RASTRICK. MADE websites are built from scratch using custom code, so you won't be logging into a drag-and-drop page builder to make changes yourself.</p>
+        <p>For updates such as adding photos, updating text, changing contact details, or adding new content, you can:</p>
+        <ol>
+          <li>Subscribe to a Website Care Plan</li>
+          <li>Request updates as a one-off service whenever needed</li>
+          <li>Work with another developer in the future if you choose</li>
+        </ol>
+        <p>One of the biggest benefits of a custom-coded website is that there are <em>no ongoing platform subscriptions, plugin fees, or page-builder costs</em>.</p>
+        <p>The only ongoing costs are your domain name, hosting, and an optional Website Care Plan. You own your website and there is no lock-in.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">25</span><span class="q-text">What is included in handover?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">27</span><span class="q-text">Can my team update content after launch?</span><span class="sign">+</span></summary>
+      <div class="fq-ans">
+        <p>Custom-coded websites work differently to platforms like Wix, Squarespace, or Shopify.</p>
+        <p>You won't be logging into a drag-and-drop editor to redesign pages yourself.</p>
+        <p>For updates, you can subscribe to a Website Care Plan, request one-off updates whenever needed, or work with another developer in the future.</p>
+        <p><em>You own your website and are never locked into ongoing services.</em></p>
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary><span class="q-num">28</span><span class="q-text">Do I have to pay ongoing monthly subscriptions?</span><span class="sign">+</span></summary>
+      <div class="fq-ans">
+        <p>No.</p>
+        <p>RASTRICK. MADE websites do not require Wix, Squarespace, Shopify, WordPress, plugin, theme, or page-builder subscriptions.</p>
+        <p>The only ongoing costs are:</p>
+        <ul>
+          <li>Your domain name</li>
+          <li>Website hosting</li>
+          <li>Optional Website Care Plan, if you would like ongoing support and updates</li>
+        </ul>
+        <p><em>You own your website and there is no platform lock-in.</em></p>
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary><span class="q-num">29</span><span class="q-text">Do you offer website hosting?</span><span class="sign">+</span></summary>
+      <div class="fq-ans">
+        <p>Yes. Website hosting can be arranged as part of your Website Care Plan, or you can use your own hosting provider if preferred.</p>
+        <p>If hosting is managed through RASTRICK. MADE, your website will be <em>kept online, monitored, and supported</em> without requiring you to manage the technical setup yourself.</p>
+      </div>
+    </details>
+
+    <details class="fq-item">
+      <summary><span class="q-num">30</span><span class="q-text">What is included in handover?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>At handover you receive:</p>
         <ul>
-          <li>Platform/account access and key credentials</li>
+          <li>Access to your website files and key credentials</li>
           <li>Assets and implementation files relevant to your build</li>
           <li>Tracking and integration status</li>
           <li>Clear next-step and support guidance</li>
         </ul>
-        <p>Everything is documented so your team can operate confidently.</p>
+        <p>Everything is documented so you can operate confidently.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">26</span><span class="q-text">Are there ongoing monthly fees to RASTRICK. MADE?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">31</span><span class="q-text">Are there ongoing monthly fees to RASTRICK. MADE?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>No mandatory monthly fee to RASTRICK. MADE. Ongoing costs are typically platform, hosting, apps, or domain fees based on your setup.</p>
+        <p>No. RASTRICK. MADE does not charge mandatory monthly fees.</p>
+        <p>The only ongoing costs are your domain name, website hosting, and an optional Website Care Plan if you would like ongoing support and updates.</p>
+        <p>There are no Wix, Shopify, Squarespace, WordPress, plugin, theme, or page-builder subscriptions required.</p>
       </div>
     </details>
 
   </div>
 </section>
 
-<!-- AFTER LAUNCH -->
+<!-- § 07 AFTER LAUNCH -->
 <section class="fq-section" id="afterlaunch">
   <div class="fq-section-head">
     <div>
       <div class="cat-label">§ 07 / Category</div>
       <h2>After <em>launch.</em></h2>
     </div>
-    <div class="cat-desc">Support, optimisation, and growth after the initial launch.</div>
+    <div class="cat-desc">Support, updates, and growth after the initial launch.</div>
   </div>
 
   <div class="fq-list">
 
     <details class="fq-item">
-      <summary><span class="q-num">27</span><span class="q-text">What support is included after launch?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">32</span><span class="q-text">What support is included after launch?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>Every package includes a defined support window for fixes, refinements, and launch adjustments.</p>
         <p>Longer-term support and optimisation can be added as needed.</p>
@@ -812,117 +945,112 @@
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">28</span><span class="q-text">Can you help with updates after support ends?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">33</span><span class="q-text">Can you help with updates after support ends?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Yes. You can request one-off updates or ongoing support for new pages, funnel improvements, and performance refinements.</p>
+        <p>Yes. You can request one-off updates or subscribe to an ongoing Website Care Plan for new pages, content updates, and performance refinements.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">29</span><span class="q-text">Can we redesign or add pages later?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">34</span><span class="q-text">Can we redesign or add pages later?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Absolutely. Builds are structured for future growth. New pages, new offers, redesigns, and campaign landers can be scoped in phases.</p>
+        <p>Absolutely. Builds are structured for future growth. New pages, new service areas, redesigns, and campaign landing pages can be scoped in phases.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">30</span><span class="q-text">Can you rebuild an existing website?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">35</span><span class="q-text">Can you rebuild an existing website?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Yes. Full custom-coded rebuilds are available for any existing website — whether it’s on Wix, Squarespace, WordPress, Shopify, or is an old custom build. You’ll get an honest recommendation on scope, what to keep, and what to rebuild fresh.</p>
+        <p>Yes. RASTRICK. MADE offers complete custom-coded website rebuilds for businesses, community organisations, and not-for-profits.</p>
+        <p>Whether your current website is built on <em>Wix, Squarespace, WordPress, Shopify, Webflow, GoDaddy Website Builder, or another platform</em>, it can be rebuilt from scratch using custom code.</p>
+        <p>Existing content, branding, imagery, and website assets can be reviewed and incorporated into the new build where appropriate.</p>
+        <p>RASTRICK. MADE does not work inside these platforms. Rebuild projects are completed as entirely new custom-coded websites.</p>
       </div>
     </details>
 
   </div>
 </section>
 
-<!-- PLATFORM REBUILDS -->
+<!-- § 08 PLATFORM REBUILDS -->
 <section class="fq-section" id="kickstart">
   <div class="fq-section-head">
     <div>
       <div class="cat-label">§ 08 / Category</div>
       <h2>Platform <em>rebuilds.</em></h2>
     </div>
-    <div class="cat-desc">What happens when you’re moving from Wix, Squarespace, WordPress, Shopify, or any other platform.</div>
+    <div class="cat-desc">What happens when you're moving from Wix, Squarespace, WordPress, Webflow, or any other platform to a custom-coded website.</div>
   </div>
 
   <div class="fq-list">
 
     <details class="fq-item">
-      <summary><span class="q-num">31</span><span class="q-text">Do you redesign or work inside Wix, Squarespace, WordPress, or Shopify websites?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">36</span><span class="q-text">Do you redesign or work inside Wix, Squarespace, WordPress, or Webflow websites?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>No. RASTRICK. MADE does not edit, maintain, redesign, or develop websites inside Wix, Squarespace, WordPress, Shopify, GoDaddy, or any page builder platform.</p>
+        <p>No. RASTRICK. MADE does not edit, maintain, redesign, or develop websites inside Wix, Squarespace, WordPress, Shopify, Webflow, GoDaddy, or any page builder platform.</p>
         <p>If your current website is on one of these platforms and you want to work together, the project becomes a complete custom-coded rebuild.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">32</span><span class="q-text">Can you migrate my existing website content?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">37</span><span class="q-text">Can you migrate my existing website content?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>Yes. Content migration is included as part of any website rebuild. Your existing copy, branding, and imagery are reviewed, refined, and rebuilt into the new custom-coded website.</p>
-        <p>The goal is never to just copy and paste — it’s to take what’s useful from your existing site and make it better.</p>
+        <p>The goal is never to just copy and paste — it's to take what's useful from your existing site and make it better.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">33</span><span class="q-text">Why is a rebuild better than redesigning my existing site?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">38</span><span class="q-text">Why is a rebuild better than redesigning my existing site?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Redesigning inside a platform leaves you with the same underlying limitations — slow load times, template constraints, platform fees, and code you don’t own.</p>
+        <p>Redesigning inside a platform leaves you with the same underlying limitations — slow load times, template constraints, platform fees, and code you don't own.</p>
         <p>A custom-coded rebuild gives you:</p>
         <ul>
           <li><em>Faster performance</em> — no platform bloat or unnecessary scripts</li>
           <li><em>Full design control</em> — no template grid, no widget limitations</li>
           <li><em>Code ownership</em> — you own it, no ongoing subscription to keep it live</li>
-          <li><em>Better SEO foundations</em> — cleaner code structure and faster load times</li>
+          <li><em>Cleaner code and faster performance</em> — no platform bloat or unnecessary scripts</li>
         </ul>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">34</span><span class="q-text">Will I lose my existing Google rankings if I rebuild?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">39</span><span class="q-text">How long does a rebuild take compared to a new build?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Done correctly, a rebuild should maintain or improve your rankings. URL structures are preserved wherever possible, and 301 redirects are set up for any changed pages.</p>
-        <p>The technical SEO foundations in a custom rebuild are typically stronger than what you had on a platform, which can improve rankings over time.</p>
-      </div>
-    </details>
-
-    <details class="fq-item">
-      <summary><span class="q-num">35</span><span class="q-text">How long does a rebuild take compared to a new build?</span><span class="sign">+</span></summary>
-      <div class="fq-ans">
-        <p>Similar timeframes. Having existing content can actually speed up the process since there’s less to create from scratch. The rebuild follows the same process: discovery, content planning, design, build, review, and launch.</p>
+        <p>Similar timeframes. Having existing content can actually speed up the process since there's less to create from scratch. The rebuild follows the same process: discovery, content planning, design, build, review, and launch.</p>
       </div>
     </details>
 
   </div>
 </section>
 
-<!-- WORKING TOGETHER -->
+<!-- § 09 WORKING TOGETHER -->
 <section class="fq-section" id="working">
   <div class="fq-section-head">
     <div>
       <div class="cat-label">§ 09 / Category</div>
       <h2>Working <em>together.</em></h2>
     </div>
-    <div class="cat-desc">How collaboration works day-to-day, including communication and remote delivery.</div>
+    <div class="cat-desc">How collaboration works day-to-day, including communication, remote delivery, and what makes this studio different.</div>
   </div>
 
   <div class="fq-list">
 
     <details class="fq-item">
-      <summary><span class="q-num">36</span><span class="q-text">Are you based in Australia?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">40</span><span class="q-text">Are you based in Australia?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Yes. RASTRICK. MADE is based in Canberra and works remotely with businesses across Australia and internationally.</p>
+        <p>Yes. RASTRICK. MADE is based in Canberra and works remotely with businesses and organisations across Australia.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">37</span><span class="q-text">Do you work with international clients?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">41</span><span class="q-text">Do you work with international clients?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>Yes. International projects are fully supported with structured communication and timeline clarity.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">38</span><span class="q-text">How is communication handled during a project?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">42</span><span class="q-text">How is communication handled during a project?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
         <p>Email and scheduled calls are the primary channels. You receive clear milestone updates and direct communication on decisions.</p>
         <p>No bloated communication stack, no unclear status.</p>
@@ -930,17 +1058,20 @@
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">39</span><span class="q-text">What is the benefit of a one-person studio model?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">43</span><span class="q-text">Why choose a one-person studio instead of an agency?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>You work directly with the person responsible for strategy, UX, build quality, and outcomes.</p>
-        <p>That means faster decisions, less miscommunication, and tighter execution quality.</p>
+        <p>When you work with RASTRICK. MADE, you work directly with the person designing and building your website from start to finish.</p>
+        <p>No account managers.</p>
+        <p>No sales teams.</p>
+        <p>No unnecessary layers.</p>
+        <p>Just <em>direct communication, transparent pricing, and a custom-coded website</em> built specifically around your organisation.</p>
       </div>
     </details>
 
     <details class="fq-item">
-      <summary><span class="q-num">40</span><span class="q-text">Still have a question not covered here?</span><span class="sign">+</span></summary>
+      <summary><span class="q-num">44</span><span class="q-text">Still have a question not covered here?</span><span class="sign">+</span></summary>
       <div class="fq-ans">
-        <p>Send it through. You’ll get a direct response within one business day with a clear answer and recommended next step.</p>
+        <p>Send it through. You'll get a direct response within one business day with a clear answer and recommended next step.</p>
       </div>
     </details>
 
@@ -952,7 +1083,7 @@
   <div class="fq-cta-inner">
     <h2>Ready to <em>build?</em></h2>
     <div class="fq-cta-right">
-      <p>Tell me about your organisation, your goals, and what you need your website to do. You’ll get a clear recommendation on scope and package within one business day.</p>
+      <p>Tell me about your organisation, your goals, and what you need your website to do. You'll get a clear recommendation on scope and package within one business day.</p>
       <a href="contact.html" class="fq-btn primary">Get a Quote <span class="arr">↗</span></a>
       <a href="packages.html" class="fq-btn ghost">View Pricing <span class="arr">↗</span></a>
     </div>
