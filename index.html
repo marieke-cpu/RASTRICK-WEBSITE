@@ -11,7 +11,6 @@
   gtag('js', new Date());
   gtag('config', 'G-4PTWVZZBJ8');
 </script>
-<script>if(sessionStorage.getItem('rastrick_entered')){document.documentElement.classList.add('skip-intro');}</script>
 <title>Custom Websites Canberra | RASTRICK. MADE</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="RASTRICK. MADE builds custom-coded websites for service businesses, community organisations, not-for-profits and local brands. Handmade in Canberra, built for trust, visibility and enquiries.">
@@ -35,19 +34,6 @@
 *,*::before,*::after{box-sizing:border-box}
 html{background:#08090b}
 body{margin:0;background:#08090b}
-body.intro-open{overflow:hidden}
-body.intro-open .nav,body.intro-open .hero,body.intro-open section,
-body.intro-open footer,body.intro-open .ticker,body.intro-open .name-ticker{visibility:hidden}
-.intro{position:fixed;inset:12px;z-index:10000;background:#08090b;border-radius:6px;overflow:hidden;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}
-html.skip-intro #intro{display:none!important}
-html.skip-intro body.intro-open{overflow:visible}
-html.skip-intro body.intro-open .nav,
-html.skip-intro body.intro-open .hero,
-html.skip-intro body.intro-open section,
-html.skip-intro body.intro-open footer,
-html.skip-intro body.intro-open .ticker,
-html.skip-intro body.intro-open .name-ticker{visibility:visible}
 </style>
 <!-- Preconnect critical origins -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -123,57 +109,7 @@ html.skip-intro body.intro-open .name-ticker{visibility:visible}
 </script>
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 </head>
-<body class="intro-open">
-
-<!-- INTRO GATE — teaser-identical boot screen. Dismissed on click / key / scroll. -->
-<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="RASTRICK. MADE loading screen">
-  <!-- Frame lines (draw clockwise via CSS animation) -->
-  <span class="f f-top"    aria-hidden="true"></span>
-  <span class="f f-right"  aria-hidden="true"></span>
-  <span class="f f-bottom" aria-hidden="true"></span>
-  <span class="f f-left"   aria-hidden="true"></span>
-
-  <!-- Ambient FX -->
-  <div class="boot-scanlines" aria-hidden="true"></div>
-  <div class="boot-glow boot-glow-tr" aria-hidden="true"></div>
-  <div class="boot-glow boot-glow-bl" aria-hidden="true"></div>
-
-  <!-- Content -->
-  <div class="boot-inner">
-    <div class="boot-top-row">
-      <span class="boot-sys-label" id="boot-sys-label" aria-hidden="true"></span>
-      <span class="boot-rec" id="boot-rec" aria-hidden="true">
-        <span class="rec-dot"></span> REC
-      </span>
-    </div>
-
-    <div class="boot-mid">
-      <div class="boot-init" id="boot-init" aria-hidden="true"></div>
-      <div class="boot-hl-wrap" aria-hidden="true">
-        <span class="boot-hl" id="boot-hl"></span><span class="block-cur" id="boot-cur"></span>
-      </div>
-      <div class="boot-loader" id="boot-loader">
-        <div class="boot-loader-row">
-          <span id="boot-loader-label">LOADING: IMPOSSIBLE_TO_IGNORE</span>
-          <span id="boot-loader-pct">[ 0% ]</span>
-        </div>
-        <div class="boot-bar-track">
-          <div class="boot-bar-fill" id="boot-bar-fill"></div>
-          <div class="boot-bar-tip"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="boot-bot-row" id="boot-bot-row" aria-hidden="true">
-      <span class="boot-cat">MAIN SITE // LIVE</span>
-      <span class="boot-press">PRESS ANY KEY <span class="block-cur-sm blink"></span></span>
-    </div>
-  </div>
-
-  <button class="boot-enter" id="boot-enter" type="button" aria-label="Enter site">
-    <span class="btn-dot" aria-hidden="true">●</span> ENTER SITE
-  </button>
-</div>
+<body>
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -774,7 +710,6 @@ html.skip-intro body.intro-open .name-ticker{visibility:visible}
 </footer>
 
 <script src="hero.js?v=5" defer></script>
-<script src="intro-boot.js?v=2" defer></script>
 <script src="site.js?v=7" defer></script>
 <script src="analytics.js" defer></script>
 
