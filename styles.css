@@ -500,6 +500,17 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   text-transform: uppercase;
 }
 .section-head h2 em { font-style: normal; color: var(--ink-dim); font-family: var(--f-sans); font-weight: 300; text-transform: lowercase; letter-spacing: -0.02em; }
+.section-head .section-link {
+  grid-column: 2;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 12px;
+  transition: opacity .2s;
+}
+.section-head .section-link:hover { opacity: 0.7; }
 
 @media (max-width: 720px) {
   .section-head { grid-template-columns: 1fr; gap: 16px; }
@@ -1417,7 +1428,7 @@ footer .meta a:hover { color: var(--accent-2); }
   /* aurora shader canvas — show on mobile, softer opacity */
   .hero canvas { display: block; opacity: 0.7; }
   /* h1 scaled to fit mobile viewport */
-  .hero h1 { font-size: clamp(44px, 12vw, 68px); }
+  .hero h1 { font-size: clamp(58px, 16vw, 76px); }
   /* mobile-only bottom meta strip */
   .hero-mobile-meta {
     display: flex;
@@ -2094,27 +2105,29 @@ body.ty-body { cursor: none; }
 
   /* h1 scaled to fit mobile viewport */
   .hero h1 {
-    font-size: clamp(44px, 12vw, 68px);
+    font-size: clamp(58px, 16vw, 76px);
     line-height: 0.92;
   }
 
-  /* More vertical room so bordered kinetic wrap isn't clipped */
+  /* Allow wrapped lines to show fully */
   .hero h1 .line {
-    padding-bottom: 0.08em;
+    overflow: visible;
+    padding-bottom: 0.12em;
   }
 
-  /* Remove desktop skew — causes misalignment on mobile */
+  /* Remove desktop skew and green border on mobile */
   .hero h1 .kinetic-word-wrap {
     transform: none;
-    border-width: 3px;
-    margin: 0 0.02em;
-    padding: 0 0.08em;
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
   }
   .hero h1 .kinetic-word-wrap .kinetic-word {
     transform: none;
   }
 
-  /* Reduce ghost offset so it doesn't clip below the line boundary */
+  /* Reduce ghost offset */
   .hero h1 .kinetic-word-wrap .kinetic-word .ghost {
     transform: translate(3px, 2px);
     -webkit-text-stroke-width: 1.5px;
