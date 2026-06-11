@@ -354,6 +354,83 @@
 }
 .ab-who-type:hover .arr { color: var(--accent); transform: rotate(-45deg) translate(2px, -2px); }
 
+/* ---- GIVING BACK ---- */
+.ab-give {
+  padding: clamp(44px, 5.5vw, 72px) var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+.ab-give-grid {
+  display: grid; grid-template-columns: 1fr 1.6fr;
+  gap: clamp(32px, 5vw, 80px); align-items: start; margin-top: 28px;
+}
+.ab-give-left {
+  position: sticky; top: 120px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.ab-give-pct {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(100px, 18vw, 240px);
+  line-height: 0.85; letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.ab-give-pct .pct-mark { color: var(--accent); }
+.ab-give-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid var(--line-2); border-left: 3px solid var(--accent);
+  padding: 10px 18px; background: rgba(198,255,58,0.03);
+  width: fit-content;
+}
+.ab-give-badge-text {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-dim);
+}
+.ab-give-right {
+  display: flex; flex-direction: column; gap: clamp(20px, 2.5vw, 32px);
+}
+.ab-give-heading {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(32px, 4vw, 64px);
+  line-height: 0.92; text-transform: uppercase; color: var(--ink);
+}
+.ab-give-body { display: flex; flex-direction: column; gap: 16px; }
+.ab-give-body p {
+  font-family: var(--f-sans); font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
+}
+.ab-give-body em { font-style: normal; color: var(--ink); font-weight: 400; }
+.ab-give-rule {
+  display: flex; align-items: center; gap: 14px; padding-top: 4px;
+}
+.ab-give-rule-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0;
+}
+.ab-give-rule-line {
+  flex: 0 0 40px; height: 1px; background: var(--line-2);
+}
+.ab-give-rule-label {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint);
+}
+
+/* ---- CTA giving microcopy ---- */
+.ab-give-micro {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 20px;
+  border: 1px solid var(--line); border-left: 2px solid var(--accent);
+  background: rgba(198,255,58,0.03);
+  width: fit-content; margin-bottom: clamp(20px, 2.5vw, 28px);
+}
+.ab-give-micro span:first-child {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0; display: block;
+}
+.ab-give-micro span:last-child {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-dim);
+}
+
 /* ---- CTA ---- */
 .ab-cta {
   padding: clamp(44px, 5.5vw, 72px) var(--pad);
@@ -408,6 +485,8 @@
   .ab-founder-photo { border-right: none; border-bottom: 1px solid var(--line); padding: clamp(36px, 5vw, 56px) var(--pad); }
   .ab-back-grid, .ab-how-grid { grid-template-columns: 1fr; }
   .ab-back-left, .ab-how-left { position: static; }
+  .ab-give-grid { grid-template-columns: 1fr; }
+  .ab-give-left { position: static; }
   .ab-why-copy { grid-template-columns: 1fr; }
   .ab-why-principles { grid-template-columns: 1fr; }
   .ab-hero .bracket { width: 28px; height: 28px; }
@@ -675,15 +754,49 @@
   </div>
 </section>
 
-<!-- § 06 THE GOAL -->
+<!-- § 06 GIVING BACK -->
+<section class="ab-give reveal">
+  <div class="ab-idx">§ 06 / Giving Back</div>
+
+  <div class="ab-give-grid">
+    <div class="ab-give-left">
+      <div class="ab-give-pct">1<span class="pct-mark">%</span></div>
+      <div class="ab-give-badge">
+        <span class="ab-give-badge-text">of every completed project</span>
+      </div>
+    </div>
+
+    <div class="ab-give-right">
+      <h2 class="ab-give-heading">Built to<br>give back.</h2>
+
+      <div class="ab-give-body">
+        <p>RASTRICK. MADE believes businesses should contribute positively to the communities they serve.</p>
+        <p>1% of every completed project is donated to organisations creating meaningful impact across Australia — supporting causes aligned with community wellbeing, cultural strength, safety, opportunity, and positive social impact.</p>
+        <p>As the studio grows, so does this contribution. <em>Small contributions, made consistently, can still become part of something meaningful.</em></p>
+      </div>
+
+      <div class="ab-give-rule">
+        <span class="ab-give-rule-dot"></span>
+        <span class="ab-give-rule-line"></span>
+        <span class="ab-give-rule-label">Part of how this studio operates — not a promotion.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- § 07 THE GOAL -->
 <section class="ab-cta">
   <div class="ab-cta-inner">
-    <div class="ab-idx">§ 06 / The Goal</div>
+    <div class="ab-idx">§ 07 / The Goal</div>
     <h2>Good people.<br><em>Meaningful work.</em></h2>
     <p>
       To create websites that earn trust, reflect the quality of the people behind them, and help good organisations create a lasting impact in the communities they serve.<br><br>
       That's what RASTRICK. MADE is built for.
     </p>
+    <div class="ab-give-micro">
+      <span></span>
+      <span>1% of every completed project goes towards community impact.</span>
+    </div>
     <div class="ab-cta-actions">
       <a href="contact.html" class="ab-btn primary">Start a conversation <span class="arr">↗</span></a>
       <a href="work.html" class="ab-btn ghost">See the work <span class="arr">↗</span></a>
