@@ -1443,7 +1443,7 @@ footer .meta a:hover { color: var(--accent-2); }
   /* aurora shader canvas — show on mobile, softer opacity */
   .hero canvas { display: block; opacity: 0.7; }
   /* h1 scaled to fit mobile viewport */
-  .hero h1 { font-size: clamp(68px, 19vw, 88px); }
+  .hero h1 { font-size: clamp(62px, 17vw, 80px); }
   /* mobile-only bottom meta strip */
   .hero-mobile-meta {
     display: flex;
@@ -2120,7 +2120,7 @@ body.ty-body { cursor: none; }
 
   /* h1 scaled to fit mobile viewport */
   .hero h1 {
-    font-size: clamp(68px, 19vw, 88px);
+    font-size: clamp(62px, 17vw, 80px);
     line-height: 0.92;
   }
 
