@@ -579,7 +579,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   overflow: hidden;
   border-bottom: 1px solid var(--line);
 }
-.card .thumb img {
+.card .thumb img,
+.card .thumb video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -733,11 +734,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .work-stage .card:first-of-type { margin-left: 0; }
 
   .work-stage .card:nth-child(2) { --shelf-r: -3deg; z-index: 1; }
-  .work-stage .card:nth-child(3) { --shelf-r: -1.8deg; z-index: 2; }
-  .work-stage .card:nth-child(4) { --shelf-r: -0.6deg; z-index: 3; }
-  .work-stage .card:nth-child(5) { --shelf-r: 0.8deg; z-index: 4; }
-  .work-stage .card:nth-child(6) { --shelf-r: 1.9deg; z-index: 5; }
-  .work-stage .card:nth-child(7) { --shelf-r: 3deg; z-index: 6; }
+  .work-stage .card:nth-child(3) { --shelf-r: -1deg; z-index: 2; }
+  .work-stage .card:nth-child(4) { --shelf-r: 1deg; z-index: 3; }
+  .work-stage .card:nth-child(5) { --shelf-r: 3deg; z-index: 4; }
 
   .work-stage .card:hover {
     transform: translateY(-42px) scale(1.01) rotate(0deg) !important;
@@ -752,53 +751,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   padding: clamp(52px, 6.5vw, 96px) var(--pad);
   border-bottom: 1px solid var(--line);
 }
-.about-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: start;
-}
-.about-grid p {
+.about-lead {
   font-family: var(--f-sans);
-  font-size: clamp(22px, 2.4vw, 32px);
-  line-height: 1.3;
+  font-size: clamp(20px, 2.2vw, 30px);
+  line-height: 1.35;
   font-weight: 400;
   color: var(--ink);
-  max-width: 26ch;
+  max-width: 52ch;
   letter-spacing: -0.02em;
 }
-.about-grid p em { font-style: normal; color: var(--accent); font-family: var(--f-display); text-transform: uppercase; font-weight: 400; padding: 0 0.08em; letter-spacing: 0; }
-.about-stats {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-.about-stats .stat {
-  background: var(--bg);
-  padding: 24px 22px;
-  min-height: 120px;
-  display: flex; flex-direction: column; justify-content: space-between;
-}
-.about-stats .stat .num {
-  font-family: var(--f-display);
-  font-weight: 400;
-  font-size: clamp(48px, 6vw, 88px);
-  line-height: 1;
-  letter-spacing: 0;
-  color: var(--ink);
-  text-transform: uppercase;
-}
-.about-stats .stat .num em { font-style: normal; color: var(--accent); }
-.about-stats .stat .lbl {
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink-dim);
-  max-width: 18ch;
-}
-@media (max-width: 820px) {
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-}
+.about-lead em { font-style: normal; color: var(--accent); font-family: var(--f-display); text-transform: uppercase; font-weight: 400; padding: 0 0.08em; letter-spacing: 0; }
 
 /* -------------------- services -------------------- */
 .services {
@@ -2367,7 +2329,7 @@ body.ty-body { cursor: none; }
 }
 .results-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
@@ -2661,9 +2623,6 @@ body.ty-body { cursor: none; }
 }
 
 /* stagger for sibling reveals inside grid parents */
-.about-stats .stat.reveal:nth-child(2) { transition-delay: 0.1s; }
-.about-stats .stat.reveal:nth-child(3) { transition-delay: 0.2s; }
-.about-stats .stat.reveal:nth-child(4) { transition-delay: 0.3s; }
 
 .proof-stat.reveal:nth-child(2) { transition-delay: 0.1s; }
 .proof-stat.reveal:nth-child(4) { transition-delay: 0.2s; }
@@ -2715,13 +2674,6 @@ body.ty-body { cursor: none; }
   /* contact grid stack earlier */
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .contact h2 { font-size: clamp(40px, 12vw, 64px); }
-
-  /* about grid single col */
-  .about-grid { grid-template-columns: 1fr; gap: 32px; }
-
-  /* about stats smaller on mobile */
-  .about-stats .stat { padding: 24px 20px; min-height: 120px; }
-  .about-stats .stat .num { font-size: clamp(36px, 11vw, 64px); }
 
   /* results section mobile */
   .results-grid { grid-template-columns: 1fr; }

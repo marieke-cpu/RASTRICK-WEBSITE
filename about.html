@@ -490,6 +490,12 @@
   font-weight: 300; text-transform: lowercase; letter-spacing: -0.02em;
 }
 
+/* hide nav CTA on mobile (closed and open) */
+@media (max-width: 900px) {
+  .nav .cta,
+  .nav.nav-open .cta { display: none !important; }
+}
+
 /* ---- RESPONSIVE ---- */
 @media (max-width: 900px) {
   .ab-founder { grid-template-columns: 1fr; }
@@ -585,7 +591,7 @@
     <li><a href="about.html" style="color:var(--ink)">About</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <a href="contact.html" class="nav-cta">Get a Quote</a>
+  <a href="contact.html" class="cta">Get a Quote <span class="arr">↗</span></a>
   <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
@@ -645,9 +651,9 @@
       <span>Founder</span>
     </div>
     <div class="ab-founder-bio">
-      <p>Born and raised in Melbourne and now proudly based on Ngunnawal Country in Canberra, I didn't come from a traditional design or agency background.</p>
-      <p>I'm Samoan and Māori. I grew up in a large, creative family — and spent years working in industries where hard work, reputation, and quality of work are everything.</p>
-      <p>Those experiences shaped how I think and how I build. <em>Good work should be honest, dependable, and done properly.</em></p>
+      <p>Melbourne-born, now based on Ngunnawal Country in Canberra. I didn't come from a traditional design or agency background — I came from industries where hard work and reputation are everything.</p>
+      <p><em>Good work should be honest, dependable, and done properly.</em> That's the standard I bring to every website I build.</p>
+      <p>RASTRICK. MADE exists because I wanted to channel those values into something of my own — <em>built directly for the people running real businesses and real organisations,</em> without the agency layers in between.</p>
     </div>
   </div>
 </section>
@@ -729,14 +735,14 @@
         <span class="num">01</span>
         <div>
           <h3>You work directly with me</h3>
-          <p>No account managers, no sales team, no outsourcing. The person who understands your brief is the same person who designs and builds it.</p>
+          <p>When you have a question, I answer it. When something needs adjusting, you tell me directly — not a coordinator or project manager. Your brief goes straight to the person building it.</p>
         </div>
       </div>
       <div class="ab-how-item">
         <span class="num">02</span>
         <div>
           <h3>Custom-coded from the ground up</h3>
-          <p>Every website is built using HTML, CSS, and JavaScript. No page builders, no drag-and-drop platforms. Clean, flexible code built specifically for your organisation.</p>
+          <p>Every website is hand-built using HTML, CSS, and JavaScript — tailored to your goals, not squeezed into someone else's template. You own it. No platform, no subscription, no lock-in.</p>
         </div>
       </div>
       <div class="ab-how-item">

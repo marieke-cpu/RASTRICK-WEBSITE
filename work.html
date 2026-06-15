@@ -160,287 +160,6 @@
   color: var(--ink-faint); transition: transform .3s, color .3s;
 }
 
-/* ---- case study hero/intro ---- */
-.wk-cs-intro {
-  padding: clamp(44px, 5.5vw, 72px) var(--pad);
-  border-bottom: 1px solid var(--line);
-  background: var(--bg);
-  position: relative; overflow: hidden;
-}
-.wk-cs-intro::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(1000px 500px at 70% 50%, rgba(198,255,58,0.05), transparent 60%);
-  pointer-events: none;
-}
-.wk-cs-intro-inner { position: relative; z-index: 2; }
-.wk-cs-kicker {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--f-mono); font-size: 10px;
-  letter-spacing: 0.26em; text-transform: uppercase;
-  color: var(--accent); border: 1px solid rgba(198,255,58,0.3);
-  border-radius: 100px; padding: 7px 16px; margin-bottom: 24px;
-}
-.wk-cs-kicker .dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent); box-shadow: 0 0 10px var(--accent);
-  animation: blink 1.8s ease-in-out infinite;
-}
-.wk-cs-title-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: clamp(40px, 6vw, 100px); align-items: start;
-  margin-bottom: clamp(32px, 4vw, 52px);
-}
-.wk-cs-title h2 {
-  font-family: var(--f-display); font-weight: 400;
-  font-size: clamp(56px, 10vw, 160px);
-  line-height: 0.88; text-transform: uppercase; color: var(--ink);
-  letter-spacing: -0.01em;
-}
-.wk-cs-title h2 em {
-  font-style: normal; color: var(--accent);
-  font-family: var(--f-sans); font-weight: 300;
-  text-transform: lowercase; letter-spacing: -0.02em;
-}
-.wk-cs-meta { padding-top: 8px; display: flex; flex-direction: column; gap: 0; }
-.wk-cs-meta-row {
-  display: flex; justify-content: space-between; align-items: baseline;
-  gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line);
-}
-.wk-cs-meta-row:first-child { border-top: 1px solid var(--line); }
-.wk-cs-meta-row .ml {
-  font-family: var(--f-mono); font-size: 10px;
-  letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint);
-}
-.wk-cs-meta-row .mv {
-  font-family: var(--f-sans); font-size: 14px;
-  color: var(--ink); text-align: right;
-}
-.wk-cs-meta-row .mv a { color: var(--accent); transition: opacity .2s; }
-.wk-cs-meta-row .mv a:hover { opacity: 0.7; }
-
-/* ---- stats bar ---- */
-.wk-stats {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 1px; background: var(--line);
-  border: 1px solid var(--line);
-}
-.wk-stat {
-  background: var(--bg-2); padding: 32px 28px;
-  display: flex; flex-direction: column; justify-content: space-between;
-  min-height: 140px; transition: background .3s;
-}
-.wk-stat:hover { background: var(--panel); }
-.wk-stat .num {
-  font-family: var(--f-display); font-size: clamp(40px, 5vw, 72px);
-  font-weight: 400; line-height: 1; color: var(--ink);
-}
-.wk-stat .num em { font-style: normal; color: var(--accent); }
-.wk-stat .lbl {
-  font-family: var(--f-mono); font-size: 9px;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--ink-dim); max-width: 18ch;
-}
-
-/* ---- story section ---- */
-.wk-story {
-  padding: clamp(44px, 5.5vw, 72px) var(--pad);
-  border-bottom: 1px solid var(--line);
-  background: var(--bg-2);
-}
-.wk-story-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: clamp(40px, 7vw, 120px); align-items: start;
-}
-.wk-story-left { position: sticky; top: 120px; }
-.wk-story-left h2 {
-  font-family: var(--f-display); font-weight: 400;
-  font-size: clamp(36px, 4.5vw, 72px);
-  line-height: 0.9; text-transform: uppercase; color: var(--ink);
-}
-.wk-story-left h2 em {
-  font-style: normal; color: var(--accent-2);
-  font-family: var(--f-sans); font-weight: 300;
-  text-transform: lowercase; letter-spacing: -0.02em;
-}
-.wk-story-right { display: flex; flex-direction: column; gap: 28px; }
-.wk-story-right p {
-  font-family: var(--f-sans); font-size: clamp(16px, 1.6vw, 20px);
-  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
-}
-.wk-story-right p em { font-style: normal; color: var(--ink); }
-.wk-story-right p strong { color: var(--accent); font-weight: 500; }
-.wk-pull {
-  border-left: 3px solid var(--accent);
-  padding: 20px 28px; background: rgba(198,255,58,0.04);
-}
-.wk-pull p {
-  font-family: var(--f-display); font-weight: 400;
-  font-size: clamp(22px, 2.5vw, 36px);
-  text-transform: uppercase; color: var(--ink); line-height: 1.1;
-  font-style: normal;
-}
-.wk-pull p em { font-style: italic; color: var(--accent); font-family: var(--f-sans); font-weight: 300; text-transform: lowercase; }
-
-/* ---- challenge/solution ---- */
-.wk-challenge {
-  padding: clamp(44px, 5.5vw, 72px) var(--pad);
-  border-bottom: 1px solid var(--line);
-  background: var(--panel);
-}
-.wk-challenge-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; background: var(--line);
-  border: 1px solid var(--line);
-  margin-top: 36px;
-}
-.wk-challenge-col { background: var(--panel); padding: clamp(36px, 5vw, 60px); }
-.wk-challenge-col .col-label {
-  font-family: var(--f-mono); font-size: 10px;
-  letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--ink-faint); margin-bottom: 20px;
-}
-.wk-challenge-col h3 {
-  font-family: var(--f-display); font-weight: 400;
-  font-size: clamp(32px, 4vw, 56px);
-  text-transform: uppercase; color: var(--ink); line-height: 0.92;
-  margin-bottom: 28px;
-}
-.wk-challenge-col h3 em {
-  font-style: normal; color: var(--accent-2);
-  font-family: var(--f-sans); font-weight: 300;
-  text-transform: lowercase; letter-spacing: -0.02em;
-}
-.wk-challenge-col p {
-  font-family: var(--f-sans); font-size: 16px;
-  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
-  margin-bottom: 16px;
-}
-.wk-challenge-col p em { font-style: normal; color: var(--ink); }
-.wk-challenge-col ul { list-style: none; display: flex; flex-direction: column; gap: 0; margin-top: 24px; }
-.wk-challenge-col ul li {
-  display: flex; align-items: baseline; gap: 14px;
-  font-family: var(--f-sans); font-size: 14px;
-  color: var(--ink-dim); padding: 10px 0;
-  border-bottom: 1px solid var(--line);
-}
-.wk-challenge-col ul li:first-child { border-top: 1px solid var(--line); }
-.wk-challenge-col ul li::before {
-  content: '+'; color: var(--accent-2);
-  font-family: var(--f-mono); font-size: 11px; flex-shrink: 0;
-}
-
-/* ---- deliverables ---- */
-.wk-deliverables {
-  padding: clamp(44px, 5.5vw, 72px) var(--pad);
-  border-bottom: 1px solid var(--line);
-  background: var(--bg);
-}
-.wk-del-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: var(--line);
-  border: 1px solid var(--line);
-  margin-top: 36px;
-}
-.wk-del-item {
-  background: var(--bg); padding: 28px 24px;
-  display: flex; flex-direction: column; gap: 20px;
-  transition: background .3s; position: relative;
-}
-.wk-del-item:hover { background: var(--bg-2); }
-.wk-del-item.highlight { background: var(--panel); }
-.wk-del-item.highlight:hover { background: #191c22; }
-.wk-del-flag {
-  position: absolute; top: 20px; right: 20px;
-  font-family: var(--f-mono); font-size: 9px;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  padding: 4px 10px; border-radius: 100px;
-}
-.wk-del-flag.live { color: var(--accent); border: 1px solid var(--accent); }
-.wk-del-flag.lander { color: var(--accent-2); border: 1px solid var(--accent-2); }
-.wk-del-flag.wip { color: var(--ink-faint); border: 1px solid var(--line-2); }
-.wk-del-num {
-  font-family: var(--f-mono); font-size: 10px;
-  letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint);
-}
-.wk-del-name {
-  font-family: var(--f-display); font-size: clamp(24px, 2.5vw, 38px);
-  font-weight: 400; text-transform: uppercase;
-  color: var(--ink); line-height: 1;
-}
-.wk-del-name em { font-style: normal; color: var(--accent); }
-.wk-del-desc {
-  font-family: var(--f-sans); font-size: 14px;
-  line-height: 1.65; color: var(--ink-dim); font-weight: 300; flex: 1;
-}
-.wk-del-desc em { font-style: normal; color: var(--ink); }
-.wk-del-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.wk-del-tag {
-  font-family: var(--f-mono); font-size: 9px;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--ink-faint); border: 1px solid var(--line);
-  border-radius: 100px; padding: 3px 10px;
-}
-.wk-del-link {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--f-mono); font-size: 10px;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--accent); transition: opacity .2s;
-}
-.wk-del-link:hover { opacity: 0.7; }
-
-/* ---- landers deep dive ---- */
-.wk-landers {
-  padding: clamp(44px, 5.5vw, 72px) var(--pad);
-  border-bottom: 1px solid var(--line);
-  background: var(--bg-2);
-}
-.wk-lander-list { display: flex; flex-direction: column; gap: 0; margin-top: 36px; }
-.wk-lander {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; background: var(--line);
-  border: 1px solid var(--line);
-  margin-bottom: 1px;
-}
-.wk-lander-left { background: var(--bg-2); padding: clamp(36px, 5vw, 60px); }
-.wk-lander-right { background: var(--panel); padding: clamp(36px, 5vw, 60px); display: flex; flex-direction: column; gap: 20px; }
-.wk-lander-num {
-  font-family: var(--f-mono); font-size: 10px;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--ink-faint); margin-bottom: 16px;
-}
-.wk-lander-left h3 {
-  font-family: var(--f-display); font-weight: 400;
-  font-size: clamp(28px, 3.5vw, 52px);
-  text-transform: uppercase; color: var(--ink); line-height: 0.92;
-  margin-bottom: 20px;
-}
-.wk-lander-left h3 em {
-  font-style: normal; color: var(--accent);
-  font-family: var(--f-sans); font-weight: 300;
-  text-transform: lowercase; letter-spacing: -0.02em;
-}
-.wk-lander-left p {
-  font-family: var(--f-sans); font-size: 15px;
-  line-height: 1.7; color: var(--ink-dim); font-weight: 300; margin-bottom: 16px;
-}
-.wk-lander-left p em { font-style: normal; color: var(--ink); }
-.wk-lander-right h4 {
-  font-family: var(--f-mono); font-size: 9px;
-  letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--ink-faint); margin-bottom: 4px;
-}
-.wk-lander-right ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
-.wk-lander-right ul li {
-  display: flex; align-items: baseline; gap: 12px;
-  font-family: var(--f-sans); font-size: 14px;
-  color: var(--ink-dim); padding: 9px 0;
-  border-bottom: 1px solid var(--line);
-}
-.wk-lander-right ul li:first-child { border-top: 1px solid var(--line); }
-.wk-lander-right ul li::before {
-  content: '✓'; color: var(--accent);
-  font-family: var(--f-mono); font-size: 10px; flex-shrink: 0;
-}
 .wk-lander-visit {
   display: inline-flex; align-items: center; justify-content: space-between;
   gap: 14px; padding: 16px 22px; margin-top: 8px;
@@ -450,107 +169,6 @@
   color: var(--accent); transition: background .2s, color .2s;
 }
 .wk-lander-visit:hover { background: var(--accent); color: #000; }
-
-/* ---- impact ---- */
-.wk-impact {
-  padding: clamp(44px, 5.5vw, 72px) var(--pad);
-  border-bottom: 1px solid var(--line);
-  background: var(--bg);
-  position: relative; overflow: hidden;
-}
-.wk-impact::before {
-  content: ''; position: absolute; inset: 0;
-  background:
-    radial-gradient(900px 500px at 50% 0%, rgba(198,255,58,0.06), transparent 60%),
-    radial-gradient(700px 400px at 80% 100%, rgba(255,61,240,0.04), transparent 60%);
-  pointer-events: none;
-}
-.wk-impact-inner { position: relative; z-index: 2; }
-.wk-impact-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: clamp(40px, 7vw, 100px); align-items: start;
-  margin-top: 60px;
-}
-.wk-impact-left h2 {
-  font-family: var(--f-display); font-weight: 400;
-  font-size: clamp(40px, 6vw, 90px);
-  line-height: 0.88; text-transform: uppercase; color: var(--ink);
-}
-.wk-impact-left h2 em {
-  font-style: normal; color: var(--accent);
-  font-family: var(--f-sans); font-weight: 300;
-  text-transform: lowercase; letter-spacing: -0.02em;
-}
-.wk-impact-left p {
-  font-family: var(--f-sans); font-size: clamp(15px, 1.5vw, 18px);
-  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
-  max-width: 40ch; margin-top: 24px;
-}
-.wk-impact-left p em { font-style: normal; color: var(--ink); }
-.wk-impact-right {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; background: var(--line); border: 1px solid var(--line);
-}
-.wk-impact-stat {
-  background: var(--bg-2); padding: 28px 24px;
-  display: flex; flex-direction: column; gap: 12px;
-  min-height: 120px; justify-content: space-between;
-  transition: background .3s;
-}
-.wk-impact-stat:hover { background: var(--panel); }
-.wk-impact-stat .num {
-  font-family: var(--f-display); font-size: clamp(36px, 4.5vw, 64px);
-  font-weight: 400; line-height: 1; color: var(--ink);
-}
-.wk-impact-stat .num em { font-style: normal; color: var(--accent); }
-.wk-impact-stat .lbl {
-  font-family: var(--f-mono); font-size: 9px;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--ink-dim); max-width: 20ch; line-height: 1.5;
-}
-
-/* ---- client credit ---- */
-.wk-credit {
-  padding: clamp(44px, 5.5vw, 72px) var(--pad);
-  border-bottom: 1px solid var(--line);
-  background: var(--panel);
-}
-.wk-credit-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: clamp(40px, 6vw, 80px); align-items: center;
-}
-.wk-credit-left h2 {
-  font-family: var(--f-display); font-weight: 400;
-  font-size: clamp(36px, 5vw, 72px);
-  line-height: 0.9; text-transform: uppercase; color: var(--ink);
-}
-.wk-credit-left h2 em {
-  font-style: normal; color: var(--accent-2);
-  font-family: var(--f-sans); font-weight: 300;
-  text-transform: lowercase; letter-spacing: -0.02em;
-}
-.wk-credit-left p {
-  font-family: var(--f-sans); font-size: clamp(15px, 1.5vw, 18px);
-  line-height: 1.7; color: var(--ink-dim); font-weight: 300;
-  max-width: 44ch; margin-top: 20px;
-}
-.wk-credit-left p em { font-style: normal; color: var(--ink); }
-.wk-credit-right { display: flex; flex-direction: column; gap: 0; }
-.wk-credit-row {
-  display: flex; align-items: baseline; gap: 20px;
-  padding: 16px 0; border-bottom: 1px solid var(--line);
-}
-.wk-credit-row:first-child { border-top: 1px solid var(--line); }
-.wk-credit-row .cl {
-  font-family: var(--f-mono); font-size: 10px;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--ink-faint); min-width: 90px; flex-shrink: 0;
-}
-.wk-credit-row .cv {
-  font-family: var(--f-sans); font-size: 15px; color: var(--ink-dim);
-}
-.wk-credit-row .cv a { color: var(--accent); transition: opacity .2s; }
-.wk-credit-row .cv a:hover { opacity: 0.7; }
 
 /* ---- CTA ---- */
 .wk-cta {
@@ -701,60 +319,9 @@
 }
 .wk-pr-tag--wip { color: var(--accent-2) !important; border-color: rgba(255,61,240,0.4) !important; }
 
-/* ---- condensed landers summary ---- */
-.wk-landers-intro {
-  font-family: var(--f-sans); font-size: clamp(15px, 1.5vw, 18px);
-  line-height: 1.65; color: var(--ink-dim); font-weight: 300;
-  max-width: 60ch; margin: clamp(20px, 2.5vw, 32px) 0 0;
-}
-.wk-lander-summary {
-  margin-top: 40px; border: 1px solid var(--line);
-}
-.wk-ls-row {
-  display: grid; grid-template-columns: 60px 1fr auto auto;
-  gap: 24px; align-items: center;
-  padding: 24px 32px;
-  border-bottom: 1px solid var(--line);
-  transition: background .2s;
-}
-.wk-ls-row:last-child { border-bottom: none; }
-.wk-ls-row:hover { background: rgba(255,255,255,0.02); }
-.wk-ls-row:hover .wk-ls-link { transform: translate(4px, -4px); color: var(--accent); }
-.wk-ls-num {
-  font-family: var(--f-mono); font-size: 10px;
-  letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint);
-}
-.wk-ls-title {
-  font-family: var(--f-display); font-size: clamp(18px, 2.2vw, 28px);
-  font-weight: 400; text-transform: uppercase; color: var(--ink); line-height: 1;
-}
-.wk-ls-sub {
-  font-family: var(--f-mono); font-size: 10px;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--ink-faint); margin-top: 6px;
-}
-.wk-ls-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-.wk-ls-link {
-  font-family: var(--f-mono); font-size: 18px;
-  color: var(--ink-faint); transition: transform .3s, color .3s;
-}
-
 /* ---- responsive ---- */
-@media (max-width: 1000px) {
-  .wk-cs-title-grid { grid-template-columns: 1fr; }
-  .wk-story-grid { grid-template-columns: 1fr; }
-  .wk-story-left { position: static; }
-  .wk-challenge-grid { grid-template-columns: 1fr; }
-  .wk-impact-grid { grid-template-columns: 1fr; }
-  .wk-credit-grid { grid-template-columns: 1fr; }
-  .wk-lander { grid-template-columns: 1fr; }
-  .wk-del-grid { grid-template-columns: repeat(2, 1fr); }
-}
 @media (max-width: 720px) {
   .wk-hero { min-height: 70vh; padding-top: clamp(100px, 14vw, 140px); }
-  .wk-stats { grid-template-columns: repeat(2, 1fr); }
-  .wk-del-grid { grid-template-columns: 1fr; }
-  .wk-impact-right { grid-template-columns: 1fr; }
   .wk-project-row { grid-template-columns: 1fr auto; }
   .wk-pr-num { display: none; }
   .wk-hero .bracket { width: 28px; height: 28px; }
@@ -762,8 +329,6 @@
   .wk-hero .bracket.bl, .wk-hero .bracket.br { bottom: 20px; }
   .wk-hero-top .tag:last-child { display: none; }
   .wk-current-grid { grid-template-columns: 1fr; }
-  .wk-ls-row { grid-template-columns: 1fr auto; }
-  .wk-ls-num, .wk-ls-tags { display: none; }
 }
 </style>
 
@@ -852,7 +417,7 @@
 
   <div class="wk-index-grid">
 
-    <a class="wk-project-row" href="#poly">
+    <a class="wk-project-row" href="case-studies/poly-concreting.html">
       <div class="wk-pr-num">/ 01</div>
       <div class="wk-pr-info">
         <div class="wk-pr-client">Poly Concreting · Morayfield QLD · Australia</div>
@@ -887,17 +452,17 @@
   </div>
 </section>
 
-<!-- BIN REVIVALS PREVIEW -->
+<!-- BIN REVIVALS CASE STUDY -->
 <section class="wk-current" id="bin-revivals">
   <div class="wk-current-hdr">
-    <div class="wk-current-label"><span class="dot"></span>Case study · 02</div>
+    <div class="wk-current-label" style="color:var(--accent);border-color:rgba(198,255,58,0.3);"><span class="dot" style="background:var(--accent);box-shadow:0 0 10px var(--accent);"></span>Live · Case study · 02</div>
     <div class="wk-current-geo">AU <em>+</em> NZ</div>
   </div>
   <div class="wk-current-grid">
-    <div class="wk-current-card">
+    <div class="wk-current-card" style="border-color:rgba(198,255,58,0.25);">
       <div class="wk-cc-top">
         <div class="wk-cc-num">/ 02</div>
-        <div class="wk-cc-badge">Built · Ready for launch</div>
+        <div class="wk-cc-badge" style="color:var(--accent);border-color:var(--accent);">Live</div>
       </div>
       <div class="wk-cc-client">Bin Revivals · Manawatū Region, New Zealand</div>
       <div class="wk-cc-name">BIN REVIVALS</div>
@@ -910,8 +475,11 @@
         <span class="wk-pr-tag">CRO</span>
         <span class="wk-pr-tag">Performance</span>
       </div>
-      <a href="case-studies/bin-revivals.html" class="wk-lander-visit" style="display:inline-flex;">Read the case study ↗</a>
-      <div class="wk-cc-footer">SEO: 100 · Mobile: 86 · Desktop: 90 · CLS: 0</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="case-studies/bin-revivals.html" class="wk-lander-visit" style="display:inline-flex;">Read the case study ↗</a>
+        <a href="https://www.binrevivals.co.nz" target="_blank" rel="noopener" class="wk-lander-visit" style="display:inline-flex;border-color:var(--line-2);color:var(--ink-dim);">Visit live site ↗</a>
+      </div>
+      <div class="wk-cc-footer" style="color:var(--accent);">Live · SEO: 100 · Mobile: 86 · Desktop: 90 · CLS: 0</div>
     </div>
     <div class="wk-current-info">
       <div class="wk-ci-kicker">Studio reach</div>
@@ -925,408 +493,51 @@
   </div>
 </section>
 
-<!-- ==========================================
-     CASE STUDY: POLY CONCRETING
-     ========================================== -->
-
-<div id="poly">
-
-  <!-- CASE STUDY INTRO -->
-  <section class="wk-cs-intro">
-    <div class="wk-cs-intro-inner">
-
-      <div class="wk-cs-kicker">
-        <span class="dot"></span>
-        Case study · 01 / Poly Concreting
+<!-- POLY CONCRETING CASE STUDY PREVIEW -->
+<section class="wk-current" id="poly">
+  <div class="wk-current-hdr">
+    <div class="wk-current-label" style="color:var(--accent);border-color:rgba(198,255,58,0.3);"><span class="dot" style="background:var(--accent);box-shadow:0 0 10px var(--accent);"></span>Live · Case study · 01</div>
+    <div class="wk-current-geo">QLD <em>·</em> AU</div>
+  </div>
+  <div class="wk-current-grid">
+    <div class="wk-current-card" style="border-color:rgba(198,255,58,0.25);">
+      <div class="wk-cc-top">
+        <div class="wk-cc-num">/ 01</div>
+        <div class="wk-cc-badge" style="color:var(--accent);border-color:var(--accent);">Live</div>
       </div>
-
-      <div class="wk-cs-title-grid">
-        <div class="wk-cs-title">
-          <div class="wk-idx">§ 02 / Client</div>
-          <h2>Poly<br><em>Concreting.</em></h2>
-        </div>
-        <div class="wk-cs-meta">
-          <div class="wk-cs-meta-row">
-            <div class="ml">Client</div>
-            <div class="mv">Poly Concreting</div>
-          </div>
-          <div class="wk-cs-meta-row">
-            <div class="ml">Founders</div>
-            <div class="mv">Angelo &amp; Sharimay</div>
-          </div>
-          <div class="wk-cs-meta-row">
-            <div class="ml">Location</div>
-            <div class="mv">Morayfield · QLD · Australia</div>
-          </div>
-          <div class="wk-cs-meta-row">
-            <div class="ml">Industry</div>
-            <div class="mv">Concreting &amp; Construction</div>
-          </div>
-          <div class="wk-cs-meta-row">
-            <div class="ml">Scope</div>
-            <div class="mv">6-page website + 4 ad landers</div>
-          </div>
-          <div class="wk-cs-meta-row">
-            <div class="ml">Ads</div>
-            <div class="mv">Google Ads + Microsoft Ads</div>
-          </div>
-          <div class="wk-cs-meta-row">
-            <div class="ml">Live site</div>
-            <div class="mv"><a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener">polyconcreting.com.au ↗</a></div>
-          </div>
-          <div class="wk-cs-meta-row">
-            <div class="ml">Status</div>
-            <div class="mv" style="color:var(--accent)">Live · Running</div>
-          </div>
-        </div>
+      <div class="wk-cc-client">Poly Concreting · Morayfield QLD · Australia</div>
+      <div class="wk-cc-name">POLY CONCRETING</div>
+      <div class="wk-cc-desc">A complete custom website rebuild for a family-owned concreting business in South-East Queensland — 6 pages, 4 dedicated ad landing pages on Google Ads and Microsoft Ads. Since launch, the site has supported over $500k in generated revenue.</div>
+      <div class="wk-pr-tags" style="margin-bottom:16px;">
+        <span class="wk-pr-tag">Web design</span>
+        <span class="wk-pr-tag">Development</span>
+        <span class="wk-pr-tag">Ad landers</span>
+        <span class="wk-pr-tag">Google Ads</span>
+        <span class="wk-pr-tag">CRO</span>
+        <span class="wk-pr-tag">Local SEO</span>
       </div>
-
-      <div class="wk-stats">
-        <div class="wk-stat">
-          <div class="num"><em>$500k+</em></div>
-          <div class="lbl">Revenue generated in the two months since launch</div>
-        </div>
-        <div class="wk-stat">
-          <div class="num">6</div>
-          <div class="lbl">Custom pages built around trust, conversions, and local SEO</div>
-        </div>
-        <div class="wk-stat">
-          <div class="num"><em>4</em></div>
-          <div class="lbl">High-converting ad landing pages for Google &amp; Microsoft Ads</div>
-        </div>
-        <div class="wk-stat">
-          <div class="num">0</div>
-          <div class="lbl">Templates used. Every element purpose-built for this business.</div>
-        </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="case-studies/poly-concreting.html" class="wk-lander-visit" style="display:inline-flex;">Read the case study ↗</a>
+        <a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener" class="wk-lander-visit" style="display:inline-flex;border-color:var(--line-2);color:var(--ink-dim);">Visit live site ↗</a>
       </div>
-
+      <div class="wk-cc-footer" style="color:var(--accent);">Live · $500k+ revenue · 6 pages · 4 ad landers</div>
     </div>
-  </section>
-
-  <!-- THE STORY -->
-  <section class="wk-story">
-    <div class="section-head">
-      <div class="idx">§ 03 / Background</div>
-      <h2>Where it <em>started.</em></h2>
+    <div class="wk-current-info">
+      <div class="wk-ci-kicker">The result</div>
+      <div class="wk-ci-geo">
+        <span>$500<em>k+</em></span>
+        <span class="wk-ci-cross">in</span>
+        <span>Revenue</span>
+      </div>
+      <p>A complete custom rebuild that turned an underperforming generic site into a conversion machine. Paid ad traffic that was previously wasted started turning into booked jobs — and it hasn't stopped since.</p>
     </div>
-
-    <div class="wk-story-grid">
-      <div class="wk-story-left">
-        <div style="font-family:var(--f-mono);font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;">The origin</div>
-        <h2>A family<br>business with<br>big <em>ambitions.</em></h2>
-      </div>
-
-      <div class="wk-story-right">
-        <p>
-          Angelo and Sharimay built Poly Concreting the way most trades businesses are built —
-          through hard work, reputation, and early mornings. A family-owned concreting
-          company in Morayfield, Queensland, servicing South-East Queensland across residential and commercial jobs.
-        </p>
-        <p>
-          The business was growing. The website wasn't keeping up.
-          Their existing website wasn't keeping up.
-          <em>Slow load times. Generic layouts identical to every other concreting site in Queensland.
-          No infrastructure for running serious paid ad campaigns with dedicated landing pages.</em>
-        </p>
-        <div class="wk-pull">
-          <p>"They gave me the brief. A complete rebuild. I wasn't going to waste it."</p>
-        </div>
-        <p>
-          Angelo and Sharimay were already spending on Google Ads and Microsoft Ads — but sending that traffic to a homepage
-          that wasn't built to convert it. The fix wasn't just a visual update.
-          <em>It was a full rebuild: new strategy, new architecture, new pages built specifically for the campaigns they were running.</em>
-        </p>
-        <p>
-          Six custom pages. Four dedicated ad landing pages. A complete website built from scratch — designed and structured around one goal: converting paid traffic into booked jobs.
-          Since launch, <strong>Poly Concreting has generated over $500k in revenue</strong> — and the site is still running.
-          It stopped being a liability and started working for the business.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CHALLENGE & SOLUTION -->
-  <section class="wk-challenge">
-    <div class="section-head">
-      <div class="idx">§ 04 / Problem &amp; approach</div>
-      <h2>The challenge. <em>The fix.</em></h2>
-    </div>
-
-    <div class="wk-challenge-grid">
-      <div class="wk-challenge-col">
-        <div class="col-label">The problem</div>
-        <h3>What the old site <em>couldn't do.</em></h3>
-        <p>The original website was generic — same layouts, same structure, same feel as thousands of other tradesman websites out there. It got Poly Concreting online, but it wasn't built to convert. And sending paid ad traffic to a generic homepage is the fastest way to waste an ad budget.</p>
-        <p>You pay for the click. The page doesn't do its job. The visitor leaves. The money is gone. <em>A page that isn't built to convert one specific audience doesn't convert any audience.</em></p>
-        <ul>
-          <li>Slow page load on mobile — the majority of all their traffic</li>
-          <li>No dedicated landing pages — paid traffic going to a generic homepage</li>
-          <li>No location-specific pages for local SEO competition</li>
-          <li>Template design identical to competitor sites across Queensland</li>
-          <li>No trust architecture — no reviews, no urgency, no clear CTA hierarchy</li>
-          <li>Platform bloat affecting load times and ad Quality Scores</li>
-        </ul>
-      </div>
-      <div class="wk-challenge-col">
-        <div class="col-label">The approach</div>
-        <h3>Built around <em>one goal.</em></h3>
-        <p>The rebuild started from a blank file. Every page was designed with a single clear purpose — to move a qualified visitor one step closer to a quote request. No clutter. No wasted elements. No sections that dilute the goal.</p>
-        <p>The main site needed to establish trust fast and funnel visitors toward a quote. The landing pages needed to do exactly one thing: <em>convert a paid click into a lead without giving the visitor any reason to leave before they fill in the form.</em></p>
-        <ul>
-          <li>Complete custom website build — designed and structured from scratch, not from a template</li>
-          <li>Mobile-first — built for phones before desktop</li>
-          <li>4 dedicated landing pages matched to specific ad campaigns</li>
-          <li>Trust architecture: reviews, credentials, project photos, local coverage</li>
-          <li>One conversion goal per page — one CTA, one action</li>
-          <li>Regional targeting in copy and structure for local SEO and ad relevance</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- DELIVERABLES -->
-  <section class="wk-deliverables">
-    <div class="section-head">
-      <div class="idx">§ 05 / What was built</div>
-      <h2>Six pages. <em>Four landers.</em></h2>
-    </div>
-
-    <div class="wk-del-grid">
-
-      <div class="wk-del-item highlight">
-        <div class="wk-del-flag live">Live</div>
-        <div class="wk-del-num">/ 01 — Main site</div>
-        <div class="wk-del-name">Home</div>
-        <div class="wk-del-desc">The credibility-first entry point. Hero section that builds trust in seconds — services overview, social proof, project gallery, and a direct path to a quote request. <em>Built to answer the one question every visitor has: can I trust these people with my job?</em></div>
-        <div class="wk-del-tags"><span class="wk-del-tag">Brand</span><span class="wk-del-tag">CRO</span><span class="wk-del-tag">SEO</span></div>
-        <a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
-      </div>
-
-      <div class="wk-del-item">
-        <div class="wk-del-flag live">Live</div>
-        <div class="wk-del-num">/ 02 — Main site</div>
-        <div class="wk-del-name">Services</div>
-        <div class="wk-del-desc">Full breakdown of every service Poly Concreting offers — residential driveways, exposed aggregate, commercial slabs, shed bases, pathways and more. Each service paired with trust signals and a quote CTA to keep conversion opportunities consistent across the page.</div>
-        <div class="wk-del-tags"><span class="wk-del-tag">Services</span><span class="wk-del-tag">SEO</span></div>
-        <a href="https://www.polyconcreting.com.au/our-services" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
-      </div>
-
-      <div class="wk-del-item">
-        <div class="wk-del-flag live">Live</div>
-        <div class="wk-del-num">/ 03 — Main site</div>
-        <div class="wk-del-name">About</div>
-        <div class="wk-del-desc">Angelo and Sharimay's story. Human, credible, personal — because in trades, people hire people they trust. <em>This page builds the relationship before the phone call happens.</em></div>
-        <div class="wk-del-tags"><span class="wk-del-tag">Brand story</span><span class="wk-del-tag">Trust</span></div>
-        <a href="https://www.polyconcreting.com.au/about-us" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
-      </div>
-
-      <div class="wk-del-item">
-        <div class="wk-del-flag live">Live</div>
-        <div class="wk-del-num">/ 04 — Main site</div>
-        <div class="wk-del-name">Our work</div>
-        <div class="wk-del-desc">Completed job showcase across residential and commercial. Designed to demonstrate range and quality quickly — optimised images, clean grid layout, filterable by job type. Social proof in visual form.</div>
-        <div class="wk-del-tags"><span class="wk-del-tag">Portfolio</span><span class="wk-del-tag">Social proof</span></div>
-        <a href="https://www.polyconcreting.com.au/our-work" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
-      </div>
-
-      <div class="wk-del-item">
-        <div class="wk-del-flag live">Live</div>
-        <div class="wk-del-num">/ 05 — Main site</div>
-        <div class="wk-del-name">Thank you</div>
-        <div class="wk-del-desc">Location-specific content targeting South-East Queensland suburbs. <em>Critical for local SEO</em> — built to capture search intent from people looking for a concreter in their specific suburb, not just "near me."</div>
-        <div class="wk-del-tags"><span class="wk-del-tag">Local SEO</span><span class="wk-del-tag">Regional</span></div>
-        <a href="https://www.polyconcreting.com.au/thank-you" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
-      </div>
-
-      <div class="wk-del-item">
-        <div class="wk-del-flag live">Live</div>
-        <div class="wk-del-num">/ 06 — Main site</div>
-        <div class="wk-del-name">Contact &amp; Quote</div>
-        <div class="wk-del-desc">The conversion endpoint for all organic traffic. A frictionless quote request form — job type, suburb, timeline — that qualifies the lead and routes it directly to Angelo and Sharimay. Every other page on the site points here.</div>
-        <div class="wk-del-tags"><span class="wk-del-tag">Lead capture</span><span class="wk-del-tag">CRO</span></div>
-        <a href="https://www.polyconcreting.com.au/contact" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- LANDING PAGES DEEP DIVE -->
-  <section class="wk-landers">
-    <div class="section-head">
-      <div class="idx">§ 06 / Ad landing pages</div>
-      <h2>Built to <em>convert clicks.</em></h2>
-    </div>
-
-    <p class="wk-landers-intro">Four dedicated landing pages — each purpose-built for a specific ad campaign, region, and audience. No navigation. One conversion goal per page. Built to turn paid clicks into booked quote requests.</p>
-
-    <div class="wk-lander-summary">
-
-      <div class="wk-ls-row">
-        <div class="wk-ls-num">/ 01</div>
-        <div>
-          <div class="wk-ls-title">Commercial Concreting Services</div>
-          <div class="wk-ls-sub">Microsoft Ads · Greater Brisbane · Commercial jobs</div>
-        </div>
-        <div class="wk-ls-tags">
-          <span class="wk-pr-tag">No nav</span>
-          <span class="wk-pr-tag">Sticky CTA</span>
-          <span class="wk-pr-tag">Commercial</span>
-        </div>
-        <a href="https://www.polyconcreting.com.au/commercial-concreting" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
-      </div>
-
-      <div class="wk-ls-row">
-        <div class="wk-ls-num">/ 02</div>
-        <div>
-          <div class="wk-ls-title">Moreton Bay Concreting Services</div>
-          <div class="wk-ls-sub">Google &amp; Microsoft Ads · Moreton Bay region · Residential</div>
-        </div>
-        <div class="wk-ls-tags">
-          <span class="wk-pr-tag">No nav</span>
-          <span class="wk-pr-tag">Hyper-local</span>
-          <span class="wk-pr-tag">Residential</span>
-        </div>
-        <a href="https://www.polyconcreting.com.au/concrete-services-moretonbay" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
-      </div>
-
-      <div class="wk-ls-row">
-        <div class="wk-ls-num">/ 03</div>
-        <div>
-          <div class="wk-ls-title">Ipswich Concreting Services</div>
-          <div class="wk-ls-sub">Microsoft Ads · Ipswich LGA · Residential</div>
-        </div>
-        <div class="wk-ls-tags">
-          <span class="wk-pr-tag">No nav</span>
-          <span class="wk-pr-tag">Single CTA</span>
-          <span class="wk-pr-tag">Residential</span>
-        </div>
-        <a href="https://www.polyconcreting.com.au/concrete-services-ipswich" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
-      </div>
-
-      <div class="wk-ls-row">
-        <div class="wk-ls-num">/ 04</div>
-        <div>
-          <div class="wk-ls-title">Sunshine Coast Concreting Services</div>
-          <div class="wk-ls-sub">Microsoft Ads · Sunshine Coast · Residential</div>
-        </div>
-        <div class="wk-ls-tags">
-          <span class="wk-pr-tag">No nav</span>
-          <span class="wk-pr-tag">Hyper-local</span>
-          <span class="wk-pr-tag">Residential</span>
-        </div>
-        <a href="https://www.polyconcreting.com.au/concrete-services-sunshinecoast" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- IMPACT -->
-  <section class="wk-impact">
-    <div class="wk-impact-inner">
-      <div class="section-head">
-        <div class="idx">§ 07 / Outcome</div>
-        <h2>What <em>happened next.</em></h2>
-      </div>
-
-      <div class="wk-impact-grid">
-        <div class="wk-impact-left">
-          <h2>From family<br>business to <em>$500k+.</em></h2>
-          <p>
-            Poly Concreting was already a well-run operation before the rebuild.
-            Good tradespeople, strong reputation, active ad spend. But the digital side wasn't keeping pace —
-            the site couldn't convert the traffic they were paying for, and it didn't reflect the level they were actually operating at.
-          </p>
-          <p>
-            The rebuild changed that. <em>Faster pages. Dedicated landing pages with a single conversion goal. A main site that matched the business they'd built.</em> Ad spend that had been generating clicks but losing them at the page started translating into real quote requests.
-          </p>
-          <p>
-            The rebuilt site went live two months ago. Since then, the business has generated <strong>over $500k in revenue</strong>.
-            That result belongs to Angelo and Sharimay — exceptional operators who back themselves.
-            The website just got out of their way.
-          </p>
-        </div>
-        <div class="wk-impact-right">
-          <div class="wk-impact-stat">
-            <div class="num"><em>$500k+</em></div>
-            <div class="lbl">Revenue generated in the two months since the rebuild went live</div>
-          </div>
-          <div class="wk-impact-stat">
-            <div class="num">6</div>
-            <div class="lbl">Pages — conversion-focused, mobile-first, purpose-built for leads</div>
-          </div>
-          <div class="wk-impact-stat">
-            <div class="num"><em>4</em></div>
-            <div class="lbl">Dedicated landing pages for Google &amp; Microsoft Ads — one goal each</div>
-          </div>
-          <div class="wk-impact-stat">
-            <div class="num">2</div>
-            <div class="lbl">Ad platforms running — Google Ads and Microsoft Ads simultaneously</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CLIENT CREDIT -->
-  <section class="wk-credit">
-    <div class="wk-credit-grid">
-      <div class="wk-credit-left">
-        <div class="wk-idx">§ 08 / Credit</div>
-        <h2>Angelo <em>&amp; Sharimay.</em></h2>
-        <p>
-          This project happened because Angelo and Sharimay committed to doing it right. They were a growing family business and chose to invest properly in their digital presence — not just get something live.
-          <em>That trust matters to how I approach every project.</em>
-          Poly Concreting gave RASTRICK. MADE its first major full-scope build, and I built it to last.
-        </p>
-      </div>
-      <div class="wk-credit-right">
-        <div class="wk-credit-row">
-          <div class="cl">Founders</div>
-          <div class="cv">Angelo &amp; Sharimay</div>
-        </div>
-        <div class="wk-credit-row">
-          <div class="cl">Business</div>
-          <div class="cv">Poly Concreting</div>
-        </div>
-        <div class="wk-credit-row">
-          <div class="cl">Based</div>
-          <div class="cv">Morayfield · QLD · Australia</div>
-        </div>
-        <div class="wk-credit-row">
-          <div class="cl">Services</div>
-          <div class="cv">Residential &amp; Commercial Concreting · SEQ</div>
-        </div>
-        <div class="wk-credit-row">
-          <div class="cl">Main site</div>
-          <div class="cv"><a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener">polyconcreting.com.au ↗</a></div>
-        </div>
-        <div class="wk-credit-row">
-          <div class="cl">Lander 01</div>
-          <div class="cv"><a href="https://www.polyconcreting.com.au/commercial-concreting" target="_blank" rel="noopener">Commercial Concreting Greater Brisbane↗</a></div>
-        </div>
-        <div class="wk-credit-row">
-          <div class="cl">Lander 02</div>
-          <div class="cv"><a href="https://www.polyconcreting.com.au/concrete-services-moretonbay" target="_blank" rel="noopener">Moreton Bay Concreting Services ↗</a></div>
-        </div>
-        <div class="wk-credit-row">
-          <div class="cl">Lander 03</div>
-          <div class="cv"><a href="https://www.polyconcreting.com.au/concrete-services-sunshinecoast" target="_blank" rel="noopener">Sunshine Coast Concreting Services ↗</a></div>
-        </div>
-        <div class="wk-credit-row">
-          <div class="cl">Lander 04</div>
-          <div class="cv"><a href="https://www.polyconcreting.com.au/concrete-services-ipswich" target="_blank" rel="noopener">Ipswich Concreting Services ↗</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</div>
-<!-- end #poly -->
+  </div>
+</section>
 
 <!-- CTA -->
 <section class="wk-cta">
   <div class="wk-cta-inner">
-    <div class="wk-idx">§ 09 / Your turn</div>
+    <div class="wk-idx">§ 03 / Your turn</div>
     <h2>Want a site that <em>works?</em></h2>
     <p>
       Every project starts with a conversation. Tell me about your organisation, the problem you need solved, and what you need your website to do. Based in Canberra — building custom websites for clients across Australia and New Zealand. I'll come back with a clear recommendation and straight answer.
