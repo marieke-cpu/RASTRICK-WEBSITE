@@ -2089,7 +2089,7 @@ body.ty-body { cursor: none; }
   /* Allow wrapped lines to show fully */
   .hero h1 .line {
     overflow: visible;
-    padding-bottom: 0.15em;
+    padding-bottom: 0.03em;
   }
 
   /* Reduce ghost offset on mobile */
