@@ -46,7 +46,7 @@
   const isMobileDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
   const kinetic = document.getElementById('kinetic-word');
   if (kinetic){
-    const words = ['Service Businesses', 'Organisations', 'Local Brands'];
+    const words = ['Tradies', 'Professionals', 'Community Groups', 'Not-for-Profits', 'Local Brands'];
     let i = 0;
     const swap = () => {
       i = (i+1) % words.length;
@@ -61,7 +61,7 @@
         { duration: 700, easing: 'cubic-bezier(.2,.8,.2,1)' }
       );
     };
-    const swapInterval = isMobileDevice ? 4000 : 3000;
+    const swapInterval = isMobileDevice ? 3000 : 2500;
     let swapHandle = setInterval(swap, swapInterval);
     _pauseables.push({
       pause:  () => { clearInterval(swapHandle); swapHandle = 0; },
