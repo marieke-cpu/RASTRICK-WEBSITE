@@ -723,33 +723,42 @@
 }
 .cs-showcase-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
+  grid-template-columns: minmax(220px, .72fr) minmax(0, 1.55fr);
+  gap: clamp(30px, 5vw, 76px);
   margin-top: 36px;
+  align-items: center;
 }
 .cs-showcase-item {
-  background: var(--bg-2);
   position: relative;
-  overflow: hidden;
-  aspect-ratio: 16/10;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
-.cs-showcase-item.wide {
-  grid-column: span 2;
-  aspect-ratio: 16/7;
+.cs-device-label {
+  align-self: stretch; margin-bottom: 16px; font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--ink-faint);
 }
-.cs-showcase-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .4s ease;
+.cs-device-label em { color: var(--accent); font-style: normal; }
+.cs-phone {
+  width: min(100%, 300px); padding: 9px; border: 1px solid rgba(255,255,255,.22);
+  border-radius: 34px; background: linear-gradient(145deg, #30343a, #08090b 38%, #1b1e22);
+  box-shadow: 0 28px 70px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.08);
 }
-.cs-showcase-item:hover img { transform: scale(1.02); }
+.cs-phone-screen { position: relative; overflow: hidden; border-radius: 26px; background: #000; aspect-ratio: 708/1548; }
+.cs-phone-screen::after {
+  content: ''; position: absolute; z-index: 2; top: 8px; left: 50%; width: 31%; height: 18px;
+  transform: translateX(-50%); border-radius: 999px; background: #090a0c;
+}
+.cs-monitor { width: 100%; }
+.cs-monitor-frame {
+  padding: 10px 10px 24px; border: 1px solid rgba(255,255,255,.2); border-radius: 14px;
+  background: linear-gradient(145deg, #30343a, #0b0c0f 45%, #202329);
+  box-shadow: 0 32px 80px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.07);
+}
+.cs-monitor-screen { overflow: hidden; border-radius: 6px; background: #000; aspect-ratio: 3420/1894; }
+.cs-monitor-neck { width: 18%; height: 44px; margin: 0 auto; background: linear-gradient(90deg, #111318, #34383f 50%, #111318); }
+.cs-monitor-base { width: 46%; height: 10px; margin: 0 auto; border-radius: 10px 10px 3px 3px; background: linear-gradient(180deg, #373b42, #111318); box-shadow: 0 12px 24px rgba(0,0,0,.35); }
+.cs-phone video, .cs-monitor video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .cs-showcase-placeholder {
   width: 100%;
   height: 100%;
@@ -787,17 +796,13 @@
   padding: 0 20px;
 }
 .cs-showcase-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 12px 20px;
-  background: linear-gradient(transparent, rgba(8,9,11,0.85));
+  margin-top: 22px;
   font-family: var(--f-mono);
   font-size: 9px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink-faint);
+  text-align: center;
 }
 .cs-showcase-note {
   font-family: var(--f-sans);
@@ -913,7 +918,8 @@
   .cs-scores-grid { grid-template-columns: repeat(3, 1fr); }
   .cs-features-grid { grid-template-columns: 1fr; }
   .cs-showcase-grid { grid-template-columns: 1fr; }
-  .cs-showcase-item.wide { grid-column: span 1; aspect-ratio: 16/10; }
+  .cs-showcase-item + .cs-showcase-item { margin-top: 22px; }
+  .cs-monitor-neck { height: 30px; }
 }
 @media (max-width: 480px) {
   .cs-scores-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1438,55 +1444,28 @@
 
   <div class="cs-showcase-grid">
 
-    <div class="cs-showcase-item wide">
-      <video src="../assets/work/bv-case-1.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
-      <div class="cs-showcase-caption">Live site · binrevivals.co.nz · Full walkthrough</div>
-    </div>
-
-    <div class="cs-showcase-item" style="background:var(--panel);flex-direction:column;gap:0;padding:0;">
-      <div style="padding:clamp(28px,4vw,48px);flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:20px;">
-        <div style="font-family:var(--f-mono);font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink-faint);">PageSpeed · Lighthouse</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);">
-          <div style="background:var(--bg-2);padding:20px 16px;">
-            <div style="font-family:var(--f-display);font-size:clamp(36px,4vw,56px);font-weight:400;line-height:1;color:var(--accent);">86</div>
-            <div style="font-family:var(--f-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);margin-top:8px;">Mobile perf</div>
-          </div>
-          <div style="background:var(--bg-2);padding:20px 16px;">
-            <div style="font-family:var(--f-display);font-size:clamp(36px,4vw,56px);font-weight:400;line-height:1;color:var(--accent);">90</div>
-            <div style="font-family:var(--f-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);margin-top:8px;">Desktop perf</div>
-          </div>
-          <div style="background:var(--bg-2);padding:20px 16px;">
-            <div style="font-family:var(--f-display);font-size:clamp(36px,4vw,56px);font-weight:400;line-height:1;color:var(--accent);">100</div>
-            <div style="font-family:var(--f-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);margin-top:8px;">SEO score</div>
-          </div>
-          <div style="background:var(--bg-2);padding:20px 16px;">
-            <div style="font-family:var(--f-display);font-size:clamp(36px,4vw,56px);font-weight:400;line-height:1;color:var(--accent);">0</div>
-            <div style="font-family:var(--f-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);margin-top:8px;">CLS</div>
-          </div>
-        </div>
-        <a href="https://www.binrevivals.co.nz" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:100px;padding:14px 22px;transition:background .2s,color .2s;" onmouseover="this.style.background='var(--accent)';this.style.color='#000'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Visit binrevivals.co.nz ↗</a>
-      </div>
-      <div class="cs-showcase-caption">Confirmed Lighthouse scores · Live</div>
-    </div>
-
-    <div class="cs-showcase-item" style="background:var(--bg-2);flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:clamp(28px,4vw,48px);">
-      <div style="font-family:var(--f-mono);font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;">Project details</div>
-      <div style="font-family:var(--f-display);font-size:clamp(28px,3vw,44px);font-weight:400;text-transform:uppercase;color:var(--ink);line-height:0.95;margin-bottom:20px;">Bin<br><span style="color:var(--accent);font-family:var(--f-sans);font-weight:300;text-transform:lowercase;letter-spacing:-0.02em;">Revivals.</span></div>
-      <div style="display:flex;flex-direction:column;gap:0;width:100%;">
-        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-family:var(--f-sans);font-size:13px;color:var(--ink-dim);">
-          <span style="font-family:var(--f-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);">Client</span>Bin Revivals
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-family:var(--f-sans);font-size:13px;color:var(--ink-dim);">
-          <span style="font-family:var(--f-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);">Region</span>Manawatū, NZ
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-family:var(--f-sans);font-size:13px;color:var(--ink-dim);">
-          <span style="font-family:var(--f-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);">Scope</span>Custom website
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:10px 0;font-family:var(--f-sans);font-size:13px;color:var(--accent);">
-          <span style="font-family:var(--f-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);">Status</span>Live · Running
+    <div class="cs-showcase-item">
+      <div class="cs-device-label"><em>01</em> / Mobile experience</div>
+      <div class="cs-phone">
+        <div class="cs-phone-screen">
+          <video src="../assets/work/bv-mobile-display.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Bin Revivals custom-coded website shown on mobile"></video>
         </div>
       </div>
-      <div class="cs-showcase-caption">Project summary</div>
+      <div class="cs-showcase-caption">Custom-coded website · Mobile display</div>
+    </div>
+
+    <div class="cs-showcase-item">
+      <div class="cs-device-label"><em>02</em> / Desktop experience</div>
+      <div class="cs-monitor">
+        <div class="cs-monitor-frame">
+          <div class="cs-monitor-screen">
+            <video src="../assets/work/bv-case-1.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Bin Revivals custom-coded website shown on desktop"></video>
+          </div>
+        </div>
+        <div class="cs-monitor-neck"></div>
+        <div class="cs-monitor-base"></div>
+      </div>
+      <div class="cs-showcase-caption">Custom-coded website · Desktop display</div>
     </div>
 
   </div>

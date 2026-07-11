@@ -13,17 +13,17 @@
 </script>
 <title>Poly Concreting Case Study — $500k+ Revenue | RASTRICK. MADE</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="How RASTRICK. MADE built a custom 6-page website and 4 ad landing pages for Poly Concreting — a family-run concreting business in Morayfield QLD that has since generated over $500k in revenue.">
+<meta name="description" content="How RASTRICK. MADE rebuilt a custom-coded 5-page website with local SEO location pages and 4 ad landing pages for Poly Concreting — generating over $500k in revenue.">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.rastrick.com.au/case-studies/poly-concreting">
 <meta property="og:title" content="Poly Concreting Case Study — $500k+ Revenue | RASTRICK. MADE">
-<meta property="og:description" content="How RASTRICK. MADE built a custom 6-page website and 4 ad landing pages for Poly Concreting — generating over $500k in tracked revenue since launch.">
+<meta property="og:description" content="How RASTRICK. MADE rebuilt a custom-coded 5-page website with local SEO location pages and 4 ad landing pages for Poly Concreting — generating over $500k in tracked revenue since launch.">
 <meta property="og:image" content="https://www.rastrick.com.au/RM2W-sm.png">
 <meta property="og:site_name" content="RASTRICK. MADE">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Poly Concreting Case Study — $500k+ Revenue | RASTRICK. MADE">
-<meta name="twitter:description" content="How RASTRICK. MADE built a custom 6-page website and 4 ad landing pages for Poly Concreting — generating over $500k in tracked revenue since launch.">
+<meta name="twitter:description" content="How RASTRICK. MADE rebuilt a custom-coded 5-page website with local SEO location pages and 4 ad landing pages for Poly Concreting — generating over $500k in tracked revenue since launch.">
 <meta name="twitter:image" content="https://www.rastrick.com.au/RM2W-sm.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../Logo.png">
 <link rel="icon" type="image/png" sizes="96x96" href="../Logo.png">
@@ -509,21 +509,40 @@
   border-bottom: 1px solid var(--line); background: var(--bg);
 }
 .cs-showcase-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 36px;
+  display: grid; grid-template-columns: minmax(220px, .72fr) minmax(0, 1.55fr);
+  gap: clamp(30px, 5vw, 76px); margin-top: 36px; align-items: center;
 }
 .cs-showcase-item {
-  background: var(--bg-2); position: relative; overflow: hidden;
-  aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center;
+  position: relative; display: flex; flex-direction: column; align-items: center;
 }
-.cs-showcase-item.wide { grid-column: span 2; aspect-ratio: 16/7; }
-.cs-showcase-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
-.cs-showcase-item:hover img { transform: scale(1.02); }
+.cs-device-label {
+  align-self: stretch; margin-bottom: 16px; font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--ink-faint);
+}
+.cs-device-label em { color: var(--accent); font-style: normal; }
+.cs-phone {
+  width: min(100%, 300px); padding: 9px; border: 1px solid rgba(255,255,255,.22);
+  border-radius: 34px; background: linear-gradient(145deg, #30343a, #08090b 38%, #1b1e22);
+  box-shadow: 0 28px 70px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.cs-phone-screen { position: relative; overflow: hidden; border-radius: 26px; background: #000; aspect-ratio: 708/1536; }
+.cs-phone-screen::after {
+  content: ''; position: absolute; z-index: 2; top: 8px; left: 50%; width: 31%; height: 18px;
+  transform: translateX(-50%); border-radius: 999px; background: #090a0c;
+}
+.cs-monitor { width: 100%; }
+.cs-monitor-frame {
+  padding: 10px 10px 24px; border: 1px solid rgba(255,255,255,.2); border-radius: 14px;
+  background: linear-gradient(145deg, #30343a, #0b0c0f 45%, #202329);
+  box-shadow: 0 32px 80px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.07);
+}
+.cs-monitor-screen { overflow: hidden; border-radius: 6px; background: #000; aspect-ratio: 3386/1978; }
+.cs-monitor-neck { width: 18%; height: 44px; margin: 0 auto; background: linear-gradient(90deg, #111318, #34383f 50%, #111318); }
+.cs-monitor-base { width: 46%; height: 10px; margin: 0 auto; border-radius: 10px 10px 3px 3px; background: linear-gradient(180deg, #373b42, #111318); box-shadow: 0 12px 24px rgba(0,0,0,.35); }
+.cs-phone video, .cs-monitor video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .cs-showcase-caption {
-  position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 20px;
-  background: linear-gradient(transparent, rgba(8,9,11,0.85));
-  font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.22em;
-  text-transform: uppercase; color: var(--ink-faint);
+  margin-top: 22px; font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--ink-faint); text-align: center;
 }
 
 /* ---- responsive ---- */
@@ -546,7 +565,8 @@
   .wk-del-grid { grid-template-columns: 1fr; }
   .wk-impact-right { grid-template-columns: 1fr; }
   .cs-showcase-grid { grid-template-columns: 1fr; }
-  .cs-showcase-item.wide { grid-column: span 1; aspect-ratio: 16/10; }
+  .cs-showcase-item + .cs-showcase-item { margin-top: 22px; }
+  .cs-monitor-neck { height: 30px; }
   .wk-ls-row { grid-template-columns: 1fr auto; }
   .wk-ls-num, .wk-ls-tags { display: none; }
 }
@@ -567,7 +587,7 @@
     {
       "@type": "Article",
       "headline": "Poly Concreting Website Case Study",
-      "description": "How RASTRICK. MADE built a custom 6-page website and 4 ad landing pages for Poly Concreting — generating over $500k in tracked revenue since launch.",
+      "description": "How RASTRICK. MADE rebuilt a custom-coded 5-page website with local SEO location pages and 4 ad landing pages for Poly Concreting — generating over $500k in tracked revenue since launch.",
       "author": {
         "@type": "Person",
         "name": "Marieke Clarke-Rastrick",
@@ -588,7 +608,7 @@
       "description": "Family-owned residential and commercial concreting company based in Morayfield, QLD, servicing South-East Queensland.",
       "areaServed": { "@type": "Place", "name": "South-East Queensland, Australia" },
       "serviceType": "Concreting Services",
-      "url": "https://www.polyconcreting.com.au"
+      "url": "https://polyconcretingqld.com.au"
     }
   ]
 }
@@ -652,7 +672,7 @@
     <h1>From family<br>trade to <em>$500k+.</em></h1>
 
     <p class="cs-hero-sub">
-      A complete custom-coded website build for a family-owned concreting business in Morayfield, QLD — 6 pages, 4 dedicated ad landing pages, and a site that has since supported over $500k in generated revenue. <em>Strategy-first. Built to convert. Zero templates.</em>
+      A complete custom-coded website build for a family-owned concreting business in Morayfield, QLD — 5 core pages, built-in local SEO location pages, 4 dedicated ad landing pages, and a site that has since supported over $500k in generated revenue. <em>Strategy-first. Built to convert. Zero templates.</em>
     </p>
 
     <div class="cs-hero-tags">
@@ -665,7 +685,7 @@
     </div>
 
     <div class="cs-hero-ctas">
-      <a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener" class="cs-btn primary">Visit Live Site <span class="arr">↗</span></a>
+      <a href="https://polyconcretingqld.com.au" target="_blank" rel="noopener" class="cs-btn primary">Visit Live Site <span class="arr">↗</span></a>
       <a href="../contact.html" class="cs-btn ghost">Start Your Project <span class="arr">↗</span></a>
     </div>
   </div>
@@ -706,7 +726,7 @@
         </div>
         <div class="wk-cs-meta-row">
           <div class="ml">Scope</div>
-          <div class="mv">6-page website + 4 ad landers</div>
+          <div class="mv">5 core pages + local SEO location pages + 4 ad landers</div>
         </div>
         <div class="wk-cs-meta-row">
           <div class="ml">Ads</div>
@@ -714,7 +734,7 @@
         </div>
         <div class="wk-cs-meta-row">
           <div class="ml">Live site</div>
-          <div class="mv"><a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener">polyconcreting.com.au ↗</a></div>
+          <div class="mv"><a href="https://polyconcretingqld.com.au" target="_blank" rel="noopener">polyconcretingqld.com.au ↗</a></div>
         </div>
         <div class="wk-cs-meta-row">
           <div class="ml">Status</div>
@@ -729,8 +749,8 @@
         <div class="lbl">Revenue generated in the two months since launch</div>
       </div>
       <div class="wk-stat">
-        <div class="num">6</div>
-        <div class="lbl">Custom pages built around trust, conversions, and local SEO</div>
+        <div class="num">5</div>
+        <div class="lbl">Core custom pages, supported by built-in local SEO location pages</div>
       </div>
       <div class="wk-stat">
         <div class="num"><em>4</em></div>
@@ -768,7 +788,7 @@
       </p>
       <p>
         The business was growing. The website wasn't keeping up.
-        Slow load times. Generic layouts identical to every other concreting site in Queensland.
+        The existing Wix website was extremely slow, visually outdated, and weighed down by a platform that no longer matched the business — while still charging an ongoing subscription fee every month.
         <em>No infrastructure for running serious paid ad campaigns with dedicated landing pages.</em>
       </p>
       <div class="wk-pull">
@@ -780,7 +800,7 @@
         <em>It was a full rebuild: new strategy, new architecture, new pages built specifically for the campaigns they were running.</em>
       </p>
       <p>
-        Six custom pages. Four dedicated ad landing pages. A complete website built from scratch — designed and structured around one goal: converting paid traffic into booked jobs.
+        Five custom core pages. A built-in system of local SEO location pages. Four dedicated ad landing pages. A complete website built from scratch — designed and structured around one goal: converting high-intent traffic into booked jobs.
         Since launch, <strong>Poly Concreting has generated over $500k in revenue</strong> — and the site is still running.
         It stopped being a liability and started working for the business.
       </p>
@@ -801,29 +821,32 @@
     <div class="wk-challenge-col">
       <div class="col-label">The problem</div>
       <h3>What the old site <em>couldn't do.</em></h3>
-      <p>The original website was generic — same layouts, same structure, same feel as thousands of other tradesman websites out there. It got Poly Concreting online, but it wasn't built to convert. And sending paid ad traffic to a generic homepage is the fastest way to waste an ad budget.</p>
+      <p>The original website was built on Wix. It had become extremely slow and visually outdated, with a generic structure that felt like thousands of other trades websites. Poly Concreting was also paying an ongoing Wix subscription every month just to keep using the website builder. It got the business online, but it no longer reflected the quality of the operation and wasn't built to convert. Sending paid traffic to that slow, generic homepage meant losing potential customers before the page had a chance to earn their trust.</p>
       <p>You pay for the click. The page doesn't do its job. The visitor leaves. The money is gone. <em>A page that isn't built to convert one specific audience doesn't convert any audience.</em></p>
       <ul>
-        <li>Slow page load on mobile — the majority of all their traffic</li>
+        <li>Extremely slow Wix page loads, especially on mobile — where most visitors arrived</li>
         <li>No dedicated landing pages — paid traffic going to a generic homepage</li>
         <li>No location-specific pages for local SEO competition</li>
-        <li>Template design identical to competitor sites across Queensland</li>
+        <li>Outdated Wix design that no longer represented the quality of the business</li>
         <li>No trust architecture — no reviews, no urgency, no clear CTA hierarchy</li>
-        <li>Platform bloat affecting load times and ad Quality Scores</li>
+        <li>Wix platform bloat affecting load times, user experience, and ad Quality Scores</li>
+        <li>An ongoing monthly website-builder subscription fee</li>
       </ul>
     </div>
     <div class="wk-challenge-col">
       <div class="col-label">The approach</div>
       <h3>Built around <em>one goal.</em></h3>
-      <p>The rebuild started from a blank file. Every page was designed with a single clear purpose — to move a qualified visitor one step closer to a quote request. No clutter. No wasted elements. No sections that dilute the goal.</p>
+      <p>The rebuild replaced Wix entirely and started from a blank file. Every page was custom-coded with a single clear purpose — to load quickly and move a qualified visitor one step closer to a quote request. The finished website requires no ongoing website-builder subscription: Poly only retains the normal domain and hosting costs needed to keep any website online. No platform bloat. No template constraints. No sections that dilute the goal.</p>
       <p>The main site needed to establish trust fast and funnel visitors toward a quote. The landing pages needed to do exactly one thing: <em>convert a paid click into a lead without giving the visitor any reason to leave before they fill in the form.</em></p>
       <ul>
         <li>Complete custom website build — designed and structured from scratch, not from a template</li>
+        <li>No recurring Wix or website-builder subscription fee</li>
         <li>Mobile-first — built for phones before desktop</li>
         <li>4 dedicated landing pages matched to specific ad campaigns</li>
         <li>Trust architecture: reviews, credentials, project photos, local coverage</li>
         <li>One conversion goal per page — one CTA, one action</li>
-        <li>Regional targeting in copy and structure for local SEO and ad relevance</li>
+        <li>Built-in location pages targeting high-intent searches across South-East Queensland</li>
+        <li>Unique regional copy, service context, internal links, and quote pathways for local SEO relevance</li>
       </ul>
     </div>
   </div>
@@ -835,7 +858,7 @@
 <section class="wk-deliverables">
   <div class="section-head">
     <div class="idx">§ 05 / What was built</div>
-    <h2>Six pages. <em>Four landers.</em></h2>
+    <h2>Five core pages. <em>Location SEO. Four landers.</em></h2>
   </div>
 
   <div class="wk-del-grid">
@@ -846,7 +869,7 @@
       <div class="wk-del-name">Home</div>
       <div class="wk-del-desc">The credibility-first entry point. Hero section that builds trust in seconds — services overview, social proof, project gallery, and a direct path to a quote request. <em>Built to answer the one question every visitor has: can I trust these people with my job?</em></div>
       <div class="wk-del-tags"><span class="wk-del-tag">Brand</span><span class="wk-del-tag">CRO</span><span class="wk-del-tag">SEO</span></div>
-      <a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
+      <a href="https://polyconcretingqld.com.au" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
     </div>
 
     <div class="wk-del-item">
@@ -855,7 +878,7 @@
       <div class="wk-del-name">Services</div>
       <div class="wk-del-desc">Full breakdown of every service Poly Concreting offers — residential driveways, exposed aggregate, commercial slabs, shed bases, pathways and more. Each service paired with trust signals and a quote CTA to keep conversion opportunities consistent across the page.</div>
       <div class="wk-del-tags"><span class="wk-del-tag">Services</span><span class="wk-del-tag">SEO</span></div>
-      <a href="https://www.polyconcreting.com.au/our-services" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
+      <a href="https://polyconcretingqld.com.au/Services" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
     </div>
 
     <div class="wk-del-item">
@@ -864,34 +887,34 @@
       <div class="wk-del-name">About</div>
       <div class="wk-del-desc">Angelo and Sharimay's story. Human, credible, personal — because in trades, people hire people they trust. <em>This page builds the relationship before the phone call happens.</em></div>
       <div class="wk-del-tags"><span class="wk-del-tag">Brand story</span><span class="wk-del-tag">Trust</span></div>
-      <a href="https://www.polyconcreting.com.au/about-us" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
+      <a href="https://polyconcretingqld.com.au/About" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
     </div>
 
     <div class="wk-del-item">
       <div class="wk-del-flag live">Live</div>
       <div class="wk-del-num">/ 04 — Main site</div>
-      <div class="wk-del-name">Our Work</div>
+      <div class="wk-del-name">Projects</div>
       <div class="wk-del-desc">Completed job showcase across residential and commercial. Designed to demonstrate range and quality quickly — optimised images, clean grid layout, filterable by job type. Social proof in visual form.</div>
       <div class="wk-del-tags"><span class="wk-del-tag">Portfolio</span><span class="wk-del-tag">Social proof</span></div>
-      <a href="https://www.polyconcreting.com.au/our-work" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
+      <a href="https://polyconcretingqld.com.au/Projects" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
+    </div>
+
+    <div class="wk-del-item">
+      <div class="wk-del-flag live">Live</div>
+      <div class="wk-del-num">/ SEO — Built-in location pages</div>
+      <div class="wk-del-name">Local SEO Locations</div>
+      <div class="wk-del-desc">A scalable set of location pages built into the website to target high-intent concreting searches across South-East Queensland. Each page connects a specific service area with relevant services, localised copy, internal links, trust signals, and a direct quote pathway. <em>This gives search engines clear geographic context while giving visitors a page that feels relevant to where they live — helping Poly compete beyond broad “concreter near me” searches.</em></div>
+      <div class="wk-del-tags"><span class="wk-del-tag">Local SEO</span><span class="wk-del-tag">Regional</span></div>
+      <a href="https://polyconcretingqld.com.au/ServiceAreas" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
     </div>
 
     <div class="wk-del-item">
       <div class="wk-del-flag live">Live</div>
       <div class="wk-del-num">/ 05 — Main site</div>
-      <div class="wk-del-name">Locations</div>
-      <div class="wk-del-desc">Location-specific content targeting South-East Queensland suburbs. <em>Critical for local SEO</em> — built to capture search intent from people looking for a concreter in their specific suburb, not just "near me."</div>
-      <div class="wk-del-tags"><span class="wk-del-tag">Local SEO</span><span class="wk-del-tag">Regional</span></div>
-      <a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
-    </div>
-
-    <div class="wk-del-item">
-      <div class="wk-del-flag live">Live</div>
-      <div class="wk-del-num">/ 06 — Main site</div>
       <div class="wk-del-name">Contact &amp; Quote</div>
       <div class="wk-del-desc">The conversion endpoint for all organic traffic. A frictionless quote request form — job type, suburb, timeline — that qualifies the lead and routes it directly to Angelo and Sharimay. Every other page on the site points here.</div>
       <div class="wk-del-tags"><span class="wk-del-tag">Lead capture</span><span class="wk-del-tag">CRO</span></div>
-      <a href="https://www.polyconcreting.com.au/contact" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
+      <a href="https://polyconcretingqld.com.au/contact" target="_blank" rel="noopener" class="wk-del-link">Visit ↗</a>
     </div>
 
   </div>
@@ -913,57 +936,57 @@
     <div class="wk-ls-row">
       <div class="wk-ls-num">/ 01</div>
       <div>
-        <div class="wk-ls-title">Commercial Concreting Services</div>
-        <div class="wk-ls-sub">Microsoft Ads · Greater Brisbane · Commercial jobs</div>
+        <div class="wk-ls-title">Concreting Contractor Caboolture</div>
+        <div class="wk-ls-sub">Paid search · Caboolture · General concreting enquiries</div>
       </div>
       <div class="wk-ls-tags">
         <span class="wk-pr-tag">No nav</span>
         <span class="wk-pr-tag">Sticky CTA</span>
-        <span class="wk-pr-tag">Commercial</span>
+        <span class="wk-pr-tag">Caboolture</span>
       </div>
-      <a href="https://www.polyconcreting.com.au/commercial-concreting" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
+      <a href="https://polyconcretingqld.com.au/concreting-contractor-caboolture" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
     </div>
 
     <div class="wk-ls-row">
       <div class="wk-ls-num">/ 02</div>
       <div>
-        <div class="wk-ls-title">Moreton Bay Concreting Services</div>
-        <div class="wk-ls-sub">Google &amp; Microsoft Ads · Moreton Bay region · Residential</div>
+        <div class="wk-ls-title">House &amp; Shed Slabs Caboolture</div>
+        <div class="wk-ls-sub">Paid search · Caboolture · House and shed slab enquiries</div>
       </div>
       <div class="wk-ls-tags">
         <span class="wk-pr-tag">No nav</span>
-        <span class="wk-pr-tag">Hyper-local</span>
-        <span class="wk-pr-tag">Residential</span>
+        <span class="wk-pr-tag">Service-specific</span>
+        <span class="wk-pr-tag">Slabs</span>
       </div>
-      <a href="https://www.polyconcreting.com.au/concrete-services-moretonbay" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
+      <a href="https://polyconcretingqld.com.au/house-shed-slabs-caboolture" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
     </div>
 
     <div class="wk-ls-row">
       <div class="wk-ls-num">/ 03</div>
       <div>
-        <div class="wk-ls-title">Ipswich Concreting Services</div>
-        <div class="wk-ls-sub">Microsoft Ads · Ipswich LGA · Residential</div>
+        <div class="wk-ls-title">Exposed Aggregate Concrete</div>
+        <div class="wk-ls-sub">Paid search · Service intent · Exposed aggregate enquiries</div>
       </div>
       <div class="wk-ls-tags">
         <span class="wk-pr-tag">No nav</span>
         <span class="wk-pr-tag">Single CTA</span>
-        <span class="wk-pr-tag">Residential</span>
+        <span class="wk-pr-tag">Exposed aggregate</span>
       </div>
-      <a href="https://www.polyconcreting.com.au/concrete-services-ipswich" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
+      <a href="https://polyconcretingqld.com.au/exposed-aggregate-concrete" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
     </div>
 
     <div class="wk-ls-row">
       <div class="wk-ls-num">/ 04</div>
       <div>
-        <div class="wk-ls-title">Sunshine Coast Concreting Services</div>
-        <div class="wk-ls-sub">Microsoft Ads · Sunshine Coast · Residential</div>
+        <div class="wk-ls-title">Driveways Caboolture &amp; Morayfield</div>
+        <div class="wk-ls-sub">Paid search · Caboolture &amp; Morayfield · Driveway enquiries</div>
       </div>
       <div class="wk-ls-tags">
         <span class="wk-pr-tag">No nav</span>
         <span class="wk-pr-tag">Hyper-local</span>
-        <span class="wk-pr-tag">Residential</span>
+        <span class="wk-pr-tag">Driveways</span>
       </div>
-      <a href="https://www.polyconcreting.com.au/concrete-services-sunshinecoast" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
+      <a href="https://polyconcretingqld.com.au/driveways-caboolture-morayfield" target="_blank" rel="noopener" class="wk-ls-link">↗</a>
     </div>
 
   </div>
@@ -980,29 +1003,28 @@
 
   <div class="cs-showcase-grid">
 
-    <div class="cs-showcase-item wide">
-      <img src="../assets/work/poly-home-sm.png" alt="Poly Concreting homepage" loading="lazy" decoding="async">
-      <div class="cs-showcase-caption">Homepage · polyconcreting.com.au · Desktop</div>
+    <div class="cs-showcase-item">
+      <div class="cs-device-label"><em>01</em> / Mobile experience</div>
+      <div class="cs-phone">
+        <div class="cs-phone-screen">
+          <video src="../New%20Case%20Study%20PC/mobile-display-website.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Poly Concreting custom-coded website shown on mobile"></video>
+        </div>
+      </div>
+      <div class="cs-showcase-caption">Custom-coded rebuild · Mobile display</div>
     </div>
 
     <div class="cs-showcase-item">
-      <img src="../assets/work/moretonbay-lander-sm.png" alt="Moreton Bay ad landing page" loading="lazy" decoding="async">
-      <div class="cs-showcase-caption">Moreton Bay lander · Google &amp; Microsoft Ads</div>
-    </div>
-
-    <div class="cs-showcase-item">
-      <img src="../assets/work/commercial-lander-sm.png" alt="Commercial concreting landing page" loading="lazy" decoding="async">
-      <div class="cs-showcase-caption">Commercial Concreting lander · Microsoft Ads</div>
-    </div>
-
-    <div class="cs-showcase-item">
-      <img src="../assets/work/ipswich-lander-sm.png" alt="Ipswich concreting landing page" loading="lazy" decoding="async">
-      <div class="cs-showcase-caption">Ipswich lander · Microsoft Ads</div>
-    </div>
-
-    <div class="cs-showcase-item">
-      <img src="../assets/work/sunshinecoast-lander-sm.png" alt="Sunshine Coast concreting landing page" loading="lazy" decoding="async">
-      <div class="cs-showcase-caption">Sunshine Coast lander · Microsoft Ads</div>
+      <div class="cs-device-label"><em>02</em> / Desktop experience</div>
+      <div class="cs-monitor">
+        <div class="cs-monitor-frame">
+          <div class="cs-monitor-screen">
+            <video src="../New%20Case%20Study%20PC/poly-concreting-new-build.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Poly Concreting custom-coded website shown on desktop"></video>
+          </div>
+        </div>
+        <div class="cs-monitor-neck"></div>
+        <div class="cs-monitor-base"></div>
+      </div>
+      <div class="cs-showcase-caption">Custom-coded rebuild · Desktop display</div>
     </div>
 
   </div>
@@ -1024,10 +1046,10 @@
         <p>
           Poly Concreting was already a well-run operation before the rebuild.
           Good tradespeople, strong reputation, active ad spend. But the digital side wasn't keeping pace —
-          the site couldn't convert the traffic they were paying for, and it didn't reflect the level they were actually operating at.
+          their slow, outdated Wix site couldn't convert the traffic they were paying for, and it didn't reflect the level they were actually operating at.
         </p>
         <p>
-          The rebuild changed that. <em>Faster pages. Dedicated landing pages with a single conversion goal. A main site that matched the business they'd built.</em> Ad spend that had been generating clicks but losing them at the page started translating into real quote requests.
+          The custom-coded rebuild changed that. <em>Wix was replaced completely. The monthly website-builder subscription was removed. Pages loaded faster. Dedicated landing pages had a single conversion goal. The main site finally matched the business they'd built.</em> Ad spend that had been generating clicks but losing them at the page started translating into real quote requests.
         </p>
         <p>
           The rebuilt site went live and has since generated <strong>over $500k in revenue</strong>.
@@ -1041,8 +1063,8 @@
           <div class="lbl">Revenue generated since the rebuild went live</div>
         </div>
         <div class="wk-impact-stat">
-          <div class="num">6</div>
-          <div class="lbl">Pages — conversion-focused, mobile-first, purpose-built for leads</div>
+          <div class="num">5</div>
+          <div class="lbl">Core pages — supported by built-in local SEO location pages targeting South-East Queensland</div>
         </div>
         <div class="wk-impact-stat">
           <div class="num"><em>4</em></div>
@@ -1090,23 +1112,23 @@
       </div>
       <div class="wk-credit-row">
         <div class="cl">Main site</div>
-        <div class="cv"><a href="https://www.polyconcreting.com.au" target="_blank" rel="noopener">polyconcreting.com.au ↗</a></div>
+        <div class="cv"><a href="https://polyconcretingqld.com.au" target="_blank" rel="noopener">polyconcretingqld.com.au ↗</a></div>
       </div>
       <div class="wk-credit-row">
         <div class="cl">Lander 01</div>
-        <div class="cv"><a href="https://www.polyconcreting.com.au/commercial-concreting" target="_blank" rel="noopener">Commercial Concreting — Greater Brisbane ↗</a></div>
+        <div class="cv"><a href="https://polyconcretingqld.com.au/concreting-contractor-caboolture" target="_blank" rel="noopener">Concreting Contractor — Caboolture ↗</a></div>
       </div>
       <div class="wk-credit-row">
         <div class="cl">Lander 02</div>
-        <div class="cv"><a href="https://www.polyconcreting.com.au/concrete-services-moretonbay" target="_blank" rel="noopener">Moreton Bay Concreting Services ↗</a></div>
+        <div class="cv"><a href="https://polyconcretingqld.com.au/house-shed-slabs-caboolture" target="_blank" rel="noopener">House &amp; Shed Slabs — Caboolture ↗</a></div>
       </div>
       <div class="wk-credit-row">
         <div class="cl">Lander 03</div>
-        <div class="cv"><a href="https://www.polyconcreting.com.au/concrete-services-ipswich" target="_blank" rel="noopener">Ipswich Concreting Services ↗</a></div>
+        <div class="cv"><a href="https://polyconcretingqld.com.au/exposed-aggregate-concrete" target="_blank" rel="noopener">Exposed Aggregate Concrete ↗</a></div>
       </div>
       <div class="wk-credit-row">
         <div class="cl">Lander 04</div>
-        <div class="cv"><a href="https://www.polyconcreting.com.au/concrete-services-sunshinecoast" target="_blank" rel="noopener">Sunshine Coast Concreting Services ↗</a></div>
+        <div class="cv"><a href="https://polyconcretingqld.com.au/driveways-caboolture-morayfield" target="_blank" rel="noopener">Driveways — Caboolture &amp; Morayfield ↗</a></div>
       </div>
     </div>
   </div>
